@@ -13,6 +13,7 @@
         "@formkit/addons": "^1.0.0-beta.15",
         "@formkit/auto-animate": "^1.0.0-beta.6",
         "@formkit/nuxt": "^1.0.0-beta.15",
+        "@formkit/themes": "1.0.0-beta.15",
         "@headlessui/vue": "^1.7.11",
         "@heroicons/vue": "^2.0.16",
         "@nuxtjs/tailwindcss": "^6.4.1",

@@ -4,10 +4,9 @@ export default defineNuxtConfig({
 
   // As of RC12 Nuxt 3 supports Hybrid rendering mode
   // https://v3.nuxtjs.org/guide/concepts/rendering#route-rules
-  //   routeRules: {
-  //     '/pages/**': { swr: true },
-  //     '/posts/**': { static: true },
-  //   },
+  routeRules: {
+    '/**': { swr: true },
+  },
 
   css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
 

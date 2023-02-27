@@ -12,7 +12,7 @@ module.exports = {
     `./App.{js,ts,vue}`,
     `./app.{js,ts,vue}`,
     `./nuxt.config.{js,ts}`,
-    `.form.theme.{js,ts}`,
+    `.form.theme.js`,
     `.formkit.config.{js,ts}`,
   ],
 

@@ -16,6 +16,8 @@ import {
 // Import the $directus plugin
 const { $directus } = useNuxtApp()
 
+const { fileUrl } = useFiles()
+
 // Get the params from the Nuxt route
 const { params, path } = useRoute()
 
@@ -117,6 +119,11 @@ function getUrl(item: object) {
                       <div
                         class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white"
                       >
+                        <!-- <img
+                          v-if="childItem.image"
+                          :src="fileUrl(childItem.image)"
+                          class="h-10 w-10"
+                        /> -->
                         <!-- <component :is="item.icon" class="h-6 w-6 atext-gray-600 group-hover:text-indigo-600" aria-hidden="true" /> -->
                       </div>
                       <div class="flex-auto">

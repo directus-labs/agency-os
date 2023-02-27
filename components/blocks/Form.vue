@@ -22,6 +22,12 @@ const props = defineProps({
   },
 })
 
+const { $directus } = useNuxtApp()
+const form = reactive({})
+const loading = ref(false)
+const error = ref(null)
+const success = ref(false)
+
 function tranformSchema(schema: object) {
   // Loop through the form schema and change 'type' key for each object to '$formkit'
   // This is required for FormKit to work
@@ -34,13 +40,36 @@ function tranformSchema(schema: object) {
 
 const schema = tranformSchema(props.data.form.schema)
 const { fileUrl } = useFiles()
+
+async function submitForm() {
+  loading.value = true
+  try {
+    await $directus.items('inbox').createOne({
+      //   form: props.data.form.id,
+      data: form,
+    })
+    success.value = true
+  } catch (err) {
+    error.value = err
+  } finally {
+    loading.value = false
+  }
+}
 </script>
 <template>
   <PageContainer class="">
     <TypographyTitle>{{ data.title }}</TypographyTitle>
     <TypographyHeadline :content="data.headline" />
-    <FormKit type="form" outer-class="space-y-4">
-      <FormKitSchema :schema="schema" />
-    </FormKit>
+    <div
+      class="mt-4 p-8 bg-gray-100 dark:bg-gray-800 rounded-bl-3xl rounded-tr-3xl"
+    >
+      <VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
+      <VAlert v-if="success" type="success">
+        Success! Your form has been submitted.
+      </VAlert>
+      <FormKit v-if="!success" type="form" v-model="form" @submit="submitForm">
+        <FormKitSchema :schema="schema" />
+      </FormKit>
+    </div>
   </PageContainer>
 </template>

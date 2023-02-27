@@ -26,7 +26,7 @@
           aria-hidden="true"
         />
       </div>
-      <div class="ml-3"><slot /></div>
+      <div class="ml-3 font-mono"><slot /></div>
     </div>
   </div>
 </template>

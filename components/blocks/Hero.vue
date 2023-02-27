@@ -40,7 +40,7 @@ const { fileUrl } = useFiles()
           :key="button.id"
           :href="button.url"
           :target="button.open_in_new_window ? '_blank' : '_self'"
-          class="box-border px-8 py-4 font-mono text-sm font-bold leading-none tracking-widest text-white lowercase transition-colors duration-300 bg-gray-900 rounded-tr-3xl rounded-bl-3xl sm:text-base md:text-lg word-spacing-tight sm:px-10 dark:bg-accent"
+          class="box-border btn px-8 py-4 font-mono text-sm font-bold leading-none tracking-widest text-white lowercase transition-colors duration-300 bg-gray-900 rounded-tr-3xl rounded-bl-3xl sm:text-base md:text-lg word-spacing-tight sm:px-10 dark:bg-accent"
         >
           {{ button.label }}
         </NuxtLink>
