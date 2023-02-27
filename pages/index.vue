@@ -1,26 +1,16 @@
 <script setup lang="ts">
-// Import the components you need to use in your page builder
-import BlocksHero from '~~/components/blocks/Hero.vue'
-import BlocksFaqs from '~~/components/blocks/Faqs.vue'
-import BlockRichText from '~~/components/blocks/RichText.vue'
-import BlockTestimonials from '~~/components/blocks/Testimonials.vue'
-import BlockQuote from '~~/components/blocks/Quote.vue'
-import BlockCta from '~~/components/blocks/Cta.vue'
-import BlockForm from '~~/components/blocks/Form.vue'
-import BlockLogoCloud from '~~/components/blocks/LogoCloud.vue'
-import BlockTeam from '~~/components/blocks/Team.vue'
-
 // Map the page builder collection names to the components
+// https://nuxt.com/docs/guide/directory-structure/components#dynamic-components
 const map = {
-  block_hero: BlocksHero,
-  block_faqs: BlocksFaqs,
-  block_richtext: BlockRichText,
-  block_testimonials: BlockTestimonials,
-  block_quote: BlockQuote,
-  block_cta: BlockCta,
-  block_form: BlockForm,
-  block_logocloud: BlockLogoCloud,
-  block_team: BlockTeam,
+  block_hero: resolveComponent('BlocksHero'),
+  block_faqs: resolveComponent('BlocksFaqs'),
+  block_richtext: resolveComponent('BlocksRichText'),
+  block_testimonials: resolveComponent('BlocksTestimonials'),
+  block_quote: resolveComponent('BlocksQuote'),
+  block_cta: resolveComponent('BlocksCta'),
+  block_form: resolveComponent('BlocksForm'),
+  block_logocloud: resolveComponent('BlocksLogoCloud'),
+  block_team: resolveComponent('BlocksTeam'),
 }
 
 type Page = {
