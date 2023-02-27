@@ -65,12 +65,12 @@ const { fileUrl } = useFiles()
             </div>
           </div>
           <div
-            class="flex w-full px-4 py-6 pb-24 space-x-6 overflow-x-auto scrollbar-hide snap-x md:pt-8 scroll-smooth"
+            class="flex w-full px-4 py-6 pb-24 space-x-6 overflow-x-auto scrollbar-hide md:pt-8"
           >
             <div
               v-for="({ testimonial }, itemIdx) in data.testimonials"
               :key="testimonial.id"
-              class="relative w-[450px] flex flex-col flex-shrink-0 p-8 bg-white dark:bg-gray-900 shadow-md snap-center rounded-bl-3xl rounded-tr-3xl overflow-hidden"
+              class="relative w-[450px] flex flex-col flex-shrink-0 p-8 bg-white dark:bg-gray-900 shadow-md rounded-bl-3xl rounded-tr-3xl overflow-hidden"
             >
               <!-- <div class="absolute inset-0 grain-bg opacity-25" />
               <div
