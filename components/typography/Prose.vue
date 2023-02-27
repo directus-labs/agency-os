@@ -1,0 +1,16 @@
+<script setup lang="ts">
+const props = defineProps({
+  content: {
+    type: String,
+    required: true,
+  },
+})
+</script>
+<template>
+  <div
+    :class="[
+      'prose md:prose-lg lg:prose-xl dark:prose-invert prose-img:rounded-br-3xl prose-img:rounded-tl-3xl prose-img:border-2 prose-img:border-gray-500 prose-headings:font-serif',
+    ]"
+    v-html="content"
+  />
+</template>

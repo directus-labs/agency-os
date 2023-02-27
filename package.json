@@ -1,0 +1,35 @@
+{
+    "private": true,
+    "scripts": {
+        "build": "nuxt build",
+        "dev": "nuxt dev",
+        "start": "nuxt start",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "postinstall": "nuxt prepare"
+    },
+    "devDependencies": {
+        "@directus/sdk": "^10.3.1",
+        "@formkit/addons": "^1.0.0-beta.15",
+        "@formkit/auto-animate": "^1.0.0-beta.6",
+        "@formkit/nuxt": "^1.0.0-beta.15",
+        "@headlessui/vue": "^1.7.11",
+        "@heroicons/vue": "^2.0.16",
+        "@nuxtjs/tailwindcss": "^6.4.1",
+        "@pinia/nuxt": "^0.4.7",
+        "@tailwindcss/aspect-ratio": "^0.4.2",
+        "@tailwindcss/forms": "^0.5.3",
+        "@tailwindcss/line-clamp": "^0.4.2",
+        "@tailwindcss/typography": "^0.5.9",
+        "@vueuse/core": "^9.13.0",
+        "@vueuse/motion": "^2.0.0-beta.25",
+        "@vueuse/nuxt": "^9.13.0",
+        "eslint": "^8.34.0",
+        "eslint-config-prettier": "^8.6.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "nuxt": "^3.2.2",
+        "pinia": "^2.0.32",
+        "prettier": "^2.8.4"
+    },
+    "dependencies": {}
+}

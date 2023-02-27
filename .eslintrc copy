@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parserOptions": {
+    "parser": "@babel/eslint-parser",
+    "sourceType": "module"
+  },
+  "extends": [
+    "@nuxtjs/eslint-config-typescript",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["prettier"]
+}
