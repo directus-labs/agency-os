@@ -1,6 +1,12 @@
 import { defineNuxtModule, extendRouteRules } from '@nuxt/kit'
 import { Directus } from '@directus/sdk'
 
+interface Redirect {
+  url_old: string
+  url_new: string
+  response_code: string | number
+}
+
 export default defineNuxtModule({
   async setup(moduleOptions, nuxt) {
     const directusUrl = nuxt.options.runtimeConfig.public.directusUrl
@@ -12,13 +18,15 @@ export default defineNuxtModule({
       // },
     })
 
-    const { data: redirects } = await directus.items('redirects').readByQuery()
+    const { data: redirects }: Array<Redirect> = await directus
+      .items('redirects')
+      .readByQuery()
 
     for (const redirect of redirects) {
       extendRouteRules(redirect.url_old, {
         redirect: {
           to: redirect.url_new,
-          statusCode: redirect.response_code,
+          statusCode: parseInt(redirect.response_code),
         },
       })
     }
