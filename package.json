@@ -28,7 +28,7 @@
         "eslint": "^8.34.0",
         "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-prettier": "^4.2.1",
-        "nuxt": "^3.2.2",
+        "nuxt": "^3.3.1",
         "pinia": "^2.0.32",
         "prettier": "^2.8.4"
     },
