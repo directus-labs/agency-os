@@ -73,19 +73,6 @@ function onKeydown(e: KeyboardEvent) {
 onMounted(() => {
   window.addEventListener('keydown', onKeydown)
 })
-
-// Disable body scroll when modal is open
-watch(
-  isOpen,
-  (val) => {
-    if (val) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'auto'
-    }
-  },
-  { immediate: true }
-)
 </script>
 <template>
   <PageContainer>

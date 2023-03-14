@@ -22,7 +22,7 @@ const props = defineProps({
   <section>
     <PageContainer class="">
       <div
-        class="relative w-full max-w-4xl px-8 py-8 mx-auto overflow-hidden text-gray-900 bg-white rounded-br-3xl rounded-tl-3xl outline outline-4 outline-accent outline-offset-8"
+        class="relative w-full max-w-5xl px-8 py-8 mx-auto overflow-hidden text-gray-900 bg-white rounded-br-3xl rounded-tl-3xl outline outline-4 outline-accent outline-offset-8"
       >
         <div
           class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-accent dark:from-gray-700 dark:via-gray-900 dark:to-accent"
