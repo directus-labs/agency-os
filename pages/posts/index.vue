@@ -50,10 +50,6 @@ const {
   }
 )
 
-function isEven(n: number) {
-  return n % 2 == 0
-}
-
 useHead({
   title: 'Posts',
 })
@@ -68,14 +64,14 @@ useHead({
     </header>
     <section class="relative items-center w-full py-12 space-y-12">
       <div
-        class="relative grid grid-cols-2 gap-12 lg:grid-cols-4 pb-12 border-b-2 border-gray-300 dark:border-gray-700"
+        class="relative grid grid-cols-2 gap-12 pb-12 border-b-2 border-gray-300 lg:grid-cols-4 dark:border-gray-700"
       >
         <div>
           <TypographyTitle class="text-gray-700 dark:text-gray-400"
             >Search</TypographyTitle
           >
           <VInput />
-          <TypographyTitle class="text-gray-700 dark:text-gray-400 mt-8"
+          <TypographyTitle class="mt-8 text-gray-700 dark:text-gray-400"
             >Categories</TypographyTitle
           >
           <Categories />

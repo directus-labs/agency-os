@@ -76,42 +76,46 @@ setInterval(() => {
 }, 5000)
 </script>
 <template>
-  <PageContainer>
-    <div
-      class="max-w-screen-2xl mx-auto flex flex-col-reverse lg:flex-row py-24"
-    >
-      <div class="flex flex-col pt-12 pb-24 pr-8 text-black xl:w-2/5">
-        <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
-        <TypographyHeadline v-if="data.headline" :content="data.headline" />
-      </div>
-
-      <div class="relative flex-grow">
-        <div
-          class="flex flex-grow justify-start py-10 lg:justify-end space-x-10"
-        >
+  <section>
+    <PageContainer>
+      <div
+        class="flex flex-col-reverse py-24 mx-auto max-w-screen-2xl lg:flex-row"
+      >
+        <div class="flex flex-col pt-12 pb-24 pr-8 text-black xl:w-2/5">
+          <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
+          <TypographyHeadline v-if="data.headline" :content="data.headline" />
+        </div>
+        <div class="relative flex-grow">
           <div
-            class="flex flex-row max-w-full -mt-20 space-x-5 lg:flex-col lg:space-x-0 lg:space-y-10"
-            v-auto-animate
+            class="flex justify-start flex-grow py-10 space-x-10 lg:justify-end"
           >
             <div
-              class="flex-none relative w-[340px]"
-              v-for="person in teamToDisplay.left"
-              :key="person.id"
+              class="flex flex-row max-w-full -mt-20 space-x-5 lg:flex-col lg:space-x-0 lg:space-y-10"
+              v-auto-animate
             >
-              <TeamCard :person="person" />
+              <div
+                class="flex-none relative w-[340px]"
+                v-for="person in teamToDisplay.left"
+                :key="person.id"
+              >
+                <TeamCard :person="person" />
+              </div>
             </div>
-          </div>
-          <div class="flex-col hidden -mb-20 xl:flex space-y-10" v-auto-animate>
             <div
-              class="flex-none relative w-[340px]"
-              v-for="person in teamToDisplay.right"
-              :key="person.id"
+              class="flex-col hidden -mb-20 space-y-10 xl:flex"
+              v-auto-animate
             >
-              <TeamCard :person="person" />
+              <div
+                class="flex-none relative w-[340px]"
+                v-for="person in teamToDisplay.right"
+                :key="person.id"
+              >
+                <TeamCard :person="person" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </PageContainer>
+    </PageContainer>
+  </section>
 </template>

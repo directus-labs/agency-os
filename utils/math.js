@@ -11,4 +11,12 @@ function roundToDecimal(value, decimals) {
   return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals)
 }
 
-export { formatPercent, percentChange, roundToDecimal }
+function isEven(n) {
+  return n % 2 == 0
+}
+
+function isOdd(n) {
+  return Math.abs(n % 2) == 1
+}
+
+export { formatPercent, percentChange, roundToDecimal, isEven, isOdd }

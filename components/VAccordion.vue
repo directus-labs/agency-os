@@ -32,7 +32,7 @@ const open = ref(false)
           </span>
         </button>
       </dt>
-      <dd v-show="open" class="mt-2" v-auto-animate>
+      <dd v-if="open" class="mt-2">
         <div class="font-serif prose text-left dark:prose-invert">
           <slot />
         </div>

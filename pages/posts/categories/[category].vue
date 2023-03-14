@@ -90,6 +90,7 @@ useHead({
             >Articles for Category:
             {{ deslugify(params.category) }}</TypographyTitle
           >
+          <span>{{ }}</span>
           <div
             class="relative grid grid-cols-2 gap-12 md:grid-cols-2 lg:grid-cols-4"
           >

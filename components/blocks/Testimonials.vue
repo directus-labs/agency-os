@@ -33,7 +33,7 @@ const props = defineProps({
 const { fileUrl } = useFiles()
 </script>
 <template>
-  <div class="relative overflow-hidden">
+  <section class="relative overflow-hidden">
     <div
       class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-accent dark:from-gray-700 dark:via-gray-900 dark:to-accent"
     />
@@ -47,7 +47,7 @@ const { fileUrl } = useFiles()
           {{ data.subtitle }}
         </p>
       </div>
-      <div class="flow-root relative" id="testimonials-{{ id }}">
+      <div class="relative flow-root" id="testimonials-{{ id }}">
         <div class="-mt-48">
           <div class="flex justify-end px-4 md:px-6 lg:px-8">
             <!-- {{# Left and Right Circle Buttons to Navigate testimonials #}} -->
@@ -72,7 +72,7 @@ const { fileUrl } = useFiles()
               :key="testimonial.id"
               class="relative w-[450px] flex flex-col flex-shrink-0 p-8 bg-white dark:bg-gray-900 shadow-md rounded-bl-3xl rounded-tr-3xl overflow-hidden"
             >
-              <!-- <div class="absolute inset-0 grain-bg opacity-25" />
+              <!-- <div class="absolute inset-0 opacity-25 grain-bg" />
               <div
                 class="absolute inset-0 bg-gradient-to-br from-white via-white to-accent dark:from-accent dark:to-transparent o"
               /> -->
@@ -107,12 +107,12 @@ const { fileUrl } = useFiles()
                   </svg>
                   <div class="relative">
                     <p
-                      class="font-bold font-serif text-gray-900 dark:text-white"
+                      class="font-serif font-bold text-gray-900 dark:text-white"
                     >
                       {{ testimonial.title }}
                     </p>
                     <p
-                      class="text-sm font-mono text-gray-700 dark:text-gray-300"
+                      class="font-mono text-sm text-gray-700 dark:text-gray-300"
                     >
                       {{ testimonial.subtitle }} at {{ testimonial.company }}
                     </p>
@@ -124,5 +124,5 @@ const { fileUrl } = useFiles()
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>

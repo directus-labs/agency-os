@@ -11,6 +11,12 @@ const map = {
   block_form: resolveComponent('BlocksForm'),
   block_logocloud: resolveComponent('BlocksLogoCloud'),
   block_team: resolveComponent('BlocksTeam'),
+  block_html: resolveComponent('BlocksRawHtml'),
+  block_video: resolveComponent('BlocksVideo'),
+  block_gallery: resolveComponent('BlocksGallery'),
+  block_steps: resolveComponent('BlocksSteps'),
+  block_columns: resolveComponent('BlocksColumns'),
+  block_cardgroup: resolveComponent('BlocksCardGroup'),
 }
 
 type Page = {
@@ -48,6 +54,8 @@ const {
         'blocks.item.testimonials.testimonial.*',
         'blocks.item.logos.file.*',
         'blocks.item.form.*',
+        'blocks.item.steps.*',
+        'blocks.item.gallery_items.directus_files_id.*',
       ],
       limit: 1,
     })
@@ -57,11 +65,6 @@ const {
     pick: ['title', 'blocks', 'slug', 'id'],
   }
 )
-
-const title = 'Directus & Nuxt 3 Starter'
-useHead({
-  title: title,
-})
 
 onMounted(() => useAnimation())
 </script>

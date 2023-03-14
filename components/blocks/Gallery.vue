@@ -1,0 +1,202 @@
+<script setup lang="ts">
+import { PropType } from 'vue'
+import {
+  MagnifyingGlassPlusIcon,
+  XMarkIcon,
+  ArrowRightIcon,
+  ArrowLeftIcon,
+} from '@heroicons/vue/24/outline'
+type Gallery = {
+  id: string
+  title: string
+  headline: string
+  gallery_items: Array<{
+    directus_files_id:
+      | string
+      | {
+          id: string
+          title?: string
+          description?: string
+          tags?: string
+        }
+  }>
+}
+const props = defineProps({
+  data: {
+    type: Object as PropType<Gallery>,
+    required: true,
+  },
+})
+
+const { fileUrl } = useFiles()
+
+const isOpen = ref(false)
+const currentItemIdx = ref(0)
+
+const currentItem = computed(() => {
+  return props.data.gallery_items[currentItemIdx.value].directus_files_id
+})
+
+function next() {
+  // If the current item is the last item, go back to the first item
+  currentItemIdx.value =
+    currentItemIdx.value === props.data.gallery_items.length - 1
+      ? 0
+      : currentItemIdx.value + 1
+}
+
+function prev() {
+  // If the current item is the first item, go to the last item
+  currentItemIdx.value =
+    currentItemIdx.value === 0
+      ? props.data.gallery_items.length - 1
+      : currentItemIdx.value - 1
+}
+
+function toggle() {
+  isOpen.value = !isOpen.value
+}
+
+// Add keyboard navigation
+function onKeydown(e: KeyboardEvent) {
+  if (!isOpen.value) return
+  if (e.key === 'Escape') {
+    toggle()
+  }
+  if (e.key === 'ArrowRight') {
+    next()
+  }
+  if (e.key === 'ArrowLeft') {
+    prev()
+  }
+}
+onMounted(() => {
+  window.addEventListener('keydown', onKeydown)
+})
+
+// Disable body scroll when modal is open
+watch(
+  isOpen,
+  (val) => {
+    if (val) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  },
+  { immediate: true }
+)
+</script>
+<template>
+  <PageContainer>
+    <!-- Title -->
+    <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
+    <TypographyHeadline v-if="data.headline" :content="data.headline" />
+
+    <!-- Gallery -->
+    <div class="gap-8 mt-4 md:columns-3">
+      <button
+        v-for="(item, itemIdx) in data.gallery_items"
+        :key="itemIdx"
+        @click="
+          () => {
+            currentItemIdx = itemIdx
+            toggle()
+          }
+        "
+        :class="[
+          {
+            'rounded-br-3xl rounded-tl-3xl': isEven(itemIdx),
+            'rounded-bl-3xl rounded-tr-3xl': !isEven(itemIdx),
+          },
+          'block relative w-full aspect-square mb-6 overflow-hidden group hover:outline outline-2 outline-offset-4 outline-gray-300 dark:outline-gray-700 transition-[outline] duration-300',
+        ]"
+      >
+        <img
+          :src="fileUrl(item.directus_files_id.id)"
+          class="object-cover w-full transition duration-300 group-hover:scale-110"
+        />
+        <div
+          class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
+        >
+          <MagnifyingGlassPlusIcon
+            class="w-12 h-12 text-gray-500 dark:text-white"
+          />
+        </div>
+      </button>
+    </div>
+    <!-- Gallery Modal -->
+    <div
+      v-if="isOpen"
+      class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gray-900 bg-opacity-75"
+    >
+      <div class="absolute z-50 font-mono text-white top-4 left-4">
+        <div class="p-4 bg-gray-900 rounded-tl-3xl rounded-br-3xl">
+          <p>Press 'esc' to close</p>
+          <p>Press 'left' or 'right' to navigate</p>
+        </div>
+      </div>
+      <div class="absolute z-50 font-mono text-white bottom-4 right-4">
+        <VBadge
+          v-for="(item, itemIdx) in currentItem.tags"
+          :key="itemIdx"
+          size="lg"
+          class="rounded-br-xl"
+        >
+          {{ item }}</VBadge
+        >
+      </div>
+      <div
+        class="relative flex flex-col items-center justify-center w-full h-full max-w-7xl"
+      >
+        <button
+          @click="toggle"
+          class="absolute z-50 p-4 text-2xl text-white transition duration-300 top-4 right-4 bg-accent hover:bg-opacity-75 rounded-tr-xl rounded-bl-xl"
+        >
+          <div>
+            <span class="sr-only">Close</span>
+            <XMarkIcon class="w-6 h-6" />
+          </div>
+        </button>
+        <div class="flex items-center justify-center w-full h-full">
+          <button
+            @click="prev"
+            class="absolute z-50 p-4 text-2xl text-white transition duration-300 left-4 bg-accent hover:bg-opacity-75 rounded-tr-xl rounded-bl-xl"
+          >
+            <span class="sr-only">Previous</span>
+            <ArrowLeftIcon class="w-6 h-6" />
+          </button>
+          <button
+            @click="next"
+            class="absolute z-50 p-4 text-2xl text-white transition duration-300 right-4 bg-accent hover:bg-opacity-75 rounded-br-xl rounded-tl-xl"
+          >
+            <span class="sr-only">Next</span>
+            <ArrowRightIcon class="w-6 h-6" />
+          </button>
+          <!-- Image -->
+          <div class="relative flex items-center justify-center">
+            <div class="relative w-full h-full p-20">
+              <div class="flex">
+                <p
+                  class="inline-block px-6 py-2 font-serif font-bold text-white bg-gray-900 track rounded-tl-3xl"
+                >
+                  {{ currentItem.title }}
+                </p>
+                <p
+                  v-if="currentItem.description"
+                  class="flex-1 inline-block px-6 py-2 font-mono text-white bg-gray-700"
+                >
+                  {{ currentItem.description }}
+                </p>
+              </div>
+              <img
+                :src="fileUrl(currentItem.id)"
+                class="object-contain w-full rounded-br-3xl"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </PageContainer>
+</template>

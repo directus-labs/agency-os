@@ -57,19 +57,26 @@ async function submitForm() {
 }
 </script>
 <template>
-  <PageContainer class="">
-    <TypographyTitle>{{ data.title }}</TypographyTitle>
-    <TypographyHeadline :content="data.headline" />
-    <div
-      class="mt-4 p-8 bg-gray-100 dark:bg-gray-800 rounded-bl-3xl rounded-tr-3xl"
-    >
-      <VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
-      <VAlert v-if="success" type="success">
-        Success! Your form has been submitted.
-      </VAlert>
-      <FormKit v-if="!success" type="form" v-model="form" @submit="submitForm">
-        <FormKitSchema :schema="schema" />
-      </FormKit>
-    </div>
-  </PageContainer>
+  <section>
+    <PageContainer class="">
+      <TypographyTitle>{{ data.title }}</TypographyTitle>
+      <TypographyHeadline :content="data.headline" />
+      <div
+        class="p-8 mt-4 bg-gray-100 dark:bg-gray-800 rounded-bl-3xl rounded-tr-3xl"
+      >
+        <VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
+        <VAlert v-if="success" type="success">
+          Success! Your form has been submitted.
+        </VAlert>
+        <FormKit
+          v-if="!success"
+          type="form"
+          v-model="form"
+          @submit="submitForm"
+        >
+          <FormKitSchema :schema="schema" />
+        </FormKit>
+      </div>
+    </PageContainer>
+  </section>
 </template>

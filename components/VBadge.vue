@@ -44,8 +44,6 @@ const props = defineProps({
 
 const slots = useSlots()
 
-// console.log(slots.default()[0].children, slots.default()[0].children.length)
-
 const colorChoices = [
   'gray',
   'green',

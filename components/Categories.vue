@@ -1,12 +1,6 @@
 <script setup lang="ts">
-// Import the $directus plugin
 const { $directus } = useNuxtApp()
 
-// Get the params from the Nuxt route
-const { params, path } = useRoute()
-
-// Fetch the page data from the Directus API using the Nuxt useAsyncData composable
-// https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
 const {
   data: categories,
   pending,
@@ -15,24 +9,11 @@ const {
   'categories',
   () => {
     return $directus.items('categories').readByQuery({
-      filter: {
-        // status: { _eq: 'published' },
-      },
-
       fields: ['*'],
     })
   },
   {
     transform: (data) => data.data,
-    // pick: [
-    //   'title',
-    //   'content',
-    //   'image',
-    //   'author',
-    //   'category',
-    //   'summary',
-    //   'date_published',
-    // ],
   }
 )
 </script>
