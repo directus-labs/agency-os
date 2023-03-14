@@ -23,10 +23,20 @@ export default defineNuxtModule({
       .readByQuery()
 
     for (const redirect of redirects) {
+      // If the response code is not an integer, convert it to an integer
+      // If the response code is not a valid HTTP status code, set it to 301
+      if (isNaN(parseInt(redirect.response_code))) {
+        redirect.response_code = 301
+      } else if (
+        parseInt(redirect.response_code) < 300 ||
+        parseInt(redirect.response_code) > 308
+      ) {
+        redirect.response_code = 301
+      }
       extendRouteRules(redirect.url_old, {
         redirect: {
           to: redirect.url_new,
-          statusCode: parseInt(redirect.response_code),
+          statusCode: redirect.response_code,
         },
       })
     }
