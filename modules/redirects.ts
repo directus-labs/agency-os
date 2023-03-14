@@ -1,24 +1,19 @@
 import { defineNuxtModule, extendRouteRules } from '@nuxt/kit'
-
-async function fetchRedirects(url: string) {
-  try {
-    const response = await fetch(url)
-    if (!response.ok) throw new Error('Failed to fetch redirects')
-    const { data: redirects } = await response.json()
-
-    return redirects
-  } catch (error) {
-    console.error(error)
-    return []
-  }
-}
+import { Directus } from '@directus/sdk'
 
 export default defineNuxtModule({
   async setup(moduleOptions, nuxt) {
-    const baseUrl = nuxt.options.runtimeConfig.public.directusUrl
-    if (!baseUrl) throw new Error('Missing directusUrl in runtimeConfig')
+    const directusUrl = nuxt.options.runtimeConfig.public.directusUrl
+    if (!directusUrl) throw new Error('Missing directusUrl in runtimeConfig')
 
-    const redirects = await fetchRedirects(`${baseUrl}/items/redirects`)
+    const directus = new Directus(directusUrl, {
+      // auth: {
+      //   staticToken: directusToken,
+      // },
+    })
+
+    const { data: redirects } = await directus.items('redirects').readByQuery()
+
     for (const redirect of redirects) {
       extendRouteRules(redirect.url_old, {
         redirect: {
