@@ -62,15 +62,15 @@ useHead({
         content="<p>Articles on <em>development</em>, marketing, and more.</p>"
       />
     </header>
-    <section class="relative items-center w-full py-12 space-y-12">
+    <section class="relative w-full py-12 space-y-12">
       <div
-        class="relative grid grid-cols-2 gap-12 pb-12 border-b-2 border-gray-300 lg:grid-cols-4 dark:border-gray-700"
+        class="relative grid w-full gap-12 pb-12 border-b-2 border-gray-300 md:grid-cols-2 lg:grid-cols-4 dark:border-gray-700"
       >
         <div>
           <TypographyTitle class="text-gray-700 dark:text-gray-400"
             >Search</TypographyTitle
           >
-          <VInput />
+          <VInput class="flex" />
           <TypographyTitle class="mt-8 text-gray-700 dark:text-gray-400"
             >Categories</TypographyTitle
           >
@@ -83,9 +83,7 @@ useHead({
       </div>
       <div class="space-y-4">
         <TypographyTitle>Latest & Greatest</TypographyTitle>
-        <div
-          class="relative grid grid-cols-2 gap-12 md:grid-cols-2 lg:grid-cols-4"
-        >
+        <div class="relative grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <PostCard
             v-for="(post, postIdx) in posts"
             :key="post.id"
@@ -94,7 +92,7 @@ useHead({
             :class="[
               'border-b border-gray-300 pb-6 dark:border-gray-700',
               // Make the first two posts span two columns
-              postIdx < 2 ? 'col-span-2' : 'col-span-1',
+              postIdx < 2 ? 'md:col-span-2' : 'md:col-span-1',
             ]"
           />
         </div>

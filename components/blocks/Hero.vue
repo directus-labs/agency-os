@@ -21,7 +21,7 @@ const props = defineProps({
 const { fileUrl } = useFiles()
 </script>
 <template>
-  <PageContainer class="grid gap-6 md:grid-cols-3">
+  <PageContainer class="relative grid gap-6 md:grid-cols-3">
     <!-- Content -->
     <div class="md:pt-12 md:col-span-2">
       <h1
@@ -66,5 +66,11 @@ const { fileUrl } = useFiles()
         />
       </div>
     </div>
+    <!-- Hidden Message -->
+    <p
+      class="absolute bottom-0 left-0 hidden h-32 p-4 mx-auto font-serif text-5xl font-bold text-white md:block dark:text-gray-900"
+    >
+      Let us wow your users!
+    </p>
   </PageContainer>
 </template>

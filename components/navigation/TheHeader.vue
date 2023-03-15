@@ -64,7 +64,7 @@ function getUrl(item: object) {
     <div
       class="flex items-center bg-gray-800 md:justify-between rounded-tl-3xl rounded-br-3xl md:flex-1"
     >
-      <NuxtLink href="/" class="px-4 py-2">
+      <NuxtLink href="/" class="px-4 py-4">
         <Logo class="h-6 text-white" />
         <span class="sr-only">Title</span>
       </NuxtLink>

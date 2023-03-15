@@ -121,7 +121,10 @@ onUnmounted(() => {
       v-if="isOpen"
       class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gray-900 bg-opacity-75"
     >
-      <div class="absolute z-50 font-mono text-white top-4 left-4">
+      <!-- Tips for using the gallery -->
+      <div
+        class="absolute z-50 hidden font-mono text-white md:block top-4 left-4"
+      >
         <div class="p-4 bg-gray-900 rounded-tl-3xl rounded-br-3xl">
           <p>Press 'esc' to close</p>
           <p>Press 'left' or 'right' to navigate</p>
@@ -167,6 +170,7 @@ onUnmounted(() => {
           <!-- Image -->
           <div class="relative flex items-center justify-center">
             <div class="relative w-full h-full p-20">
+              <!-- Metadata -->
               <div class="flex">
                 <p
                   class="inline-block px-6 py-2 font-serif font-bold text-white bg-gray-900 track rounded-tl-3xl"
@@ -175,21 +179,11 @@ onUnmounted(() => {
                 </p>
                 <p
                   v-if="currentItem.description"
-                  class="flex-1 inline-block px-6 py-2 font-mono text-white bg-gray-700"
+                  class="flex-1 hidden px-6 py-2 font-mono text-white bg-gray-700 md:inline-block"
                 >
                   {{ currentItem.description }}
                 </p>
               </div>
-              <!-- <TransitionGroup
-                enter-active-class="duration-300 ease-in-out"
-                enter-from-class="-translate-x-1/2 opacity-0"
-                enter-to-class="translate-x-0 opacity-100"
-                leave-active-class="duration-200 ease-in-out"
-                leave-from-class="translate-x-0 opacity-100"
-                leave-to-class="translate-x-1/2 opacity-0"
-                mode="out-in"
-              > -->
-
               <template
                 v-for="(item, itemIdx) in data.gallery_items"
                 :key="itemIdx"
@@ -200,8 +194,6 @@ onUnmounted(() => {
                   class="object-contain w-full rounded-br-3xl"
                 />
               </template>
-
-              <!-- </TransitionGroup> -->
             </div>
           </div>
         </div>

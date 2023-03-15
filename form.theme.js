@@ -35,8 +35,7 @@ export default {
     wrapper: 'flex items-center mb-1',
   },
   'family:button': {
-    input:
-      '$reset inline-flex items-center bg-primary-600 text-white text-sm font-medium py-3 px-6 rounded',
+    input: '$reset btn btn-primary',
     wrapper: 'mb-1',
     prefixIcon: '$reset block w-4 -ml-2 mr-2 stretch',
     suffixIcon: '$reset block w-4 ml-2 stretch',
@@ -50,7 +49,7 @@ export default {
     listbox: 'bg-white drop-shadow-lg rounded overflow-hidden',
     listboxButton: 'flex w-12 self-stretch justify-center mx-auto',
     listitem:
-      'pl-7 relative hover:bg-gray-300 data-[is-active="true"]:bg-gray-300 data-[is-active="true"]:aria-selected:bg-primary-600 aria-selected:bg-primary-600 aria-selected:text-white',
+      'pl-7 relative hover:bg-gray-300 data-[is-active="true"]:bg-gray-300 data-[is-active="true"]:aria-selected:bg-accent aria-selected:bg-accent aria-selected:text-white',
     loaderIcon: 'ml-auto',
     loadMoreInner:
       'flex items-center justify-center text-sm p-2 text-center w-full text-accent formkit-loading:text-gray-500 cursor-pointer [&>span]:mr-3 [&>span]:ml-0',
@@ -244,7 +243,7 @@ export const formTheme = {
     label: 'block mb-1 font-bold text-sm',
     inner: 'max-w-md cursor-pointer',
     input:
-      'text-gray-600 text-sm mb-1 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-accent file:text-white hover:file:bg-primary-600',
+      'text-gray-600 text-sm mb-1 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-accent file:text-white hover:file:bg-accent',
     noFiles: 'block text-gray-800 text-sm mb-1',
     fileItem: 'block flex text-gray-800 text-sm mb-1',
     fileRemove: 'ml-auto text-accent text-sm',

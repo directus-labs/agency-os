@@ -17,7 +17,7 @@ const props = defineProps<{
 </script>
 <template>
   <figure
-    class="relative flex space-x-2 outline outline-2 outline-offset-4 outline-accent rounded-bl-3xl rounded-tr-3xl"
+    class="relative space-x-2 md:flex outline outline-2 outline-offset-4 outline-accent rounded-bl-3xl rounded-tr-3xl"
   >
     <NuxtLink class="group" :href="`/posts/${post.slug}`">
       <div
@@ -26,12 +26,12 @@ const props = defineProps<{
         ]"
       >
         <img
-          class="object-cover w-full h-full saturate-0 group-hover:opacity-75 transition-opacity duration-300"
+          class="object-cover w-full h-full transition-opacity duration-300 saturate-0 group-hover:opacity-75"
           :src="fileUrl(post.image)"
           alt=""
         />
         <div
-          class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent group-hover:opacity-100 opacity-0 transition-opacity duration-300"
+          class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-br from-transparent via-transparent to-accent group-hover:opacity-100"
         />
 
         <VBadge
@@ -50,25 +50,25 @@ const props = defineProps<{
       </div>
     </NuxtLink>
 
-    <div class="relative px-8 rounded-tl-3xl rounded-tr-3xl overflow-hidden">
+    <div class="relative px-8 overflow-hidden rounded-tl-3xl rounded-tr-3xl">
       <div
         class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-accent dark:from-gray-700 dark:via-gray-900 dark:to-accent"
       />
       <div class="absolute inset-0 grain-bg dark:opacity-20" />
-      <NuxtLink class="block relative" :href="`/posts/${post.slug}`">
+      <NuxtLink class="relative block" :href="`/posts/${post.slug}`">
         <!-- Icon -->
         <p
-          class="mt-5 text-3xl font-semibold font-serif text-gray-900 dark:text-white group-hover:text-accent"
+          class="mt-5 font-serif text-3xl font-semibold text-gray-900 dark:text-white group-hover:text-accent"
         >
           {{ post.title }}
         </p>
-        <p class="mt-3 text-sm font-mono text-gray-500 dark:text-gray-300">
+        <p class="mt-3 font-mono text-sm text-gray-500 dark:text-gray-300">
           {{ truncateString(post.summary, 150) }}
         </p>
       </NuxtLink>
       <VAvatar
         v-if="post.author"
-        class="mt-4 relative"
+        class="relative mt-4"
         size="sm"
         :author="post.author"
       />
