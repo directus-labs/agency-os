@@ -18,9 +18,9 @@ const props = defineProps({
     <PageContainer class="">
       <div class="text-center">
         <TypographyTitle>{{ data.title }}</TypographyTitle>
-        <TypographyHeadline :content="data.headline" />
+        <TypographyHeadline :content="data.headline" size="xl" />
       </div>
-      <TypographyProse :content="data.content" class="mx-auto mt-8" />
+      <TypographyProse :content="data.content" class="mx-auto mt-8 font-mono" />
     </PageContainer>
   </section>
 </template>

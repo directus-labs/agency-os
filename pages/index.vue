@@ -69,7 +69,7 @@ const {
 onMounted(() => useAnimation())
 </script>
 <template>
-  <div class="pt-24 mx-auto" id="content">
+  <div class="mx-auto" id="content">
     <template v-for="(block, blockIdx) in page.blocks" :key="blockIdx">
       <component :is="map[block.collection]" :data="block.item" />
     </template>

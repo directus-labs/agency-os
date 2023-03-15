@@ -30,6 +30,34 @@ module.exports = {
         serif: ['Playfair Display', ...defaultTheme.fontFamily.serif],
         mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
       },
+      animation: {
+        'fade-in': 'fade-in 0.5s linear forwards',
+
+        'spin-slow': 'spin 4s linear infinite',
+        'spin-slower': 'spin 6s linear infinite',
+        'spin-reverse': 'spin-reverse 1s linear infinite',
+        'spin-reverse-slow': 'spin-reverse 4s linear infinite',
+        'spin-reverse-slower': 'spin-reverse 6s linear infinite',
+      },
+      keyframes: {
+        'fade-in': {
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+          },
+        },
+
+        'spin-reverse': {
+          to: {
+            transform: 'rotate(-360deg)',
+          },
+        },
+      },
+      maxWidth: {
+        '2xl': '40rem',
+      },
     },
   },
   variants: {

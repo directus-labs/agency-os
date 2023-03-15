@@ -21,29 +21,49 @@ const props = defineProps({
 const { fileUrl } = useFiles()
 </script>
 <template>
-  <PageContainer>
-    <h1
-      class="font-serif text-4xl font-bold xs:text-5xl sm:text-7xl lg:text-8xl dark:drop-shadow dark:text-gray-100 color-em"
-      v-html="data.headline"
-    ></h1>
+  <PageContainer class="grid gap-6 md:grid-cols-3">
+    <!-- Content -->
+    <div class="pt-12 md:col-span-2">
+      <h1
+        class="font-serif text-4xl font-bold text-gray-900 xs:text-5xl sm:text-7xl lg:text-8xl dark:drop-shadow dark:text-gray-100 color-em"
+        v-html="data.headline"
+      />
+      <p
+        class="w-full py-6 font-serif text-xl lg:leading-loose lg:text-2xl dark:text-gray-200"
+      >
+        {{ data.content }}
+      </p>
 
-    <p
-      class="w-full my-6 font-serif text-base lg:leading-loose tracking-snug sm:text-xl lg:text-2xl md:leading-relaxed md:my-10 dark:text-gray-400"
-    >
-      {{ data.content }}
-    </p>
-
-    <div class="pt-5">
-      <div class="flex">
+      <div class="md:space-x-4 md:flex">
         <NuxtLink
           v-for="button in data.buttons"
           :key="button.id"
           :href="button.href"
           :target="button.open_in_new_window ? '_blank' : '_self'"
-          class="box-border px-8 py-4 font-mono text-sm font-bold leading-none tracking-widest text-white lowercase transition-colors duration-300 bg-gray-900 btn rounded-tr-3xl rounded-bl-3xl sm:text-base md:text-lg word-spacing-tight sm:px-10 dark:bg-accent"
+          :class="[
+            {
+              'btn-primary': button.variant === 'primary',
+              'btn-default': button.variant === 'default',
+              'btn-danger': button.variant === 'danger',
+              'btn-outline': button.variant === 'outline',
+            },
+            'btn block w-full md:w-auto',
+          ]"
         >
           {{ button.label }}
         </NuxtLink>
+      </div>
+    </div>
+    <!-- Image -->
+    <div class="">
+      <div
+        class="lg:pl-4 lg:-mr-48 sm:pl-6 md:-mr-16 rounded-2xl lg:px-0 lg:m-0 lg:relative lg:h-full lg:overflow-hidden"
+      >
+        <img
+          class="w-full overflow-hidden border-2 rounded-tl-[64px] dark:brightness-90 border-accent max-h-[700px] object-cover"
+          :src="fileUrl(data.image)"
+          alt=""
+        />
       </div>
     </div>
   </PageContainer>

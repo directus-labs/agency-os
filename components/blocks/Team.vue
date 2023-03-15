@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
 import { CheckBadgeIcon } from '@heroicons/vue/24/outline'
+import { useIntersectionObserver, useResizeObserver } from '@vueuse/core'
+
 import { ArrowRightIcon } from '@heroicons/vue/24/solid'
 type Team = {
   id: string
   headline?: string
   title?: string
+  content?: string
 }
 const props = defineProps({
   data: {
@@ -38,84 +41,152 @@ const {
   }
 )
 
-// Display four team members
-const teamMembers = ref(team.value.slice(0, 4))
+const teamMembers = ref(team.value)
+
+function splitArray(array, numParts) {
+  let result = []
+  for (let i = 0; i < array.length; i++) {
+    let index = i % numParts
+    if (!result[index]) {
+      result[index] = []
+    }
+    result[index].push(array[i])
+  }
+  return result
+}
 
 const teamToDisplay = computed(() => {
-  // Split the team into two arrays
-  const teamMembersLeft = teamMembers.value.filter(
-    (_, index) => index % 2 === 0
-  )
-  const teamMembersRight = teamMembers.value.filter(
-    (_, index) => index % 2 === 1
-  )
+  // Split the array into two arrays
+  const teamMembersSplit = splitArray(team.value, 2)
 
   // Return the two arrays as an object
   return {
-    left: teamMembersLeft,
-    right: teamMembersRight,
+    // Duplicate each array so we can animate the last item to the first position
+    left: [...teamMembersSplit[0], ...teamMembersSplit[0]],
+    right: [...teamMembersSplit[1], ...teamMembersSplit[1]],
   }
 })
 
-// Every X seconds, replace one of the team members with a new one from the team array
-const replaceTeamMember = () => {
-  // Get a random index from the team array
-  const randomIndex = Math.floor(Math.random() * team.value.length)
-
-  // Get a random index from the team members array
-  const randomTeamMemberIndex = Math.floor(
-    Math.random() * teamMembers.value.length
-  )
-
-  // Replace the team member at the random index with the team member at the random team member index
-  teamMembers.value[randomTeamMemberIndex] = team.value[randomIndex]
+function animationDelay() {
+  let possibleAnimationDelays = ['0s', '0.1s', '0.2s', '0.3s', '0.4s', '0.5s']
+  return possibleAnimationDelays[
+    Math.floor(Math.random() * possibleAnimationDelays.length)
+  ]
 }
 
-setInterval(() => {
-  replaceTeamMember()
-}, 5000)
+const target = ref(null)
+const isVisible = ref(false)
+const leftCol = ref(null)
+const rightCol = ref(null)
+const colHeight = ref(0)
+const leftColHeight = ref(0)
+const rightColHeight = ref(0)
+
+const { stop } = useIntersectionObserver(
+  target,
+  ([{ isIntersecting }], observerElement) => {
+    isVisible.value = isIntersecting
+  },
+  {
+    threshold: 0.25,
+  }
+)
+
+useResizeObserver(leftCol, (entries) => {
+  colHeight.value = entries[0].target.offsetHeight
+  console.log(entries)
+})
+
+const duration = computed(() => {
+  return `${colHeight.value * 15}ms`
+})
 </script>
 <template>
   <section>
     <PageContainer>
-      <div
-        class="flex flex-col-reverse py-24 mx-auto max-w-screen-2xl lg:flex-row"
-      >
-        <div class="flex flex-col pt-12 pb-24 pr-8 text-black xl:w-2/5">
+      <div class="flex flex-col-reverse py-24 mx-auto lg:flex-row">
+        <!-- Text -->
+        <div class="flex flex-col pr-4 mt-8 lg:w-1/3">
           <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
-          <TypographyHeadline v-if="data.headline" :content="data.headline" />
+          <TypographyHeadline
+            v-if="data.headline"
+            :content="data.headline"
+            size="lg"
+          />
+          <TypographyProse
+            v-if="data.content"
+            :content="data.content"
+            class="mt-4 font-mono"
+          />
         </div>
-        <div class="relative flex-grow">
+
+        <!-- Team -->
+        <div
+          class="relative grid h-[49rem] max-h-[60vh] grid-cols-1 items-start gap-8 overflow-hidden px-4 md:grid-cols-2 border-t-4 border-t-accent border-b-4 border-b-gray-500"
+          ref="target"
+        >
           <div
-            class="flex justify-start flex-grow py-10 space-x-10 lg:justify-end"
+            class="absolute top-0 z-10 w-full h-16 bg-gradient-to-b from-white to-transparent dark:from-gray-800"
+          />
+          <div
+            class="absolute bottom-0 z-10 w-full h-16 bg-gradient-to-t from-white to-transparent dark:from-gray-800"
+          />
+
+          <!-- Left Col -->
+          <div
+            :class="[
+              { 'animate-marquee': isVisible },
+              'space-y-10 py-4 -mt-10 ',
+            ]"
+            :style="{
+              '--marquee-duration': duration,
+            }"
+            ref="leftCol"
           >
-            <div
-              class="flex flex-row max-w-full -mt-20 space-x-5 lg:flex-col lg:space-x-0 lg:space-y-10"
-              v-auto-animate
+            <TeamCard
+              v-for="(person, personIdx) in teamToDisplay.left"
+              :key="person.id"
+              :person="person"
+            />
+          </div>
+          <!-- Right Col -->
+          <div
+            :class="[{ 'animate-marquee': isVisible }, 'space-y-10 py-4']"
+            :style="{
+              '--marquee-duration': duration,
+            }"
+            ref="rightCol"
+          >
             >
-              <div
-                class="flex-none relative w-[340px]"
-                v-for="person in teamToDisplay.left"
-                :key="person.id"
-              >
-                <TeamCard :person="person" />
-              </div>
-            </div>
-            <div
-              class="flex-col hidden -mb-20 space-y-10 xl:flex"
-              v-auto-animate
-            >
-              <div
-                class="flex-none relative w-[340px]"
-                v-for="person in teamToDisplay.right"
-                :key="person.id"
-              >
-                <TeamCard :person="person" />
-              </div>
-            </div>
+            <TeamCard
+              :style="{
+                animationDelay: animationDelay(),
+              }"
+              v-for="person in teamToDisplay.right"
+              :key="person.id"
+              :person="person"
+            />
           </div>
         </div>
       </div>
     </PageContainer>
   </section>
 </template>
+
+<style>
+.animate-marquee {
+  animation: marquee var(--marquee-duration) linear infinite;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-50%));
+  }
+}
+</style>

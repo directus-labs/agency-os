@@ -12,7 +12,7 @@
       <NavigationTheHeader />
     </div>
 
-    <div class="relative">
+    <div class="relative text-gray-900">
       <slot />
     </div>
     <div id="nuxtImg"></div>

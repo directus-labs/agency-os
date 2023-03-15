@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
-import { usePointerSwipe } from '@vueuse/core'
 import {
   MagnifyingGlassPlusIcon,
   XMarkIcon,
@@ -79,11 +77,7 @@ onUnmounted(() => {
 })
 </script>
 <template>
-  <PageContainer>
-    <!-- Title -->
-    <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
-    <TypographyHeadline v-if="data.headline" :content="data.headline" />
-
+  <div>
     <!-- Gallery -->
     <div class="gap-8 mt-4 md:columns-3">
       <button
@@ -180,32 +174,14 @@ onUnmounted(() => {
                   {{ currentItem.description }}
                 </p>
               </div>
-              <!-- <TransitionGroup
-                enter-active-class="duration-300 ease-in-out"
-                enter-from-class="-translate-x-1/2 opacity-0"
-                enter-to-class="translate-x-0 opacity-100"
-                leave-active-class="duration-200 ease-in-out"
-                leave-from-class="translate-x-0 opacity-100"
-                leave-to-class="translate-x-1/2 opacity-0"
-                mode="out-in"
-              > -->
-
-              <template
-                v-for="(item, itemIdx) in data.gallery_items"
-                :key="itemIdx"
-              >
-                <img
-                  v-if="currentItemIdx === itemIdx"
-                  :src="fileUrl(item.directus_files_id.id)"
-                  class="object-contain w-full rounded-br-3xl"
-                />
-              </template>
-
-              <!-- </TransitionGroup> -->
+              <img
+                :src="fileUrl(currentItem.id)"
+                class="object-contain w-full rounded-br-3xl"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
-  </PageContainer>
+  </div>
 </template>

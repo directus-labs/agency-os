@@ -30,16 +30,16 @@
 
 /* Using Tailwind @apply so we can easily re-use these styles for other 'button' based components like VDropdown */
 .btn {
-  @apply inline-flex dark:ring-offset-gray-900 border-2 border-transparent  items-center px-6 py-3 text-base font-serif font-medium tracking-wide rounded-tr-lg rounded-bl-lg shadow-sm  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500  disabled:opacity-50 disabled:cursor-not-allowed active:hover:scale-95 transition ease-in-out duration-150;
+  @apply px-6 py-4 font-mono font-bold text-white rounded-tr-3xl rounded-bl-3xl transition duration-150;
 }
 .btn-default {
-  @apply text-primary-700 bg-primary-100  hover:bg-primary-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-300;
+  @apply text-gray-700 bg-gray-300 hover:bg-gray-200 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300;
 }
 .btn-primary {
-  @apply text-white bg-primary-600 hover:bg-primary-700;
+  @apply text-white bg-gray-900 hover:bg-gray-800 dark:bg-accent dark:hover:bg-opacity-80;
 }
 .btn-outline {
-  @apply text-primary-700 bg-transparent border-2 border-primary-500 hover:border-primary-700 hover:text-primary-900 dark:text-primary-500 dark:hover:text-primary-700 focus:ring-primary-400;
+  @apply text-gray-900 bg-transparent border-2 border-gray-900 hover:border-accent hover:text-accent dark:text-accent dark:hover:text-white focus:ring-accent dark:border-accent dark:hover:border-white;
 }
 .btn-danger {
   @apply text-white bg-red-600 hover:bg-red-700 focus:ring-red-500;

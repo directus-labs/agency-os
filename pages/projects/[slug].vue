@@ -8,6 +8,8 @@ import {
 const { $directus } = useNuxtApp()
 const { fileUrl } = useFiles()
 
+const { phone, social_links } = useRuntimeConfig()
+
 // Get the params from the Nuxt route
 const { params, path } = useRoute()
 
@@ -39,6 +41,13 @@ const {
   <PageContainer>
     <pre>
     {{ project }}
+   </pre
+    >
+
+    <TypographyTitle>Config</TypographyTitle>
+    <pre>
+    {{ phone }}
+    {{ social_links }}
    </pre
     >
   </PageContainer>

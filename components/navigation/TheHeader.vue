@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SparklesIcon } from '@heroicons/vue/24/outline'
+import { Bars3Icon, SparklesIcon } from '@heroicons/vue/24/outline'
 import {
   ChevronDownIcon,
   PhoneIcon,
@@ -58,20 +58,17 @@ function getUrl(item: object) {
 }
 </script>
 <template>
-  <header class="relative w-full md:flex md:space-x-6">
+  <header
+    class="relative w-full space-y-4 md:flex md:items-center md:space-x-6 md:space-y-0"
+  >
     <div
-      class="md:flex md:justify-between md:items-center bg-gray-800 rounded-tl-3xl rounded-br-3xl md:flex-1"
+      class="flex items-center bg-gray-800 md:justify-between rounded-tl-3xl rounded-br-3xl md:flex-1"
     >
-      <!-- <h1 class="px-8 py-6 text-4xl font-extrabold text-white">
-            {{ title }}
-          </h1> -->
       <NuxtLink href="/">
         <Logo class="h-6 text-white" />
+        <span class="sr-only">Title</span>
       </NuxtLink>
-      <nav
-        class="hidden font-mono lg:flex lg:space-x-8 lg:py-2"
-        aria-label="Global"
-      >
+      <nav class="hidden font-mono lg:flex lg:space-x-8" aria-label="Global">
         <template v-for="item in navigation.items" :key="item.id">
           <NuxtLink
             v-if="!item.has_children"
@@ -80,7 +77,7 @@ function getUrl(item: object) {
               'text-gray-300 hover:bg-gray-700  uppercase hover:text-white',
               'rounded-br-xl rounded-tl-xl py-2 px-3 inline-flex items-center font-bold',
             ]"
-            exact-active-class="text-white font-bold bg-gray-700"
+            exact-active-class="font-bold text-white bg-gray-700"
             :target="item.open_in_new_tab ? '_blank' : '_self'"
             >{{ item.title }}</NuxtLink
           >
@@ -94,49 +91,49 @@ function getUrl(item: object) {
               >
                 {{ item.title }}
                 <ChevronDownIcon
-                  class="h-5 w-5 ml-1 flex-none text-gray-400"
+                  class="flex-none w-5 h-5 ml-1 text-gray-400"
                   aria-hidden="true"
                 />
               </PopoverButton>
 
               <transition
-                enter-active-class="transition ease-out duration-200"
-                enter-from-class="opacity-0 translate-y-1"
-                enter-to-class="opacity-100 translate-y-0"
-                leave-active-class="transition ease-in duration-150"
-                leave-from-class="opacity-100 translate-y-0"
-                leave-to-class="opacity-0 translate-y-1"
+                enter-active-class="transition duration-200 ease-out"
+                enter-from-class="translate-y-1 opacity-0"
+                enter-to-class="translate-y-0 opacity-100"
+                leave-active-class="transition duration-150 ease-in"
+                leave-from-class="translate-y-0 opacity-100"
+                leave-to-class="translate-y-1 opacity-0"
               >
                 <PopoverPanel
-                  class="absolute top-full z-10 mt-8 w-screen max-w-md overflow-hidden rounded-tr-3xl rounded-bl-3xl bg-gray-800 shadow-lg ring-1 ring-gray-700"
+                  class="absolute z-10 w-screen max-w-md mt-8 overflow-hidden bg-gray-800 shadow-lg top-full rounded-tr-3xl rounded-bl-3xl ring-1 ring-gray-700"
                 >
                   <div class="p-4">
                     <div
                       v-for="childItem in item.children"
                       :key="item.id"
-                      class="group relative flex gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-900"
+                      class="relative flex p-4 text-sm leading-6 rounded-lg group gap-x-6 hover:bg-gray-900"
                     >
                       <div
-                        class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white"
+                        class="flex items-center justify-center flex-none mt-1 rounded-lg h-11 w-11 bg-gray-50 group-hover:bg-white"
                       >
                         <img
                           v-if="childItem.image"
                           :src="fileUrl(childItem.image)"
-                          class="h-10 w-10"
+                          class="w-10 h-10"
                         />
-                        <!-- <component :is="item.icon" class="h-6 w-6 atext-gray-600 group-hover:text-indigo-600" aria-hidden="true" /> -->
+                        <!-- <component :is="item.icon" class="w-6 h-6 atext-gray-600 group-hover:text-indigo-600" aria-hidden="true" /> -->
                       </div>
                       <div class="flex-auto">
                         <NuxtLink
                           :href="getUrl(childItem)"
-                          class="block text-white uppercase font-bold"
+                          class="block font-bold text-white uppercase"
                         >
                           {{ childItem.title }}
                           <span class="absolute inset-0" />
                         </NuxtLink>
                         <p
                           v-if="childItem.label"
-                          class="mt-1 text-sm text-gray-400 leading-tight"
+                          class="mt-1 text-sm leading-tight text-gray-400"
                         >
                           {{ childItem.label }}
                         </p>
@@ -148,23 +145,25 @@ function getUrl(item: object) {
             </Popover>
           </PopoverGroup>
         </template>
-        <!-- :aria-current="item.current ? 'page' : undefined" -->
       </nav>
-      <div class="flex items-center justify-end p-4 space-x-2">
-        <DarkModeToggle class="text-primary-200 hover:text-primary-400" />
+      <div class="flex items-center justify-end w-full p-3 space-x-2">
+        <DarkModeToggle
+          class="hidden md:block text-primary-200 hover:text-primary-400"
+        />
         <button
           id="animation-toggle"
-          class="text-primary-200 hover:text-primary-400"
+          class="hidden md:block text-primary-200 hover:text-primary-400"
         >
           <SparklesIcon class="w-8 h-8" />
         </button>
       </div>
     </div>
-    <NuxtLink
-      href="/contact-us"
-      class="flex items-center font-mono text-sm font-bold leading-none tracking-widest text-white lowercase transition-colors duration-300 bg-accent rounded-tr-3xl rounded-bl-3xl sm:text-base md:text-lg word-spacing-tight sm:px-10"
-    >
-      Let's Talk
-    </NuxtLink>
+    <div>
+      <NuxtLink href="/contact-us" class="uppercase btn bg-accent">
+        Let's Talk
+      </NuxtLink>
+    </div>
+
+    <NavigationMobileMenu :navigation="navigation" />
   </header>
 </template>

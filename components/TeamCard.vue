@@ -5,18 +5,28 @@ const props = defineProps<{
     name: string
     job_title: string
     image: string
-    social_media: {
-      service: string
-      url: string
+    social_media?: {
+      service?: string
+      url?: string
     }
   }
 }>()
 const { fileUrl } = useFiles()
 const flipped = ref(false)
+
+const icons = {
+  github: '/svg/github.svg',
+  linkedin: '/svg/linkedin.svg',
+  twitter: '/svg/twitter.svg',
+  instagram: '/svg/instagram.svg',
+  facebook: '/svg/facebook.svg',
+  youtube: '/svg/youtube.svg',
+  website: '/svg/website.svg',
+}
 </script>
 <template>
   <div
-    class="group select-none cursor-pointer transition ease-in-out delay-50 duration-300 scale-100"
+    class="opacity-0 cursor-pointer select-none cale-100 group animate-fade-in"
     @click="flipped = !flipped"
   >
     <div
@@ -25,43 +35,51 @@ const flipped = ref(false)
       <!-- Front of Team Card -->
       <div>
         <img
-          class="object-cover w-full h-full transition delay-50 duration-300 grayscale group-hover:grayscale-0"
+          class="object-cover w-full h-full transition duration-300 grayscale group-hover:grayscale-0"
           :src="fileUrl(person.image)"
           :alt="''"
         />
-
-        <div v-if="flipped" class="bg-accent absolute inset-0">
-          <div class="relative p-4">
-            <p class="font-mono uppercase tracking-wider">Links</p>
-            <div class="space-y-4 mt-2">
-              <NuxtLink
-                v-for="link in person.social_media"
-                :key="link.service"
-                class="flex border border-gray-900"
-                :href="link.url"
-                target="_blank"
-              >
-                <div
-                  class="flex items-center justify-center flex-none text-black border-r border-black w-14"
-                >
-                  <img
-                    :src="`/svg/${link.service}.svg`"
-                    class="w-8 h-8 md:w-10 md:h-10"
-                  />
-                </div>
-                <div
-                  class="flex flex-col justify-center py-2 pl-3 pr-2 overflow-hidden md:py-3"
+        <Transition
+          enter-active-class="duration-300 ease-in-out"
+          enter-from-class="scale-0 -translate-x-full translate-y-full opacity-0"
+          enter-to-class="scale-100 translate-x-0 translate-y-0 opacity-100"
+          leave-active-class="duration-200 ease-in"
+          leave-from-class="scale-100 translate-x-0 translate-y-0 opacity-100"
+          leave-to-class="scale-0 -translate-x-full translate-y-full opacity-0"
+        >
+          <div v-if="flipped" class="absolute inset-0 bg-accent">
+            <div class="relative p-4">
+              <p class="font-mono tracking-wider uppercase">Links</p>
+              <div class="mt-2 space-y-4">
+                <NuxtLink
+                  v-for="link in person.social_media"
+                  :key="link.service"
+                  class="flex border border-gray-900"
+                  :href="link.url"
+                  target="_blank"
                 >
                   <div
-                    class="pb-1 font-mono text-lg font-semibold leading-none tracking-tight text-black truncate word-spacing-tight uppercase"
+                    class="flex items-center justify-center flex-none text-black border-r border-black w-14"
                   >
-                    {{ link.service }}
+                    <img
+                      :src="icons[link.service]"
+                      class="w-8 h-8 md:w-10 md:h-10"
+                    />
                   </div>
-                </div>
-              </NuxtLink>
+                  <div
+                    class="flex flex-col justify-center py-2 pl-3 pr-2 overflow-hidden md:py-3"
+                  >
+                    <div
+                      class="pb-1 font-mono text-lg font-semibold leading-none tracking-tight text-black uppercase truncate word-spacing-tight"
+                    >
+                      {{ link.service }}
+                    </div>
+                  </div>
+                </NuxtLink>
+              </div>
             </div>
           </div>
-        </div>
+        </Transition>
 
         <div class="absolute z-10 bottom-4 left-7 right-7">
           <h3

@@ -1,3 +1,4 @@
+<script lang="ts"></script>
 <template>
   <NuxtLayout>
     <NuxtLoadingIndicator
