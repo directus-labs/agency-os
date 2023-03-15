@@ -30,7 +30,7 @@
 
 /* Using Tailwind @apply so we can easily re-use these styles for other 'button' based components like VDropdown */
 .btn {
-  @apply px-6 py-4 font-mono font-bold text-white rounded-tr-3xl rounded-bl-3xl transition duration-150;
+  @apply px-6 py-4 font-mono font-bold text-white rounded-tr-3xl rounded-bl-3xl transition duration-150 inline-flex;
 }
 .btn-default {
   @apply text-gray-700 bg-gray-300 hover:bg-gray-200 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300;

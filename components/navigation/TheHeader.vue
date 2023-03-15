@@ -64,7 +64,7 @@ function getUrl(item: object) {
     <div
       class="flex items-center bg-gray-800 md:justify-between rounded-tl-3xl rounded-br-3xl md:flex-1"
     >
-      <NuxtLink href="/">
+      <NuxtLink href="/" class="px-4 py-2">
         <Logo class="h-6 text-white" />
         <span class="sr-only">Title</span>
       </NuxtLink>
@@ -158,10 +158,8 @@ function getUrl(item: object) {
         </button>
       </div>
     </div>
-    <div>
-      <NuxtLink href="/contact-us" class="uppercase btn bg-accent">
-        Let's Talk
-      </NuxtLink>
+    <div class="hidden uppercase md:block">
+      <NuxtLink href="/contact-us" class="btn bg-accent"> Let's Talk </NuxtLink>
     </div>
 
     <NavigationMobileMenu :navigation="navigation" />

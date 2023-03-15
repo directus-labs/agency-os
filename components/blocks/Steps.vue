@@ -39,7 +39,7 @@ const { fileUrl } = useFiles()
               'md:flex-row-reverse space-x-reverse':
                 !isEven(stepIdx) && data.alternate_image_position,
             },
-            'relative p-6 md:flex space-x-8  ring-accent ring-2',
+            'relative p-6 md:flex md:space-x-8  ring-accent ring-2',
           ]"
         >
           <div class="flex-shrink-0">

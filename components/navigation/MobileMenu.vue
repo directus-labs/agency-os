@@ -59,13 +59,18 @@ watch(
           y: 100,
           scale: 0,
         }"
-        class="fixed inset-0 z-50 flex flex-col w-full h-full bg-gray-800"
+        class="fixed inset-0 z-50 flex flex-col w-full h-full bg-gray-50 dark:bg-gray-800"
       >
-        <div class="w-full px-6 py-6">
-          <Logo class="h-8 text-white" />
+        <div class="relative w-full px-6 py-6">
+          <NuxtLink href="/">
+            <Logo class="h-6 dark:text-white" />
+          </NuxtLink>
           <p class="pb-4 mt-2 font-mono text-gray-400 border-b border-gray-500">
             {{ description }}
           </p>
+          <DarkModeToggle
+            class="absolute text-gray-500 top-4 right-4 dark:text-gray-200 hover:text-primary-400"
+          />
         </div>
         <div class="flex flex-col justify-center h-full px-6 space-y-2">
           <NavigationMobileMenuItem
@@ -75,7 +80,7 @@ watch(
             @close="toggle"
           />
           <div class="flex flex-col w-full px-4">
-            <NuxtLink href="/contact-us" class="text-lg btn px bg-accent">
+            <NuxtLink href="/contact-us" class="text-lg btn btn-primary">
               Let's Talk
             </NuxtLink>
           </div>

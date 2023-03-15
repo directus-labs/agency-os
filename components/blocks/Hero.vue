@@ -23,7 +23,7 @@ const { fileUrl } = useFiles()
 <template>
   <PageContainer class="grid gap-6 md:grid-cols-3">
     <!-- Content -->
-    <div class="pt-12 md:col-span-2">
+    <div class="md:pt-12 md:col-span-2">
       <h1
         class="font-serif text-4xl font-bold text-gray-900 xs:text-5xl sm:text-7xl lg:text-8xl dark:drop-shadow dark:text-gray-100 color-em"
         v-html="data.headline"
@@ -57,10 +57,10 @@ const { fileUrl } = useFiles()
     <!-- Image -->
     <div class="">
       <div
-        class="lg:pl-4 lg:-mr-48 sm:pl-6 md:-mr-16 rounded-2xl lg:px-0 lg:m-0 lg:relative lg:h-full lg:overflow-hidden"
+        class="lg:pl-4 lg:-mr-48 sm:pl-6 md:-mr-16 rounded-2xl lg:px-0 lg:m-0 lg:relative lg:h-full"
       >
         <img
-          class="w-full overflow-hidden border-2 rounded-tl-[64px] dark:brightness-90 border-accent max-h-[700px] object-cover"
+          class="w-full overflow-hidden rounded-tl-[64px] dark:brightness-90 max-h-[700px] object-cover outline outline-2 outline-offset-4 outline-gray-300 dark:outline-gray-700"
           :src="fileUrl(data.image)"
           alt=""
         />
