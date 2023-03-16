@@ -125,7 +125,7 @@ function getUrl(item: object) {
           <span class="sr-only">{{ link.service }}</span>
           <Icon
             class="w-8 h-8 text-gray-700 dark:text-white hover:opacity-75"
-            :name="`uil:${link.service}`"
+            :name="`mdi:${link.service}`"
           />
         </NuxtLink>
       </div>
@@ -139,6 +139,26 @@ function getUrl(item: object) {
             >{{ title }}.</NuxtLink
           >
           All rights reserved.
+        </span>
+        <!-- You're free to remove this footer if you want. But we'd appreciate it if you keep the credits. -->
+        <span class="mt-2 font-serif text-gray-700 dark:text-gray-300">
+          <Icon name="heroicons:bolt" class="w-4 h-4 text-accent" />
+          Site powered by
+          <NuxtLink
+            href="https://www.directus.io?ref=agencyos_footer"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="border-b dark:border-b-gray-700 hover:text-accent"
+            >Directus</NuxtLink
+          >
+          and
+          <NuxtLink
+            href="https://www.nuxt.com?ref=agencyos_footer"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="border-b dark:border-b-gray-700 hover:text-accent"
+            >Nuxt</NuxtLink
+          >.
         </span>
       </div>
     </div>
