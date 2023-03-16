@@ -24,7 +24,7 @@ const {
       :href="`/posts/categories/${category.slug}`"
       class="block font-mono dark:text-gray-200 hover:opacity-80"
     >
-      <VBadge :color="category.color" size="lg" class="rounded-bl-lg">
+      <VBadge :color="category.color" size="lg">
         {{ category.title }}
       </VBadge>
     </NuxtLink>

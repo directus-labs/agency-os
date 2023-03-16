@@ -25,7 +25,7 @@ const { fileUrl } = useFiles()
     <!-- Content -->
     <div class="md:pt-12 md:col-span-2">
       <h1
-        class="font-serif text-4xl font-bold text-gray-900 xs:text-5xl sm:text-7xl lg:text-8xl dark:drop-shadow dark:text-gray-100 color-em"
+        class="font-serif text-4xl font-extrabold leading-9 text-gray-900 xs:text-5xl sm:text-7xl lg:text-8xl dark:drop-shadow dark:text-gray-100 color-em"
         v-html="data.headline"
       />
       <p

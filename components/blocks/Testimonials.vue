@@ -52,9 +52,6 @@ function handleScroll(e) {
   } else {
     currentItemIdx.value = closestTestimonial
   }
-  //
-  //
-
   //   currentItemIdx.value = Math.round(
   //     e.target.scrollLeft / (e.target.scrollWidth / testimonialRefs.value.length)
   //   )
@@ -141,7 +138,7 @@ const { fileUrl } = useFiles()
           :key="testimonial.id"
           ref="testimonialRefs"
           :class="['snap-center']"
-          class="relative w-[350px] lg:w-[600px] flex flex-col justify-between flex-shrink-0 p-8 bg-white dark:bg-gray-900 shadow-md rounded-bl-3xl rounded-tr-3xl overflow-hidden"
+          class="relative w-[350px] md:w[450px] lg:w-[600px] flex flex-col justify-between flex-shrink-0 p-8 bg-white dark:bg-gray-900 shadow-md even:rounded-bl-3xl even:rounded-tr-3xl odd:rounded-br-3xl odd:rounded-tl-3xl overflow-hidden"
         >
           <div
             class="relative font-mono prose-sm prose md:prose-base dark:prose-invert"
@@ -153,20 +150,16 @@ const { fileUrl } = useFiles()
           >
             <img
               v-if="testimonial.image"
-              class="inline-block w-16 h-16 rounded-full"
+              class="inline-block w-16 h-16 border rounded-full"
               :src="fileUrl(testimonial.image)"
               alt=""
             />
-            <svg
+            <Icon
+              name="ic:baseline-account-circle"
               v-else
-              class="inline-block w-12 h-12 text-gray-300 border rounded-full"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
-              />
-            </svg>
+              class="inline-block w-16 h-16 text-gray-300 border rounded-full"
+            />
+
             <div class="relative">
               <p
                 class="font-serif font-bold text-gray-900 lg:text-2xl dark:text-white"

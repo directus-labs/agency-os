@@ -94,7 +94,6 @@ const { stop } = useIntersectionObserver(
 
 useResizeObserver(leftCol, (entries) => {
   colHeight.value = entries[0].target.offsetHeight
-  console.log(entries)
 })
 
 const duration = computed(() => {

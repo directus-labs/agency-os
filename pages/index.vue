@@ -49,6 +49,7 @@ const {
       },
       fields: [
         '*',
+        'seo.*',
         'blocks.collection',
         'blocks.item.*',
         'blocks.item.testimonials.testimonial.*',
@@ -64,11 +65,30 @@ const {
   },
   {
     transform: (data) => data.data[0],
-    pick: ['title', 'blocks', 'slug', 'id'],
+    pick: ['title', 'blocks', 'slug', 'id', 'seo'],
   }
 )
 
+const { fileUrl } = useFiles()
+
 onMounted(() => useAnimation())
+
+// Set the page title and meta tags using the Nuxt useSeoMeta composable
+
+useHead({
+  title: page.value.seo.title || page.value.title,
+})
+useServerSeoMeta({
+  title: () => page.value.seo.title || page.value.title,
+  description: () => page.value.seo.meta_description,
+  ogTitle: () => page.value.seo.title,
+  ogDescription: () => page.value.seo.meta_description,
+  ogType: 'website',
+  ogUrl: () => page.value.seo.og_url,
+  ogLocale: () => page.value.seo.og_locale || 'en_US',
+  ogImage: () => fileUrl(page.value.og_image),
+  twitterCard: () => fileUrl(page.value.twitter_image),
+})
 </script>
 <template>
   <div class="mx-auto" id="content">

@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import {
-  ArrowLongLeftIcon,
-  ClockIcon,
-  CalendarIcon,
-} from '@heroicons/vue/24/outline'
-
 // Import the $directus plugin
 const { $directus } = useNuxtApp()
 const { fileUrl } = useFiles()
@@ -38,15 +32,6 @@ const {
   },
   {
     transform: (data) => data.data,
-    // pick: [
-    //   'title',
-    //   'content',
-    //   'image',
-    //   'author',
-    //   'category',
-    //   'summary',
-    //   'date_published',
-    // ],
   }
 )
 
@@ -74,7 +59,7 @@ useHead({
           <TypographyTitle class="mt-8 text-gray-700 dark:text-gray-400"
             >Categories</TypographyTitle
           >
-          <Categories />
+          <Categories class="" />
         </div>
         <div class="space-y-4 lg:col-span-3">
           <TypographyTitle>Featured Article</TypographyTitle>

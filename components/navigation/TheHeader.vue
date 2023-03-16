@@ -1,11 +1,4 @@
 <script setup lang="ts">
-import { Bars3Icon, SparklesIcon } from '@heroicons/vue/24/outline'
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-} from '@heroicons/vue/20/solid'
-
 import {
   Popover,
   PopoverGroup,
@@ -56,6 +49,16 @@ function getUrl(item: object) {
     return item.url
   }
 }
+
+function convertIconName(name: string) {
+  // Convert the icon coming from the API to the name of the icon component
+  // Directus uses Google Material Icons and the icon values are snake_case (e.g. "account_circle")
+  const prefix = 'ic:outline-'
+  // Change snake case to kebab case
+  const kebabCase = name.replace(/_/g, '-')
+  const iconName = prefix + kebabCase
+  return iconName
+}
 </script>
 <template>
   <header
@@ -89,12 +92,13 @@ function getUrl(item: object) {
               <PopoverButton
                 :class="[
                   'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'rounded-br-xl rounded-tl-xl py-2 px-3 inline-flex items-center font-bold uppercase',
+                  'rounded-br-xl rounded-tl-xl py-2 px-3 inline-flex items-center font-bold uppercase ring-accent ring-offset-2 ring-offset-gray-800  focus:ring-1 outline-none',
                 ]"
               >
                 {{ item.title }}
-                <ChevronDownIcon
-                  class="flex-none w-5 h-5 ml-1 text-gray-400"
+                <Icon
+                  name="heroicons:chevron-down"
+                  class="flex-none w-5 ml-1 text-gray-400"
                   aria-hidden="true"
                 />
               </PopoverButton>
@@ -114,15 +118,15 @@ function getUrl(item: object) {
                     <div
                       v-for="childItem in item.children"
                       :key="item.id"
-                      class="relative flex p-4 text-sm leading-6 rounded-lg group gap-x-6 hover:bg-gray-900"
+                      class="relative flex p-4 text-sm leading-6 rounded-tr-xl rounded-bl-xl group gap-x-6 hover:bg-gray-900"
                     >
                       <div
-                        class="flex items-center justify-center flex-none mt-1 rounded-lg h-11 w-11 bg-gray-50 group-hover:bg-white"
+                        class="flex items-center justify-center flex-none p-2 mt-1 border rounded-tr-lg rounded-bl-lg h-11 w-11 border-accent"
                       >
-                        <img
-                          v-if="childItem.image"
-                          :src="fileUrl(childItem.image)"
-                          class="w-10 h-10"
+                        <Icon
+                          v-if="childItem.icon"
+                          :name="convertIconName(childItem.icon)"
+                          class="w-10 h-10 text-accent"
                         />
                         <!-- <component :is="item.icon" class="w-6 h-6 atext-gray-600 group-hover:text-indigo-600" aria-hidden="true" /> -->
                       </div>
@@ -151,11 +155,11 @@ function getUrl(item: object) {
       </nav>
       <div class="flex items-center justify-end w-full p-3 space-x-2">
         <DarkModeToggle
-          class="hidden md:block text-primary-200 hover:text-primary-400"
+          class="hidden text-gray-200 md:block hover:text-gray-400"
         />
         <button
           id="animation-toggle"
-          class="hidden md:block text-primary-200 hover:text-primary-400"
+          class="hidden text-gray-200 md:block hover:text-gray-400"
         >
           <Icon name="heroicons:sparkles" class="w-8 h-8" />
         </button>

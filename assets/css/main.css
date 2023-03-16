@@ -29,10 +29,9 @@
   scrollbar-width: none; /* Firefox */
 }
 
-/* Using Tailwind @apply so we can easily re-use these styles for other 'button' based components like VDropdown */
-
+/* Using Tailwind @apply so we can easily re-use these styles for other 'button' based components like NuxtLink or VDropdown*/
 .btn {
-  @apply px-6 py-4 font-mono font-bold text-white  transition duration-150 inline-flex odd:rounded-tr-3xl odd:rounded-bl-3xl even:rounded-tl-3xl even:rounded-br-3xl;
+  @apply px-6 py-4 font-mono font-bold text-white transition duration-150 inline-flex odd:rounded-tr-3xl odd:rounded-bl-3xl even:rounded-tl-3xl even:rounded-br-3xl hover:scale-105 active:hover:scale-95  ease-in-out;
 }
 
 .btn-default {

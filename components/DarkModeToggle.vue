@@ -9,15 +9,12 @@
       leave-to-class="opacity-0 "
       mode="out-in"
     >
-      <MoonIcon v-if="isDark" class="w-8 h-8" />
-      <SunIcon v-else-if="!isDark" class="w-8 h-8" />
+      <Icon name="heroicons:moon" v-if="isDark" class="w-8 h-8" />
+      <Icon name="heroicons:sun" v-else-if="!isDark" class="w-8 h-8" />
     </transition>
   </button>
 </template>
 
 <script setup>
-import { MoonIcon, SunIcon } from '@heroicons/vue/24/outline'
-// Currently having to import the composable directly because Nuxt 3 auto import is not working
-// https://github.com/nuxt/framework/issues/3924
-import { isDark, toggleDark } from '~~/composables/useDark'
+const { isDark, toggleDark } = useDark()
 </script>
