@@ -195,7 +195,6 @@ const textClassification = {
         border-gray-300
         formkit-invalid:border-red-500
         mb-1
-
         overflow-hidden
         focus-within:ring-accent
         focus-within:border-accent
@@ -210,7 +209,7 @@ const boxClassification = {
   wrapper: 'flex items-center mb-2 cursor-pointer',
   help: 'mb-2',
   input:
-    ' appearance-none h-5 w-5 mr-2 border border-gray-400 rounded bg-white text-accent focus:ring-offset-2 focus:ring-accent focus:outline-none focus:ring-1   transition duration-150',
+    ' appearance-none h-5 w-5 mr-2 border border-gray-400 rounded bg-white dark:bg-gray-800 text-accent focus:ring-offset-2 focus:ring-accent focus:outline-none focus:ring-1   transition duration-150',
   label: 'text-sm text-gray-700 font-ui mt-1',
 }
 const buttonClassification = {
@@ -224,7 +223,7 @@ const buttonClassification = {
 export const formTheme = {
   // the global key will apply to all inputs
   global: {
-    outer: 'mb-6 formkit-disabled:opacity-50 ',
+    outer: 'mb-4 formkit-disabled:opacity-50 ',
     help: 'text-xs text-gray-500',
     messages: 'list-none p-0 mt-1 mb-0',
     message: 'text-red-500 mb-1 text-xs',
