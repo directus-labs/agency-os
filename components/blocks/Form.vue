@@ -14,6 +14,7 @@ type Form = {
       label: string
       placeholder: string
       required: boolean
+      width: string
     }>
     submit_label?: string
   }
@@ -30,12 +31,12 @@ const { fileUrl } = useFiles()
 <template>
   <section>
     <PageContainer class="">
-      <TypographyTitle>{{ data.title }}</TypographyTitle>
-      <TypographyHeadline :content="data.headline" />
       <div
-        class="p-8 mt-4 bg-gray-100 dark:bg-gray-800 rounded-bl-3xl rounded-tr-3xl"
+        class="max-w-2xl p-8 mx-auto mt-4 bg-gray-100 dark:bg-gray-800 rounded-bl-3xl rounded-tr-3xl"
       >
-        <VForm :form="data.form" />
+        <TypographyTitle>{{ data.title }}</TypographyTitle>
+        <TypographyHeadline :content="data.headline" />
+        <VForm :form="data.form" class="mt-4" />
       </div>
     </PageContainer>
   </section>

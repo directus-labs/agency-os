@@ -157,7 +157,7 @@ function getUrl(item: object) {
           id="animation-toggle"
           class="hidden md:block text-primary-200 hover:text-primary-400"
         >
-          <SparklesIcon class="w-8 h-8" />
+          <Icon name="heroicons:sparkles" class="w-8 h-8" />
         </button>
       </div>
     </div>

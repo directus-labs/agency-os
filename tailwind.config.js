@@ -59,6 +59,39 @@ module.exports = {
         '2xl': '40rem',
       },
     },
+    // typography: (theme) => ({
+    //   DEFAULT: {
+    //     css: {
+    //       hr: {
+    //         border: `1.5px solid ${theme('colors.gray.200')}`,
+    //       },
+    //       a: {
+    //         textDecoration: 'none',
+    //         '&:not(.btn)': {
+    //           color: theme('colors.accent.DEFAULT'),
+    //           textDecoration: 'none',
+    //           // fontWeight: theme('fontWeight.medium'),
+    //           backgroundImage: `linear-gradient(${theme(
+    //             'colors.gray.200'
+    //           )},${theme('colors.gray.200')})`,
+    //           backgroundSize: '100% 3px',
+    //           backgroundPosition: 'center bottom 2%',
+    //           backgroundRepeat: 'no-repeat',
+    //           transition: 'all ease-in-out .2s',
+    //           '&:hover': {
+    //             color: theme('colors.accent.700'),
+    //             backgroundSize: '10% 100%',
+    //             backgroundPosition: 'right bottom 2%',
+    //             backgroundImage: `linear-gradient(${theme(
+    //               'colors.gray.200'
+    //             )},${theme('colors.gray.200')})`,
+    //             transition: 'all ease-in-out .2s',
+    //           },
+    //         },
+    //       },
+    //     },
+    //   },
+    // }),
   },
   variants: {
     extend: {},

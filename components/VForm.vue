@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
-import { CheckBadgeIcon } from '@heroicons/vue/24/outline'
-import { ArrowRightIcon } from '@heroicons/vue/24/solid'
+
 type Form = {
   form: {
     id: string
@@ -35,6 +34,23 @@ function tranformSchema(schema: object) {
   const items = unref(schema)
   return items.map((item: any) => {
     item.$formkit = item.type
+    // Switch statement to handle item widths
+    switch (item.width) {
+      case '33':
+        item.outerClass = 'md:col-span-2'
+        break
+      case '50':
+        item.outerClass = 'md:col-span-3'
+        break
+      case '67':
+        item.outerClass = 'md:col-span-4'
+        break
+      case '100':
+        item.outerClass = 'md:col-span-6'
+        break
+      default:
+        item.outerClass = 'md:col-span-6'
+    }
     return item
   })
 }
@@ -70,7 +86,9 @@ async function submitForm() {
       @submit="submitForm"
       :submit-label="form.submit_label"
     >
-      <FormKitSchema :schema="schema" />
+      <div class="grid gap-6 md:grid-cols-6">
+        <FormKitSchema :schema="schema" />
+      </div>
     </FormKit>
   </div>
 </template>

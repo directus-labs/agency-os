@@ -30,7 +30,7 @@ const icons = {
     @click="flipped = !flipped"
   >
     <div
-      class="relative w-full h-full overflow-hidden rounded-br-3xl rounded-tl-3xl"
+      class="relative w-full h-full overflow-hidden group rounded-br-3xl rounded-tl-3xl"
     >
       <!-- Front of Team Card -->
       <div>
@@ -77,9 +77,9 @@ const icons = {
                 <div
                   class="flex items-center justify-center flex-none text-black border-r border-black w-14"
                 >
-                  <img
-                    :src="icons[link.service]"
-                    class="w-8 h-8 md:w-10 md:h-10"
+                  <Icon
+                    class="w-8 h-8 text-gray-900 hover:opacity-75"
+                    :name="`uil:${link.service}`"
                   />
                 </div>
                 <div

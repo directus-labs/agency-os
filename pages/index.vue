@@ -56,6 +56,8 @@ const {
         'blocks.item.form.*',
         'blocks.item.steps.*',
         'blocks.item.gallery_items.directus_files_id.*',
+        'blocks.item.*',
+        'blocks.item.rows.*',
       ],
       limit: 1,
     })
