@@ -26,9 +26,19 @@ const { fileUrl } = useFiles()
     <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
     <TypographyHeadline v-if="data.headline" :content="data.headline" />
     <div class="flow-root mt-8 lg:mt-10">
-      <div class="grid gap-4 md:grid-cols-2 md:gap-8 md:grid-cols-4">
+      <div class="grid gap-4 md:grid-cols-4 md:gap-8">
         <div
-          v-for="{ file } in data.logos"
+          v-motion
+          :initial="{
+            opacity: 0,
+            y: 100,
+          }"
+          :visibleOnce="{
+            opacity: 1,
+            y: 0,
+          }"
+          :delay="250 + 100 * fileIdx"
+          v-for="({ file }, fileIdx) in data.logos"
           :key="file.id"
           class="flex items-center justify-center p-8 border-2 border-gray-200 rounded-tr-3xl rounded-bl-3xl dark:border-gray-700 dark:bg-gray-200"
         >

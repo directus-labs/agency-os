@@ -34,7 +34,7 @@ const { fileUrl } = useFiles()
         {{ data.content }}
       </p>
 
-      <div class="md:space-x-4 md:flex">
+      <div class="space-y-4 md:space-x-4 md:flex md:space-y-0">
         <NuxtLink
           v-for="button in data.buttons"
           :key="button.id"
@@ -70,7 +70,7 @@ const { fileUrl } = useFiles()
     <p
       class="absolute bottom-0 left-0 hidden h-32 p-4 mx-auto font-serif text-5xl font-bold text-white md:block dark:text-gray-900"
     >
-      Let us wow your users!
+      Powered by Directus + Nuxt
     </p>
   </PageContainer>
 </template>

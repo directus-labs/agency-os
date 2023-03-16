@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'p-4 rounded-xl dark:brightness-90',
+      'p-4 dark:brightness-90',
       {
         'bg-amber-100 text-amber-800': type === 'warning',
         'bg-red-100 text-red-800': type === 'error',

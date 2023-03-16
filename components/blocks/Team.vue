@@ -106,7 +106,7 @@ const duration = computed(() => {
     <PageContainer>
       <div class="flex flex-col-reverse py-24 mx-auto lg:flex-row">
         <!-- Text -->
-        <div class="flex flex-col pr-4 mt-8 lg:w-1/3">
+        <div class="flex flex-col pr-4 mt-8 lg:w-2/5">
           <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
           <TypographyHeadline
             v-if="data.headline"
@@ -136,7 +136,7 @@ const duration = computed(() => {
           <div
             :class="[
               { 'animate-marquee': isVisible },
-              'space-y-10 py-4 -mt-10 ',
+              'space-y-10 py-4 -mt-10 max-w-[320px] ',
             ]"
             :style="{
               '--marquee-duration': duration,
@@ -151,7 +151,10 @@ const duration = computed(() => {
           </div>
           <!-- Right Col -->
           <div
-            :class="[{ 'animate-marquee': isVisible }, 'space-y-10 py-4']"
+            :class="[
+              { 'animate-marquee': isVisible },
+              'space-y-10 py-4 max-w-[320px]',
+            ]"
             :style="{
               '--marquee-duration': duration,
             }"

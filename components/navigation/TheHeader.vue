@@ -68,7 +68,10 @@ function getUrl(item: object) {
         <Logo class="h-6 text-white" />
         <span class="sr-only">Title</span>
       </NuxtLink>
-      <nav class="hidden font-mono lg:flex lg:space-x-8" aria-label="Global">
+      <nav
+        class="hidden font-mono md:flex md:space-x-4 lg:space-x-6"
+        aria-label="Global"
+      >
         <template v-for="item in navigation.items" :key="item.id">
           <NuxtLink
             v-if="!item.has_children"

@@ -6,6 +6,8 @@ type Form = {
   id: string
   headline: string
   form: {
+    id: string
+    key?: string
     schema: Array<{
       id: string
       type: string
@@ -13,6 +15,7 @@ type Form = {
       placeholder: string
       required: boolean
     }>
+    submit_label?: string
   }
 }
 const props = defineProps({
@@ -22,39 +25,7 @@ const props = defineProps({
   },
 })
 
-const { $directus } = useNuxtApp()
-const form = reactive({})
-const loading = ref(false)
-const error = ref(null)
-const success = ref(false)
-
-function tranformSchema(schema: object) {
-  // Loop through the form schema and change 'type' key for each object to '$formkit'
-  // This is required for FormKit to work
-  const items = unref(schema)
-  return items.map((item: any) => {
-    item.$formkit = item.type
-    return item
-  })
-}
-
-const schema = tranformSchema(props.data.form.schema)
 const { fileUrl } = useFiles()
-
-async function submitForm() {
-  loading.value = true
-  try {
-    await $directus.items('inbox').createOne({
-      //   form: props.data.form.id,
-      data: form,
-    })
-    success.value = true
-  } catch (err) {
-    error.value = err
-  } finally {
-    loading.value = false
-  }
-}
 </script>
 <template>
   <section>
@@ -64,18 +35,7 @@ async function submitForm() {
       <div
         class="p-8 mt-4 bg-gray-100 dark:bg-gray-800 rounded-bl-3xl rounded-tr-3xl"
       >
-        <VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
-        <VAlert v-if="success" type="success">
-          Success! Your form has been submitted.
-        </VAlert>
-        <FormKit
-          v-if="!success"
-          type="form"
-          v-model="form"
-          @submit="submitForm"
-        >
-          <FormKitSchema :schema="schema" />
-        </FormKit>
+        <VForm :form="data.form" />
       </div>
     </PageContainer>
   </section>

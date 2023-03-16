@@ -38,6 +38,7 @@ export default async () => {
 
     modules: [
       //   '@nuxtjs/eslint-module',
+      'nuxt-icon',
       '@nuxtjs/tailwindcss',
       // https://pinia.esm.dev
       '@pinia/nuxt',

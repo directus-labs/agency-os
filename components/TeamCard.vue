@@ -26,7 +26,7 @@ const icons = {
 </script>
 <template>
   <div
-    class="opacity-0 cursor-pointer select-none cale-100 group animate-fade-in"
+    class="opacity-0 cursor-pointer select-none animate-fade-in"
     @click="flipped = !flipped"
   >
     <div

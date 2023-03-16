@@ -9,7 +9,7 @@ const toggle = () => {
   subMenuOpen.value = false
 }
 
-const { description } = useRuntimeConfig()
+const { tagline } = useRuntimeConfig()
 
 const props = defineProps({
   navigation: {
@@ -48,16 +48,22 @@ watch(
         name="menu"
         :show="isOpen"
         v-motion
-        :initial="{ opacity: 0, y: 100, scale: 0 }"
+        :initial="{ opacity: 0, y: 400, scale: 0.9 }"
         :enter="{
           opacity: 1,
-          scale: 1,
           y: 0,
+          scale: 1,
+          transition: {
+            duration: 300,
+          },
         }"
         :leave="{
           opacity: 0,
-          y: 100,
-          scale: 0,
+          y: 400,
+          scale: 0.9,
+          transition: {
+            duration: 300,
+          },
         }"
         class="fixed inset-0 z-50 flex flex-col w-full h-full bg-gray-50 dark:bg-gray-800"
       >
@@ -66,7 +72,7 @@ watch(
             <Logo class="h-6 dark:text-white" />
           </NuxtLink>
           <p class="pb-4 mt-2 font-mono text-gray-400 border-b border-gray-500">
-            {{ description }}
+            {{ tagline }}
           </p>
           <DarkModeToggle
             class="absolute text-gray-500 top-4 right-4 dark:text-gray-200 hover:text-primary-400"

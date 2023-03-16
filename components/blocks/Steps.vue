@@ -29,6 +29,21 @@ const { fileUrl } = useFiles()
     <div class="mt-8">
       <template v-for="(step, stepIdx) in data.steps" :key="stepIdx">
         <div
+          v-motion
+          :initial="{
+            opacity: 0,
+            scale: 1,
+            x: isEven(stepIdx) ? -200 : 200,
+          }"
+          :visibleOnce="{
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            transition: {
+              duration: 300,
+            },
+          }"
+          :delay="300"
           :class="[
             {
               'rounded-br-3xl rounded-tl-3xl mr-8': isEven(stepIdx),

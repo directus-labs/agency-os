@@ -110,7 +110,7 @@ const { fileUrl } = useFiles()
               },
             ]"
             @click="handleIndicatorButton(itemIdx)"
-            class="flex items-center justify-center w-12 h-4 rounded-tr-lg rounded-bl-lg hover:opacity-75 disabled:opacity-50 disabled:cursor-not-allowed"
+            class="flex items-center justify-center w-12 h-3 hover:opacity-75 disabled:opacity-50 disabled:cursor-not-allowed"
           />
         </div>
         <!-- Left and Right Circle Buttons to Navigate testimonials -->
