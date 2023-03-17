@@ -1,19 +1,7 @@
 <script setup lang="ts">
+import { Page } from '~~/types'
 const { $directus } = useNuxtApp()
 const { params, path } = useRoute()
-
-type Page = {
-  id: string
-  title: string
-  slug: string
-  image: string
-  blocks: Block[]
-}
-interface Block {
-  id: string
-  collection: string
-  item: Object
-}
 
 // Fetch the page data from the Directus API using the Nuxt useAsyncData composable
 // https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
@@ -54,21 +42,21 @@ const { fileUrl } = useFiles()
 
 onMounted(() => useAnimation())
 
-// Set the page title and meta tags using the Nuxt useSeoMeta composable
-
+// Set the page title and meta tags using the Nuxt useHead and useSeoMeta composables
+const pageData = unref(page)
 useHead({
-  title: page.value.seo.title || page.value.title,
+  title: () => pageData.seo.title || pageData.title,
 })
 useServerSeoMeta({
-  title: () => page.value.seo.title || page.value.title,
-  description: () => page.value.seo.meta_description,
-  ogTitle: () => page.value.seo.title,
-  ogDescription: () => page.value.seo.meta_description,
+  title: () => pageData.seo.title || pageData.title,
+  description: () => pageData.seo.meta_description,
+  ogTitle: () => pageData.seo.title,
+  ogDescription: () => pageData.seo.meta_description,
   ogType: 'website',
-  ogUrl: () => page.value.seo.og_url,
-  ogLocale: () => page.value.seo.og_locale || 'en_US',
-  ogImage: () => fileUrl(page.value.og_image),
-  twitterCard: () => fileUrl(page.value.twitter_image),
+  ogUrl: () => pageData.seo.og_url,
+  ogLocale: () => pageData.seo.og_locale || 'en_US',
+  //   ogImage: () => fileUrl(pageData.seo.og_image ) ,
+  //   twitterCard: () => fileUrl(pageData.seo.twitter_image),
 })
 </script>
 <template>

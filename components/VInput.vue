@@ -40,8 +40,3 @@ const props = defineProps({
   },
 })
 </script>
-<style>
-.input {
-  @apply block w-full dark:bg-gray-800 dark:text-white text-lg md:text-base border-gray-300 dark:border-gray-700  shadow-sm focus:ring-accent focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-600;
-}
-</style>

@@ -38,13 +38,7 @@ const props = defineProps<{
           v-if="post.category"
           size="lg"
           :color="post.category.color"
-          :class="[
-            {
-              'rounded-br-lg': even,
-              'rounded-bl-lg': !even,
-            },
-            'absolute bottom-0 left-0 ml-4 mb-4',
-          ]"
+          class="absolute bottom-0 left-0 mb-4 ml-4 rounded-bl-lg"
           >{{ post.category.title }}</VBadge
         >
       </div>

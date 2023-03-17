@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Page } from '~~/types'
 // Map the page builder collection names to the components
 // https://nuxt.com/docs/guide/directory-structure/components#dynamic-components
 const map = {
@@ -19,23 +20,9 @@ const map = {
   block_cardgroup: resolveComponent('BlocksCardGroup'),
 }
 
-type Page = {
-  id: string
-  title: string
-  slug: string
-  image: string
-  blocks: Array<{
-    id: string
-    collection: string
-    item: Object
-  }>
-}
-
 const props = defineProps<{
   page: Page
 }>()
-
-const { fileUrl } = useFiles()
 </script>
 <template>
   <div class="mx-auto" id="content">

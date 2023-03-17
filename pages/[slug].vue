@@ -1,26 +1,20 @@
 <script setup lang="ts">
+import { Page } from '~~/types'
+
 const { $directus } = useNuxtApp()
 const { params, path } = useRoute()
 
-interface Block {
-  id: string
-  collection: string
-  item: Object
-}
-type Page = {
-  id: string
-  title: string
-  slug: string
-  image: string
-  blocks: Block[]
-}
+// Create a reactive page object
+const page = ref({} as Page)
+
+// Set the page title and meta tags using the Nuxt useHead and useSeoMeta composables. THESE HAVE TO BE CALLED BEFORE THE FIRST AWAIT IN THE SCRIPT TAG
+useHead({
+  title: () => (page.value.seo ? page.value.seo.title : page.value.title),
+})
+
 // Fetch the page data from the Directus API using the Nuxt useAsyncData composable
 // https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
-const {
-  data: page = {} as Page,
-  pending,
-  error,
-} = await useAsyncData(
+const { data, pending, error } = await useAsyncData(
   path,
   () => {
     return $directus.items('pages').readByQuery({
@@ -44,10 +38,13 @@ const {
     })
   },
   {
-    transform: (data) => data.data[0],
+    transform: (data: object) => data.data[0],
     pick: ['title', 'blocks', 'slug', 'id', 'seo'],
   }
 )
+
+// Set the page data
+page.value = data.value
 
 onMounted(() => useAnimation())
 </script>

@@ -50,3 +50,6 @@
 .btn-danger {
   @apply text-white bg-red-600 hover:bg-red-700 focus:ring-red-500;
 }
+.input {
+  @apply block w-full dark:bg-gray-800 dark:text-white text-lg md:text-base border-gray-300 dark:border-gray-700  shadow-sm focus:ring-accent focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-600;
+}

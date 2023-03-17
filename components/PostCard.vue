@@ -17,7 +17,7 @@ const props = defineProps<{
 }>()
 </script>
 <template>
-  <figure class="group">
+  <figure class="flex flex-col group">
     <NuxtLink class="" :href="`/posts/${post.slug}`">
       <div
         :class="[
@@ -29,12 +29,12 @@ const props = defineProps<{
         ]"
       >
         <img
-          class="object-cover w-full h-full saturate-0 group-hover:opacity-75 transition-opacity duration-300"
+          class="object-cover w-full h-full transition-opacity duration-300 saturate-0 group-hover:opacity-75"
           :src="fileUrl(post.image)"
           alt=""
         />
         <div
-          class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-accent group-hover:opacity-100 opacity-0 transition-opacity duration-300"
+          class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-br from-transparent via-transparent to-accent group-hover:opacity-100"
         />
 
         <VBadge
@@ -53,14 +53,14 @@ const props = defineProps<{
       </div>
     </NuxtLink>
 
-    <NuxtLink class="" :href="`/posts/${post.slug}`">
+    <NuxtLink class="h-full" :href="`/posts/${post.slug}`">
       <!-- Icon -->
       <p
-        class="mt-5 text-xl font-semibold font-serif text-gray-900 dark:text-white group-hover:text-accent"
+        class="mt-5 font-serif text-xl font-semibold text-gray-900 dark:text-white group-hover:text-accent"
       >
         {{ post.title }}
       </p>
-      <p class="mt-3 text-sm font-mono text-gray-500 dark:text-gray-300">
+      <p class="mt-3 font-mono text-sm text-gray-500 dark:text-gray-300">
         {{ truncateString(post.summary, 150) }}
       </p>
     </NuxtLink>
