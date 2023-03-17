@@ -1,8 +1,9 @@
 import { BaseStorage, Directus } from '@directus/sdk'
+
 // Make sure you review the Directus SDK documentation for more information
 // https://docs.directus.io/reference/sdk.html
 
-export default defineNuxtPlugin(async (nuxtApp) => {
+export default function useDirectus() {
   const { directusUrl, directusToken } = useRuntimeConfig()
 
   // Create a new storage class to use with the SDK
@@ -27,7 +28,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   }
 
   // Create a new instance of the SDK
-  const directus = new Directus(directusUrl, {
+  const $directus = new Directus(directusUrl, {
     // storage: new CookieStorage(),
     auth: {
       //   mode: 'json',
@@ -35,8 +36,9 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     },
   })
 
-  // Inject the SDK into the Nuxt app
-  nuxtApp.provide('directus', directus)
+  return {
+    $directus,
+  }
 
   // We're calling the useAuth composable here because we need to define Directus as a plugin first
   //   const auth = useAuth()
@@ -61,4 +63,4 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   //     console.log('Token not found, resetting auth store from ' + side)
   //     auth.$reset()
   //   }
-})
+}
