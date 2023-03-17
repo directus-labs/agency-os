@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import {
-  ArrowLongLeftIcon,
-  ClockIcon,
-  CalendarIcon,
-} from '@heroicons/vue/24/outline'
-
 // Import the $directus plugin
 const { $directus } = useNuxtApp()
 const { fileUrl } = useFiles()
@@ -73,24 +67,24 @@ useHead({
     </header>
     <section class="relative items-center w-full py-12 space-y-12">
       <div
-        class="relative grid grid-cols-2 gap-12 lg:grid-cols-4 pb-12 border-b-2 border-gray-300 dark:border-gray-700"
+        class="relative grid gap-12 pb-12 border-b-2 border-gray-300 md:grid-cols-2 lg:grid-cols-4 dark:border-gray-700"
       >
         <div>
-          <TypographyTitle class="text-gray-700 dark:text-gray-400"
+          <TypographyTitle as="p" class="text-gray-700 dark:text-gray-400"
             >Search</TypographyTitle
           >
-          <VInput />
-          <TypographyTitle class="text-gray-700 dark:text-gray-400 mt-8"
+          <BlogSearch />
+          <TypographyTitle as="p" class="mt-8 text-gray-700 dark:text-gray-400"
             >Categories</TypographyTitle
           >
           <Categories />
         </div>
         <div class="space-y-4 lg:col-span-3">
-          <TypographyTitle
+          <TypographyTitle as="p"
             >Articles for Category:
             {{ deslugify(params.category) }}</TypographyTitle
           >
-          <span>{{ }}</span>
+          <span>{{}}</span>
           <div
             class="relative grid grid-cols-2 gap-12 md:grid-cols-2 lg:grid-cols-4"
           >

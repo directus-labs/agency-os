@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
-import { CheckBadgeIcon } from '@heroicons/vue/24/outline'
-import { useIntersectionObserver, useResizeObserver } from '@vueuse/core'
 
-import { ArrowRightIcon } from '@heroicons/vue/24/solid'
+import { useIntersectionObserver, useResizeObserver } from '@vueuse/core'
 type Team = {
   id: string
   headline?: string

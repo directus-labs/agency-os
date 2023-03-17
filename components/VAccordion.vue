@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { PlusIcon, MinusIcon } from '@heroicons/vue/24/outline'
 const props = defineProps<{
   title: string
 }>()
@@ -21,12 +20,14 @@ const open = ref(false)
           </span>
           <span class="flex items-center">
             <span v-show="!open">
-              <PlusIcon
+              <Icon
+                name="heroicons:plus"
                 class="w-8 h-8 rounded-full fill-current text-primary"
               />
             </span>
             <span v-show="open"
-              ><MinusIcon
+              ><Icon
+                name="heroicons:minus"
                 class="w-8 h-8 rounded-full fill-current text-primary"
             /></span>
           </span>

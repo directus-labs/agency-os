@@ -30,7 +30,7 @@
         :accept="accept"
       />
       <div class="h-full mx-auto text-sm font-medium text-center">
-        <CloudArrowUpIcon class="w-8 h-8 mx-auto mb-2" />
+        <Icon name="heroicons:cloud-arrow-up" class="w-8 h-8 mx-auto mb-2" />
         <template v-if="dragging">
           <p>Drop to upload</p>
         </template>
@@ -76,7 +76,8 @@
           }}</span>
           <span class="flex ml-auto cursor-pointer">
             <button @click="deleteImage(index)">
-              <TrashIcon
+              <Icon
+                name="heroicons:trash"
                 class="w-5 h-5 text-red-500 stroke-current hover:text-red-600 flex-shrink-none"
               />
             </button>
@@ -88,8 +89,6 @@
 </template>
 
 <script setup>
-import { CloudArrowUpIcon, TrashIcon } from '@heroicons/vue/24/outline'
-
 const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps({

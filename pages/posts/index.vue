@@ -55,7 +55,7 @@ useHead({
           <TypographyTitle class="text-gray-700 dark:text-gray-400"
             >Search</TypographyTitle
           >
-          <VInput class="flex" />
+          <BlogSearch class="flex" />
           <TypographyTitle class="mt-8 text-gray-700 dark:text-gray-400"
             >Categories</TypographyTitle
           >

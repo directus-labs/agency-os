@@ -14,7 +14,8 @@
           ]"
         >
           <span>{{ buttonLabel }}</span>
-          <ChevronDownIcon
+          <Icon
+            name="heroicons:chevron-down"
             class="w-5 h-5 ml-2 -mr-1 text-primary-200 hover:text-primary-100"
             aria-hidden="true"
           />
@@ -60,8 +61,6 @@
 
 <script setup>
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
-import { ChevronDownIcon } from '@heroicons/vue/24/solid'
-import VButton from '~~/components/VButton'
 const props = defineProps({
   buttonLabel: {
     type: String,

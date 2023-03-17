@@ -16,8 +16,7 @@
       <slot />
     </div>
     <div id="nuxtImg"></div>
-    <div class="relative px-6 pb-6">
-      <NavigationTheFooter />
-    </div>
+
+    <NavigationTheFooter />
   </div>
 </template>

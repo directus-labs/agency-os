@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import {
-  ArrowLongLeftIcon,
-  ClockIcon,
-  CalendarIcon,
-} from '@heroicons/vue/24/outline'
 // Import the $directus plugin
 const { $directus } = useNuxtApp()
 const { fileUrl } = useFiles()
@@ -54,49 +49,50 @@ useHead({
   <div>
     <article class="">
       <!--Featured Image Full Width-->
-      <header class="flex">
-        <div class="relative w-full max-w-3xl px-6 pt-6">
-          <div
-            class="relative w-full mx-auto rounded-bl-3xl overflow-hidden bg-cover h-[300px] md:h-[450px] dark:outline-gray-800"
-          >
-            <img
-              :src="fileUrl(page.image)"
-              class="w-full h-full object-cover saturate-0 dark:brightness-90"
-              alt=""
-            />
+      <header>
+        <div class="md:flex">
+          <!-- Post Image -->
+          <div class="relative w-full max-w-3xl pt-6 md:px-6">
             <div
-              class="absolute inset-0 mix-blend-multiply bg-gradient-to-b from-gray-100 to-gray-900"
-            />
+              class="relative w-full mx-auto rounded-bl-3xl overflow-hidden bg-cover h-[300px] md:h-[450px] dark:outline-gray-800"
+            >
+              <img
+                :src="fileUrl(page.image)"
+                class="object-cover w-full h-full saturate-0 dark:brightness-90"
+                alt=""
+              />
+              <div
+                class="absolute inset-0 mix-blend-multiply bg-gradient-to-b from-gray-100 to-gray-900"
+              />
+            </div>
+          </div>
+          <!-- Post Meta -->
+          <div class="hidden p-8 mt-12 space-y-6 md:block">
+            <NuxtLink
+              v-if="page.category"
+              :href="`/posts/categories/${page.category.slug}`"
+              class="inline-block"
+            >
+              <VBadge size="lg" :color="page.category.color">{{
+                page.category.title
+              }}</VBadge>
+            </NuxtLink>
+            <VAvatar v-if="page.author" :author="page.author" />
+            <div class="space-y-2">
+              <p class="flex font-mono text-gray-500 dark:text-gray-300">
+                <Icon name="heroicons:clock" class="w-6 h-6 mr-2" />
+                {{ calculateReadTime(page.content) }}
+              </p>
+              <p class="flex font-mono text-gray-500 dark:text-gray-300">
+                <Icon name="heroicons:calendar" class="w-6 h-6 mr-2" />
+                {{ getRelativeTime(page.date_published) }}
+              </p>
+            </div>
           </div>
         </div>
-        <div class="mt-12 p-8 space-y-6">
-          <NuxtLink
-            v-if="page.category"
-            :href="`/posts/categories/${page.category.slug}`"
-            class="inline-block"
-          >
-            <VBadge size="lg" :color="page.category.color">{{
-              page.category.title
-            }}</VBadge>
-          </NuxtLink>
-          <VAvatar v-if="page.author" :author="page.author" />
-          <div class="space-y-2">
-            <p class="flex text-gray-500 font-mono dark:text-gray-300">
-              <ClockIcon class="w-6 h-6 mr-2" />
-              {{ calculateReadTime(page.content) }}
-            </p>
-            <p class="flex text-gray-500 font-mono dark:text-gray-300">
-              <CalendarIcon class="w-6 h-6 mr-2" />
-              {{ getRelativeTime(page.date_published) }}
-            </p>
-          </div>
-        </div>
-      </header>
-
-      <!-- Title Container -->
-      <div class="">
+        <!-- Title Container -->
         <div
-          class="relative max-w-4xl mx-auto -mt-32 w-full px-8 py-8 text-gray-900 bg-white rounded-br-3xl rounded-tl-3xl overflow-hidden md:px-16 md:py-12 outline outline-4 outline-accent outline-offset-8"
+          class="relative w-full max-w-4xl px-8 py-8 mx-auto -mt-12 overflow-hidden text-gray-900 bg-white md:-mt-32 rounded-br-3xl rounded-tl-3xl md:px-16 md:py-12 outline outline-4 outline-accent outline-offset-8"
         >
           <div
             class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-accent dark:from-gray-700 dark:via-gray-900 dark:to-accent"
@@ -104,19 +100,43 @@ useHead({
           <div class="absolute inset-0 grain-bg dark:opacity-20" />
           <div class="relative">
             <div class="flex justify-between"></div>
-            <h1
-              class="mt-4 text-3xl font-extrabold font-serif leading-tight tracking-tight text-gray-900 sm:text-5xl dark:text-white"
-            >
-              {{ page.title }}
-            </h1>
+            <TypographyHeadline :content="page.title" as="h1" />
+
             <p
-              class="mt-4 font-semibold font-mono md:text-lg font-display dark:text-gray-200"
+              class="mt-4 font-mono font-semibold md:text-lg font-display dark:text-gray-200"
             >
               {{ page.summary }}
             </p>
           </div>
         </div>
-      </div>
+
+        <div class="block px-6 mt-6 md:hidden">
+          <VAvatar v-if="page.author" :author="page.author" />
+          <div
+            class="flex justify-between pb-4 mt-4 border-b dark:border-gray-700"
+          >
+            <div class="space-y-2">
+              <p class="flex font-mono text-gray-500 dark:text-gray-300">
+                <Icon name="heroicons:clock" class="w-6 h-6 mr-2" />
+                {{ calculateReadTime(page.content) }}
+              </p>
+              <p class="flex font-mono text-gray-500 dark:text-gray-300">
+                <Icon name="heroicons:calendar" class="w-6 h-6 mr-2" />
+                {{ getRelativeTime(page.date_published) }}
+              </p>
+            </div>
+            <NuxtLink
+              v-if="page.category"
+              :href="`/posts/categories/${page.category.slug}`"
+              class="inline-block"
+            >
+              <VBadge size="lg" :color="page.category.color">{{
+                page.category.title
+              }}</VBadge>
+            </NuxtLink>
+          </div>
+        </div>
+      </header>
 
       <PageContainer>
         <main class="w-full max-w-4xl mx-auto">

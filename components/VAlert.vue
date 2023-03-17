@@ -12,8 +12,8 @@
   >
     <div class="flex items-center">
       <div class="flex-shrink-0">
-        <component
-          :is="iconMap[type]"
+        <Icon
+          :name="iconMap[type]"
           :class="[
             'w-5 h-5',
             {
@@ -32,13 +32,6 @@
 </template>
 
 <script setup>
-import {
-  ExclamationTriangleIcon,
-  InformationCircleIcon,
-  XCircleIcon,
-  CheckCircleIcon,
-} from '@heroicons/vue/24/solid'
-
 const props = defineProps({
   type: {
     type: String,
@@ -49,9 +42,9 @@ const props = defineProps({
 })
 
 const iconMap = {
-  info: InformationCircleIcon,
-  success: CheckCircleIcon,
-  warning: ExclamationTriangleIcon,
-  error: XCircleIcon,
+  info: 'heroicons:information-circle',
+  success: 'heroicons:check-circle',
+  warning: 'heroicons:exclamation-triangle',
+  error: 'heroicons:x-circle',
 }
 </script>

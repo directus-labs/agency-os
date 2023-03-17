@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import {
-  MagnifyingGlassPlusIcon,
-  XMarkIcon,
-  ArrowRightIcon,
-  ArrowLeftIcon,
-} from '@heroicons/vue/24/outline'
 type Gallery = {
   id: string
   title: string
@@ -104,7 +98,8 @@ onUnmounted(() => {
         <div
           class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
         >
-          <MagnifyingGlassPlusIcon
+          <Icon
+            name="heroicons:magnifying-glass-plus"
             class="w-12 h-12 text-gray-500 dark:text-white"
           />
         </div>
@@ -140,7 +135,7 @@ onUnmounted(() => {
         >
           <div>
             <span class="sr-only">Close</span>
-            <XMarkIcon class="w-6 h-6" />
+            <Icon name="heroicons:x-mark" class="w-6 h-6" />
           </div>
         </button>
         <div class="flex items-center justify-center w-full h-full">
@@ -149,14 +144,14 @@ onUnmounted(() => {
             class="absolute z-50 p-4 text-2xl text-white transition duration-300 left-4 bg-accent hover:bg-opacity-75 rounded-tr-xl rounded-bl-xl"
           >
             <span class="sr-only">Previous</span>
-            <ArrowLeftIcon class="w-6 h-6" />
+            <Icon name="heroicons:arrow-left" class="w-6 h-6" />
           </button>
           <button
             @click="next"
             class="absolute z-50 p-4 text-2xl text-white transition duration-300 right-4 bg-accent hover:bg-opacity-75 rounded-br-xl rounded-tl-xl"
           >
             <span class="sr-only">Next</span>
-            <ArrowRightIcon class="w-6 h-6" />
+            <Icon name="heroicons:arrow-right" class="w-6 h-6" />
           </button>
           <!-- Image -->
           <div class="relative flex items-center justify-center">

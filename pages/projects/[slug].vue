@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import {
-  ArrowLongLeftIcon,
-  ClockIcon,
-  CalendarIcon,
-} from '@heroicons/vue/24/outline'
 // Import the $directus plugin
 const { $directus } = useNuxtApp()
 const { fileUrl } = useFiles()

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { Bars3Icon, SparklesIcon, XMarkIcon } from '@heroicons/vue/24/outline'
-import { PlusIcon, ArrowLeftIcon } from '@heroicons/vue/24/solid'
-
 const subMenuOpen = ref(false)
 const props = defineProps({
   item: {
@@ -20,7 +17,8 @@ const emit = defineEmits(['close'])
       <span class="ml-2 text-2xl font-semibold dark:text-white">
         {{ item.title }}
       </span>
-      <PlusIcon
+      <Icon
+        name="heroicons:plus"
         v-if="item.children.length > 0"
         class="w-6 h-6 ml-2 text-accent"
       />
@@ -68,7 +66,7 @@ const emit = defineEmits(['close'])
       </div>
       <div class="absolute bottom-4 left-4">
         <VButton class="inline-flex" @click="subMenuOpen = false">
-          <ArrowLeftIcon class="w-5 h-5 mr-2" />
+          <Icon name="heroicons:arrow-left" class="w-5 h-5 mr-2" />
           <span class="font-mono text-sm font-bold">Back</span>
         </VButton>
       </div>

@@ -39,7 +39,11 @@
                 @click="closeModal"
               >
                 <span class="sr-only">Close</span>
-                <XMarkIcon class="w-6 h-6" aria-hidden="true" />
+                <Icon
+                  name="heroicons:x-mark"
+                  class="w-6 h-6"
+                  aria-hidden="true"
+                />
               </button>
 
               <DialogTitle
@@ -59,7 +63,6 @@
 </template>
 
 <script setup>
-import { XMarkIcon } from '@heroicons/vue/24/solid'
 import {
   TransitionRoot,
   TransitionChild,

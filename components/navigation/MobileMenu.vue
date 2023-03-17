@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { Bars3Icon, SparklesIcon, XMarkIcon } from '@heroicons/vue/24/outline'
-
-import { PlusIcon, ArrowLeftIcon } from '@heroicons/vue/24/solid'
 const isOpen = ref(false)
 const subMenuOpen = ref(false)
 const toggle = () => {
@@ -103,8 +100,8 @@ watch(
     >
       <div>
         <span class="sr-only">Close</span>
-        <Bars3Icon v-if="!isOpen" class="w-6 h-6" />
-        <XMarkIcon v-if="isOpen" class="w-6 h-6" />
+        <Icon name="heroicons:bars-3" v-if="!isOpen" class="w-6 h-6" />
+        <Icon name="heroicons:x-mark" v-if="isOpen" class="w-6 h-6" />
       </div>
     </button>
   </div>

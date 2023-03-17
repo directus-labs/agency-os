@@ -67,10 +67,10 @@ const { fileUrl } = useFiles()
       </div>
     </div>
     <!-- Hidden Message -->
-    <p
+    <!-- <p
       class="absolute bottom-0 left-0 hidden h-32 p-4 mx-auto font-serif text-5xl font-bold text-white md:block dark:text-gray-900"
     >
       Powered by Directus + Nuxt
-    </p>
+    </p> -->
   </PageContainer>
 </template>

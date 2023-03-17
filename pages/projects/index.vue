@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import {
-  ArrowLongLeftIcon,
-  ClockIcon,
-  CalendarIcon,
-} from '@heroicons/vue/24/outline'
-
 // Import the $directus plugin
 const { $directus } = useNuxtApp()
 const { fileUrl } = useFiles()
@@ -53,7 +47,7 @@ useHead({
     </header>
     <section class="relative items-center w-full py-12">
       <TypographyTitle>Latest Projects</TypographyTitle>
-      <div class="gap-8 md:columns-3 mt-4">
+      <div class="gap-8 mt-4 md:columns-3">
         <NuxtLink
           v-for="project in projects"
           :key="project.id"
@@ -62,15 +56,15 @@ useHead({
         >
           <img
             :src="fileUrl(project.image)"
-            class="w-full object-cover group-hover:scale-110 transition duration-300"
+            class="object-cover w-full transition duration-300 group-hover:scale-110"
           />
           <div
-            class="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 flex justify-center items-center dark:bg-gray-900 bg-white bg-opacity-75 dark:bg-opacity-75"
+            class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
           >
             <div class="p-8">
               <TypographyTitle>{{ project.title }}</TypographyTitle>
               <TypographyHeadline :content="project.summary" />
-              <div class="space-x-2 mt-2">
+              <div class="mt-2 space-x-2">
                 <VBadge
                   v-for="(item, itemIdx) in project.built_with"
                   color="#0f172a"

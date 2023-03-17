@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import {
-  StarIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-} from '@heroicons/vue/24/solid'
 import { PropType } from 'vue'
 import { useDebounceFn } from '@vueuse/shared'
 
@@ -117,14 +112,14 @@ const { fileUrl } = useFiles()
             class="block p-2 bg-gray-900 rounded-full hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
             @click="handleNavButton('left')"
           >
-            <ArrowLeftIcon class="w-5 h-5 text-white" />
+            <Icon name="heroicons:arrow-left" class="w-5 h-5 text-white" />
           </button>
           <button
             :disabled="currentItemIdx === data.testimonials.length - 1"
             class="block p-2 bg-gray-900 rounded-full hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
             @click="handleNavButton('right')"
           >
-            <ArrowRightIcon class="w-5 h-5 text-white" />
+            <Icon name="heroicons:arrow-right" class="w-5 h-5 text-white" />
           </button>
         </div>
       </div>

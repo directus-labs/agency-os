@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
-import { CheckBadgeIcon } from '@heroicons/vue/24/outline'
-import { ArrowRightIcon } from '@heroicons/vue/24/solid'
+
 type Quote = {
   id: string
   headline: string

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Bars3Icon, SparklesIcon } from '@heroicons/vue/24/outline'
 // Import the $directus plugin
 const { $directus } = useNuxtApp()
 const { fileUrl } = useFiles()
@@ -47,10 +46,10 @@ function getUrl(item: object) {
 </script>
 <template>
   <footer
-    class="bg-white dark:bg-gray-900 rounded-tl-3xl rounded-br-3xl"
+    class="px-6 pb-8 bg-white md:mx-6 md:mb-6 dark:bg-gray-900 rounded-tl-3xl rounded-br-3xl"
     aria-labelledby="footer-heading"
   >
-    <div class="px-5 py-12 mx-auto md:px-12">
+    <div class="py-12 mx-auto md:px-12">
       <!-- Header -->
       <div class="flex justify-between">
         <div class="w-full">
@@ -69,7 +68,7 @@ function getUrl(item: object) {
             id="animation-toggle"
             class="hidden text-gray-600 md:block hover:text-gray-400"
           >
-            <SparklesIcon class="w-8 h-8" />
+            <Icon name="heroicons:sparkles" class="w-8 h-8" />
           </button>
         </div>
       </div>
@@ -78,7 +77,7 @@ function getUrl(item: object) {
       <nav class="grid gap-8 mt-8 md:grid-cols-2 xl:mt-0 xl:col-span-2">
         <div>
           <TypographyTitle>Menu</TypographyTitle>
-          <ul role="list" class="grid grid-flow-col grid-cols-2 mt-4">
+          <ul role="list" class="grid grid-flow-col mt-4 md:grid-cols-2">
             <li v-for="(item, itemIdx) in navigation.items" :key="item.id">
               <NuxtLink
                 :href="getUrl(item)"
@@ -111,7 +110,7 @@ function getUrl(item: object) {
 
     <!-- Bottom -->
     <div
-      class="py-6 mx-6 border-t dark:border-t-gray-700 max-w-7xl md:flex md:items-center md:justify-between lg:px-16"
+      class="py-6 mx-6 mx-auto border-t dark:border-t-gray-700 max-w-7xl md:flex md:items-center md:justify-between lg:px-16"
     >
       <div
         class="flex items-center justify-center space-x-6 md:order-last md:mb-0"
