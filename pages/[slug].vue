@@ -1,39 +1,19 @@
 <script setup lang="ts">
-// Map the page builder collection names to the components
-// https://nuxt.com/docs/guide/directory-structure/components#dynamic-components
-const map = {
-  block_hero: resolveComponent('BlocksHero'),
-  block_faqs: resolveComponent('BlocksFaqs'),
-  block_richtext: resolveComponent('BlocksRichText'),
-  block_testimonials: resolveComponent('BlocksTestimonials'),
-  block_quote: resolveComponent('BlocksQuote'),
-  block_cta: resolveComponent('BlocksCta'),
-  block_form: resolveComponent('BlocksForm'),
-  block_logocloud: resolveComponent('BlocksLogoCloud'),
-  block_team: resolveComponent('BlocksTeam'),
-  block_html: resolveComponent('BlocksRawHtml'),
-  block_video: resolveComponent('BlocksVideo'),
-  block_gallery: resolveComponent('BlocksGallery'),
-  block_steps: resolveComponent('BlocksSteps'),
-  block_columns: resolveComponent('BlocksColumns'),
-  block_cardgroup: resolveComponent('BlocksCardGroup'),
-}
+const { $directus } = useNuxtApp()
+const { params, path } = useRoute()
 
+interface Block {
+  id: string
+  collection: string
+  item: Object
+}
 type Page = {
   id: string
   title: string
   slug: string
   image: string
-  blocks: Array<{
-    id: string
-    collection: string
-    item: Object
-  }>
+  blocks: Block[]
 }
-
-const { $directus } = useNuxtApp()
-const { params, path } = useRoute()
-
 // Fetch the page data from the Directus API using the Nuxt useAsyncData composable
 // https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
 const {
@@ -72,25 +52,5 @@ const {
 onMounted(() => useAnimation())
 </script>
 <template>
-  <div class="mx-auto" id="content">
-    <template v-for="(block, blockIdx) in page.blocks" :key="blockIdx">
-      <component :is="map[block.collection]" :data="block.item" />
-    </template>
-  </div>
+  <PageBuilder :page="page" />
 </template>
-
-<style>
-.grain-bg {
-  background-image: url('~~/assets/img/noise.png');
-  /* content: ' '; */
-  /* display: block; */
-  /* position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%; */
-  /* opacity: 0.3; */
-  /* background-position: 50% 0; */
-  /* background-attachment: fixed; */
-}
-</style>

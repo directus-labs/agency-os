@@ -16,6 +16,7 @@ export default async () => {
 
     // As of RC12 Nuxt 3 supports Hybrid rendering mode
     // https://v3.nuxtjs.org/guide/concepts/rendering#route-rules
+
     routeRules: {
       '/**': { swr: true },
     },
@@ -49,13 +50,13 @@ export default async () => {
       '@formkit/nuxt',
     ],
 
-    imports: {
-      dirs: ['./stores'],
-    },
+    // imports: {
+    //   dirs: ['./stores'],
+    // },
 
-    pinia: {
-      autoImports: ['defineStore', 'acceptHMRUpdate'],
-    },
+    // pinia: {
+    //   autoImports: ['defineStore', 'acceptHMRUpdate'],
+    // },
 
     runtimeConfig: {
       public: {
