@@ -39,7 +39,6 @@ useHead({
 </script>
 <template>
   <PageContainer>
-    <img src="/api/image" />
     <header class="pb-6 border-b-2 border-gray-300 dark:border-gray-700">
       <TypographyTitle>Agency Projects</TypographyTitle>
       <TypographyHeadline
