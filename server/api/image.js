@@ -1,5 +1,5 @@
 // import puppeteer from 'puppeteer'
-const chromium = require('chrome-aws-lambda')
+import chromium from 'chrome-aws-lambda'
 
 import fs from 'fs'
 
