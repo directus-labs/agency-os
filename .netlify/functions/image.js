@@ -1,7 +1,8 @@
-import puppeteer from 'puppeteer-core'
+import { builder } from '@netlify/functions'
+// import puppeteer from 'puppeteer'
 import chromium from 'chrome-aws-lambda'
 
-import fs from 'fs'
+// import fs from 'fs'
 
 const captureWidth = 1200
 const captureHeight = 630
@@ -67,10 +68,10 @@ export default defineEventHandler(async (event) => {
 
   await browser.close()
 
-  // Create a buffer from the screenshot
-  const buffer = Buffer.from(screenshot, 'base64')
-  // Write the buffer to a file
-  await fs.writeFileSync('./public/social-images/screenshot.jpg', buffer)
+  //   // Create a buffer from the screenshot
+  //   const buffer = Buffer.from(screenshot, 'base64')
+  //   // Write the buffer to a file
+  //   await fs.writeFileSync('./public/social-images/screenshot.jpg', buffer)
 
   return {
     statusCode: 200,

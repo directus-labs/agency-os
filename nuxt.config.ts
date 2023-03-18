@@ -85,7 +85,7 @@ export default async () => {
 
     //   Currently still needed
     build: {
-      transpile: ['@headlessui/vue', 'puppeteer-core', 'chrome-aws-lambda'],
+      transpile: ['@headlessui/vue'],
     },
 
     vite: {

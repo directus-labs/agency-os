@@ -16,6 +16,7 @@
         "@formkit/themes": "0.16.1",
         "@headlessui/vue": "^1.7.11",
         "@heroicons/vue": "^2.0.16",
+        "@netlify/functions": "^1.4.0",
         "@nuxtjs/eslint-config-typescript": "^12.0.0",
         "@nuxtjs/eslint-module": "^4.0.2",
         "@nuxtjs/tailwindcss": "^6.4.1",

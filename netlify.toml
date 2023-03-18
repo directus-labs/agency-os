@@ -1,0 +1,11 @@
+[build]
+functions = "/functions"
+
+[[redirects]]
+from = "/_api/*"
+status = 200
+to = "/.netlify/functions/:splat"
+
+[functions]
+external_node_modules = ["chrome-aws-lambda", "puppeteer-core"]
+node_bundler = "esbuild"
