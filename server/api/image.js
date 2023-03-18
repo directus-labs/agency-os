@@ -1,5 +1,7 @@
+import { Directus } from '@directus/sdk'
 import playwright from 'playwright-aws-lambda'
-
+import { Readable } from 'stream'
+import FormData from 'form-data'
 import fs from 'fs'
 
 const captureWidth = 1200
@@ -29,23 +31,21 @@ const viewportSettings = {
 }
 
 export default defineEventHandler(async (event) => {
-  const url =
-    'https://agency-os.vercel.app/_media/posts/how-to-become-a-very-productive-rabbit'
+  const config = useRuntimeConfig()
+  const directusUrl = config.public.directusUrl
+  const directusToken = config.directusToken
 
-  //   const browser = await puppeteer.launch({
-  //     headless: true,
-  //   })
+  const $directus = new Directus(directusUrl, {
+    auth: {
+      staticToken: directusToken,
+    },
+  })
 
-  //   const browser = await cpuppeteer.launch({
-  //     executablePath: process.env.HOST_NAME.includes('localhost')
-  //       ? null
-  //       : await chromium.executablePath,
-  //     args: chromium.args,
-  //     defaultViewport: {
-  //       ...viewportSettings['type'],
-  //     },
-  //     headless: chromium.headless,
-  //   })
+  // Get the slug from the event
+  const { id, seoId } = getQuery(event)
+
+  const url = `https://agency-os.vercel.app/_media/posts/${id}`
+
   const browser = await playwright.launchChromium({
     headless: true,
   })
@@ -55,8 +55,6 @@ export default defineEventHandler(async (event) => {
   await page.goto(url)
   const screenshot = await page.screenshot({
     type: 'jpeg',
-    // netlify functions can only return strings, so base64 it is
-    // encoding: 'base64',
     quality: 100,
     defaultViewport: {
       ...viewportSettings['og:image'],
@@ -70,17 +68,32 @@ export default defineEventHandler(async (event) => {
 
   await browser.close()
 
-  // Create a buffer from the screenshot
-  //   const buffer = Buffer.from(screenshot, 'base64')
-  //   // Write the buffer to a file
-  //   await fs.writeFileSync('./public/social-images/screenshot.jpg', buffer)
+  try {
+    const form = new FormData()
+    form.append('file', screenshot, 'screenshot.jpg')
 
-  return {
-    statusCode: 200,
-    headers: {
-      'Content-Type': 'image/jpg',
-    },
-    body: screenshot,
-    isBase64Encoded: true,
+    // Upload the screenshot to Directus
+    const fileId = await $directus.files.createOne(form)
+    console.log('fileId', fileId)
+
+    // Update the post.seo with the screenshot
+    await $directus.items('seo').updateOne(seoId, {
+      og_image: fileId,
+    })
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        screenshot,
+      }),
+    }
+  } catch (error) {
+    console.error(error)
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        error,
+      }),
+    }
   }
 })
