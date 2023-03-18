@@ -65,9 +65,9 @@ export default {
   },
   'family:text': {
     inner:
-      'flex items-center max-w-md ring-1 ring-gray-200 dark:ring-gray-600 dark:focus-within:ring-accent focus-within:ring-accent focus-within:shadow-md focus-within:shadow-accent/50 focus-within:ring-2 [&>label:first-child]:focus-within:text-accent mb-1 ',
+      'flex items-center max-w-md ring-1 ring-gray-200 dark:ring-gray-600 dark:focus-within:ring-accent focus-within:ring-accent focus-within:shadow-md focus-within:scale-105 transition duration-150 focus-within:shadow-accent/50 focus-within:ring-1 [&>label:first-child]:focus-within:text-accent mb-1 ',
     input:
-      'w-full px-3 py-2 border-none text-base text-gray-800 dark:text-gray-100 placeholder-gray-400',
+      'w-full px-3 py-2 border-none text-base text-gray-900 dark:text-white placeholder-gray-400',
   },
   // Specific styles apply only to a given input type
   color: {
@@ -116,9 +116,9 @@ export default {
   },
   textarea: {
     inner:
-      'flex max-w-md mb-1 ring-1 ring-gray-200 dark:ring-gray-600 dark:focus-within:ring-accent focus-within:ring-accent focus-within:shadow-md focus-within:shadow-accent/50 [&>label:first-child]:focus-within:text-accent',
+      'flex max-w-md mb-1 ring-1 ring-gray-200 dark:ring-gray-600 dark:focus-within:ring-accent focus-within:ring-accent focus-within:scale-105 transition duration-150 focus-within:shadow-md  focus-within:shadow-accent/50 [&>label:first-child]:focus-within:text-accent',
     input:
-      'block w-full h-32 px-3 py-3 border-none text-base text-gray-800 dark:text-gray-100  placeholder-gray-400',
+      'block w-full h-32 px-3 py-3 border-none text-base text-gray-900 dark:text-white  placeholder-gray-400',
   },
   // PRO input styles
   autocomplete: {
