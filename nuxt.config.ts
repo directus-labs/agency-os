@@ -18,8 +18,8 @@ export default async () => {
     // https://v3.nuxtjs.org/guide/concepts/rendering#route-rules
 
     routeRules: {
-      //   '/**': { swr: true },
-      //   '/api/**': { cors: true },
+      '/**': { swr: true },
+      '/api/**': { swr: false },
     },
 
     css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
