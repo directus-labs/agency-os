@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
       : await chromium.executablePath,
     args: chromium.args,
     defaultViewport: {
-      ...viewportSettings[type],
+      ...viewportSettings['og:image'],
     },
     headless: chromium.headless,
   })
