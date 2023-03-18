@@ -71,9 +71,9 @@ export default defineEventHandler(async (event) => {
   await browser.close()
 
   // Create a buffer from the screenshot
-  const buffer = Buffer.from(screenshot, 'base64')
-  // Write the buffer to a file
-  await fs.writeFileSync('./public/social-images/screenshot.jpg', buffer)
+  //   const buffer = Buffer.from(screenshot, 'base64')
+  //   // Write the buffer to a file
+  //   await fs.writeFileSync('./public/social-images/screenshot.jpg', buffer)
 
   return {
     statusCode: 200,
