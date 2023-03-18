@@ -57,6 +57,7 @@ const {
       class="absolute top-0 left-0 ml-6 mt-6 rounded-bl-3xl border-2 border-gray-700 overflow-hidden h-[450px] dark:outline-gray-800"
     >
       <img
+        v-if="page.image"
         :src="fileUrl(page.image)"
         class="object-cover w-full h-full saturate-0 dark:brightness-90"
         alt=""
@@ -68,12 +69,12 @@ const {
 
     <header class="absolute inset-0 flex items-center justify-end">
       <!-- Title Container -->
-      <div class="relative max-w-[900px] px-12 py-12">
+      <div class="relative w-[900px] px-12 py-12">
         <div
           class="relative flex w-full px-2 py-2 overflow-hidden text-gray-900 border-4 rounded-br-3xl rounded-tl-3xl border-accent"
         >
           <div
-            class="relative px-12 py-12 bg-white rounded-br-xl rounded-tl-xl"
+            class="relative w-full px-12 py-12 bg-white rounded-br-xl rounded-tl-xl"
           >
             <h1
               v-if="page.title"

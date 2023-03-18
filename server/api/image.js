@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
   })
 
   // Get the slug from the event
-  const { id, seoId, slug } = getQuery(event)
+  const { id, seo_id, slug } = getQuery(event)
 
   const url = `https://agency-os.vercel.app/_media/posts/${slug}`
 
@@ -75,7 +75,7 @@ export default defineEventHandler(async (event) => {
     console.log('fileId', fileId)
 
     // Update the post.seo with the screenshot
-    await $directus.items('seo').updateOne(seoId, {
+    await $directus.items('seo').updateOne(seo_id, {
       og_image: fileId,
     })
 
