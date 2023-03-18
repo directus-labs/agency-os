@@ -53,6 +53,7 @@ const {
     />
     <div class="absolute inset-0 grain-bg opacity-20" />
     <div
+      v-if="page.image"
       class="absolute top-0 left-0 ml-6 mt-6 rounded-bl-3xl border-2 border-gray-700 overflow-hidden h-[450px] dark:outline-gray-800"
     >
       <img
@@ -75,11 +76,13 @@ const {
             class="relative px-12 py-12 bg-white rounded-br-xl rounded-tl-xl"
           >
             <h1
+              v-if="page.title"
               class="font-serif text-6xl font-extrabold text-gray-900 color-em"
             >
               {{ page.title }}
             </h1>
             <p
+              v-if="page.summary"
               class="mt-4 font-mono font-semibold text-gray-500 md:text-lg font-display"
             >
               {{ page.summary }}
@@ -90,9 +93,12 @@ const {
                 <Icon name="heroicons:clock" class="w-6 h-6 mr-2" />
                 {{ calculateReadTime(page.content) }}
               </p>
-              <VBadge size="lg" :color="page.category.color">{{
-                page.category.title
-              }}</VBadge>
+              <VBadge
+                v-if="page.category"
+                size="lg"
+                :color="page.category.color"
+                >{{ page.category.title }}</VBadge
+              >
             </div>
           </div>
         </div>
