@@ -1,6 +1,5 @@
-// import puppeteer from 'puppeteer'
-import chromium from 'chrome-aws-lambda'
-
+import puppeteer from 'puppeteer-core'
+import chromium from '@sparticuz/chromium'
 import fs from 'fs'
 
 const captureWidth = 1200
@@ -37,7 +36,7 @@ export default defineEventHandler(async (event) => {
   //     headless: true,
   //   })
 
-  const browser = await chromium.puppeteer.launch({
+  const browser = await puppeteer.launch({
     executablePath: process.env.HOST_NAME.includes('localhost')
       ? null
       : await chromium.executablePath,
