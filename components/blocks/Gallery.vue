@@ -80,7 +80,7 @@ onUnmounted(() => {
     <TypographyHeadline v-if="data.headline" :content="data.headline" />
 
     <!-- Gallery -->
-    <div class="gap-8 mt-4 md:columns-3">
+    <div class="gap-4 mt-4 md:columns-3">
       <button
         v-for="(item, itemIdx) in data.gallery_items"
         :key="itemIdx"
@@ -95,20 +95,31 @@ onUnmounted(() => {
             'rounded-br-3xl rounded-tl-3xl': isEven(itemIdx),
             'rounded-bl-3xl rounded-tr-3xl': !isEven(itemIdx),
           },
-          'block relative w-full aspect-square mb-6 overflow-hidden group hover:outline outline-2 outline-offset-4 outline-gray-300 dark:outline-gray-700 transition-[outline] duration-300',
+          'block relative w-full aspect-square mb-6 overflow-hidden p-2 group border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition duration-300',
         ]"
       >
-        <img
-          :src="fileUrl(item.directus_files_id.id)"
-          class="object-cover w-full transition duration-300 group-hover:scale-110"
-        />
         <div
-          class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
+          class="relative"
+          :class="[
+            {
+              'rounded-br-2xl rounded-tl-2xl': isEven(itemIdx),
+              'rounded-bl-2xl rounded-tr-2xl': !isEven(itemIdx),
+            },
+            'block relative w-full aspect-square overflow-hidden group ',
+          ]"
         >
-          <Icon
-            name="heroicons:magnifying-glass-plus"
-            class="w-12 h-12 text-gray-500 dark:text-white"
+          <img
+            :src="fileUrl(item.directus_files_id.id)"
+            class="object-cover w-full transition duration-300 group-hover:scale-110"
           />
+          <div
+            class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
+          >
+            <Icon
+              name="heroicons:magnifying-glass-plus"
+              class="w-12 h-12 text-gray-500 dark:text-white"
+            />
+          </div>
         </div>
       </button>
     </div>

@@ -20,6 +20,7 @@ export default async () => {
     routeRules: {
       //   '/**': { swr: true },
       //   '/api/**': { swr: false },
+      // Route rules are causing some issues with the API routes on Vercel
     },
 
     css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
@@ -61,9 +62,9 @@ export default async () => {
     //   autoImports: ['defineStore', 'acceptHMRUpdate'],
     // },
 
-    // experimental: {
-    //   componentIslands: true,
-    // },
+    experimental: {
+      componentIslands: true,
+    },
 
     runtimeConfig: {
       public: {

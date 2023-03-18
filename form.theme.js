@@ -1,52 +1,55 @@
 // The following Tailwind theme aspires to be a reproduction of the
 // default optional Genesis CSS theme that ships with FormKit
-
 export default {
   // Global styles apply to _all_ inputs with matching section keys
   global: {
-    fieldset: 'max-w-md border border-gray-300 rounded px-2 pb-1',
-    help: 'text-xs text-gray-500',
+    fieldset: 'max-w-md border border-gray-400 px-2 pb-1',
+    help: 'text-xs font-mono dark:text-gray-300 text-gray-500',
     inner:
-      'formkit-disabled:bg-gray-200 formkit-disabled:cursor-not-allowed formkit-disabled:pointer-events-none font-ui',
+      '$reset formkit-disabled:bg-gray-200 bg-white dark:bg-gray-800 formkit-disabled:cursor-not-allowed formkit-disabled:pointer-events-none transition duration-150',
     input:
-      'appearance-none bg-white rounded-md focus:outline-none focus:ring-0 focus:shadow-none',
-    label: 'block mb-1 font-bold text-sm text-gray-700 font-ui',
+      'bg-transparent appearance-none focus:outline-none focus:ring-0 focus:shadow-none',
+    label:
+      'block mb-1 font-bold text-sm font-mono text-gray-700 dark:text-gray-200',
     legend: 'font-bold text-sm',
     loaderIcon: 'inline-flex items-center w-4 text-gray-600 animate-spin',
     message: 'text-red-500 mb-1 text-xs',
     messages: 'list-none p-0 mt-1 mb-0',
     outer: 'mb-4 formkit-disabled:opacity-50',
     prefixIcon:
-      'w-10 flex self-stretch grow-0 shrink-0 rounded-tl rounded-bl border-r border-gray-300 bg-white bg-gradient-to-b from-transparent to-gray-200 [&>svg]:w-full [&>svg]:max-w-[1em] [&>svg]:max-h-[1em] [&>svg]:m-auto',
+      'w-10 flex self-stretch grow-0 shrink-0 rounded-tl rounded-bl border-r border-gray-400 bg-white bg-gradient-to-b from-transparent to-gray-200 [&>svg]:w-full [&>svg]:max-w-[1em] [&>svg]:max-h-[1em] [&>svg]:m-auto',
     suffixIcon:
       'w-7 pr-3 flex self-stretch grow-0 shrink-0 [&>svg]:w-full [&>svg]:max-w-[1em] [&>svg]:max-h-[1em] [&>svg]:m-auto',
   },
-
   // Family styles apply to all inputs that share a common family
   'family:box': {
     decorator:
-      'block relative h-5 w-5 mr-2 rounded-md  bg-gradient-to-b from-transparent to-gray-200 ring-1 ring-gray-300 peer-checked:ring-accent text-transparent peer-checked:text-accent',
+      'block relative h-6 w-6  bg-white dark:bg-gray-800 ring-1 ring-gray-200 dark:ring-gray-600 peer-checked:ring-accent peer-checked:bg-accent text-transparent peer-checked:text-white transition duration-150',
     decoratorIcon:
       'flex p-[3px] w-full h-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2',
     help: 'mb-2 mt-1.5',
     input:
-      'fixed left-[999em] w-0 h-0 overflow-hidden opacity-0 pointer-events-none peer bg-white rounded',
-    label: '$reset text-sm text-gray-700 mt-1 select-none',
+      'absolute w-0 h-0 overflow-hidden opacity-0 pointer-events-none peer',
+    label:
+      '$reset text-sm text-gray-700 ml-2 dark:text-gray-300 font-medium font-mono mt-1 select-none',
     wrapper: 'flex items-center mb-1',
   },
   'family:button': {
-    input: '$reset btn btn-primary',
+    input:
+      '$reset inline-flex items-center btn btn-primary focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 formkit-disabled:bg-gray-400 formkit-loading:before:w-4 formkit-loading:before:h-4 formkit-loading:before:mr-2 formkit-loading:before:border formkit-loading:before:border-2 formkit-loading:before:border-r-transparent formkit-loading:before:rounded-3xl formkit-loading:before:border-white formkit-loading:before:animate-spin',
     wrapper: 'mb-1',
     prefixIcon: '$reset block w-4 -ml-2 mr-2 stretch',
     suffixIcon: '$reset block w-4 ml-2 stretch',
   },
   'family:dropdown': {
     dropdownWrapper:
-      'my-2 w-full drop-shadow-lg rounded [&::-webkit-scrollbar]:hidden',
+      'my-2 w-full drop-shadow-lg  [&::-webkit-scrollbar]:hidden',
+    emptyMessageInner:
+      'flex items-center justify-center text-sm p-2 text-center w-full text-gray-500 [&>span]:mr-3 [&>span]:ml-0',
     inner:
-      'max-w-md relative flex ring-1 ring-gray-300 focus-within:ring-accent focus-within:ring-2 rounded mb-1 formkit-disabled:focus-within:ring-gray-300 formkit-disabled:focus-within:ring-1 [&>span:first-child]:focus-within:text-accent',
+      'max-w-md relative flex ring-1 ring-gray-200 dark:ring-gray-600 focus-within:ring-accent focus-within:ring-2  mb-1 formkit-disabled:focus-within:ring-gray-200 dark:ring-gray-600  dark:focus-within:ring-accent formkit-disabled:focus-within:ring-1 [&>span:first-child]:focus-within:text-accent',
     input: 'w-full px-3 py-2',
-    listbox: 'bg-white drop-shadow-lg rounded overflow-hidden',
+    listbox: 'bg-white drop-shadow-lg  overflow-hidden',
     listboxButton: 'flex w-12 self-stretch justify-center mx-auto',
     listitem:
       'pl-7 relative hover:bg-gray-300 data-[is-active="true"]:bg-gray-300 data-[is-active="true"]:aria-selected:bg-accent aria-selected:bg-accent aria-selected:text-white',
@@ -62,11 +65,10 @@ export default {
   },
   'family:text': {
     inner:
-      'flex items-center max-w-md ring-1 ring-gray-300 focus-within:ring-accent focus-within:ring-2 [&>label:first-child]:focus-within:text-accent rounded mb-1',
+      'flex items-center max-w-md ring-1 ring-gray-200 dark:ring-gray-600 dark:focus-within:ring-accent focus-within:ring-accent focus-within:shadow-md focus-within:shadow-accent/50 focus-within:ring-2 [&>label:first-child]:focus-within:text-accent mb-1 ',
     input:
-      'w-full px-3 py-2 border-none text-base text-gray-700 placeholder-gray-400',
+      'w-full px-3 py-2 border-none text-base text-gray-800 dark:text-gray-100 placeholder-gray-400',
   },
-
   // Specific styles apply only to a given input type
   color: {
     inner:
@@ -105,7 +107,7 @@ export default {
   },
   select: {
     inner:
-      'flex relative items-center rounded mb-1 ring-1 ring-gray-300 focus-within:ring-accent focus-within:ring-2 [&>span:first-child]:focus-within:text-accent',
+      'flex relative max-w-md items-center rounded mb-1 ring-1 ring-gray-200 dark:ring-gray-600 focus-within:ring-accent focus-within:ring-2 [&>span:first-child]:focus-within:text-accent',
     input:
       'w-full pl-3 pr-8 py-2 border-none text-base text-gray-700 placeholder-gray-400 formkit-multiple:p-0 data-[placeholder="true"]:text-gray-400 formkit-multiple:data-[placeholder="true"]:text-inherit',
     selectIcon:
@@ -114,24 +116,17 @@ export default {
   },
   textarea: {
     inner:
-      'flex rounded mb-1 ring-1 ring-gray-300 focus-within:ring-accent [&>label:first-child]:focus-within:text-accent',
+      'flex max-w-md mb-1 ring-1 ring-gray-200 dark:ring-gray-600 dark:focus-within:ring-accent focus-within:ring-accent focus-within:shadow-md focus-within:shadow-accent/50 [&>label:first-child]:focus-within:text-accent',
     input:
-      'block w-full h-32 px-3 py-3 border-none text-base text-gray-700 placeholder-gray-400 focus:shadow-outline',
+      'block w-full h-32 px-3 py-3 border-none text-base text-gray-800 dark:text-gray-100  placeholder-gray-400',
   },
-
   // PRO input styles
   autocomplete: {
     closeIcon: 'block grow-0 shrink-0 w-3 mr-3.5',
     inner: '[&>div>[data-value]]:absolute [&>div>[data-value]]:mb-0',
     option: 'grow text-ellipsis',
     selection:
-      'static flex left-0 top-0 right-0 bottom-0 mt-0 mb-2 rounded bg-gray-100',
-  },
-  mask: {
-    inner:
-      'flex items-center max-w-md ring-1 ring-gray-300 focus-within:ring-accent focus-within:ring-2 [&>label:first-child]:focus-within:text-accent rounded mb-1',
-    input:
-      'w-full px-3 py-2 border-none text-base text-gray-700 placeholder-gray-400',
+      'static flex left-0 top-0 right-0 bottom-0 mt-0 mb-2 bg-gray-100',
   },
   rating: {
     inner: 'relative flex items-center w-[8em] formkit-disabled:bg-transparent',
@@ -161,9 +156,9 @@ export default {
       'hover:text-accent disabled:hover:text-inherit disabled:opacity-25',
   },
   taglist: {
-    input: 'px-1 py-1 w-[0%] grow border-0',
+    input: 'px-1 py-1 w-[0%] grow',
     removeSelection: 'w-2.5 mx-1 self-center text-black leading-none',
-    tag: 'flex items-center my-1 p-1 bg-gray-200 text-xs rounded-lg',
+    tag: 'flex items-center my-1 p-1 bg-gray-200 text-xs rounded-full',
     tagWrapper:
       'mr-1 focus:outline-none focus:text-white [&>div]:focus:bg-accent [&>div>button]:focus:text-white',
     tagLabel: 'pl-2 pr-1',
@@ -172,7 +167,7 @@ export default {
   toggle: {
     altLabel: 'block w-full mb-1 font-bold text-sm',
     inner: '$reset inline-block mr-2',
-    input: 'peer fixed left-[999em] opacity-0 pointer-events-none',
+    input: 'peer absolute opacity-0 pointer-events-none',
     innerLabel:
       'text-[10px] font-bold absolute left-full top-1/2 -translate-x-full -translate-y-1/2 px-1',
     thumb:
@@ -182,101 +177,53 @@ export default {
     valueLabel: 'font-bold text-sm',
     wrapper: 'flex flex-wrap items-center mb-1',
   },
-}
-
-// Create some re-useable definitions because
-// many input types are identical in how
-// we want to style them.
-const textClassification = {
-  label:
-    'block mb-1 font-bold text-sm formkit-invalid:text-red-500 text-gray-700 dark:text-gray-300 font-mono',
-  inner: `flex items-center max-w-md
-        border
-        border-gray-300
-        formkit-invalid:border-red-500
-        mb-1
-        overflow-hidden
-        focus-within:ring-accent
-        focus-within:border-accent
-        focus-within:ring-1
-        transition duration-150
+  transferlist: {
+    outer: `
+        [&_.dnd-placeholder]:bg-accent [&_.dnd-placeholder]:text-white
+        [&_.dnd-placeholder_svg]:text-white
+        [&_.dnd-children-hidden]:w-full [&_.dnd-children-hidden]:p-0 [&_.dnd-children-hidden]:flex [&_.dnd-children-hidden]:flex-col [&_.dnd-children-hidden]:border-none
+        [&_.dnd-children-hidden_span]:hidden
+        [&_.dnd-children-hidden_.formkit-transferlist-option]:hidden
+        [&_.dnd-multiple-selections_span]:inline-block
+        [&_.dnd-multiple-selections_.formkit-transferlist-option]:inline-block
       `,
-  input: `w-full h-10 px-3 border-0 focus:ring-0 text-lg md:text-base text-gray-700 placeholder-gray-400`,
-}
-const boxClassification = {
-  fieldset: 'max-w-md border border-gray-300 rounded-md px-2 pb-1',
-  legend: 'font-bold text-sm',
-  wrapper: 'flex items-center mb-2 cursor-pointer',
-  help: 'mb-2',
-  input:
-    ' appearance-none h-5 w-5 mr-2 border border-gray-400 rounded bg-white dark:bg-gray-800 text-accent focus:ring-offset-2 focus:ring-accent focus:outline-none focus:ring-1   transition duration-150',
-  label: 'text-sm text-gray-700 font-ui mt-1',
-}
-const buttonClassification = {
-  wrapper: 'mb-1',
-  input: 'btn btn-primary',
-}
-
-// export our definitions using our above
-// templates and declare one-offs and
-// overrides as needed.
-export const formTheme = {
-  // the global key will apply to all inputs
-  global: {
-    outer: 'mb-4 formkit-disabled:opacity-50 ',
-    help: 'text-xs text-gray-500',
-    messages: 'list-none p-0 mt-1 mb-0',
-    message: 'text-red-500 mb-1 text-xs',
+    fieldset: '$reset max-w-2xl',
+    wrapper:
+      'flex max-h-[350px] flex-col sm:flex-row justify-between w-full max-w-none',
+    help: 'pb-2',
+    transferlist:
+      'sm:w-3/5 shadow-md flex flex-col min-h-[350px] max-h-[350px] border rounded overflow-hidden select-none bg-gray-50',
+    transferlistHeader:
+      'flex bg-gray-100 justify-between items-center border-b p-3',
+    transferlistHeaderItemCount: 'ml-auto text-sm',
+    transferlistListItems:
+      'list-none bg-gray-50 h-full sm:max-w-xs overflow-x-hidden overflow-y-auto',
+    transferlistListItem:
+      'pl-8 relative aria-selected:bg-accent aria-selected:data-[is-active=true]:bg-accent aria-selected:text-white aria-selected:data-[is-active=true]:text-white first:-mt-px first:border-t py-2 px-3 flex relative border-b bg-white data-[is-active=true]:text-accent data-[is-active=true]:bg-gray-100 cursor-pointer group-data-[is-max=true]:cursor-not-allowed items-center',
+    transferlistOption: 'text-sm',
+    transferControls:
+      'flex sm:flex-col justify-center mx-auto my-2 sm:mx-2 sm:my-auto border rounded',
+    transferlistButton:
+      'text-sm disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-50 first:rounded-l last:rounded-r sm:first:rounded-t sm:last:rounded-b appearance-none p-2 m-0 cursor-pointer h-10 border-none rounded-none bg-gray-50 hover:outline disabled:hover:outline-none hover:outline-1 hover:outline-black hover:text-accent disabled:hover:text-current hover:z-10',
+    sourceEmptyMessage:
+      'appearance-none border-none w-full p-0 m-0 text-center text-gray-500 italic',
+    sourceListItems: 'group-data-[is-max=true]:opacity-50',
+    targetEmptyMessage:
+      'appearance-none border-none w-full p-0 m-0 text-center text-gray-500 italic',
+    emptyMessageInner: 'flex items-center justify-center p-2 text-sm',
+    transferlistControls: 'bg-white px-3 py-2 border-b',
+    transferlistSearch: 'flex border rounded items-center',
+    transferlistSearchInput:
+      'border-none p-1 w-full bg-transparent outline-none text-sm',
+    controlLabel: 'hidden',
+    selectedIcon: 'w-3 absolute left-3 select-none',
+    fastForwardIcon:
+      'w-10 flex select-none [&>svg]:m-auto [&>svg]:w-full [&>svg]:max-w-[1rem] [&>svg]:max-h-[1rem] rotate-90 sm:rotate-0',
+    moveRightIcon:
+      'w-10 flex select-none [&>svg]:m-auto [&>svg]:w-full [&>svg]:max-w-[1rem] [&>svg]:max-h-[1rem] rotate-90 sm:rotate-0',
+    moveLeftIcon:
+      'w-10 flex select-none [&>svg]:m-auto [&>svg]:w-full [&>svg]:max-w-[1rem] [&>svg]:max-h-[1rem] rotate-90 sm:rotate-0',
+    rewindIcon:
+      'w-10 flex select-none [&>svg]:m-auto [&>svg]:w-full [&>svg]:max-w-[1rem] [&>svg]:max-h-[1rem] rotate-90 sm:rotate-0',
   },
-  button: buttonClassification,
-  color: {
-    label: 'block mb-1 font-bold text-sm',
-    input:
-      'w-16 h-8 appearance-none cursor-pointer border border-gray-300 rounded-md mb-2 p-1',
-  },
-  date: textClassification,
-  'datetime-local': textClassification,
-  checkbox: boxClassification,
-  email: textClassification,
-  file: {
-    label: 'block mb-1 font-bold text-sm',
-    inner: 'max-w-md cursor-pointer',
-    input:
-      'text-gray-600 text-sm mb-1 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-accent file:text-white hover:file:bg-accent',
-    noFiles: 'block text-gray-800 text-sm mb-1',
-    fileItem: 'block flex text-gray-800 text-sm mb-1',
-    fileRemove: 'ml-auto text-accent text-sm',
-  },
-  month: textClassification,
-  number: {
-    ...textClassification,
-    input:
-      'w-full h-10 px-3 border-0 focus:ring-0 text-base text-gray-700 placeholder-gray-400 text-right',
-  },
-  password: textClassification,
-  radio: {
-    ...boxClassification,
-    input: boxClassification.input.replace('rounded', 'rounded-full'),
-  },
-  range: {
-    inner: 'max-w-md',
-    input:
-      'form-range appearance-none w-full h-2 p-0 bg-gray-200 rounded-full focus:outline-none focus:ring-0 focus:shadow-none',
-  },
-  search: textClassification,
-  select: {
-    input: 'pr-3',
-    ...textClassification,
-  },
-  submit: buttonClassification,
-  tel: textClassification,
-  text: textClassification,
-  textarea: {
-    ...textClassification,
-    input:
-      'block w-full h-32 px-3 border-0 text-base  placeholder-gray-400 focus:shadow-outline',
-  },
-  time: textClassification,
-  url: textClassification,
-  week: textClassification,
 }

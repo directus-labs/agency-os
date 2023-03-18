@@ -1,3 +1,4 @@
+// Page builder types
 export interface Block {
   id: string
   collection: string
@@ -23,4 +24,30 @@ export type Page = {
   image?: string
   blocks?: Block[]
   seo?: Seo
+}
+
+// User related types
+export type Avatar = {
+  id: string
+}
+
+export type Role = {
+  id: string
+  name?: string
+  description?: string
+}
+
+export type User = {
+  id: string
+  first_name?: string
+  last_name?: string
+  email: string
+  token?: string
+  last_login?: string
+  last_page?: string
+  theme?: 'auto' | 'dark' | 'light'
+  role: Role
+  timezone?: string
+  language?: string
+  avatar?: null | Avatar
 }

@@ -46,8 +46,6 @@ const { data, pending, error } = await useAsyncData(
 // Set the page data
 page.value = data.value
 
-defineOgImageStatic({ component: 'OgImage', title: page.value.title })
-
 onMounted(() => useAnimation())
 </script>
 <template>

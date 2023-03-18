@@ -1,6 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
+// Helper function to convert hex to rgba
 function hexToRgba(hex, alpha) {
   var r = parseInt(hex.slice(1, 3), 16)
   var g = parseInt(hex.slice(3, 5), 16)
@@ -20,8 +21,8 @@ module.exports = {
     `./App.{js,ts,vue}`,
     `./app.{js,ts,vue}`,
     `./nuxt.config.{js,ts}`,
-    `.form.theme.js`,
-    `.formkit.config.{js,ts}`,
+    `./form.theme.js`,
+    `./formkit.config.{js,ts}`,
   ],
 
   theme: {
@@ -56,7 +57,6 @@ module.exports = {
             opacity: 1,
           },
         },
-
         'spin-reverse': {
           to: {
             transform: 'rotate(-360deg)',
@@ -123,5 +123,8 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/aspect-ratio'),
+    // Formkit Plugin for Tailwind
+    // https://formkit.com/guides/create-a-tailwind-theme
+    require('@formkit/themes/tailwindcss'),
   ],
 }

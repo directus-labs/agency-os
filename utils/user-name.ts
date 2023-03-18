@@ -1,4 +1,4 @@
-import { User } from '~~/types/users'
+import { User } from '~~/types'
 
 export function userName(user: Partial<User>): string {
   if (!user) {

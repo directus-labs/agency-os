@@ -50,18 +50,24 @@ const { fileUrl } = useFiles()
           </div>
         </div>
         <div
-          class="order-first block w-full mt-12 aspect-square lg:mt-0"
-          :class="{
-            'lg:order-last': row.image_position === 'right',
-            'lg:order-first': row.image_position === 'left',
-          }"
+          class="order-first block w-full p-2 mt-12 border-2 border-gray-300 aspect-square lg:mt-0 dark:border-gray-700"
+          :class="[
+            {
+              'lg:order-last': row.image_position === 'right',
+              'lg:order-first': row.image_position === 'left',
+            },
+            {
+              'rounded-tl-3xl rounded-br-3xl ': row.image_position === 'left',
+              'rounded-tr-3xl rounded-bl-3xl': row.image_position === 'right',
+            },
+          ]"
         >
           <img
-            class="object-cover object-center w-full mx-auto bg-gray-100 lg:ml-auto dark:brightness-90"
+            class="object-cover object-center w-full h-full mx-auto bg-gray-100 lg:ml-auto dark:brightness-90"
             :class="[
               {
-                'rounded-tl-3xl rounded-br-3xl': row.image_position === 'left',
-                'rounded-tr-3xl rounded-bl-3xl': row.image_position === 'right',
+                'rounded-tl-2xl rounded-br-2xl ': row.image_position === 'left',
+                'rounded-tr-2xl rounded-bl-2xl': row.image_position === 'right',
               },
             ]"
             alt=""

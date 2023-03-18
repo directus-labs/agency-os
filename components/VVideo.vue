@@ -17,9 +17,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div
-    class="overflow-hidden rounded-tl-3xl rounded-br-3xl aspect-w-16 aspect-h-9"
-  >
+  <div class="aspect-w-16 aspect-h-9">
     <iframe
       class="aspect-video"
       :id="name"

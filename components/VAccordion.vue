@@ -7,8 +7,8 @@ const open = ref(false)
 <template>
   <div>
     <div
-      class="px-6 py-4 transition-[outline] duration-200 bg-gray-100 dark:bg-gray-800 rounded-br-3xl rounded-tl-3xl"
-      :class="open ? 'outline outline-offset-4 outline-gray-500 outline-2' : ''"
+      class="px-6 py-4 transition duration-200 bg-gray-100 border-2 dark:bg-gray-800 rounded-br-3xl rounded-tl-3xl"
+      :class="open ? 'border-gray-500' : 'border-transparent'"
     >
       <dt class="text-lg leading-7">
         <button
@@ -22,18 +22,18 @@ const open = ref(false)
             <span v-show="!open">
               <Icon
                 name="heroicons:plus"
-                class="w-8 h-8 rounded-full fill-current text-primary"
+                class="w-8 h-8 rounded-full fill-current text-accent"
               />
             </span>
             <span v-show="open"
               ><Icon
                 name="heroicons:minus"
-                class="w-8 h-8 rounded-full fill-current text-primary"
+                class="w-8 h-8 rounded-full fill-current text-accent"
             /></span>
           </span>
         </button>
       </dt>
-      <dd v-if="open" class="mt-2">
+      <dd v-show="open" class="mt-2">
         <div class="font-serif prose text-left dark:prose-invert">
           <slot />
         </div>

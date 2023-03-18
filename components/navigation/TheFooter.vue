@@ -46,7 +46,7 @@ function getUrl(item: object) {
 </script>
 <template>
   <footer
-    class="px-6 pb-8 bg-white md:mx-6 md:mb-6 dark:bg-gray-900 rounded-tl-3xl rounded-br-3xl"
+    class="relative px-6 pb-8 bg-white md:mx-6 md:mb-6 dark:bg-gray-900 rounded-tl-3xl rounded-br-3xl"
     aria-labelledby="footer-heading"
   >
     <div class="py-12 mx-auto md:px-12">

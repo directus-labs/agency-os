@@ -12,6 +12,7 @@
         "@directus/sdk": "^10.3.1",
         "@formkit/addons": "^0.16.1",
         "@formkit/auto-animate": "^1.0.0-beta.6",
+        "@formkit/icons": "^0.16.2",
         "@formkit/nuxt": "^0.16.1",
         "@formkit/themes": "0.16.1",
         "@headlessui/vue": "^1.7.11",
