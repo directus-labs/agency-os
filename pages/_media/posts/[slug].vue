@@ -65,7 +65,7 @@ const {
       />
     </div>
 
-    <header class="absolute inset-0 flex items-center justify-center">
+    <header class="absolute inset-0 flex items-center justify-end">
       <!-- Title Container -->
       <div class="relative max-w-[900px] px-12 py-12">
         <div

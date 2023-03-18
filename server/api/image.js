@@ -1,4 +1,6 @@
-import puppeteer from 'puppeteer'
+// import puppeteer from 'puppeteer'
+const chromium = require('chrome-aws-lambda')
+
 import fs from 'fs'
 
 const captureWidth = 1200
@@ -29,10 +31,21 @@ const viewportSettings = {
 
 export default defineEventHandler(async (event) => {
   const url =
-    'http://localhost:3000/_media/posts/how-to-become-a-very-productive-rabbit'
+    'https://agency-os.vercel.app/_media/posts/how-to-become-a-very-productive-rabbit'
 
-  const browser = await puppeteer.launch({
-    headless: true,
+  //   const browser = await puppeteer.launch({
+  //     headless: true,
+  //   })
+
+  const browser = await chromium.puppeteer.launch({
+    executablePath: process.env.HOST_NAME.includes('localhost')
+      ? null
+      : await chromium.executablePath,
+    args: chromium.args,
+    defaultViewport: {
+      ...viewportSettings[type],
+    },
+    headless: chromium.headless,
   })
   const page = await browser.newPage()
 
@@ -60,6 +73,11 @@ export default defineEventHandler(async (event) => {
   await fs.writeFileSync('./public/social-images/screenshot.jpg', buffer)
 
   return {
-    image: 'Created image',
+    statusCode: 200,
+    headers: {
+      'Content-Type': 'image/jpg',
+    },
+    body: screenshot,
+    isBase64Encoded: true,
   }
 })
