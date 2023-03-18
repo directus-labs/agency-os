@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
   // Get the slug from the event
   const { id, seoId, slug } = getQuery(event)
 
-  const url = `https://agency-os.vercel.app/_media/posts/${id}`
+  const url = `https://agency-os.vercel.app/_media/posts/${slug}`
 
   const browser = await playwright.launchChromium({
     headless: true,
