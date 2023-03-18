@@ -1,12 +1,7 @@
 import { Directus } from '@directus/sdk'
 import playwright from 'playwright-aws-lambda'
-// import { Readable } from 'stream'
 import FormData from 'form-data'
 import { getQuery } from 'h3'
-// import fs from 'fs'
-
-const captureWidth = 1200
-const captureHeight = 630
 
 // Aspect ratios for social media images
 // OG Image: 1.91:1
@@ -31,9 +26,6 @@ export default defineEventHandler(async (event) => {
   try {
     const { id, seo, slug } = getQuery(event)
     const config = useRuntimeConfig()
-    // Get the slug from the event
-
-    //   console.log('body', body)
 
     const directusUrl = config.public.directusUrl
     const directusToken = config.directusToken
@@ -44,13 +36,6 @@ export default defineEventHandler(async (event) => {
       },
     })
 
-    console.log('directusUrl', directusUrl)
-    console.log('directusToken', directusToken)
-
-    console.log('id', id)
-    console.log('seo', seo)
-    console.log('slug', slug)
-
     const url = `https://agency-os.vercel.app/_media/posts/${slug}`
 
     const browser = await playwright.launchChromium({
@@ -60,6 +45,11 @@ export default defineEventHandler(async (event) => {
     const page = await context.newPage()
 
     await page.goto(url)
+
+    // Wait for the page to load
+    await page.waitForSelector('body')
+
+    // Take a screenshot of the page
     const screenshot = await page.screenshot({
       type: 'jpeg',
       quality: 100,
@@ -70,7 +60,9 @@ export default defineEventHandler(async (event) => {
       },
     })
 
+    // Close the browser instance
     await browser.close()
+
     // Get timestamp for filename
     const timestamp = new Date().toISOString()
     const form = new FormData()
@@ -78,10 +70,11 @@ export default defineEventHandler(async (event) => {
 
     // Upload the screenshot to Directus
     const fileId = await $directus.files.createOne(form)
-    console.log('fileId', fileId)
 
     // Update the post.seo with the screenshot
-    // await $directus.items('seo').updateOne()
+    await $directus.items('seo').updateOne(seo, {
+      og_image: fileId,
+    })
 
     return {
       statusCode: 200,
@@ -92,11 +85,3 @@ export default defineEventHandler(async (event) => {
     return error
   }
 })
-
-// id:ddf1003f-6b9a-460c-83fd-d985d6defbd6
-// seo_id:2b94ef24-cfd4-49cc-867a-2081470ea3a1
-// slug:how-to-become-a-very-productive-rabbit
-// Create new url search params
-// const params = new URLSearchParams()
-// // Add the slug to the params
-// params.append('slug', slug)

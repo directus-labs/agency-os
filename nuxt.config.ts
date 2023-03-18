@@ -69,7 +69,6 @@ export default async () => {
       public: {
         directusUrl: process.env.DIRECTUS_URL,
         siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-
         ...globals,
       },
       directusToken: process.env.DIRECTUS_ADMIN_TOKEN,
