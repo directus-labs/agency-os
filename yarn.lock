@@ -1465,12 +1465,11 @@
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.25.24.tgz#8c7688559979f7079aacaf31aa881c3aa410b718"
   integrity sha512-XJfwUVUKDHF5ugKwIcxEgc9k8b7HbznCp6eUfWgu710hMPNIO4aw4/zB5RogDQz8nd6gyCDpU9O/m6qYEWY6yQ==
 
-"@sparticuz/chromium-min@^111.0.0":
-  version "111.0.0"
-  resolved "https://registry.yarnpkg.com/@sparticuz/chromium-min/-/chromium-min-111.0.0.tgz#f68a5ed6bd3771c4f27185a114e60adc4bb7a519"
-  integrity sha512-mAP+6AAv5ShefuVmWj18eLtz0vRv76dDfqHM3uR+DBwgpuizLORriJbofXnsFUUN9SdmeT7ceeczSZNENONeRw==
+"@sparticuz/chromium-min@^109.0.6":
+  version "109.0.6"
+  resolved "https://registry.yarnpkg.com/@sparticuz/chromium-min/-/chromium-min-109.0.6.tgz#da81377dd9cd178c0908c2da0659690a17e353d0"
+  integrity sha512-b5xghWS2MAcj7uqUPu6lqoN1+nz8xzHoAPxD4kSsyD+zX0B95I5kzw02H46GQ8DCQSK2u2MNGMjr0O5F2EvmBw==
   dependencies:
-    follow-redirects "^1.15.2"
     tar-fs "^2.1.1"
 
 "@tailwindcss/aspect-ratio@^0.4.2":
@@ -3909,7 +3908,7 @@ flatted@^3.1.0, flatted@^3.2.7:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
 
-follow-redirects@^1.0.0, follow-redirects@^1.14.9, follow-redirects@^1.15.2:
+follow-redirects@^1.0.0, follow-redirects@^1.14.9:
   version "1.15.2"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
