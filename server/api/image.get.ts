@@ -28,7 +28,7 @@ const viewportSettings = {
 
 export default defineEventHandler(async (event) => {
   try {
-    const { id, seo_id, slug } = getQuery(event)
+    const { id, seo, slug } = getQuery(event)
     const config = useRuntimeConfig()
     // Get the slug from the event
 
@@ -47,7 +47,7 @@ export default defineEventHandler(async (event) => {
     console.log('directusToken', directusToken)
 
     console.log('id', id)
-    console.log('seo_id', seo_id)
+    console.log('seo', seo)
     console.log('slug', slug)
 
     const url = `https://agency-os.vercel.app/_media/posts/${slug}`
@@ -80,9 +80,7 @@ export default defineEventHandler(async (event) => {
     console.log('fileId', fileId)
 
     // Update the post.seo with the screenshot
-    await $directus.items('seo').updateOne(seo_id, {
-      og_image: fileId,
-    })
+    // await $directus.items('seo').updateOne()
 
     return {
       statusCode: 200,

@@ -78,7 +78,7 @@ const {
           >
             <h1
               v-if="page.title"
-              class="font-serif text-6xl font-extrabold text-gray-900 color-em"
+              class="font-serif text-5xl font-extrabold text-gray-900 color-em"
             >
               {{ page.title }}
             </h1>
