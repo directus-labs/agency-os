@@ -6,13 +6,22 @@ const { fileUrl } = useFiles()
 // Get the params from the Nuxt route
 const { params, path } = useRoute()
 
+const page = ref({})
+
+useHead({
+  title: () => page.value.title,
+})
+
+useSeoMeta({
+  //   title: () => page.value.title,
+  //   description: () => page.value.summary,
+  //   image: () => fileUrl(page.value.image),
+  ogImage: () => (page.value.seo ? fileUrl(page.value.seo.og_image) : null),
+})
+
 // Fetch the page data from the Directus API using the Nuxt useAsyncData composable
 // https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
-const {
-  data: page,
-  pending,
-  error,
-} = await useAsyncData(
+const { data, pending, error } = await useAsyncData(
   path,
   () => {
     return $directus.items('posts').readByQuery({
@@ -20,6 +29,7 @@ const {
       limit: 1,
       fields: [
         '*',
+        'seo.*',
         'author.*',
         'category.title',
         'category.slug',
@@ -36,14 +46,13 @@ const {
       'author',
       'category',
       'summary',
+      'seo',
       'date_published',
     ],
   }
 )
 
-useHead({
-  title: page.value.title,
-})
+page.value = data.value
 </script>
 <template>
   <div>

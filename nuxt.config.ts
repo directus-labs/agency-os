@@ -40,7 +40,7 @@ export default async () => {
     modules: [
       'nuxt-icon',
       // https://github.com/harlan-zw/nuxt-og-image
-      'nuxt-og-image',
+      //   'nuxt-og-image',
       // https://tailwindcss.nuxtjs.org/
       '@nuxtjs/tailwindcss',
       // https://pinia.esm.dev
@@ -60,9 +60,9 @@ export default async () => {
     //   autoImports: ['defineStore', 'acceptHMRUpdate'],
     // },
 
-    experimental: {
-      componentIslands: true,
-    },
+    // experimental: {
+    //   componentIslands: true,
+    // },
 
     runtimeConfig: {
       public: {
