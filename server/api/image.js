@@ -1,5 +1,4 @@
-import puppeteer from 'puppeteer-core'
-import chromium from 'chrome-aws-lambda'
+import playwright from 'playwright-aws-lambda'
 
 import fs from 'fs'
 
@@ -20,7 +19,7 @@ const viewportSettings = {
   'og:image': {
     width: 1200,
     height: 630,
-    deviceScaleFactor: 2,
+    // deviceScaleFactor: 2,
   },
   square: {
     width: 850,
@@ -37,23 +36,27 @@ export default defineEventHandler(async (event) => {
   //     headless: true,
   //   })
 
-  const browser = await puppeteer.launch({
-    executablePath: process.env.HOST_NAME.includes('localhost')
-      ? null
-      : await chromium.executablePath,
-    args: chromium.args,
-    defaultViewport: {
-      ...viewportSettings['type'],
-    },
-    headless: chromium.headless,
+  //   const browser = await cpuppeteer.launch({
+  //     executablePath: process.env.HOST_NAME.includes('localhost')
+  //       ? null
+  //       : await chromium.executablePath,
+  //     args: chromium.args,
+  //     defaultViewport: {
+  //       ...viewportSettings['type'],
+  //     },
+  //     headless: chromium.headless,
+  //   })
+  const browser = await playwright.launchChromium({
+    headless: true,
   })
-  const page = await browser.newPage()
+  const context = await browser.newContext()
+  const page = await context.newPage()
 
   await page.goto(url)
   const screenshot = await page.screenshot({
     type: 'jpeg',
     // netlify functions can only return strings, so base64 it is
-    encoding: 'base64',
+    // encoding: 'base64',
     quality: 100,
     defaultViewport: {
       ...viewportSettings['og:image'],

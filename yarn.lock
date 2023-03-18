@@ -5021,7 +5021,7 @@ koa@^2.12.0:
     type-is "^1.6.16"
     vary "^1.1.2"
 
-lambdafs@^2.0.3:
+lambdafs@^2.0.3, lambdafs@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/lambdafs/-/lambdafs-2.1.1.tgz#4bf8d3037b6c61bbb4a22ab05c73ee47964c25ed"
   integrity sha512-x5k8JcoJWkWLvCVBzrl4pzvkEHSgSBqFjg3Dpsc4AcTMq7oUMym4cL/gRTZ6VM4mUMY+M0dIbQ+V1c1tsqqanQ==
@@ -6093,6 +6093,13 @@ pkg-types@^1.0.1, pkg-types@^1.0.2:
     jsonc-parser "^3.2.0"
     mlly "^1.1.1"
     pathe "^1.1.0"
+
+playwright-aws-lambda@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/playwright-aws-lambda/-/playwright-aws-lambda-0.10.0.tgz#e07beeb3c0739ad21d77818fb8c792b379428124"
+  integrity sha512-osGbx0Nwco6E9JZK/2Uq3lrQ5rmjLEQ9Iw0286wQZ93s+8Ok8IwOmzP765JGTRDvjd/5woE5qwICnhw9iPisOQ==
+  dependencies:
+    lambdafs "^2.1.1"
 
 playwright-core@^1.31.2:
   version "1.31.2"
