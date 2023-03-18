@@ -19,6 +19,7 @@ export default async () => {
 
     routeRules: {
       '/**': { swr: true },
+      '/api/**': { cors: true },
     },
 
     css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
