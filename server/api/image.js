@@ -1,5 +1,6 @@
-import puppeteer from 'puppeteer-core'
-import chromium from '@sparticuz/chromium'
+import puppeteer from 'puppeteer'
+import chromium from 'chrome-aws-lambda'
+
 import fs from 'fs'
 
 const captureWidth = 1200
@@ -42,7 +43,7 @@ export default defineEventHandler(async (event) => {
       : await chromium.executablePath,
     args: chromium.args,
     defaultViewport: {
-      ...viewportSettings['og:image'],
+      ...viewportSettings['type'],
     },
     headless: chromium.headless,
   })
