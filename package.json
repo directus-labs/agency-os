@@ -27,13 +27,21 @@
         "@vueuse/core": "^9.13.0",
         "@vueuse/motion": "^2.0.0-beta.25",
         "@vueuse/nuxt": "^9.13.0",
+        "chrome-aws-lambda": "^10.1.0",
         "eslint": "^8.34.0",
         "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-prettier": "^4.2.1",
+        "node-fetch": "^3.3.1",
         "nuxt": "^3.3.1",
         "nuxt-icon": "^0.3.3",
+        "nuxt-og-image": "^1.5.5",
         "pinia": "^2.0.32",
-        "prettier": "^2.8.4"
+        "prettier": "^2.8.4",
+        "puppeteer": "^19.7.5",
+        "puppeteer-core": "^19.7.5",
+        "satori": "^0.4.3"
     },
-    "dependencies": {}
+    "dependencies": {
+        "@vercel/og": "^0.4.0"
+    }
 }

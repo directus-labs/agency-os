@@ -38,8 +38,10 @@ export default async () => {
     },
 
     modules: [
-      //   '@nuxtjs/eslint-module',
       'nuxt-icon',
+      // https://github.com/harlan-zw/nuxt-og-image
+      'nuxt-og-image',
+      // https://tailwindcss.nuxtjs.org/
       '@nuxtjs/tailwindcss',
       // https://pinia.esm.dev
       '@pinia/nuxt',
@@ -58,9 +60,15 @@ export default async () => {
     //   autoImports: ['defineStore', 'acceptHMRUpdate'],
     // },
 
+    experimental: {
+      componentIslands: true,
+    },
+
     runtimeConfig: {
       public: {
         directusUrl: process.env.DIRECTUS_URL,
+        siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+
         ...globals,
       },
       directusToken: process.env.DIRECTUS_ADMIN_TOKEN,
@@ -77,7 +85,7 @@ export default async () => {
 
     //   Currently still needed
     build: {
-      transpile: ['@heroicons/vue', '@headlessui/vue'],
+      transpile: ['@headlessui/vue'],
     },
 
     vite: {
