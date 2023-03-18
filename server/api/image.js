@@ -6,10 +6,6 @@ import fs from 'fs'
 
 const captureWidth = 1200
 const captureHeight = 630
-// const clipY = 72
-
-// Twitter Card: Website: 800 x 418 px
-//
 
 // Aspect ratios for social media images
 // OG Image: 1.91:1
@@ -42,7 +38,7 @@ export default defineEventHandler(async (event) => {
   })
 
   // Get the slug from the event
-  const { id, seoId } = getQuery(event)
+  const { id, seoId, slug } = getQuery(event)
 
   const url = `https://agency-os.vercel.app/_media/posts/${id}`
 
@@ -69,8 +65,10 @@ export default defineEventHandler(async (event) => {
   await browser.close()
 
   try {
+    // Get timestamp for filename
+    const timestamp = new Date().toISOString()
     const form = new FormData()
-    form.append('file', screenshot, 'screenshot.jpg')
+    form.append('file', screenshot, `posts-${slug}-${timestamp}.jpg`)
 
     // Upload the screenshot to Directus
     const fileId = await $directus.files.createOne(form)
