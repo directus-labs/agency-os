@@ -2,6 +2,7 @@ import { Directus } from '@directus/sdk'
 import playwright from 'playwright-aws-lambda'
 // import { Readable } from 'stream'
 import FormData from 'form-data'
+import { getQuery } from 'h3'
 // import fs from 'fs'
 
 const captureWidth = 1200
@@ -91,3 +92,11 @@ export default defineEventHandler(async (event) => {
     return error
   }
 })
+
+// id:ddf1003f-6b9a-460c-83fd-d985d6defbd6
+// seo_id:2b94ef24-cfd4-49cc-867a-2081470ea3a1
+// slug:how-to-become-a-very-productive-rabbit
+// Create new url search params
+// const params = new URLSearchParams()
+// // Add the slug to the params
+// params.append('slug', slug)
