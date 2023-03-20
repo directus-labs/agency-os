@@ -152,7 +152,7 @@ onUnmounted(() => {
       >
         <button
           @click="toggle"
-          class="absolute z-50 w-12 h-12 text-2xl text-white transition duration-300 top-4 right-4 bg-accent hover:bg-opacity-75 rounded-tr-xl rounded-bl-xl"
+          class="absolute z-50 p-4 text-2xl text-white transition duration-300 top-4 right-4 bg-accent hover:bg-opacity-75 rounded-tr-xl rounded-bl-xl"
         >
           <div>
             <span class="sr-only">Close</span>
@@ -162,14 +162,14 @@ onUnmounted(() => {
         <div class="flex items-center justify-center w-full h-full">
           <button
             @click="prev"
-            class="absolute z-50 w-12 h-12 text-2xl text-white transition duration-300 left-4 bg-accent hover:bg-opacity-75 rounded-tr-xl rounded-bl-xl"
+            class="absolute z-50 p-4 text-2xl text-white transition duration-300 left-4 bg-accent hover:bg-opacity-75 rounded-tr-xl rounded-bl-xl"
           >
             <span class="sr-only">Previous</span>
             <Icon name="heroicons:arrow-left" class="w-6 h-6" />
           </button>
           <button
             @click="next"
-            class="absolute z-50 w-12 h-12 text-2xl text-white transition duration-300 right-4 bg-accent hover:bg-opacity-75 rounded-br-xl rounded-tl-xl"
+            class="absolute z-50 p-4 text-2xl text-white transition duration-300 right-4 bg-accent hover:bg-opacity-75 rounded-br-xl rounded-tl-xl"
           >
             <span class="sr-only">Next</span>
             <Icon name="heroicons:arrow-right" class="w-6 h-6" />

@@ -19,14 +19,15 @@ const {
 </script>
 <template>
   <div class="mt-4 space-y-2">
-    <NuxtLink
-      v-for="category in categories"
-      :href="`/posts/categories/${category.slug}`"
-      class="block font-mono dark:text-gray-200 hover:opacity-80"
-    >
-      <VBadge :color="category.color" size="lg">
-        {{ category.title }}
-      </VBadge>
-    </NuxtLink>
+    <div v-for="category in categories" :key="category.id">
+      <NuxtLink
+        :href="`/posts/categories/${category.slug}`"
+        class="font-mono dark:text-gray-200 hover:opacity-80"
+      >
+        <VBadge :color="category.color" size="lg">
+          {{ category.title }}
+        </VBadge>
+      </NuxtLink>
+    </div>
   </div>
 </template>
