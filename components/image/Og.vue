@@ -18,7 +18,7 @@ const props = defineProps({
     <div class="absolute inset-0 grain-bg opacity-20" />
     <div
       v-if="imageUrl"
-      class="absolute top-0 left-0 ml-6 mt-6 rounded-bl-3xl border-2 border-gray-700 overflow-hidden h-[450px] dark:outline-gray-800"
+      class="absolute top-0 left-0 mt-6 ml-6 overflow-hidden border-2 border-gray-700 rounded-bl-3xl dark:outline-gray-800"
     >
       <img
         :src="imageUrl"
@@ -59,7 +59,10 @@ const props = defineProps({
                   avatar_url: authorImage,
                 }"
               />
-              <p class="flex font-mono text-gray-500 dark:text-gray-300">
+              <p
+                v-if="readTime"
+                class="flex font-mono text-gray-500 dark:text-gray-300"
+              >
                 <Icon name="heroicons:clock" class="w-6 h-6 mr-2" />
                 {{ readTime }}
               </p>

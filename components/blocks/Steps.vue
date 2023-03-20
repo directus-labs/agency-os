@@ -51,10 +51,10 @@ const { fileUrl } = useFiles()
             },
             {
               'md:flex-row': isEven(stepIdx) && !data.alternate_image_position,
-              'md:flex-row-reverse space-x-reverse':
+              'md:flex-row-reverse md:space-x-reverse':
                 !isEven(stepIdx) && data.alternate_image_position,
             },
-            'relative p-6 md:flex md:space-x-8  ring-accent ring-2',
+            'relative p-6 md:flex md:space-x-8 ring-accent ring-2',
           ]"
         >
           <div class="flex-shrink-0">
@@ -71,7 +71,7 @@ const { fileUrl } = useFiles()
             />
           </div>
 
-          <div class="mt-4 text-left md:mt-0">
+          <div class="w-full mt-4 text-left md:mt-0">
             <div
               v-if="data.show_step_numbers"
               class="font-mono text-sm font-bold tracking-wide uppercase text-accent text-primary"
