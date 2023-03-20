@@ -16,10 +16,9 @@
         "@formkit/nuxt": "^0.16.1",
         "@formkit/themes": "0.16.1",
         "@headlessui/vue": "^1.7.11",
-        "@heroicons/vue": "^2.0.16",
-        "@netlify/functions": "^1.4.0",
         "@nuxtjs/eslint-config-typescript": "^12.0.0",
         "@nuxtjs/eslint-module": "^4.0.2",
+        "@nuxtjs/google-fonts": "^3.0.0",
         "@nuxtjs/tailwindcss": "^6.4.1",
         "@pinia/nuxt": "^0.4.7",
         "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -29,25 +28,16 @@
         "@vueuse/core": "^9.13.0",
         "@vueuse/motion": "^2.0.0-beta.25",
         "@vueuse/nuxt": "^9.13.0",
-        "chrome-aws-lambda": "^10.1.0",
-        "eslint": "^8.34.0",
         "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-prettier": "^4.2.1",
+        "eslint": "^8.34.0",
         "form-data": "^4.0.0",
-        "node-fetch": "^3.3.1",
-        "nuxt": "^3.3.1",
         "nuxt-icon": "^0.3.3",
-        "nuxt-og-image": "^1.5.5",
+        "nuxt": "^3.3.1",
         "pinia": "^2.0.32",
         "playwright-aws-lambda": "^0.10.0",
         "playwright-core": "^1.31.2",
-        "prettier": "^2.8.4",
-        "puppeteer": "^19.7.5",
-        "puppeteer-core": "^19.7.5",
-        "satori": "^0.4.3",
-        "stream": "^0.0.2"
+        "prettier": "^2.8.4"
     },
-    "dependencies": {
-        "@vercel/og": "^0.4.0"
-    }
+    "dependencies": {}
 }

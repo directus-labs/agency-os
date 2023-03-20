@@ -100,7 +100,7 @@ const duration = computed(() => {
 </script>
 <template>
   <section>
-    <PageContainer>
+    <BlockContainer>
       <div class="flex flex-col-reverse py-24 mx-auto lg:flex-row">
         <!-- Text -->
         <div class="flex flex-col pr-4 mt-8 lg:w-2/5">
@@ -169,7 +169,7 @@ const duration = computed(() => {
           </div>
         </div>
       </div>
-    </PageContainer>
+    </BlockContainer>
   </section>
 </template>
 

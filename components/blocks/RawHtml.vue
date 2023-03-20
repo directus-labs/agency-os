@@ -12,5 +12,7 @@ const props = defineProps({
 })
 </script>
 <template>
-  <section v-html="data.raw_html" />
+  <BlockContainer>
+    <div v-html="data.raw_html" />
+  </BlockContainer>
 </template>

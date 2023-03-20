@@ -14,13 +14,11 @@ const props = defineProps({
 })
 </script>
 <template>
-  <section>
-    <PageContainer class="">
-      <div class="text-center">
-        <TypographyTitle>{{ data.title }}</TypographyTitle>
-        <TypographyHeadline :content="data.headline" size="xl" />
-      </div>
-      <TypographyProse :content="data.content" class="mx-auto mt-8 font-mono" />
-    </PageContainer>
-  </section>
+  <BlockContainer>
+    <div class="text-center">
+      <TypographyTitle>{{ data.title }}</TypographyTitle>
+      <TypographyHeadline :content="data.headline" size="xl" />
+    </div>
+    <TypographyProse :content="data.content" class="mx-auto mt-8 font-mono" />
+  </BlockContainer>
 </template>

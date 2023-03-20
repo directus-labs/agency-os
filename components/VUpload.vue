@@ -11,9 +11,9 @@
       :class="[
         'dropzone',
         {
-          'border-primary-600 bg-primary-50 dark:bg-primary-800 !text-primary-600  dark:!text-gray-100 dark:border-primary-300':
+          'border-accent bg-primary-50 dark:bg-accent !text-accent  dark:!text-gray-100 dark:border-accent':
             dragging,
-          'hover:border-primary-600 hover:text-primary-600 dark:hover:text-primary-500 dark:hover:border-primary-500':
+          'hover:border-accent hover:text-accent dark:hover:text-accent dark:hover:border-accent':
             !dragging && !uploading,
           'text-gray-500 border-gray-300 dark:text-gray-100 dark:border-gray-700':
             !uploading,
@@ -55,7 +55,7 @@
           v-if="uploading"
           class="absolute inset-0 flex items-center justify-center bg-white rounded-md bg-opacity-70 dark:bg-gray-800 dark:bg-opacity-90"
         >
-          <VLoading class="w-16 h-16 text-primary-600 dark:text-primary-500" />
+          <VLoading class="w-16 h-16 text-accent dark:text-accent" />
         </div>
       </transition>
     </div>

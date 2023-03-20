@@ -74,7 +74,7 @@ onUnmounted(() => {
 })
 </script>
 <template>
-  <PageContainer>
+  <BlockContainer>
     <!-- Title -->
     <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
     <TypographyHeadline v-if="data.headline" :content="data.headline" />
@@ -206,5 +206,5 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
-  </PageContainer>
+  </BlockContainer>
 </template>

@@ -72,7 +72,7 @@ watch(
             {{ tagline }}
           </p>
           <DarkModeToggle
-            class="absolute text-gray-500 top-4 right-4 dark:text-gray-200 hover:text-primary-400"
+            class="absolute text-gray-500 top-4 right-4 dark:text-gray-200 hover:text-accent"
           />
         </div>
         <div class="flex flex-col justify-center h-full px-6 space-y-2">
@@ -96,7 +96,7 @@ watch(
       :class="{
         'bg-accent': isOpen || !isOpen,
       }"
-      class="fixed z-50 p-4 text-white transition duration-300 shadow-md md:hidden bottom-4 right-4 bg-accent hover:bg-opacity-80 rounded-tr-xl rounded-bl-xl"
+      class="fixed z-50 p-4 text-white transition duration-300 shadow-md md:hidden bottom-4 right-4 bg-accent hover:bg-opacity-75 rounded-tr-xl rounded-bl-xl"
     >
       <div>
         <span class="sr-only">Close</span>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Page } from '~~/types'
+
 // Map the page builder collection names to the components
 // https://nuxt.com/docs/guide/directory-structure/components#dynamic-components
 const map = {

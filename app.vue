@@ -5,5 +5,8 @@
     0%,#94a3b8 100%)"
     />
     <NuxtPage />
+    <DevOnly>
+      <DevToolbar />
+    </DevOnly>
   </NuxtLayout>
 </template>

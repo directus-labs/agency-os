@@ -1,18 +1,8 @@
 <script setup lang="ts">
+import { Post } from '~~/types'
 const { fileUrl } = useFiles()
 const props = defineProps<{
-  post: {
-    id: string
-    title: string
-    summary: string
-    image: string
-    slug: string
-    category: {
-      title: string
-      slug: string
-      color: string
-    }
-  }
+  post: Post
   even: boolean
 }>()
 </script>
@@ -25,31 +15,40 @@ const props = defineProps<{
             'rounded-br-3xl rounded-tl-3xl': even,
             'rounded-bl-3xl rounded-tr-3xl': !even,
           },
-          'relative overflow-hidden h-56 w-full group-hover:outline outline-2 outline-offset-4 outline-gray-300 dark:outline-gray-700 transition-[outline] duration-300',
+          'relative overflow-hidden h-56 w-full p-2 border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-700 transition duration-150',
         ]"
       >
-        <img
-          class="object-cover w-full h-full transition-opacity duration-300 saturate-0 group-hover:opacity-75"
-          :src="fileUrl(post.image)"
-          alt=""
-        />
         <div
-          class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-br from-transparent via-transparent to-accent group-hover:opacity-100"
-        />
-
-        <VBadge
-          v-if="post.category"
-          size="lg"
-          :color="post.category.color"
           :class="[
             {
-              'rounded-br-lg': even,
-              'rounded-bl-lg': !even,
+              'rounded-br-2xl rounded-tl-2xl': even,
+              'rounded-bl-2xl rounded-tr-2xl': !even,
             },
-            'absolute bottom-0 left-0 ml-4 mb-4',
+            'block w-full group h-full relative overflow-hidden',
           ]"
-          >{{ post.category.title }}</VBadge
         >
+          <img
+            class="object-cover w-full h-full transition-opacity duration-300 saturate-0 group-hover:opacity-75"
+            :src="fileUrl(post.image)"
+            alt=""
+          />
+          <div
+            class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-br from-transparent via-transparent to-accent group-hover:opacity-100"
+          />
+          <VBadge
+            v-if="post.category"
+            size="lg"
+            :color="post.category.color"
+            :class="[
+              {
+                'rounded-br-lg': even,
+                'rounded-bl-lg': !even,
+              },
+              'absolute bottom-0 left-0 ml-4 mb-4',
+            ]"
+            >{{ post.category.title }}</VBadge
+          >
+        </div>
       </div>
     </NuxtLink>
 

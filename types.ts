@@ -51,3 +51,47 @@ export type User = {
   language?: string
   avatar?: null | Avatar
 }
+
+// Other collection types
+
+export type Post = {
+  id: string
+  title: string
+  summary: string
+  image: string
+  slug: string
+  category: {
+    title: string
+    slug: string
+    color: string
+  }
+}
+
+export type Form = {
+  form: {
+    id: string
+    key?: string
+    submit_label?: string
+    schema: Array<{
+      id: string
+      type: string
+      label: string
+      placeholder: string
+      required: boolean
+    }>
+  }
+}
+
+export type NavigationItem = {
+  id: string
+  title: string
+  type: string
+  url: string
+  open_in_new_tab: boolean
+  has_children: boolean
+  children: NavigationItem[]
+  parent: string
+  page: {
+    slug: string
+  }
+}

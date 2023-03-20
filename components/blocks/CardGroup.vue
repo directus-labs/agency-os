@@ -13,5 +13,5 @@ const props = defineProps({
 })
 </script>
 <template>
-  <section>CardGroup</section>
+  <BlockContainer>CardGroup</BlockContainer>
 </template>

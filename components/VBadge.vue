@@ -16,7 +16,7 @@
       badgeColor === 'red' ? `bg-red-100 text-red-800` : '',
       badgeColor === 'indigo' ? `bg-indigo-100 text-indigo-800` : '',
       badgeColor === 'violet' ? `bg-violet-100 text-violet-800` : '',
-      badgeColor === 'pink' ? `bg-primary-100 text-primary-800` : '',
+      badgeColor === 'pink' ? `bg-primary-100 text-accent` : '',
       badgeColor === 'yellow' ? `bg-yellow-100 text-yellow-800` : '',
       size === 'sm' ? 'text-xs px-2 py-0.5' : '',
       size === 'lg' ? ' px-2.5 py-0.5' : '',

@@ -1,10 +1,5 @@
 <script setup lang="ts">
-// Import the $directus plugin
 const { $directus } = useNuxtApp()
-const { fileUrl } = useFiles()
-
-// Fetch the page data from the Directus API using the Nuxt useAsyncData composable
-// https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
 
 const { data: navigation } = await useAsyncData(
   'footerNav',

@@ -17,12 +17,12 @@ const props = defineProps<{
 </script>
 <template>
   <figure
-    class="relative space-x-2 md:flex outline outline-2 outline-offset-4 outline-accent rounded-bl-3xl rounded-tr-3xl"
+    class="relative p-2 space-x-2 border-2 md:flex border-accent rounded-bl-3xl rounded-tr-3xl]"
   >
     <NuxtLink class="group" :href="`/posts/${post.slug}`">
       <div
         :class="[
-          'relative overflow-hidden h-[300px] w-[300px]  duration-300 rounded-bl-3xl rounded-tr-3xl',
+          'relative overflow-hidden h-[300px] w-[300px] duration-300 rounded-bl-2xl ',
         ]"
       >
         <img
@@ -44,15 +44,13 @@ const props = defineProps<{
       </div>
     </NuxtLink>
 
-    <div class="relative px-8 overflow-hidden rounded-tl-3xl rounded-tr-3xl">
-      <div
-        class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-accent dark:from-gray-700 dark:via-gray-900 dark:to-accent"
-      />
-      <div class="absolute inset-0 grain-bg dark:opacity-20" />
-      <NuxtLink class="relative block" :href="`/posts/${post.slug}`">
+    <div
+      class="relative px-8 overflow-hidden transition duration-300 rounded-tl-3xl rounded-tr-3xl group"
+    >
+      <NuxtLink class="relative block g" :href="`/posts/${post.slug}`">
         <!-- Icon -->
         <p
-          class="mt-5 font-serif text-3xl font-semibold text-gray-900 dark:text-white group-hover:text-accent"
+          class="mt-5 font-serif text-3xl font-semibold text-gray-900 transition duration-300 dark:text-white group-hover:text-accent"
         >
           {{ post.title }}
         </p>

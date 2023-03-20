@@ -21,7 +21,7 @@ const props = defineProps({
 const { fileUrl } = useFiles()
 </script>
 <template>
-  <section class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
+  <BlockContainer class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
     <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
     <TypographyHeadline v-if="data.headline" :content="data.headline" />
     <div class="flow-root mt-8 lg:mt-10">
@@ -45,5 +45,5 @@ const { fileUrl } = useFiles()
         </div>
       </div>
     </div>
-  </section>
+  </BlockContainer>
 </template>

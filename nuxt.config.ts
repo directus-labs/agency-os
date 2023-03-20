@@ -1,6 +1,6 @@
 import { Directus } from '@directus/sdk'
-// https://nuxt.com/docs/api/configuration/nuxt-config
 
+// https://nuxt.com/docs/api/configuration/nuxt-config
 // Define the Nuxt 3 config asyncronously
 export default async () => {
   const directus = new Directus(process.env.DIRECTUS_URL, {
@@ -12,11 +12,8 @@ export default async () => {
   const { data: globals } = await directus.items('globals').readByQuery({})
 
   return defineNuxtConfig({
-    // https://v3.nuxtjs.org/guide/directory-structure/nuxt.config/
-
     // As of RC12 Nuxt 3 supports Hybrid rendering mode
     // https://v3.nuxtjs.org/guide/concepts/rendering#route-rules
-
     routeRules: {
       //   '/**': { swr: true },
       //   '/api/**': { swr: false },
@@ -25,42 +22,21 @@ export default async () => {
 
     css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
 
-    // Add Google Fonts
-    // https://v3.nuxtjs.org/docs/directory-structure/assets#google-fonts
     app: {
       head: {
         titleTemplate: `%s - ${globals.title}`,
-        link: [
-          {
-            rel: 'stylesheet',
-            href: 'https://fonts.googleapis.com/css2?family=Fira+Code&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap',
-          },
-        ],
       },
     },
 
     modules: [
-      'nuxt-icon',
-      // https://github.com/harlan-zw/nuxt-og-image
-      //   'nuxt-og-image',
-      // https://tailwindcss.nuxtjs.org/
-      '@nuxtjs/tailwindcss',
-      // https://pinia.esm.dev
-      '@pinia/nuxt',
-      // https://vueuse.org/
-      '@vueuse/nuxt',
-      // https://motion.vueuse.org/nuxt.html
-      '@vueuse/motion/nuxt',
-      '@formkit/nuxt',
+      'nuxt-icon', // https://github.com/nuxt-modules/icon
+      '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/
+      '@pinia/nuxt', // https://pinia.esm.dev
+      '@vueuse/nuxt', // https://vueuse.org/
+      '@vueuse/motion/nuxt', // https://motion.vueuse.org/nuxt.html
+      '@formkit/nuxt', // https://formkit.com/getting-started/installation#with-nuxt
+      '@nuxtjs/google-fonts', // https://google-fonts.nuxtjs.org/
     ],
-
-    // imports: {
-    //   dirs: ['./stores'],
-    // },
-
-    // pinia: {
-    //   autoImports: ['defineStore', 'acceptHMRUpdate'],
-    // },
 
     experimental: {
       componentIslands: true,
@@ -75,6 +51,18 @@ export default async () => {
       directusToken: process.env.DIRECTUS_ADMIN_TOKEN,
     },
 
+    // Start Modules Configuration
+    googleFonts: {
+      families: {
+        Inter: true,
+        'Fira Code': true,
+        'Playfair Display': [400, 500, 600, 700, 800, 900],
+      },
+      display: 'swap',
+      download: true,
+    },
+    // End Modules Configuration
+
     postcss: {
       plugins: {
         'postcss-import': {},
@@ -84,7 +72,7 @@ export default async () => {
       },
     },
 
-    //   Currently still needed
+    // Currently still needed for Headless UI to work
     build: {
       transpile: ['@headlessui/vue'],
     },

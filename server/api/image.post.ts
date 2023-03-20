@@ -1,43 +1,30 @@
-import { Directus } from '@directus/sdk'
+import { createDirectus } from '~~/server/utils/directus-server'
 import playwright from 'playwright-aws-lambda'
 import FormData from 'form-data'
-import { getQuery } from 'h3'
+import { getQuery, readBody } from 'h3'
 
 // Aspect ratios for social media images
 // OG Image: 1.91:1
-// Twitter: 1.91:1
 // Square: 1:1
-//
-
 const viewportSettings = {
   'og:image': {
     width: 1200,
     height: 630,
-    // deviceScaleFactor: 2,
   },
   square: {
     width: 850,
     height: 850,
-    deviceScaleFactor: 2,
   },
 }
 
 export default defineEventHandler(async (event) => {
   try {
-    const { id, seo, slug } = getQuery(event)
     const config = useRuntimeConfig()
+    const $directus = createDirectus(config)
 
-    const directusUrl = config.public.directusUrl
-    const directusToken = config.directusToken
+    const { id, seo, slug, url } = readBody(event)
 
-    const $directus = new Directus(directusUrl, {
-      auth: {
-        staticToken: directusToken,
-      },
-    })
-
-    const url = `https://agency-os.vercel.app/_media/posts/${slug}`
-
+    // Initialize the browser
     const browser = await playwright.launchChromium({
       headless: true,
     })

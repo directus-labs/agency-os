@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // Import the $directus plugin
 const { $directus } = useNuxtApp()
-const { fileUrl } = useFiles()
 
 // Get the params from the Nuxt route
 const { params, path } = useRoute()
@@ -55,7 +54,7 @@ useHead({
           <TypographyTitle class="text-gray-700 dark:text-gray-400"
             >Search</TypographyTitle
           >
-          <BlogSearch class="flex" />
+          <GlobalSearch :collections="['posts']" class="flex" />
           <TypographyTitle class="mt-8 text-gray-700 dark:text-gray-400"
             >Categories</TypographyTitle
           >
@@ -68,7 +67,7 @@ useHead({
       </div>
       <div class="space-y-4">
         <TypographyTitle>Latest & Greatest</TypographyTitle>
-        <div class="relative grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div class="relative grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <PostCard
             v-for="(post, postIdx) in posts"
             :key="post.id"

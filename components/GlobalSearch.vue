@@ -8,29 +8,35 @@ import {
   ComboboxOption,
 } from '@headlessui/vue'
 
+const props = defineProps({
+  collections: {
+    type: Array as PropType<string[]>,
+    required: true,
+    validator: (value) => {
+      return value.every((collection) => {
+        return ['posts', 'pages', 'categories', 'projects'].includes(collection)
+      })
+    },
+  },
+})
+
 const query = ref('')
 const results = ref([])
 const selected = ref(null)
 const loading = ref(false)
 
-const { $directus } = useNuxtApp()
-
-const searchPostsFn = useDebounceFn(() => {
-  searchPosts()
+const searchDebounced = useDebounceFn(() => {
+  search()
 }, 500)
 
-const searchPosts = async () => {
+const search = async () => {
   loading.value = true
   try {
-    const { data } = await $directus.items('posts').readByQuery({
-      search: query.value,
-      fields: [
-        '*',
-        'author.*',
-        'category.title',
-        'category.slug',
-        'category.color',
-      ],
+    const { data } = await $fetch('/api/search', {
+      params: {
+        search: query.value,
+        collections: props.collections, // Use the collections prop to filter the search
+      },
     })
     results.value = data
   } catch (error) {
@@ -41,18 +47,20 @@ const searchPosts = async () => {
 
 const { fileUrl } = useFiles()
 
+// Watch for changes to the query and search
 watch(
   () => query.value,
   () => {
-    searchPostsFn()
+    searchDebounced()
   }
 )
 
+// If a result is selected, navigate to the URL
 watch(
   () => selected.value,
   () => {
     if (selected.value) {
-      return navigateTo(`/posts/${selected.value.slug}`)
+      return navigateTo(selected.value.url)
     }
   }
 )
@@ -78,7 +86,7 @@ watch(
       </button>
 
       <ComboboxOptions
-        class="absolute z-10 w-full md:w-[400px] pt-2 mt-4 overflow-auto scrollbar-hide bg-gray-100 dark:bg-gray-900 shadow-lg shadow-gray-500 max-h-[300px] border rounded-bl-3xl rounded-tr-3xl dark:border-gray-700 border-gray-300 sm:text-sm"
+        class="absolute z-10 w-full pt-2 mt-4 overflow-auto scrollbar-hide bg-gray-100 dark:bg-gray-900 shadow-md shadow-accent/50 max-h-[300px] border rounded-bl-3xl dark:border-gray-700 border-gray-300 sm:text-sm"
       >
         <div class="relative px-2 space-y-2">
           <div
@@ -100,7 +108,7 @@ watch(
             <li
               :class="[
                 active ? 'bg-accent' : 'dark:bg-gray-800 bg-white',
-                'relative text-left p-2 space-x-2 flex items-start overflow-hidden   w-full  rounded-bl-2xl rounded-tr-2xl',
+                'relative text-left p-2 space-x-2 flex items-start overflow-hidden   w-full  rounded-bl-2xl rounded-tr-2xl cursor-pointer',
               ]"
             >
               <img

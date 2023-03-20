@@ -1,12 +1,14 @@
 <template>
   <div
     :class="[
-      'p-4 dark:brightness-90',
+      'p-4 dark:brightness-90 border-2 rounded-tr-2xl rounded-bl-2xl',
       {
-        'bg-amber-100 text-amber-800': type === 'warning',
-        'bg-red-100 text-red-800': type === 'error',
-        'bg-green-100 text-green-800': type === 'success',
-        'bg-blue-100 text-blue-800': type === 'info',
+        'border-amber-500 text-amber-800 dark:text-amber-200':
+          type === 'warning',
+        'border-rose-500 text-rose-800 dark:text-rose-200': type === 'error',
+        'border-green-500 text-green-800 dark:text-green-200':
+          type === 'success',
+        'border-blue-500 text-blue-800 dark:text-blue-200': type === 'info',
       },
     ]"
   >
@@ -15,12 +17,12 @@
         <Icon
           :name="iconMap[type]"
           :class="[
-            'w-5 h-5',
+            'w-6 h-6',
             {
-              'text-amber-600': type === 'warning',
-              'text-red-600': type === 'error',
-              'text-green-600': type === 'success',
-              'text-blue-600': type === 'info',
+              'text-amber-500': type === 'warning',
+              'text-rose-500': type === 'error',
+              'text-green-500': type === 'success',
+              'text-blue-500': type === 'info',
             },
           ]"
           aria-hidden="true"
@@ -42,9 +44,9 @@ const props = defineProps({
 })
 
 const iconMap = {
-  info: 'heroicons:information-circle',
-  success: 'heroicons:check-circle',
-  warning: 'heroicons:exclamation-triangle',
-  error: 'heroicons:x-circle',
+  info: 'heroicons:information-circle-solid',
+  success: 'heroicons:check-circle-solid',
+  warning: 'heroicons:exclamation-triangle-solid',
+  error: 'heroicons:x-circle-solid',
 }
 </script>

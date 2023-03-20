@@ -23,7 +23,7 @@ const props = defineProps({
 const { fileUrl } = useFiles()
 </script>
 <template>
-  <PageContainer
+  <BlockContainer
     class="relative items-center w-full px-5 py-24 mx-auto bg-white md:px-12 lg:px-16 max-w-7xl dark:bg-gray-800"
   >
     <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
@@ -63,6 +63,11 @@ const { fileUrl } = useFiles()
           ]"
         >
           <img
+            v-motion
+            :initial="{ opacity: 0, scale: 0.8, y: 50 }"
+            :visibleOnce="{ opacity: 1, scale: 1, y: 0 }"
+            :duration="1000"
+            :delay="250"
             class="object-cover object-center w-full h-full mx-auto bg-gray-100 lg:ml-auto dark:brightness-90"
             :class="[
               {
@@ -76,5 +81,5 @@ const { fileUrl } = useFiles()
         </div>
       </div>
     </div>
-  </PageContainer>
+  </BlockContainer>
 </template>

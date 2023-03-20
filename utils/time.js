@@ -91,6 +91,7 @@ function getFriendlyDate(dateString) {
   return formatted
 }
 
+// Break down a date into its specific parts
 function destructureDate(date) {
   const d = new Date(date)
   const year = d.getFullYear()

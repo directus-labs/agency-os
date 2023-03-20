@@ -23,7 +23,7 @@ const props = defineProps({
 const { fileUrl } = useFiles()
 </script>
 <template>
-  <PageContainer class="max-w-4xl mx-auto text-center">
+  <BlockContainer class="max-w-4xl mx-auto text-center">
     <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
     <TypographyHeadline v-if="data.headline" :content="data.headline" />
     <div class="mt-8">
@@ -102,7 +102,7 @@ const { fileUrl } = useFiles()
         </svg>
       </template>
     </div>
-  </PageContainer>
+  </BlockContainer>
 </template>
 
 <style>

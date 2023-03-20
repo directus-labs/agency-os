@@ -47,29 +47,46 @@ useHead({
     </header>
     <section class="relative items-center w-full py-12">
       <TypographyTitle>Latest Projects</TypographyTitle>
-      <div class="gap-8 mt-4 md:columns-3">
+      <div class="gap-4 mt-4 md:columns-3">
         <NuxtLink
-          v-for="project in projects"
+          v-for="(project, projectIdx) in projects"
           :key="project.id"
           :href="`/projects/${project.slug}`"
-          class="block relative w-full aspect-square mb-6 overflow-hidden rounded-tr-3xl rounded-bl-3xl group hover:outline outline-2 outline-offset-4 outline-gray-300 dark:outline-gray-700 transition-[outline] duration-300"
+          :class="[
+            {
+              'rounded-br-3xl rounded-tl-3xl': isEven(projectIdx),
+              'rounded-bl-3xl rounded-tr-3xl': !isEven(projectIdx),
+            },
+            'block relative w-full aspect-square mb-6 overflow-hidden border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition duration-300 p-2',
+          ]"
         >
-          <img
-            :src="fileUrl(project.image)"
-            class="object-cover w-full transition duration-300 group-hover:scale-110"
-          />
           <div
-            class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
+            :class="[
+              {
+                'rounded-br-2xl rounded-tl-2xl': isEven(projectIdx),
+                'rounded-bl-2xl rounded-tr-2xl': !isEven(projectIdx),
+              },
+              'relative group overflow-hidden',
+            ]"
           >
-            <div class="p-8">
-              <TypographyTitle>{{ project.title }}</TypographyTitle>
-              <TypographyHeadline :content="project.summary" />
-              <div class="mt-2 space-x-2">
-                <VBadge
-                  v-for="(item, itemIdx) in project.built_with"
-                  color="#0f172a"
-                  >{{ item }}</VBadge
-                >
+            <img
+              :src="fileUrl(project.image)"
+              class="object-cover w-full transition duration-300 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
+            >
+              <div class="p-8">
+                <TypographyTitle>{{ project.client }}</TypographyTitle>
+                <TypographyHeadline :content="project.title" />
+                <div class="mt-2 space-x-2">
+                  <VBadge
+                    v-for="(item, itemIdx) in project.built_with"
+                    size="lg"
+                    color="#0f172a"
+                    >{{ item }}</VBadge
+                  >
+                </div>
               </div>
             </div>
           </div>

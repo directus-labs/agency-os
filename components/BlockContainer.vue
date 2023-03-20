@@ -1,4 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <div></div>
+  <section class="py-12">
+    <slot />
+  </section>
 </template>

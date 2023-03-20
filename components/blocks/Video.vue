@@ -28,7 +28,7 @@ const url = computed(() => {
 })
 </script>
 <template>
-  <section class="max-w-4xl py-12 mx-auto text-center">
+  <BlockContainer class="max-w-4xl py-12 mx-auto text-center">
     <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
     <TypographyHeadline v-if="data.headline" :content="data.headline" />
     <div class="relative">
@@ -43,5 +43,5 @@ const url = computed(() => {
         :title="data.title"
       />
     </div>
-  </section>
+  </BlockContainer>
 </template>

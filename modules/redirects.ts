@@ -21,7 +21,7 @@ export default defineNuxtModule({
       },
     })
 
-    const { data: redirects }: Array<Redirect> = await directus
+    const { data: redirects }: Redirect[] = await directus
       .items('redirects')
       .readByQuery()
 

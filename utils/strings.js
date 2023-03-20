@@ -16,6 +16,7 @@ function truncateHTML(html, num) {
   return truncateString(stripHTML(html), num)
 }
 
+// Slugify a string for hyphens and underscores
 function slugify(str) {
   if (!str) return
   return str
@@ -54,12 +55,11 @@ function maybePluralize(count, noun, suffix = 's') {
 }
 
 // Calculate read time for a string
-function calculateReadTime(str) {
+function calculateReadTime(str, wordsPerMinute = 200) {
   if (!str) return
   // Strip HTML tags
   str = str.replace(/(<([^>]+)>)/gi, '')
 
-  const wordsPerMinute = 200
   const noOfWords = str.split(/\s/g).length
   const minutes = noOfWords / wordsPerMinute
   const readTime = Math.ceil(minutes)

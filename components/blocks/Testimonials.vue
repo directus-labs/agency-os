@@ -74,7 +74,7 @@ function handleNavButton(direction: ['left', 'right']) {
 const { fileUrl } = useFiles()
 </script>
 <template>
-  <section class="relative overflow-hidden">
+  <BlockContainer class="relative overflow-hidden">
     <div
       class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-accent dark:from-gray-700 dark:via-gray-900 dark:to-accent"
     />
@@ -109,14 +109,14 @@ const { fileUrl } = useFiles()
         <div class="flex space-x-2 justify-self-end">
           <button
             :disabled="currentItemIdx === 0"
-            class="block p-2 bg-gray-900 rounded-full hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            class="flex items-center justify-center w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
             @click="handleNavButton('left')"
           >
             <Icon name="heroicons:arrow-left" class="w-5 h-5 text-white" />
           </button>
           <button
             :disabled="currentItemIdx === data.testimonials.length - 1"
-            class="block p-2 bg-gray-900 rounded-full hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            class="flex items-center justify-center w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
             @click="handleNavButton('right')"
           >
             <Icon name="heroicons:arrow-right" class="w-5 h-5 text-white" />
@@ -171,5 +171,5 @@ const { fileUrl } = useFiles()
         </div>
       </div>
     </div>
-  </section>
+  </BlockContainer>
 </template>

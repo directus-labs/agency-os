@@ -20,7 +20,7 @@ const props = defineProps({
 const { fileUrl } = useFiles()
 </script>
 <template>
-  <section
+  <BlockContainer
     class="relative px-6 py-10 text-gray-900 md:px-16 lg:px-28 md:py-16 lg:py-24 dark:text-gray-100"
   >
     <div
@@ -66,5 +66,5 @@ const { fileUrl } = useFiles()
         </div>
       </div>
     </div>
-  </section>
+  </BlockContainer>
 </template>

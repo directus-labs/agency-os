@@ -18,7 +18,9 @@ const props = defineProps({
 </script>
 
 <template>
-  <section class="max-w-screen-xl px-4 py-12 mx-auto sm:py-16 sm:px-6 lg:px-8">
+  <BlockContainer
+    class="max-w-screen-xl px-4 py-12 mx-auto sm:py-16 sm:px-6 lg:px-8"
+  >
     <div class="max-w-3xl mx-auto text-center">
       <TypographyTitle>{{ data.title }}</TypographyTitle>
       <TypographyHeadline :content="data.headline" />
@@ -34,5 +36,5 @@ const props = defineProps({
         </dl>
       </div>
     </div>
-  </section>
+  </BlockContainer>
 </template>

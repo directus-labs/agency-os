@@ -21,7 +21,7 @@ const props = defineProps({
 const { fileUrl } = useFiles()
 </script>
 <template>
-  <PageContainer class="relative grid gap-6 md:grid-cols-3">
+  <BlockContainer class="relative grid gap-6 md:grid-cols-3">
     <!-- Content -->
     <div class="md:pt-12 md:col-span-2">
       <h1
@@ -57,10 +57,10 @@ const { fileUrl } = useFiles()
     <!-- Image -->
     <div class="">
       <div
-        class="lg:pl-4 lg:-mr-48 sm:pl-6 md:-mr-16 rounded-2xl lg:px-0 lg:m-0 lg:relative lg:h-full"
+        class="p-2 border-2 border-gray-300 lg:-mr-48 md:-mr-16 rounded-tl-[64px] lg:relative lg:h-full dark:border-gray-700"
       >
         <img
-          class="w-full overflow-hidden rounded-tl-[64px] dark:brightness-90 max-h-[700px] object-cover outline outline-2 outline-offset-4 outline-gray-300 dark:outline-gray-700"
+          class="w-full overflow-hidden rounded-tl-[56px] dark:brightness-90 max-h-[700px] object-cover"
           :src="fileUrl(data.image)"
           alt=""
         />
@@ -72,5 +72,5 @@ const { fileUrl } = useFiles()
     >
       Powered by Directus + Nuxt
     </p> -->
-  </PageContainer>
+  </BlockContainer>
 </template>

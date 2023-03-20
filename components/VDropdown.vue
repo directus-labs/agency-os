@@ -44,7 +44,7 @@
                 @click="handleMenuItemClick(item)"
                 :class="[
                   active
-                    ? 'bg-primary-500 dark:bg-primary-800 text-white'
+                    ? 'bg-accent dark:bg-accent text-white'
                     : 'text-gray-900 dark:text-gray-100',
                   'group flex rounded-md items-center w-full px-2 py-2 text-sm',
                 ]"

@@ -53,6 +53,8 @@ const { data, pending, error } = await useAsyncData(
 )
 
 page.value = data.value
+
+// const tableOfContents = generateToc(page.value.content)
 </script>
 <template>
   <div>
@@ -101,21 +103,25 @@ page.value = data.value
         </div>
         <!-- Title Container -->
         <div
-          class="relative w-full max-w-4xl px-8 py-8 mx-auto -mt-12 overflow-hidden text-gray-900 bg-white md:-mt-32 rounded-br-3xl rounded-tl-3xl md:px-16 md:py-12 outline outline-4 outline-accent outline-offset-8"
+          class="relative w-full max-w-4xl p-2 mx-auto -mt-12 overflow-hidden text-gray-900 border-2 md:-mt-32 rounded-br-3xl rounded-tl-3xl border-accent"
         >
           <div
-            class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-accent dark:from-gray-700 dark:via-gray-900 dark:to-accent"
-          />
-          <div class="absolute inset-0 grain-bg dark:opacity-20" />
-          <div class="relative">
-            <div class="flex justify-between"></div>
-            <TypographyHeadline :content="page.title" as="h1" />
+            class="relative px-8 py-8 overflow-hidden md:px-16 rounded-br-2xl rounded-tl-2xl md:py-12"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-accent dark:from-gray-700 dark:via-gray-900 dark:to-accent"
+            />
+            <div class="absolute inset-0 grain-bg dark:opacity-20" />
+            <div class="relative">
+              <div class="flex justify-between"></div>
+              <TypographyHeadline :content="page.title" as="h1" />
 
-            <p
-              class="mt-4 font-mono font-semibold md:text-lg font-display dark:text-gray-200"
-            >
-              {{ page.summary }}
-            </p>
+              <p
+                class="mt-4 font-mono font-semibold md:text-lg font-display dark:text-gray-200"
+              >
+                {{ page.summary }}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -150,8 +156,11 @@ page.value = data.value
       <PageContainer>
         <main class="w-full max-w-4xl mx-auto">
           <!-- Main -->
-          <TypographyProse :content="page.content" />
+          <TypographyProse :content="page.content" ref="article" />
         </main>
+        <aside>
+          <!-- <TableOfContents :toc="tableOfContents.toc" /> -->
+        </aside>
       </PageContainer>
     </article>
   </div>

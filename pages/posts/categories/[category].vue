@@ -73,7 +73,7 @@ useHead({
           <TypographyTitle as="p" class="text-gray-700 dark:text-gray-400"
             >Search</TypographyTitle
           >
-          <BlogSearch />
+          <GlobalSearch :collections="['posts']" class="flex" />
           <TypographyTitle as="p" class="mt-8 text-gray-700 dark:text-gray-400"
             >Categories</TypographyTitle
           >
@@ -86,7 +86,7 @@ useHead({
           >
           <span>{{}}</span>
           <div
-            class="relative grid grid-cols-2 gap-12 md:grid-cols-2 lg:grid-cols-4"
+            class="relative grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-4"
           >
             <PostCard
               v-for="(post, postIdx) in posts"

@@ -1,20 +1,6 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
+import { Form } from '~~/types'
 
-type Form = {
-  form: {
-    id: string
-    key?: string
-    submit_label?: string
-    schema: Array<{
-      id: string
-      type: string
-      label: string
-      placeholder: string
-      required: boolean
-    }>
-  }
-}
 const props = defineProps({
   form: {
     type: Object as PropType<Form>,
@@ -29,10 +15,11 @@ const error = ref(null)
 const success = ref(false)
 
 function tranformSchema(schema: object) {
-  // Loop through the form schema and change 'type' key for each object to '$formkit'
+  // Loop through the form schema from Directus
   // This is required for FormKit to work
   const items = unref(schema)
   return items.map((item: any) => {
+    // Change 'type' key for each object to '$formkit'
     item.$formkit = item.type
     // Switch statement to handle item widths
     switch (item.width) {
@@ -56,13 +43,11 @@ function tranformSchema(schema: object) {
 }
 
 const schema = tranformSchema(props.form.schema)
-const { fileUrl } = useFiles()
 
 async function submitForm() {
   loading.value = true
   try {
     await $directus.items('inbox').createOne({
-      //   form: props.data.form.id,
       data: formData,
     })
     success.value = true
