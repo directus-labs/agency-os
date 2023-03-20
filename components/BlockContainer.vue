@@ -1,6 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps({
+  fullWidth: {
+    type: Boolean,
+    default: false,
+  },
+})
+</script>
 <template>
-  <section class="px-6 py-12 lg:px-8">
+  <section :class="['py-12', !fullWidth ? ' lg:px-8 px-6 ' : '']">
     <slot />
   </section>
 </template>

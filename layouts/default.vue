@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { progress } = useScroll()
+// const { progress } = useScroll()
 </script>
 <template>
   <div
@@ -22,7 +22,7 @@ const { progress } = useScroll()
 
     <NavigationTheFooter />
 
-    <div class="fixed z-50 bottom-4 left-4">
+    <div class="fixed z-10 bottom-4 left-4">
       <div class="flex items-center">
         <RadialProgress
           :radius="25"

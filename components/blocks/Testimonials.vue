@@ -74,7 +74,7 @@ function handleNavButton(direction: ['left', 'right']) {
 const { fileUrl } = useFiles()
 </script>
 <template>
-  <BlockContainer class="relative overflow-hidden">
+  <BlockContainer class="relative overflow-hidden" full-width>
     <div
       class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-accent dark:from-gray-700 dark:via-gray-900 dark:to-accent"
     />
