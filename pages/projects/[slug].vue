@@ -31,7 +31,7 @@ const {
 <template>
   <div class="py-12">
     <div
-      class="relative h-[400px] overflow-hidden flex justify-center items-center"
+      class="relative h-[400px] overflow-hidden flex justify-center items-center rounded-tr-[48px] rounded-bl-[48px]"
     >
       <img
         class="absolute inset-0 object-cover w-full h-full"
@@ -62,7 +62,7 @@ const {
           </article>
 
           <BlocksGallery
-            v-if="project.gallery"
+            v-if="project.gallery && project.gallery.length > 0"
             class="mt-8 overflow-hidden bg-white dark:bg-gray-800 rounded-tr-3xl rounded-bl-3xl"
             :data="{
               id: project.id,
