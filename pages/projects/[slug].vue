@@ -63,7 +63,7 @@ const {
 
           <BlocksGallery
             v-if="project.gallery"
-            class="mt-8 overflow-hidden bg-white dark:bg-gray-800"
+            class="mt-8 overflow-hidden bg-white dark:bg-gray-800 rounded-tr-3xl rounded-bl-3xl"
             :data="{
               id: project.id,
               title: 'Gallery',

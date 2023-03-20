@@ -114,7 +114,7 @@ page.value = data.value
             <div class="absolute inset-0 grain-bg dark:opacity-20" />
             <div class="relative">
               <div class="flex justify-between"></div>
-              <TypographyHeadline :content="page.title" as="h1" />
+              <TypographyHeadline :content="page.title" as="h1" size="lg" />
 
               <p
                 class="mt-4 font-mono font-semibold md:text-lg font-display dark:text-gray-200"
