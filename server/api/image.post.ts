@@ -22,7 +22,8 @@ export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig()
     const $directus = createDirectus(config)
 
-    const { id, seo, slug, url } = readBody(event)
+    const body = await readBody(event)
+    const { id, seo, slug, url } = body
 
     // Initialize the browser
     const browser = await playwright.launchChromium({
