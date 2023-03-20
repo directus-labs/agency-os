@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// const { progress } = useScroll()
+const { progress } = useScroll()
 </script>
 <template>
   <div

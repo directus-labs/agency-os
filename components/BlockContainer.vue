@@ -7,7 +7,9 @@ const props = defineProps({
 })
 </script>
 <template>
-  <section :class="['py-12', !fullWidth ? ' lg:px-8 px-6 ' : '']">
+  <section
+    :class="['py-12 mx-auto max-w-7xl', !fullWidth ? ' lg:px-8 px-6' : '']"
+  >
     <slot />
   </section>
 </template>

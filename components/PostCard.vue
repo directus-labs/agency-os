@@ -3,7 +3,7 @@ import { Post } from '~~/types'
 const { fileUrl } = useFiles()
 const props = defineProps<{
   post: Post
-  even: boolean
+  even?: boolean
 }>()
 </script>
 <template>
@@ -63,6 +63,12 @@ const props = defineProps<{
         {{ truncateString(post.summary, 150) }}
       </p>
     </NuxtLink>
-    <VAvatar v-if="post.author" class="mt-4" size="sm" :author="post.author" />
+
+    <VAvatar
+      v-if="isObject(post.author)"
+      class="mt-4"
+      size="sm"
+      :author="post.author"
+    />
   </figure>
 </template>

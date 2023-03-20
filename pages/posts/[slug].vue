@@ -82,7 +82,7 @@ page.value = data.value
             <NuxtLink
               v-if="page.category"
               :href="`/posts/categories/${page.category.slug}`"
-              class="inline-block"
+              class="inline-block hover:opacity-90"
             >
               <VBadge size="lg" :color="page.category.color">{{
                 page.category.title
@@ -143,7 +143,7 @@ page.value = data.value
             <NuxtLink
               v-if="page.category"
               :href="`/posts/categories/${page.category.slug}`"
-              class="inline-block"
+              class="inline-block hover:opacity-90"
             >
               <VBadge size="lg" :color="page.category.color">{{
                 page.category.title

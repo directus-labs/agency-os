@@ -57,6 +57,7 @@ const { fileUrl } = useFiles()
     <!-- Image -->
     <div class="">
       <div
+        v-if="data.image"
         class="p-2 border-2 border-gray-300 lg:-mr-48 md:-mr-16 rounded-tl-[64px] lg:relative lg:h-full dark:border-gray-700"
       >
         <img

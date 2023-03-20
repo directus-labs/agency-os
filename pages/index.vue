@@ -28,6 +28,9 @@ const {
         'blocks.item.gallery_items.directus_files_id.*',
         'blocks.item.*',
         'blocks.item.rows.*',
+        'blocks.item.posts.posts_id.*',
+        'blocks.item.posts.posts_id.category.*',
+        'blocks.item.cards.*',
       ],
       limit: 1,
     })
