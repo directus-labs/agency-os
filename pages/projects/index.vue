@@ -79,8 +79,9 @@ useHead({
               <div class="p-8">
                 <TypographyTitle>{{ project.client }}</TypographyTitle>
                 <TypographyHeadline :content="project.title" />
-                <div class="mt-2 space-x-2">
+                <div class="mt-2">
                   <VBadge
+                    class="mb-2 mr-2"
                     v-for="(item, itemIdx) in project.built_with"
                     size="lg"
                     color="#0f172a"

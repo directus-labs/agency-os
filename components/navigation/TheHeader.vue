@@ -23,7 +23,7 @@ const {
     class="relative w-full space-y-4 md:flex md:items-center md:space-x-6 md:space-y-0"
   >
     <div
-      class="flex items-center bg-gray-800 md:justify-between rounded-tl-3xl rounded-br-3xl md:flex-1"
+      class="flex items-center bg-gray-800 md:justify-between rounded-tl-xl rounded-br-xl md:flex-1"
     >
       <NuxtLink href="/" class="px-4 py-4">
         <Logo class="h-6 text-white" />
@@ -39,7 +39,7 @@ const {
           :item="item"
         />
       </nav>
-      <div class="flex items-center justify-end w-full p-3 space-x-2">
+      <div class="flex items-center justify-end flex-shrink-0 p-3 space-x-2">
         <DarkModeToggle
           class="hidden text-gray-200 md:block hover:text-gray-400"
         />
@@ -49,7 +49,9 @@ const {
       </div>
     </div>
     <div class="hidden uppercase md:block">
-      <NuxtLink href="/contact-us" class="btn bg-accent">Let's Talk</NuxtLink>
+      <NuxtLink href="/contact-us" class="!text-gray-900 btn bg-accent !py-5"
+        >Let's Talk</NuxtLink
+      >
     </div>
     <NavigationMobileMenu :navigation="navigation" />
   </header>

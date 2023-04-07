@@ -9,7 +9,10 @@ const props = defineProps({
 })
 
 const { $directus } = useNuxtApp()
-const formData = reactive({})
+
+// Get query params to allow prefilling of form fields
+const { query } = useRoute()
+const formData = reactive({ ...query })
 const loading = ref(false)
 const error = ref(null)
 const success = ref(false)
@@ -51,6 +54,9 @@ async function submitForm() {
       data: formData,
     })
     success.value = true
+    if (form.on_success === 'redirect') {
+      return navigateTo(form.redirect_url)
+    }
   } catch (err) {
     error.value = err
   } finally {
@@ -60,10 +66,16 @@ async function submitForm() {
 </script>
 <template>
   <div v-auto-animate>
-    <VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
-    <VAlert v-if="success" type="success">
-      Success! Your form has been submitted.
-    </VAlert>
+    <div class="mb-4">
+      <VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
+      <VAlert
+        v-if="form.on_success === 'message' && success"
+        type="success"
+        v-html="
+          form.success_message ?? 'Success! Your form has been submitted.'
+        "
+      />
+    </div>
     <FormKit
       v-if="!success"
       type="form"

@@ -17,6 +17,7 @@ export interface Seo {
   og_image?: string
   twitter_image?: string
 }
+
 export type Page = {
   id: string
   title: string
@@ -79,6 +80,9 @@ export type Form = {
       placeholder: string
       required: boolean
     }>
+    on_success?: string
+    redirect_url?: string
+    success_message?: string
   }
 }
 

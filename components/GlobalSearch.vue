@@ -86,7 +86,7 @@ watch(
       </button>
 
       <ComboboxOptions
-        class="absolute z-10 w-full pt-2 mt-4 overflow-auto scrollbar-hide bg-gray-100 dark:bg-gray-900 shadow-md shadow-accent/50 max-h-[300px] border rounded-bl-3xl dark:border-gray-700 border-gray-300 sm:text-sm"
+        class="absolute z-10 w-full pt-2 mt-4 overflow-auto scrollbar-hide bg-gray-100 dark:bg-gray-900 shadow-md shadow-accent/50 max-h-[300px] border rounded-bl-xl dark:border-gray-700 border-gray-300 sm:text-sm"
       >
         <div class="relative px-2 space-y-2">
           <div
@@ -108,7 +108,7 @@ watch(
             <li
               :class="[
                 active ? 'bg-accent' : 'dark:bg-gray-800 bg-white',
-                'relative text-left p-2 space-x-2 flex items-start overflow-hidden   w-full  rounded-bl-2xl rounded-tr-2xl cursor-pointer',
+                'relative text-left p-2 space-x-2 flex items-start overflow-hidden   w-full  rounded-bl-xl rounded-tr-xl cursor-pointer',
               ]"
             >
               <img

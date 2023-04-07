@@ -29,9 +29,11 @@ export default async () => {
     },
 
     modules: [
+      '@nuxt/devtools', // https://devtools.nuxtjs.org/
       'nuxt-icon', // https://github.com/nuxt-modules/icon
       '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/
       '@pinia/nuxt', // https://pinia.esm.dev
+      //   '@nuxt/image-edge', // https://image.nuxtjs.org/
       '@vueuse/nuxt', // https://vueuse.org/
       '@vueuse/motion/nuxt', // https://motion.vueuse.org/nuxt.html
       '@formkit/nuxt', // https://formkit.com/getting-started/installation#with-nuxt

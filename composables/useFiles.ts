@@ -1,7 +1,5 @@
 export type ThumbnailFormat = 'jpg' | 'png' | 'webp' | 'tiff'
-
 export type ThumbnailFit = 'cover' | 'contain' | 'inside' | 'outside'
-
 export interface ThumbnailOptions {
   width?: number
   height?: number
@@ -14,7 +12,7 @@ export interface ThumbnailOptions {
 export default function useFiles() {
   const { $config } = useNuxtApp()
 
-  function fileUrl(fileId) {
+  function fileUrl(fileId: string) {
     return `${$config.directusUrl}/assets/${fileId}`
   }
 

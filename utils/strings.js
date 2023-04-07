@@ -59,7 +59,6 @@ function calculateReadTime(str, wordsPerMinute = 200) {
   if (!str) return
   // Strip HTML tags
   str = str.replace(/(<([^>]+)>)/gi, '')
-
   const noOfWords = str.split(/\s/g).length
   const minutes = noOfWords / wordsPerMinute
   const readTime = Math.ceil(minutes)

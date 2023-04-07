@@ -1,23 +1,6 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
-
-type Form = {
-  id: string
-  headline: string
-  form: {
-    id: string
-    key?: string
-    schema: Array<{
-      id: string
-      type: string
-      label: string
-      placeholder: string
-      required: boolean
-      width: string
-    }>
-    submit_label?: string
-  }
-}
+import { Form } from '~~/types'
 const props = defineProps({
   data: {
     type: Object as PropType<Form>,

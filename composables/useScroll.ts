@@ -9,7 +9,14 @@ export default function useScroll() {
     const scrollPosition = window.scrollY
 
     progress.value = scrollPosition / bodyHeight
-  }, 50)
+  }, 100)
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
 
   onMounted(() => {
     window.addEventListener('scroll', updateProgress)
@@ -18,5 +25,5 @@ export default function useScroll() {
     window.removeEventListener('scroll', updateProgress)
   })
 
-  return { progress: readonly(progress) }
+  return { progress: readonly(progress), scrollToTop }
 }

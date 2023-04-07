@@ -26,6 +26,7 @@ module.exports = {
         accent: {
           DEFAULT: '#FF99DD',
         },
+        red: colors.rose,
       },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
