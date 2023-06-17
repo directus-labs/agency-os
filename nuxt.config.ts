@@ -47,6 +47,7 @@ export default async () => {
     runtimeConfig: {
       public: {
         directusUrl: process.env.DIRECTUS_URL,
+        directusWsUrl: process.env.DIRECTUS_WS_URL,
         siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
         ...globals,
       },

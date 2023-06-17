@@ -8,5 +8,6 @@
     <DevOnly>
       <DevToolbar />
     </DevOnly>
+    <ChatWidget />
   </NuxtLayout>
 </template>

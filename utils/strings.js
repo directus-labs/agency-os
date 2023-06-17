@@ -1,3 +1,9 @@
+import { v4 as uuidv4 } from 'uuid'
+
+function generateId() {
+  return uuidv4()
+}
+
 function stripHTML(original) {
   if (!original) return
   else return original.replace(/(<([^>]+)>)/gi, '')
@@ -66,6 +72,7 @@ function calculateReadTime(str, wordsPerMinute = 200) {
 }
 
 export {
+  generateId,
   stripHTML,
   truncateHTML,
   truncateString,
