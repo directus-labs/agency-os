@@ -150,8 +150,7 @@ Be sure to check out the Nuxt 3 official [deployment documentation](https://v3.n
 # ⭐ Features
 
 <details>
-<summary><h2>Dynamic Page Builder</h2></summary>
-
+<summary><strong>Dynamic Page Builder</strong></summary>
 Includes 15 ready-to-go page blocks
 
 - Hero
@@ -172,15 +171,19 @@ Includes 15 ready-to-go page blocks
 </details>
 
 <details>
-<summary><h2>Dynamic Forms</h2></summary>
+<summary><strong>Dynamic Forms</strong></summary>
 </details>
 
-## Dynamic Menus
-
-## Dynamic Social Image Generation
+<details>
+<summary><strong>Dynamic Navigation</strong></summary>
+</details>
 
 <details>
-<summary><h2>Dark Mode Support</h2></summary>
+<summary><strong>Dynamic Social Image Generation</strong></summary>
+</details>
+
+<details>
+<summary><strong>Dark Mode Support</strong></summary>
 Agency OS has full dark mode support.
 
 Dark mode is already enabled in the `tailwind.config.js` and all the base components included have full support.
@@ -191,62 +194,67 @@ If you don't wish to use dark mode, you can simply remove the composable and the
 
 </details>
 
-## Dev Toolbar
+<details>
+<summary><strong>Dev Toolbar</strong></summary>
+</details>
 
-## Guest-Author Ready
+<details>
+<summary><strong>Guest-Author Ready</strong></summary>
+</details>
 
-## Content and Analytics Dashboards
+<details>
+<summary><strong>Content Dashboard</strong></summary>
+</details>
 
-## Pre-Built Automations
-
+<details>
+<summary><strong>Pre-Built Automations</strong></summary>
 - Deploy Your Site
 - Generate Social Images
 - Create Slugs Automatically
 - Post Approval Notifications
+</details>
 
-## Pre-Built Components
+### Pre-Built Components
 
-### Global Search
+**Global Search**
 
-### Typography
+**Typography**
 
-Title
+- Title
+- Headline
+- Prose
 
-Headline
+**Image Gallery**
 
-Prose
+**Accordion**
 
-### Image Gallery
+**Badges**
 
-### Accordion
+**Modals**
 
-### Badges
+**Dropdown**
 
-### Modals
+**Alert**
 
-### Dropdown
+**Video**
 
-### Alert
-
-### Video
-
-### Buttons
-
-## Common Utilities
-
-Nuxt 3 is configured by default to auto-import `/utils` directory.
+**Buttons**
 
 <br />
 
 # 🧰 Tech Stack
 
-<img src="./public/logos/nuxt3.svg" height="50" />
+<a href="https://nuxt.com" target="_blank"><img src="./public/logos/nuxt3.svg" height="40" /></a>
 
 ## Nuxt
 
 Build your next Vue.js application with confidence using Nuxt. An open source framework under MIT license that makes web development simple and powerful. The leading Vue framework that handles routing, server side rendering, and more.
 
-<img src="./public/logos/directus.svg" height="50" />
+[Learn more about Nuxt](https://nuxt.com)
+
+<br />
+
+<a href="https://directus.io" target="_blank"><img src="./public/logos/directus.svg" height="50" /></a>
 
 ## Directus
 
@@ -255,14 +263,16 @@ But it's also more than just a headless CMS. It’s an open data platform that h
 
 For a smooth experience, the [Directus SDK](https://docs.directus.io/reference/sdk/#javascript-sdk) is already integrated for you and availably globally as a Nuxt plugin.
 
+[Learn more about Directus](https://directus.io)
+
 ---
 
 ## UI
 
 - [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework that allows you to rapidly build sites and maintain consistency across team members. There are several Tailwind Plugins installed and ready to use as well – [Typography](https://tailwindcss.com/docs/typography-plugin) and [Forms](https://tailwindcss.com/docs/plugins#forms).
-- [Headless UI](https://headlessui.dev/) – Completely unstyled, fully accessible UI components. Makes it simple to implement accessible custom components like dropdowns, modals, and select boxes.
+- [Headless UI](https://headlessui.dev/) – Completely unstyled, fully accessible UI components.
 - [FormKit](https://formkit.com/) – Form library for Vue that saves you hours of time by simplifying form creation. Includes error handling, validation, theming, and even generation from a schema out of the box.
-- [Nuxt Icon](https://github.com/nuxt-modules/icon) - Add 100,000+ ready to use icons to your Nuxt application, based on Iconify. Adds <Icon> component that allows you use tons of icons. [See available icons here](https://icones.js.org/).
+- [Nuxt Icon](https://github.com/nuxt-modules/icon) - Adds `<Icon>` component that allows you use tons of icons. [See available icons here](https://icones.js.org/).
 
 ## Utilities
 
