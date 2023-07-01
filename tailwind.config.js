@@ -35,11 +35,6 @@ module.exports = {
       },
       animation: {
         'fade-in': 'fade-in 0.5s linear forwards',
-        'spin-slow': 'spin 4s linear infinite',
-        'spin-slower': 'spin 6s linear infinite',
-        'spin-reverse': 'spin-reverse 1s linear infinite',
-        'spin-reverse-slow': 'spin-reverse 4s linear infinite',
-        'spin-reverse-slower': 'spin-reverse 6s linear infinite',
       },
       keyframes: {
         'fade-in': {
@@ -50,14 +45,6 @@ module.exports = {
             opacity: 1,
           },
         },
-        'spin-reverse': {
-          to: {
-            transform: 'rotate(-360deg)',
-          },
-        },
-      },
-      maxWidth: {
-        '2xl': '40rem',
       },
     },
   },
@@ -66,7 +53,6 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
     // Formkit Plugin for Tailwind
     // https://formkit.com/guides/create-a-tailwind-theme
     require('@formkit/themes/tailwindcss'),

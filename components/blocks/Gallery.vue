@@ -95,7 +95,7 @@ onUnmounted(() => {
             'rounded-br-3xl rounded-tl-3xl': isEven(itemIdx),
             'rounded-bl-3xl rounded-tr-3xl': !isEven(itemIdx),
           },
-          'block relative w-full aspect-square mb-6 overflow-hidden p-2 group border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition duration-300',
+          'block relative w-full mb-6 overflow-hidden p-2 group border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition duration-300',
         ]"
       >
         <div
@@ -105,7 +105,7 @@ onUnmounted(() => {
               'rounded-br-2xl rounded-tl-2xl': isEven(itemIdx),
               'rounded-bl-2xl rounded-tr-2xl': !isEven(itemIdx),
             },
-            'block relative w-full aspect-square overflow-hidden group ',
+            'block relative w-full overflow-hidden group ',
           ]"
         >
           <img
