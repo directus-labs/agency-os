@@ -66,7 +66,6 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
     // Formkit Plugin for Tailwind
     // https://formkit.com/guides/create-a-tailwind-theme
     require('@formkit/themes/tailwindcss'),

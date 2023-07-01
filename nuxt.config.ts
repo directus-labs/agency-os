@@ -12,13 +12,20 @@ export default async () => {
   const { data: globals } = await directus.items('globals').readByQuery({})
 
   return defineNuxtConfig({
-    // As of RC12 Nuxt 3 supports Hybrid rendering mode
-    // https://v3.nuxtjs.org/guide/concepts/rendering#route-rules
+    // As of RC12, Nuxt 3 supports Hybrid rendering mode
+    // https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering
+    // Hybrid Rendering is not available when using `nuxt generate`.
     routeRules: {
       //   '/**': { swr: true },
       //   '/api/**': { swr: false },
-      // Route rules are causing some issues with the API routes on Vercel
     },
+
+    components: [
+      // Disable prefixing base components with `Base`
+      { path: '~/components/base', pathPrefix: false },
+      // Auto import components from `~/components`
+      '~/components',
+    ],
 
     css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
 
@@ -32,7 +39,6 @@ export default async () => {
       '@nuxt/devtools', // https://devtools.nuxtjs.org/
       'nuxt-icon', // https://github.com/nuxt-modules/icon
       '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/
-      '@pinia/nuxt', // https://pinia.esm.dev
       //   '@nuxt/image-edge', // https://image.nuxtjs.org/
       '@vueuse/nuxt', // https://vueuse.org/
       '@vueuse/motion/nuxt', // https://motion.vueuse.org/nuxt.html
@@ -54,7 +60,6 @@ export default async () => {
       directusToken: process.env.DIRECTUS_ADMIN_TOKEN,
     },
 
-    // Start Modules Configuration
     googleFonts: {
       families: {
         Inter: true,
@@ -64,7 +69,6 @@ export default async () => {
       display: 'swap',
       download: true,
     },
-    // End Modules Configuration
 
     postcss: {
       plugins: {
@@ -72,17 +76,6 @@ export default async () => {
         'tailwindcss/nesting': {},
         tailwindcss: {},
         autoprefixer: {},
-      },
-    },
-
-    // Currently still needed for Headless UI to work
-    build: {
-      transpile: ['@headlessui/vue'],
-    },
-
-    vite: {
-      optimizeDeps: {
-        include: ['@headlessui/vue', 'vue', 'pinia'],
       },
     },
   })
