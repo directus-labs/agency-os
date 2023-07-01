@@ -17,9 +17,9 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="aspect-w-16 aspect-h-9">
+  <div>
     <iframe
-      class="aspect-video"
+      class="w-full aspect-video"
       :id="name"
       loading="lazy"
       :src="generateVideoEmbed(url)"
