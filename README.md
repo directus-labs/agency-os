@@ -2,13 +2,23 @@
 
 Complete, opinionated agency website template. Nuxt 3 + Directus for Headless CMS.
 
-**View The Demo Site**
+Spin up a beautiful site for your agency or freelancing business in minutes. Or use Agency OS as the foundation for your next client project.
+
+---
+
+_Brought to you by partnership magic ✨ between:_
+
+[Directus](https://directus.io?ref=agency_os) + [NuxtLabs](https://nuxtlabs.com)
+
+---
+
+[**-> View The Demo Site**](https://agency-os.vercel.app/)
 
 **Features**
 
 - Complete Nuxt 3 website example
 - Built-in Directus - Headless CMS support
-- Tailwind CSS with all plugins and HeadlessUI
+- Tailwind CSS and HeadlessUI
 - Dynamic Page Builder (M2A Interface) within Directus
 - Blog posts and categories
 - Projects pages
@@ -25,15 +35,13 @@ Complete, opinionated agency website template. Nuxt 3 + Directus for Headless CM
 - Full Dark mode support
 - Written in Typescript
 
-**Why**
-
 ---
 
 # ⭐ Features
 
 ## Dynamic Page Builder
 
-Includes 15 ready-to-go blocks
+Includes 15 ready-to-go page blocks
 
 - Hero
 - Columns
@@ -53,19 +61,9 @@ Includes 15 ready-to-go blocks
 
 ## Dynamic Forms
 
-![ScreenShot 2023-04-07 at 10.59.05@2x.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/acc5abd8-ff4a-4c4c-8831-a50dcc3a148a/ScreenShot_2023-04-07_at_10.59.052x.png)
-
-![ScreenShot 2023-04-07 at 10.59.41@2x.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/81f7d90a-585f-4c68-960c-00af4dc4e8f6/ScreenShot_2023-04-07_at_10.59.412x.png)
-
 ## Dynamic Menus
 
-![ScreenShot 2023-04-07 at 11.21.14@2x.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/252de4d5-ff96-48db-9782-d8428598e408/ScreenShot_2023-04-07_at_11.21.142x.png)
-
-![ScreenShot 2023-04-07 at 11.21.24@2x.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9f4a058c-640b-4743-a63c-fc500a85ae12/ScreenShot_2023-04-07_at_11.21.242x.png)
-
 ## Dynamic Social Image Generation
-
-![ScreenShot 2023-04-07 at 11.19.08@2x.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cf7ccf54-4418-4c5c-bf80-10c282f9a4be/ScreenShot_2023-04-07_at_11.19.082x.png)
 
 ## Dark Mode Support
 
@@ -79,7 +77,7 @@ If you don't wish to use dark mode, you can simply remove the composable and the
 
 ## Tasteful Animations
 
-Animations are handled using vue-use/motion
+Animations are handled using [@vueuse/motion](https://motion.vueuse.org/)
 
 ## Dev Toolbar
 
@@ -87,17 +85,12 @@ Animations are handled using vue-use/motion
 
 ## Content and Analytics Dashboards
 
-![ScreenShot 2023-04-07 at 11.03.42@2x.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cf89faf1-4eca-4da8-b679-993db91f8427/ScreenShot_2023-04-07_at_11.03.422x.png)
-
 ## Pre-Built Automations
 
-Deploy Your Site
-
-Generate Social Images
-
-Create Slugs Automatically
-
-Post Approval Notifications
+- Deploy Your Site
+- Generate Social Images
+- Create Slugs Automatically
+- Post Approval Notifications
 
 ## Pre-Built Components
 
@@ -119,52 +112,7 @@ Prose
 
 ### Modals
 
-```jsx
-<template>
-  <VButton @click="isModalOpen = true" class="mt-2" variant="primary">
-    Open Modal
-  </VButton>
-  <VModal
-    title="Sample Modal"
-    :is-open="isModalOpen"
-    @close="isModalOpen = false"
-  >
-    <div class="prose dark:prose-invert">
-      <p>{{ modalContent }}</p>
-    </div>
-  </VModal>
-</template>
-<script setup>
-const isModalOpen = ref(false)
-</script>
-```
-
 ### Dropdown
-
-```jsx
-<template>
-  <VDropdown
-    button-label="Dropdown Menu" variant="primary"
-    :menu-items="dropdownItems"
-  />
-</template>
-<script setup>
-const dropdownItems = [
-  {
-    label: 'Console Log',
-    action: () => {
-      console.log('Dropdown button clicked!')
-    },
-  },
-  {
-    label: 'Visit Protected Page',
-    action: () => {
-      router.push('/protected-page')
-    },
-  },
-]
-</script>
-```
 
 ### Alert
 
@@ -174,40 +122,41 @@ const dropdownItems = [
 
 ## Common Utilities
 
-It's good to avoid adding external packages unless your use case really justifies it.
-
-I always end up using some combination of these utils in most of my projects so I've chosen to include them in this starter.
-
 Nuxt 3 is configured by default to auto-import `/utils` directory.
 
 ---
 
 # 🧰 Stack
 
-![https://github.com/bryantgillespie/nuxt3-directus-starter/raw/m2a/public/logos/nuxt3.svg](https://github.com/bryantgillespie/nuxt3-directus-starter/raw/m2a/public/logos/nuxt3.svg)
+<img src="./public/logos/nuxt3.svg" height="50" />
 
 ## Nuxt 3 - Front End Framework
 
-The leading Vue framework that handles routing, server side rendering, and more.
+Build your next Vue.js application with confidence using Nuxt. An open source framework under MIT license that makes web development simple and powerful. The leading Vue framework that handles routing, server side rendering, and more.
 
 ---
 
-![https://github.com/bryantgillespie/nuxt3-directus-starter/raw/m2a/public/logos/directus.svg](https://github.com/bryantgillespie/nuxt3-directus-starter/raw/m2a/public/logos/directus.svg)
+<img src="./public/logos/directus.svg" height="50" />
 
 ## Directus - Headless CMS
 
-### Nuxt Plugin using Directus SDK
+Directus is a headless CMS that instantly turns your SQL database into REST and GraphQL APIs and gives you a beautiful, intuitive no-code app to manage all your content and data.
 
-If you're not familiar - Directus is an open data platform backed by a SQL database that allows you to quickly created a ready-to-use backend / API to power your application without writing any code.
+But it's also more than just a headless CMS. It’s an open data platform that has all the tools you need for creating, managing, serving, visualizing, and even automating your data for your next web, mobile, or digital project.
+
+⚡ Now with 🕸️🧦 WebSockets and GraphQL subscription support through Directus Realtime.
+
+### Nuxt Plugin using Directus SDK
 
 For a smooth experience, the [Directus SDK](https://docs.directus.io/reference/sdk/#javascript-sdk) is already integrated for you and availably globally as a Nuxt plugin.
 
-```jsx
+```vue
 <script setup>
 // Get the $directus plugin from Nuxt App composable
 const { $directus } = useNuxtApp()
 
-// Fetch content from Directusconst { data } = await $directus.items('your_collection_name').readByQuery({
+// Fetch content from Directus
+const { data } = await $directus.items('your_collection_name').readByQuery({
   filter: {
     status: { _eq: 'published' },
   },
@@ -218,33 +167,20 @@ const { $directus } = useNuxtApp()
 
 ---
 
-![https://github.com/bryantgillespie/nuxt3-directus-starter/raw/m2a/public/logos/tailwind.svg](https://github.com/bryantgillespie/nuxt3-directus-starter/raw/m2a/public/logos/tailwind.svg)
+<img src="./public/logos/tailwind.svg" height="40" />
 
 ## Tailwind CSS
 
-If you don't already have a license for Tailwind UI, I highly recommend picking one up.
+[Tailwind](https://tailwindcss.com/) is a utility-first CSS framework that allows you to rapidly build sites and maintain consistency across team members.
 
-### Primary Color
-
-All the base components included in the starter use a `primary` class like `class="text-primary-600 bg-primary-500"` for colors to make it simple to change your preferred base color.
-
-Just adjust it within your `tailwind.config.js`
-
-`// tailwind.config.js ... theme: { extend: { colors: { primary: colors.violet,
-// Change this to your preferred Tailwind shade ie colors.yourShade gray:
-colors.slate, }, }, }, ...`
-
-### Tailwind Plugins
-
-All the official Tailwind Plugins are installed and ready to use as well.
+There are several Tailwind Plugins installed and ready to use as well.
 
 - [Typography](https://tailwindcss.com/docs/typography-plugin)
 - [Forms](https://tailwindcss.com/docs/plugins#forms)
-- [Aspect Ratio](https://github.com/tailwindlabs/tailwindcss-aspect-ratio)
 
 ---
 
-![https://github.com/bryantgillespie/nuxt3-directus-starter/raw/m2a/public/logos/headlessui.svg](https://github.com/bryantgillespie/nuxt3-directus-starter/raw/m2a/public/logos/headlessui.svg)
+<img src="./public/logos/headlessui.svg" height="50" />
 
 ## Headless UI
 
@@ -252,21 +188,15 @@ All the official Tailwind Plugins are installed and ready to use as well.
 
 ---
 
-![formkit.svg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2364fc87-4e4a-4f0a-b5f9-73395570a747/formkit.svg)
+<img src="./public/logos/formkit.svg" height="50" />
 
 ## FormKit
 
----
-
-![https://github.com/bryantgillespie/nuxt3-directus-starter/raw/m2a/public/logos/pinia.svg](https://github.com/bryantgillespie/nuxt3-directus-starter/raw/m2a/public/logos/pinia.svg)
-
-## Pinia
-
-The template uses [Pinia](https://pinia.vuejs.org/) for stores instead of Vuex. It's much easier to use and less verbose.
+[FormKit](https://formkit.com/) is form library for Vue that saves you hours of time by simplifying form creation. Includes error handling, validation, theming, and even generation from a schema out of the box.
 
 ---
 
-![https://github.com/bryantgillespie/nuxt3-directus-starter/raw/m2a/public/logos/vueuse.svg](https://github.com/bryantgillespie/nuxt3-directus-starter/raw/m2a/public/logos/vueuse.svg)
+<img src="./public/logos/vueuse.svg" height="50" />
 
 ## VueUse
 
@@ -282,7 +212,7 @@ The template uses [Pinia](https://pinia.vuejs.org/) for stores instead of Vuex
 
 [https://directus.cloud/register](https://directus.cloud/register)
 
-If you're prefer the self-hosted version, you can find [install instructions here](https://docs.directus.io/getting-started/installation/cli/).
+If you're prefer the self-hosted version, you can find [install instructions using Docker here](https://docs.directus.io/self-hosted/quickstart.html).
 
 ### 2 - Create a new project
 
@@ -298,17 +228,28 @@ You need the static token to seed the project.
 4. Generate token and copy it
 5. Save the user (don't forget to save!)
 
+### 4 - Apply the Template
+
+Open your terminal run the following command and simply follow the prompts.
+
+`npx directus-template-cli apply`
+
+1. Choose the `Headless CMS - Website` template.
+2. Paste the URL to your Directus instance
+3. Paste your Admin user static token
+4. Wait for script to finish
+
 ---
 
 ## Nuxt - Frontend
 
 ### 1 - Clone the repo
 
-[Use This Template](https://github.com/bryantgillespie/nuxt3-directus-starter/generate)
+[Use This Template](https://github.com/directus-community/agency-os/generate)
 
 _Or from the terminal_
 
-`git clone  your-project`
+`git clone https://github.com/directus-community/agency-os.git your-project`
 
 ### 2 - Fix your .env file
 
@@ -318,26 +259,29 @@ _Or from the terminal_
 
 If you're using Directus Cloud, it should look something like this.
 
-`DIRECTUS_URL="https://youruniquedomain.directus.app"
-DIRECTUS_ADMIN_TOKEN="your_admin_static_token_here"`
+```
+DIRECTUS_URL="https://youruniquedomain.directus.app"
+DIRECTUS_ADMIN_TOKEN="your_admin_static_token_here"
+```
 
 If you're using the self hosted version, it should look something like this.
 
-`DIRECTUS_URL="http://localhost:8055"`
+```
+DIRECTUS_URL="http://localhost:8055"
+DIRECTUS_ADMIN_TOKEN="your_admin_static_token_here"
+```
 
 ### 3 - Install your dependencies
 
 `yarn install`
 
-### 4 - Seed your Directus project
-
-### 6 - Start the development server\*\*
-
-[http://localhost:3000](http://localhost:3000/)
+### 4 - Start the development server
 
 `yarn dev`
 
-### 7 - Build for production when you're ready
+[http://localhost:3000](http://localhost:3000/)
+
+### 5 - Build for production when you're ready
 
 `yarn build`
 
@@ -345,15 +289,15 @@ If you're using the self hosted version, it should look something like this.
 
 # 🚢 Deployment
 
-Be sure to check out the Nuxt 3 official [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
+Be sure to check out the Nuxt 3 official [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
 
 **Netlify**
 
-[https://camo.githubusercontent.com/417d890ba67c98ad5856b715343a61cdbf07d72b9bd5b79dd45d43de634c29ea/68747470733a2f2f7777772e6e65746c6966792e636f6d2f696d672f6465706c6f792f627574746f6e2e737667](https://camo.githubusercontent.com/417d890ba67c98ad5856b715343a61cdbf07d72b9bd5b79dd45d43de634c29ea/68747470733a2f2f7777772e6e65746c6966792e636f6d2f696d672f6465706c6f792f627574746f6e2e737667)
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/bryantgillespie/nuxt3-directus-starter#DIRECTUS_URL=https://youruniqueid.directus.app"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
 
 **Vercel**
 
-[https://camo.githubusercontent.com/5e471e99e8e022cf454693e38ec843036ec6301e27ee1e1fa10325b1cb720584/68747470733a2f2f76657263656c2e636f6d2f627574746f6e](https://camo.githubusercontent.com/5e471e99e8e022cf454693e38ec843036ec6301e27ee1e1fa10325b1cb720584/68747470733a2f2f76657263656c2e636f6d2f627574746f6e)
+<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbryantgillespie%2Fnuxt3-directus-starter%2F&env=DIRECTUS_URL&demo-title=Directus%20Nuxt%203%20Starter%20&demo-description=Nuxt%203%20starter%20for%20Directus%20with%20Tailwind%20CSS%20and%20lots%20of%20other%20goodies&demo-url=https%3A%2F%2Fdirectus-nuxt3-starter.netlify.app%2F&demo-image=https%3A%2F%2F4bgd2mtg.directus.app%2Fassets%2F0d374f4a-9111-4b4f-90d0-cff45a92a784"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
 
 ---
 
