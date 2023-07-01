@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Post } from '~~/types'
 const { fileUrl } = useFiles()
-const props = defineProps<{
+defineProps<{
   post: Post
   even?: boolean
 }>()

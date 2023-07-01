@@ -47,20 +47,6 @@ onMounted(() => useAnimation())
 
 // Set the page title and meta tags using the Nuxt useHead and useSeoMeta composables
 const pageData = unref(page)
-useHead({
-  title: () => pageData.seo.title || pageData.title,
-})
-useServerSeoMeta({
-  title: () => pageData.seo.title || pageData.title,
-  description: () => pageData.seo.meta_description,
-  ogTitle: () => pageData.seo.title,
-  ogDescription: () => pageData.seo.meta_description,
-  ogType: 'website',
-  ogUrl: () => pageData.seo.og_url,
-  ogLocale: () => pageData.seo.og_locale || 'en_US',
-  //   ogImage: () => fileUrl(pageData.seo.og_image ) ,
-  //   twitterCard: () => fileUrl(pageData.seo.twitter_image),
-})
 </script>
 <template>
   <PageBuilder :page="page" />
