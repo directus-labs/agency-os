@@ -1,4 +1,3 @@
-// Page builder types
 export interface Block {
   id: string
   collection: string
@@ -18,7 +17,7 @@ export interface Seo {
   twitter_image?: string
 }
 
-export type Page = {
+export interface Page {
   id: string
   title: string
   slug: string
@@ -27,18 +26,17 @@ export type Page = {
   seo?: Seo
 }
 
-// User related types
-export type Avatar = {
+export interface Avatar {
   id: string
 }
 
-export type Role = {
+export interface Role {
   id: string
   name?: string
   description?: string
 }
 
-export type User = {
+export interface User {
   id: string
   first_name?: string
   last_name?: string
@@ -53,9 +51,7 @@ export type User = {
   avatar?: null | Avatar
 }
 
-// Other collection types
-
-export type Post = {
+export interface Post {
   id: string
   title: string
   summary: string
@@ -68,14 +64,14 @@ export type Post = {
   }
 }
 
-export type Form = {
+export interface Form {
   form: {
     id: string
     key?: string
     submit_label?: string
     schema: Array<{
       id: string
-      type: string
+      interface: string
       label: string
       placeholder: string
       required: boolean
@@ -86,10 +82,10 @@ export type Form = {
   }
 }
 
-export type NavigationItem = {
+export interface NavigationItem {
   id: string
   title: string
-  type: string
+  interface: string
   url: string
   open_in_new_tab: boolean
   has_children: boolean

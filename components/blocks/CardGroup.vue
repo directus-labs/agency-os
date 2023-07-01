@@ -1,30 +1,28 @@
 <script setup lang="ts">
 import { Post } from '~~/types'
-import { PropType } from 'vue'
-type CardGroup = {
+
+interface CardGroup {
   id: string
-  titlle: string
+  title: string
   headline: string
   content: string
-  posts: {
+  posts: Array<{
     posts_id: Post
-  }
+  }>
 }
-const props = defineProps({
-  data: {
-    type: Object as PropType<CardGroup>,
-    required: true,
-  },
-})
+
+defineProps<{
+  data: CardGroup
+}>()
 </script>
+
 <template>
   <BlockContainer>
     <!-- Title -->
     <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
     <TypographyHeadline v-if="data.headline" :content="data.headline" />
-
     <!-- Gallery -->
-    <div class="gap-4 mt-4 md:columns-3">
+    <div class="grid gap-8 mt-4 md:grid-cols-3">
       <PostCard
         v-for="(item, itemIdx) in data.posts"
         :key="itemIdx"
