@@ -149,8 +149,8 @@ Be sure to check out the Nuxt 3 official [deployment documentation](https://v3.n
 
 # ⭐ Features
 
-<details>
-<summary><strong>Dynamic Page Builder</strong></summary>
+### Dynamic Page Builder
+
 Includes 15 ready-to-go page blocks
 
 - Hero
@@ -168,22 +168,15 @@ Includes 15 ready-to-go page blocks
 - Testimonial Slider
 - Video
 - Raw HTML
-</details>
 
-<details>
-<summary><strong>Dynamic Forms</strong></summary>
-</details>
+### Dynamic Forms
 
-<details>
-<summary><strong>Dynamic Navigation</strong></summary>
-</details>
+### Dynamic Navigation
 
-<details>
-<summary><strong>Dynamic Social Image Generation</strong></summary>
-</details>
+### Dynamic Social Image Generation
 
-<details>
-<summary><strong>Dark Mode Support</strong></summary>
+### Dark Mode Support
+
 Agency OS has full dark mode support.
 
 Dark mode is already enabled in the `tailwind.config.js` and all the base components included have full support.
@@ -192,29 +185,22 @@ Dark mode toggling is provided by [VueUse `useDark` composable](https://vueus
 
 If you don't wish to use dark mode, you can simply remove the composable and the `dark:` classes from the components.
 
-</details>
+### Dev Toolbar
 
-<details>
-<summary><strong>Dev Toolbar</strong></summary>
-</details>
+### Guest-Author Ready
 
-<details>
-<summary><strong>Guest-Author Ready</strong></summary>
-</details>
+### Content Dashboard
 
-<details>
-<summary><strong>Content Dashboard</strong></summary>
-</details>
+### Pre-Built Automations
 
-<details>
-<summary><strong>Pre-Built Automations</strong></summary>
 - Deploy Your Site
 - Generate Social Images
 - Create Slugs Automatically
 - Post Approval Notifications
-</details>
 
-### Pre-Built Components
+---
+
+## Pre-Built Components
 
 **Global Search**
 
