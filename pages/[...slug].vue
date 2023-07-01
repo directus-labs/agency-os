@@ -1,12 +1,21 @@
 <script setup lang="ts">
 import { Page } from '~~/types'
+
 const { $directus } = useNuxtApp()
 const { params, path } = useRoute()
+
+function getSlug() {
+  console.log(path)
+  if (path == '/') {
+    return 'home'
+  } else return params.slug[0]
+}
+console.log(getSlug())
 
 // Fetch the page data from the Directus API using the Nuxt useAsyncData composable
 // https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
 const {
-  data: page = {} as Page,
+  data: page,
   pending,
   error,
 } = await useAsyncData(
@@ -14,7 +23,7 @@ const {
   () => {
     return $directus.items('pages').readByQuery({
       filter: {
-        slug: { _eq: 'home' },
+        slug: { _eq: getSlug() },
       },
       fields: [
         '*',
@@ -29,38 +38,20 @@ const {
         'blocks.item.*',
         'blocks.item.rows.*',
         'blocks.item.posts.posts_id.*',
-        'blocks.item.posts.posts_id.category.*',
-        'blocks.item.cards.*',
       ],
       limit: 1,
     })
   },
   {
-    transform: (data) => data.data[0],
+    transform: (data: object) => data.data[0],
     pick: ['title', 'blocks', 'slug', 'id', 'seo'],
   }
 )
 
-const { fileUrl } = useFiles()
-
-onMounted(() => useAnimation())
-
-// Set the page title and meta tags using the Nuxt useHead and useSeoMeta composables
-const pageData = unref(page)
-useHead({
-  title: () => pageData.seo.title || pageData.title,
-})
-useServerSeoMeta({
-  title: () => pageData.seo.title || pageData.title,
-  description: () => pageData.seo.meta_description,
-  ogTitle: () => pageData.seo.title,
-  ogDescription: () => pageData.seo.meta_description,
-  ogType: 'website',
-  ogUrl: () => pageData.seo.og_url,
-  ogLocale: () => pageData.seo.og_locale || 'en_US',
-  //   ogImage: () => fileUrl(pageData.seo.og_image ) ,
-  //   twitterCard: () => fileUrl(pageData.seo.twitter_image),
-})
+// useHead({
+//   title: () => (page.value.seo ? page.value.seo.title : page.value.title),
+// })
+// onMounted(() => useAnimation())
 </script>
 <template>
   <PageBuilder :page="page" />
