@@ -1,16 +1,27 @@
-# Agency OS Website Template Readme
+<a href="https://directus.io">
+  <img alt="Agency OS - Complete Nuxt3 + Directus project" src="./public/logos/agencyos.png">
+  <h1 align="center">Agency OS</h1>
+</a>
 
-Complete, opinionated agency website template. Nuxt 3 + Directus for Headless CMS.
+<p align="center">Fully complete, opinionated agency website template. Nuxt 3 Frontend + Directus for Headless CMS / Backend.</p>
+
+<p align="center"><em>Brought to you by partnership magic ✨ between <a href="https://directus.io">Directus</a> and <a href="https://nuxtlabs.com">NuxtLabs</a>.</em>
+</p>
+
+<p align="center">
+  <a href="#introduction"><strong>Introduction</strong></a> ·
+  <a href="#features"><strong>⭐ Features</strong></a> ·
+  <a href="#stack"><strong>🧰 Tech Stack</strong></a> ·
+  <a href="#installation-and-development"><strong>🚧 Installation and Development</strong></a> ·
+  <a href="#deployment"><strong>🚢 Deployment</strong></a>
+</p>
+<br/>
+
+---
+
+# Introduction
 
 Spin up a beautiful site for your agency or freelancing business in minutes. Or use Agency OS as the foundation for your next client project.
-
----
-
-_Brought to you by partnership magic ✨ between:_
-
-[Directus](https://directus.io?ref=agency_os) + [NuxtLabs](https://nuxtlabs.com)
-
----
 
 [**-> View The Demo Site**](https://agency-os.vercel.app/)
 
@@ -305,3 +316,7 @@ Be sure to check out the Nuxt 3 official [deployment documentation](https://v3.n
 
 - **[Directus Discord](https://discord.com/invite/directus)**
 - **[Nuxt Discord](https://discord.com/invite/ps2h6QT)**
+
+# Contributors
+
+- Bryant Gillespie ([@bryantgillespie](https://twitter.com/bryantgillespie))
