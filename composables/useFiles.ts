@@ -10,10 +10,10 @@ export interface ThumbnailOptions {
 }
 
 export default function useFiles() {
-  const { $config } = useNuxtApp()
+  const config = useRuntimeConfig()
 
   function fileUrl(fileId: string) {
-    return `${$config.public.directusUrl}/assets/${fileId}`
+    return `${config.public.directusUrl}/assets/${fileId}`
   }
 
   function getExtension(filename: string) {
@@ -21,7 +21,7 @@ export default function useFiles() {
   }
 
   const getThumbnail = (fileId: string, options?: ThumbnailOptions): string => {
-    const url = new URL(`${$config.public.directusUrl}/assets/${fileId}`)
+    const url = new URL(`${config.public.directusUrl}/assets/${fileId}`)
     if (options) {
       if (options.width) {
         url.searchParams.append('width', options.width.toFixed(0))

@@ -5,12 +5,10 @@ const { $directus } = useNuxtApp()
 const { params, path } = useRoute()
 
 function getSlug() {
-  console.log(path)
   if (path == '/') {
     return 'home'
   } else return params.slug[0]
 }
-console.log(getSlug())
 
 // Fetch the page data from the Directus API using the Nuxt useAsyncData composable
 // https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata

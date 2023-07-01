@@ -2,10 +2,7 @@
 const showTailwindBreakpoints = ref(true)
 </script>
 <template>
-  <div
-    v-if="showTailwindBreakpoints"
-    class="fixed bottom-0 left-0 z-50 m-8 md:left-auto md:right-0"
-  >
+  <div v-if="showTailwindBreakpoints" class="fixed top-0 left-0 z-50 m-8">
     <!-- Tailwind Breakpoints  -->
     <div
       class="flex items-center justify-center font-mono text-xs text-white bg-gray-700 rounded-full w-7 h-7 sm:bg-pink-500 md:bg-orange-500 lg:bg-green-500 xl:bg-accent"

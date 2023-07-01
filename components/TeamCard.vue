@@ -47,12 +47,14 @@ const flipped = ref(false)
           scale: 1,
           x: 0,
           y: 0,
+          transformOrigin: 'bottom right',
         }"
         :leave="{
           opacity: 0,
           scale: 0.9,
           x: 100,
           y: 100,
+          transformOrigin: 'bottom right',
         }"
       >
         <div class="relative p-4">
