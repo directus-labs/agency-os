@@ -1,27 +1,13 @@
 <script setup lang="ts">
-// Import the $directus plugin
 const { $directus } = useNuxtApp()
 const { fileUrl } = useFiles()
-
-// Get the params from the Nuxt route
 const { params, path } = useRoute()
 
-const page = ref({})
-
-useHead({
-  title: () => page.value.title,
-})
-
-useSeoMeta({
-  //   title: () => page.value.title,
-  //   description: () => page.value.summary,
-  //   image: () => fileUrl(page.value.image),
-  ogImage: () => (page.value.seo ? fileUrl(page.value.seo.og_image) : null),
-})
-
-// Fetch the page data from the Directus API using the Nuxt useAsyncData composable
-// https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
-const { data, pending, error } = await useAsyncData(
+const {
+  data: page,
+  pending,
+  error,
+} = await useAsyncData(
   path,
   () => {
     return $directus.items('posts').readByQuery({
@@ -52,10 +38,25 @@ const { data, pending, error } = await useAsyncData(
   }
 )
 
-page.value = data.value
+useHead({
+  title: () => page.value.title,
+})
 
-// const tableOfContents = generateToc(page.value.content)
+useSeoMeta({
+  title: () => page.value.title,
+  description: () => page.value.summary,
+  ogDescription: () =>
+    page.value.seo ? page.value.seo.meta_description : null,
+  ogUrl: () => `https://directus.io/posts/${page.value.slug}`,
+  ogTitle: () => (page.value.seo ? page.value.seo.og_title : null),
+  ogImage: () => (page.value.seo ? fileUrl(page.value.seo.og_image) : null),
+  twitterTitle: '[twitter:title]',
+  twitterDescription: '[twitter:description]',
+  twitterImage: '[twitter:image]',
+  twitterCard: 'summary',
+})
 </script>
+
 <template>
   <div>
     <article class="">

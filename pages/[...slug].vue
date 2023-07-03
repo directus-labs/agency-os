@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Page } from '~~/types'
-
 const { $directus } = useNuxtApp()
 const { params, path } = useRoute()
 
@@ -45,11 +43,6 @@ const {
     pick: ['title', 'blocks', 'slug', 'id', 'seo'],
   }
 )
-
-// useHead({
-//   title: () => (page.value.seo ? page.value.seo.title : page.value.title),
-// })
-// onMounted(() => useAnimation())
 </script>
 <template>
   <PageBuilder :page="page" />
