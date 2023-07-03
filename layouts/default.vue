@@ -49,5 +49,9 @@ const { progress, scrollToTop } = useScroll()
         >
       </div>
     </div>
+    <DevOnly>
+      <DevToolbar />
+    </DevOnly>
+    <ChatWidget />
   </div>
 </template>
