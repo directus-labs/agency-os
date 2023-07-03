@@ -1,14 +1,16 @@
 <script setup lang="ts">
-const props = defineProps({
-  imageUrl: { type: String, default: '' },
-  title: { type: String, default: '' },
-  summary: { type: String, default: '' },
-  authorName: { type: String, default: '' },
-  authorImage: { type: String, default: '' },
-  readTime: { type: String, default: '' },
-  badgeLabel: { type: String, default: '' },
-  badgeColor: { type: String, default: '' },
-})
+export interface OgImageProps {
+  imageUrl?: string
+  title?: string
+  summary?: string
+  authorName?: string
+  authorImage?: string
+  readTime?: string
+  badgeLabel?: string
+  badgeColor?: string
+}
+
+defineProps<OgImageProps>()
 </script>
 <template>
   <div class="relative w-[1200px] h-[630px] overflow-hidden">
@@ -16,21 +18,19 @@ const props = defineProps({
       class="absolute inset-0 bg-gradient-to-br from-gray-700 via-gray-900 to-accent"
     />
     <div class="absolute inset-0 grain-bg opacity-20" />
-    <div
-      v-if="imageUrl"
-      class="absolute top-0 left-0 mt-6 ml-6 overflow-hidden border-2 border-gray-700 rounded-bl-3xl dark:outline-gray-800"
-    >
+    <div v-if="imageUrl" class="absolute inset-0 w-full h-full overflow-hidden">
       <img
         :src="imageUrl"
-        class="object-cover w-full h-full saturate-0 dark:brightness-90"
+        class="object-cover w-full h-full opacity-30 saturate-0 dark:brightness-90"
         alt=""
       />
+
       <div
-        class="absolute inset-0 mix-blend-multiply bg-gradient-to-b from-gray-100 to-gray-900"
+        class="absolute inset-0 mix-blend-multiply bg-gradient-to-r from-gray-100 to-gray-900/10"
       />
     </div>
 
-    <header class="absolute inset-0 flex items-center justify-end">
+    <header class="absolute inset-0 flex items-center justify-center">
       <!-- Title Container -->
       <div class="relative w-[900px] px-12 py-12">
         <div
@@ -77,8 +77,8 @@ const props = defineProps({
         </div>
       </div>
     </header>
-    <div class="absolute bottom-8 right-8">
-      <Logo class="h-12 text-white opacity-50" />
+    <div class="absolute top-8 right-8">
+      <Logo class="h-12 text-white" />
     </div>
   </div>
 </template>
