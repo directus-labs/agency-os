@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
-type Video = {
+export interface VideoBlockProps {
   id: string
   title?: string
   headline?: string
@@ -8,12 +7,10 @@ type Video = {
   video_file?: string
   video_url?: string
 }
-const props = defineProps({
-  data: {
-    type: Object as PropType<Video>,
-    required: true,
-  },
-})
+
+const props = defineProps<{
+  data: VideoBlockProps
+}>()
 
 const { fileUrl } = useFiles()
 

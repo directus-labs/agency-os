@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
 import { usePointerSwipe } from '@vueuse/core'
 
-type Gallery = {
+export interface GalleryBlockProps {
   id: string
-  title: string
-  headline: string
+  title?: string
+  headline?: string
   gallery_items: Array<{
     directus_files_id:
       | string
@@ -17,12 +16,10 @@ type Gallery = {
         }
   }>
 }
-const props = defineProps({
-  data: {
-    type: Object as PropType<Gallery>,
-    required: true,
-  },
-})
+
+const props = defineProps<{
+  data: GalleryBlockProps
+}>()
 
 const { fileUrl } = useFiles()
 
@@ -79,132 +76,13 @@ onUnmounted(() => {
     <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
     <TypographyHeadline v-if="data.headline" :content="data.headline" />
 
-    <!-- Gallery -->
-    <div class="gap-4 mt-4 md:columns-3">
-      <button
-        v-for="(item, itemIdx) in data.gallery_items"
-        :key="itemIdx"
-        @click="
-          () => {
-            currentItemIdx = itemIdx
-            toggle()
-          }
-        "
-        :class="[
-          {
-            'rounded-br-3xl rounded-tl-3xl': isEven(itemIdx),
-            'rounded-bl-3xl rounded-tr-3xl': !isEven(itemIdx),
-          },
-          'block relative w-full mb-6 overflow-hidden p-2 group border-2 border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition duration-300',
-        ]"
-      >
-        <div
-          class="relative"
-          :class="[
-            {
-              'rounded-br-2xl rounded-tl-2xl': isEven(itemIdx),
-              'rounded-bl-2xl rounded-tr-2xl': !isEven(itemIdx),
-            },
-            'block relative w-full overflow-hidden group ',
-          ]"
-        >
-          <img
-            :src="fileUrl(item.directus_files_id.id)"
-            class="object-cover w-full transition duration-300 group-hover:scale-110"
-          />
-          <div
-            class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
-          >
-            <Icon
-              name="heroicons:magnifying-glass-plus"
-              class="w-12 h-12 text-gray-500 dark:text-white"
-            />
-          </div>
-        </div>
-      </button>
-    </div>
-    <!-- Gallery Modal -->
-    <div
-      v-if="isOpen"
-      class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gray-900 bg-opacity-75"
-    >
-      <!-- Tips for using the gallery -->
-      <div
-        class="absolute z-50 hidden font-mono text-white md:block top-4 left-4"
-      >
-        <div class="p-4 bg-gray-900 rounded-tl-3xl rounded-br-3xl">
-          <p>Press 'esc' to close</p>
-          <p>Press 'left' or 'right' to navigate</p>
-        </div>
-      </div>
-      <div class="absolute z-50 font-mono text-white bottom-4 right-4">
-        <VBadge
-          v-for="(item, itemIdx) in currentItem.tags"
-          :key="itemIdx"
-          size="lg"
-          class="rounded-br-xl"
-        >
-          {{ item }}</VBadge
-        >
-      </div>
-      <div
-        class="relative flex flex-col items-center justify-center w-full h-full max-w-7xl"
-      >
-        <button
-          @click="toggle"
-          class="absolute z-50 w-12 h-12 text-2xl text-white transition duration-300 top-4 right-4 bg-accent hover:bg-opacity-75 rounded-tr-xl rounded-bl-xl"
-        >
-          <div>
-            <span class="sr-only">Close</span>
-            <Icon name="heroicons:x-mark" class="w-6 h-6" />
-          </div>
-        </button>
-        <div class="flex items-center justify-center w-full h-full">
-          <button
-            @click="prev"
-            class="absolute z-50 w-12 h-12 text-2xl text-white transition duration-300 left-4 bg-accent hover:bg-opacity-75 rounded-tr-xl rounded-bl-xl"
-          >
-            <span class="sr-only">Previous</span>
-            <Icon name="heroicons:arrow-left" class="w-6 h-6" />
-          </button>
-          <button
-            @click="next"
-            class="absolute z-50 w-12 h-12 text-2xl text-white transition duration-300 right-4 bg-accent hover:bg-opacity-75 rounded-br-xl rounded-tl-xl"
-          >
-            <span class="sr-only">Next</span>
-            <Icon name="heroicons:arrow-right" class="w-6 h-6" />
-          </button>
-          <!-- Image -->
-          <div class="relative flex items-center justify-center">
-            <div class="relative w-full h-full p-20">
-              <!-- Metadata -->
-              <div class="flex">
-                <p
-                  class="inline-block px-6 py-2 font-serif font-bold text-white bg-gray-900 track rounded-tl-3xl"
-                >
-                  {{ currentItem.title }}
-                </p>
-                <p
-                  v-if="currentItem.description"
-                  class="flex-1 hidden px-6 py-2 font-mono text-white bg-gray-700 md:inline-block"
-                >
-                  {{ currentItem.description }}
-                </p>
-              </div>
-              <template
-                v-for="(item, itemIdx) in data.gallery_items"
-                :key="itemIdx"
-              >
-                <img
-                  v-if="currentItemIdx === itemIdx"
-                  :src="fileUrl(item.directus_files_id.id)"
-                  class="object-contain w-full rounded-br-3xl"
-                />
-              </template>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <VGallery
+      v-if="data.gallery_items.length > 0"
+      :items="
+        data.gallery_items.map((item) => {
+          return item.directus_files_id
+        })
+      "
+    />
   </BlockContainer>
 </template>

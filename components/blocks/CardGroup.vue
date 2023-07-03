@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Post } from '~~/types'
 
-interface CardGroup {
+export interface CardGroupBlockProps {
   id: string
   title: string
   headline: string
@@ -12,7 +12,7 @@ interface CardGroup {
 }
 
 defineProps<{
-  data: CardGroup
+  data: CardGroupBlockProps
 }>()
 </script>
 

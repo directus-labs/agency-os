@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { fileUrl } = useFiles()
 
-export interface Columns {
+export interface ColumnsBlockProps {
   id: string
   title: string
   headline: string
@@ -16,7 +16,7 @@ export interface Columns {
 }
 
 defineProps<{
-  data: Columns
+  data: ColumnsBlockProps
 }>()
 </script>
 

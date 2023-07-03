@@ -1,24 +1,21 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
-type Steps = {
+export interface StepsBlockProps {
   id: string
-  title: string
-  headline: string
+  title?: string
+  headline?: string
   steps: Array<{
     id: string
     title: string
     content: string
     image: string
   }>
-  show_step_numbers: boolean
-  alternate_image_position: boolean
+  show_step_numbers?: boolean
+  alternate_image_position?: boolean
 }
-const props = defineProps({
-  data: {
-    type: Object as PropType<Steps>,
-    required: true,
-  },
-})
+
+defineProps<{
+  data: StepsBlockProps
+}>()
 
 const { fileUrl } = useFiles()
 </script>

@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
 import { useDebounceFn } from '@vueuse/shared'
 
-type Testimonials = {
+export interface TestimonialsBlockProps {
   id: string
-  title: string
-  headline: string
-  subtitle: string
+  title?: string
+  headline?: string
+  subtitle?: string
   testimonials: Array<{
     testimonial: {
       title: string
@@ -19,12 +18,10 @@ type Testimonials = {
     }
   }>
 }
-const props = defineProps({
-  data: {
-    type: Object as PropType<Testimonials>,
-    required: true,
-  },
-})
+
+defineProps<{
+  data: TestimonialsBlockProps
+}>()
 
 const testimonialContainer = ref(null)
 const testimonialRefs = ref([])
