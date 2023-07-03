@@ -31,20 +31,14 @@ onUnmounted(() => {
 })
 </script>
 <template>
-  <div class="relative flex flex-col h-full">
-    <div
-      class="relative flex items-center px-4 py-4 space-x-4 border-b dark:border-b-gray-700 bg-gradient-to-br from-white via-accent/50 to-white dark:from-gray-800 dark:via-gray-900 dark:to-gray-600"
-    >
-      <VButton
-        class="inline-flex"
-        @click="selectedConversation = null"
-        variant="outline"
-      >
+  <div class="relative flex flex-col flex-1 h-full">
+    <MessengerHeader>
+      <VButton @click="selectedConversation = null" variant="outline" size="sm">
         <Icon name="heroicons:arrow-left" class="w-5 h-5" />
       </VButton>
 
       <TypographyHeadline content="Chat" />
-    </div>
+    </MessengerHeader>
     <div class="relative flex flex-1">
       <div class="absolute py-4 inset-0 flex bottom-[56px] overflow-y-auto">
         <ol

@@ -42,50 +42,58 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="relative flex flex-col h-full">
-    <div v-if="!selectedConversation">
-      <div
-        class="relative flex items-center px-4 py-4 space-x-4 border-b dark:border-b-gray-700 bg-gradient-to-br from-white via-accent/50 to-white dark:from-gray-800 dark:via-gray-900 dark:to-gray-600"
-      >
+  <div class="relative flex flex-col h-full overflow-hidden">
+    <template v-if="!selectedConversation">
+      <MessengerHeader>
         <TypographyHeadline content="Messages" />
+      </MessengerHeader>
+      <div class="flex-1 block h-full max-h-full min-w-full">
+        <div id="messages-body" class="flex flex-col h-full overflow-y-scroll">
+          <div class="pb-20" v-if="conversations.length > 0">
+            <ul class="block h-full pb-20 divide-y dark:divide-gray-500">
+              <li v-for="conversation in conversations" :key="conversation.id">
+                <button
+                  @click="selectedConversation = conversation.id"
+                  class="flex items-center w-full px-4 py-4 space-x-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="block w-3 h-3 bg-green-500 rounded-full" />
+                  <div class="flex -space-x-1 overflow-hidden">
+                    <img
+                      class="inline-block w-6 h-6 rounded-full ring-2 ring-white dark:ring-gray-800"
+                      src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      alt=""
+                    />
+                    <img
+                      class="inline-block w-6 h-6 rounded-full ring-2 ring-white dark:ring-gray-800"
+                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
+                      alt=""
+                    />
+                    <img
+                      class="inline-block w-6 h-6 rounded-full ring-2 ring-white dark:ring-gray-800"
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      alt=""
+                    />
+                  </div>
+                  <p class="dark:text-white">
+                    {{ getRelativeTime(conversation.date_created) }}
+                  </p>
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div v-else class="px-4 py-4 space-y-8">
+            <TypographyHeadline content="No conversations" size="sm" />
+          </div>
+        </div>
       </div>
-      <ul v-if="conversations.length > 0" class="divide-y">
-        <li v-for="conversation in conversations" :key="conversation.id">
-          <button
-            @click="selectedConversation = conversation.id"
-            class="flex items-center w-full px-4 py-4 space-x-2 hover:bg-gray-100"
-          >
-            <span class="block w-3 h-3 bg-green-500 rounded-full" />
-            <div class="flex -space-x-1 overflow-hidden">
-              <img
-                class="inline-block w-6 h-6 rounded-full ring-2 ring-white"
-                src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              />
-              <img
-                class="inline-block w-6 h-6 rounded-full ring-2 ring-white"
-                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80"
-                alt=""
-              />
-              <img
-                class="inline-block w-6 h-6 rounded-full ring-2 ring-white"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              />
-            </div>
-            <p>{{ getRelativeTime(conversation.date_created) }}</p>
-          </button>
-        </li>
-      </ul>
-      <div v-else class="px-4 py-4 space-y-8">
-        <TypographyHeadline content="No conversations" size="sm" />
+      <div
+        class="absolute bottom-0 flex justify-center w-full pb-4 mx-auto bg-gradient-to-b from-transparent to-white dark:from-transparent dark:to-gray-800"
+      >
+        <VButton class="" @click="createNewConversation()" variant="primary">
+          Send Us A Message
+        </VButton>
       </div>
-      <div class="mt-12">
-        <VButton class="" @click="createNewConversation()" variant="primary"
-          >Send Us A Message</VButton
-        >
-      </div>
-    </div>
+    </template>
     <MessengerConversation
       v-if="selectedConversation"
       :id="selectedConversation"
