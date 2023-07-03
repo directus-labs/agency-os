@@ -19,9 +19,9 @@ export default function useChat() {
       icon: 'heroicons:chat-bubble-left-ellipsis',
       title: 'Chat',
     },
-    search: {
-      icon: 'heroicons:magnifying-glass',
-      title: 'Search',
+    help: {
+      icon: 'heroicons:lifebuoy',
+      title: 'Help',
     },
     articles: {
       icon: 'heroicons:newspaper',
