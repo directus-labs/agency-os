@@ -9,11 +9,6 @@
   opacity: 0.5;
 }
 
-.bg-noise {
-  background: rgba(0, 0, 0, 0.5);
-  background-image: url("data:image/svg+xml,%3C!-- svg: first layer --%3E%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
 .grain-bg {
   background-image: url('~~/assets/img/noise.png');
 }
@@ -33,9 +28,29 @@
   scrollbar-width: none; /* Firefox */
 }
 
-/* Using Tailwind @apply so we can easily re-use these styles for other 'button' based components like NuxtLink or VDropdown*/
+/* Using Tailwind @apply so we can easily re-use these styles for other 'button' based components like NuxtLink or VDropdown or within prose */
 .btn {
-  @apply px-6 py-4 font-mono font-bold text-white transition duration-150 inline-flex odd:rounded-tr-xl odd:rounded-bl-xl even:rounded-tl-xl even:rounded-br-xl hover:scale-105 active:hover:scale-95  ease-in-out;
+  @apply font-mono inline-flex font-bold text-white transition duration-150 odd:rounded-tr-xl odd:rounded-bl-xl even:rounded-tl-xl even:rounded-br-xl hover:scale-105 active:hover:scale-95 ease-in-out;
+}
+
+.btn-xs {
+  @apply px-3 py-1 text-xs;
+}
+
+.btn-sm {
+  @apply px-4 py-2 text-sm;
+}
+
+.btn-md {
+  @apply px-5 py-3 text-base;
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-lg;
+}
+
+.btn-xl {
+  @apply px-8 py-4 text-lg;
 }
 
 .btn-default {
@@ -50,6 +65,7 @@
 .btn-danger {
   @apply text-white bg-red-600 hover:bg-red-700 focus:ring-red-500;
 }
+
 .input {
   @apply block w-full dark:bg-gray-800 dark:text-white text-lg md:text-base border-gray-300 dark:border-gray-700  shadow-sm focus:ring-accent focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-600;
 }
