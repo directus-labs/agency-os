@@ -1,9 +1,10 @@
 <script setup lang="ts">
-const props = defineProps({
-  fullWidth: {
-    type: Boolean,
-    default: false,
-  },
+interface BlockContainerProps {
+  fullWidth?: boolean
+}
+
+withDefaults(defineProps<BlockContainerProps>(), {
+  fullWidth: false,
 })
 </script>
 <template>

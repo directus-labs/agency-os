@@ -46,8 +46,9 @@ defineProps<{
               },
               'absolute bottom-0 left-0 ml-4 mb-4',
             ]"
-            >{{ post.category.title }}</VBadge
           >
+            {{ post.category.title }}
+          </VBadge>
         </div>
       </div>
     </NuxtLink>

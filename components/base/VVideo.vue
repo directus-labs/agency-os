@@ -1,19 +1,12 @@
 <script setup lang="ts">
 import { generateVideoEmbed } from '~~/utils/embed'
-const props = defineProps({
-  url: {
-    type: String,
-    default: '',
-  },
-  title: {
-    type: String,
-    default: '',
-  },
-  name: {
-    type: String,
-    default: '',
-  },
-})
+interface VideoProps {
+  url: string
+  title: string
+  name: string
+}
+
+defineProps<VideoProps>()
 </script>
 
 <template>

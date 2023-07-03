@@ -1,3 +1,6 @@
+<script setup lang="ts">
+const { isDark, toggleDark } = useDark()
+</script>
 <template>
   <button
     id="animation-toggle"
@@ -6,7 +9,3 @@
     <Icon name="heroicons:sparkles" class="w-8 h-8" />
   </button>
 </template>
-
-<script setup>
-const { isDark, toggleDark } = useDark()
-</script>

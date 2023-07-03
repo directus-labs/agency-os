@@ -48,11 +48,13 @@ const {
         />
       </div>
     </div>
-    <div class="hidden uppercase md:block">
-      <NuxtLink href="/contact-us" class="!text-gray-900 btn bg-accent !py-5"
-        >Let's Talk</NuxtLink
-      >
+
+    <div class="hidden md:block">
+      <VButton href="/contact-us" variant="primary" class="uppercase">
+        Let's Talk
+      </VButton>
     </div>
+
     <NavigationMobileMenu :navigation="navigation" />
   </header>
 </template>

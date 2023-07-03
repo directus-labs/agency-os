@@ -8,7 +8,7 @@ function toggle() {
 
 const map = {
   home: resolveComponent('MessengerHome'),
-  search: resolveComponent('MessengerSearch'),
+  help: resolveComponent('MessengerHelp'),
   chat: resolveComponent('MessengerMessages'),
   articles: resolveComponent('MessengerArticles'),
 }
@@ -50,10 +50,13 @@ onKeyDown('Escape', () => {
       }"
       class="chat-widget fixed flex flex-col overflow-hidden bottom-[84px] max-w-[350px] w-96 right-4 z-50 bg-white dark:bg-gray-800 shadow-lg border-2 border-accent rounded-bl-xl rounded-tr-xl dark:border-gray-700"
     >
-      <div class="h-full">
+      <div id="wrapper" class="absolute inset-0 flex flex-col">
         <component :is="map[page]" />
+        <MessengerMenu
+          class="block px-4 py-4 border-t dark:border-t-gray-700"
+          v-if="showMenu"
+        />
       </div>
-      <MessengerMenu v-if="showMenu" />
     </Motionable>
     <!-- Button -->
     <button

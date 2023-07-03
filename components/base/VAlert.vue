@@ -1,3 +1,19 @@
+<script setup lang="ts">
+interface AlertProps {
+  type: 'info' | 'success' | 'warning' | 'error'
+}
+
+const iconMap = {
+  info: 'heroicons:information-circle-solid',
+  success: 'heroicons:check-circle-solid',
+  warning: 'heroicons:exclamation-triangle-solid',
+  error: 'heroicons:x-circle-solid',
+}
+
+withDefaults(defineProps<AlertProps>(), {
+  type: 'info',
+})
+</script>
 <template>
   <div
     :class="[
@@ -32,21 +48,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-const props = defineProps({
-  type: {
-    type: String,
-    default: 'info',
-    validator: (value) =>
-      ['info', 'success', 'warning', 'error'].includes(value),
-  },
-})
-
-const iconMap = {
-  info: 'heroicons:information-circle-solid',
-  success: 'heroicons:check-circle-solid',
-  warning: 'heroicons:exclamation-triangle-solid',
-  error: 'heroicons:x-circle-solid',
-}
-</script>

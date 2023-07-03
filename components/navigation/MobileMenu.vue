@@ -83,9 +83,7 @@ watch(
             @close="toggle"
           />
           <div class="flex flex-col w-full px-4">
-            <NuxtLink href="/contact-us" class="text-lg btn btn-primary">
-              Let's Talk
-            </NuxtLink>
+            <VButton href="/contact-us" variant="primary">Let's Talk</VButton>
           </div>
         </div>
       </Motionable>

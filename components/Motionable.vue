@@ -1,16 +1,17 @@
-<template>
-  <component :is="as" v-if="show || !leaved" v-motion="name">
-    <slot />
-  </component>
-</template>
-
-<script setup>
+<script setup lang="ts">
 import { useMotions } from '@vueuse/motion'
-const props = defineProps({
-  as: { type: [String, Object], default: 'div' },
-  name: { type: String, required: true },
-  show: { type: Boolean, default: true },
+
+interface MotionableProps {
+  as?: string | object
+  name: string
+  show?: boolean
+}
+
+const props = withDefaults(defineProps<MotionableProps>(), {
+  as: 'div',
+  show: true,
 })
+
 const motions = useMotions()
 const leaved = ref(!props.show)
 watch(
@@ -32,3 +33,8 @@ watch(
   }
 )
 </script>
+<template>
+  <component :is="as" v-if="show || !leaved" v-motion="name">
+    <slot />
+  </component>
+</template>
