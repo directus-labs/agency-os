@@ -1,60 +1,69 @@
 import { getQuery } from 'h3'
 import { createDirectus } from '~~/server/utils/directus-server'
 
-function mapPost(post: any) {
+function mapEntity({
+  entity,
+  type,
+  urlPattern,
+  description = '',
+  image = '',
+}: {
+  entity: any
+  type: string
+  urlPattern: string
+  description?: string
+  image?: string
+}) {
   return {
-    type: 'post',
-    title: post.title,
-    description: post.summary,
-    image: post.image,
-    url: `/posts/${post.slug}`,
-  }
-}
-
-function mapProject(project: any) {
-  return {
-    type: 'project',
-    title: project.title,
-    description: project.summary,
-    image: project.image,
-    url: `/projects/${project.slug}`,
-  }
-}
-
-function mapPage(page: any) {
-  return {
-    type: 'page',
-    title: page.title,
-    description: '',
-    image: '',
-    url: `/${page.slug}`,
-  }
-}
-
-function mapCategory(category: any) {
-  return {
-    type: 'category',
-    title: category.title,
-    description: '',
-    image: '',
-    url: `/posts/categories/${category.slug}`,
+    type,
+    title: entity.title,
+    description,
+    image,
+    url: urlPattern.replace(':slug', entity.slug),
   }
 }
 
 function mapResults(collection: string, results: any[]) {
-  switch (collection) {
-    case 'posts':
-      return results.map(mapPost)
-    case 'projects':
-      return results.map(mapProject)
-    case 'pages':
-      return results.map(mapPage)
-    case 'categories':
-      return results.map(mapCategory)
-
-    default:
-      return []
+  const mapping = {
+    posts: (post: any) =>
+      mapEntity({
+        entity: post,
+        type: 'post',
+        urlPattern: '/posts/:slug',
+        description: post.summary,
+        image: post.image,
+      }),
+    projects: (project: any) =>
+      mapEntity({
+        entity: project,
+        type: 'project',
+        urlPattern: '/projects/:slug',
+        description: project.summary,
+        image: project.image,
+      }),
+    pages: (page: any) =>
+      mapEntity({
+        entity: page,
+        type: 'page',
+        urlPattern: '/:slug',
+      }),
+    categories: (category: any) =>
+      mapEntity({
+        entity: category,
+        type: 'category',
+        urlPattern: '/posts/categories/:slug',
+      }),
+    help_articles: (article: any) =>
+      mapEntity({
+        entity: article,
+        type: 'article',
+        urlPattern: '/help/articles/:slug',
+        description: '',
+        image: '',
+      }),
   }
+
+  return results.map(mapping[collection])
 }
 
 export default cachedEventHandler(
@@ -71,45 +80,39 @@ export default cachedEventHandler(
         collections = [collections]
       }
 
-      // Validations
-      // If missing collections param, throw an error
-      if (!collections) {
-        throw new Error('Missing collections param')
-      }
-
-      // If collections doesn't match one of these values, throw an error
       if (
+        !collections ||
         collections.every(
           (collection: string) =>
-            !['posts', 'projects', 'pages', 'categories'].includes(collection)
+            ![
+              'posts',
+              'projects',
+              'pages',
+              'categories',
+              'help_articles',
+            ].includes(collection)
         )
       ) {
-        throw new Error('Invalid collection')
+        throw new Error('Invalid or missing collections param')
       }
 
-      // For each collection, create a promise to fetch the data
-      const promises = collections.map(async (collection) => {
-        const { data } = await $directus.items(collection).readByQuery({
-          search: search ?? '',
+      const data = await Promise.all(
+        collections.map(async (collection) => {
+          const { data } = await $directus
+            .items(collection)
+            .readByQuery({ search: search ?? '' })
+
+          if (raw) {
+            return data
+          } else {
+            return mapResults(collection, data)
+          }
         })
-
-        // If the raw param is passed in, return the raw data instead of transformed results
-        if (raw) {
-          return data
-        } else {
-          return mapResults(collection, data)
-        }
-      })
-
-      // Wait for all promises to resolve
-      const data = await Promise.all(promises)
-
-      // Flatten the data array
-      const flattenedData = data.flat()
+      )
 
       return {
         statusCode: 200,
-        data: flattenedData,
+        data: data.flat(),
       }
     } catch (error) {
       console.error(error)

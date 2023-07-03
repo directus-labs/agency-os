@@ -14,9 +14,19 @@ const props = defineProps({
     required: true,
     validator: (value) => {
       return value.every((collection) => {
-        return ['posts', 'pages', 'categories', 'projects'].includes(collection)
+        return [
+          'posts',
+          'pages',
+          'categories',
+          'projects',
+          'help_articles',
+        ].includes(collection)
       })
     },
+  },
+  placeholder: {
+    type: String,
+    default: 'Search items',
   },
 })
 
@@ -69,6 +79,7 @@ watch(
   <Combobox as="div" class="" v-model="selected">
     <div class="relative w-full mt-2">
       <ComboboxInput
+        :placeholder="placeholder"
         class="pr-10 input"
         @change="query = $event.target.value"
         :display-value="(value) => query"
@@ -108,14 +119,16 @@ watch(
             <li
               :class="[
                 active ? 'bg-accent' : 'dark:bg-gray-800 bg-white',
-                'relative text-left p-2 space-x-2 flex items-start overflow-hidden   w-full  rounded-bl-xl rounded-tr-xl cursor-pointer',
+                'relative text-left p-2 space-x-2 flex items-start overflow-hidden   w-full  rounded-bl rounded-tr cursor-pointer',
               ]"
             >
               <img
+                v-if="hit.image"
                 class="flex-shrink-0 object-cover w-10 h-10 duration-300 rounded-tr-lg rounded-bl-lg saturate-0"
                 :src="fileUrl(hit.image)"
                 alt=""
               />
+              <div v-else class="w-10 h-10 bg-gray-200"></div>
               <p
                 class="font-mono text-sm font-semibold text-gray-900 dark:text-white group-hover:text-accent"
               >
