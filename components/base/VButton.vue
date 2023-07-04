@@ -27,6 +27,8 @@ const buttonProps = computed(() => {
   if (props.href) return { to: props.href, target: props.target }
   else return { disabled: props.disabled, type: props.type }
 })
+
+// Button styles are defined in ~/assets/css/main.css so that they can be used in HTML content coming from Directus as well.
 </script>
 <template>
   <component
