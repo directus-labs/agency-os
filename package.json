@@ -6,7 +6,8 @@
         "start": "nuxt start",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
-        "postinstall": "nuxt prepare"
+        "postinstall": "nuxt prepare",
+        "typecheck": "nuxt typecheck"
     },
     "devDependencies": {
         "@directus/sdk": "10.3.3",
@@ -35,7 +36,9 @@
         "playwright-aws-lambda": "0.10.0",
         "playwright-core": "1.35.1",
         "prettier": "2.8.8",
-        "uuid": "9.0.0"
+        "typescript": "5.1.6",
+        "uuid": "9.0.0",
+        "vue-tsc": "^1.8.3"
     },
     "dependencies": {}
 }

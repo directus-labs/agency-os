@@ -12,6 +12,12 @@ export default async () => {
   const { data: globals } = await directus.items('globals').readByQuery({})
 
   return defineNuxtConfig({
+    // Nuxt DevTools https://devtools.nuxtjs.org/
+    devtools: { enabled: true },
+
+    typescript: {
+      //   typeCheck: true,
+    },
     // As of RC12, Nuxt 3 supports Hybrid rendering mode
     // https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering
     // Hybrid Rendering is not available when using `nuxt generate`.
