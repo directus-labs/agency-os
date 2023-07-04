@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import { convertIconName } from '~~/utils/strings'
 const { $directus } = useNuxtApp()
-const { params } = useRoute()
-// Fetch the page data from the Directus API using the Nuxt useAsyncData composable
-// https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
+const { params, path } = useRoute()
+
 const {
   data: collection,
   pending,
   error,
 } = await useAsyncData(
-  'posts',
+  path,
   () => {
     return $directus.items('help_collections').readByQuery({
       filter: {
@@ -53,6 +53,7 @@ const {
         <div>
           <div class="mb-5">
             <Icon
+              v-if="collection.icon"
               :name="convertIconName(collection.icon)"
               class="h-9 w-9 sm:h-10 sm:w-10 text-accent"
             ></Icon>

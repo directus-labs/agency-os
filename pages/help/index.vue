@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const { $directus } = useNuxtApp()
-// Fetch the page data from the Directus API using the Nuxt useAsyncData composable
-// https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
+
 const {
   data: collections,
   pending,
@@ -38,18 +37,18 @@ const {
         v-for="collection in collections"
         :key="collection.id"
         :href="`/help/collections/${collection.slug}`"
-        class="flex overflow-hidden no-underline transition duration-200 border-2 hover:border-accent dark:border-gray-600 rounded-tr-xl rounded-bl-xl dark:hover:border-accent"
+        class="flex overflow-hidden no-underline transition duration-200 bg-white border dark:bg-gray-800 hover:border-accent dark:border-gray-600 rounded-tr-xl rounded-bl-xl dark:hover:border-accent"
       >
         <div class="flex flex-col p-5 sm:p-6">
           <div class="flex items-center">
             <Icon
+              v-if="collection.icon"
               :name="convertIconName(collection.icon)"
               class="w-10 h-10 text-accent"
             />
           </div>
           <div>
-            <TypographyHeadline :content="collection.title" />
-
+            <TypographyHeadline :content="collection.title" size="sm" />
             <p
               class="font-mono text-gray-500 dark:text-gray-300 line-clamp-3 text-md sm:line-clamp-3"
             >
