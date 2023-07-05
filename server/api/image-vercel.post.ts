@@ -1,14 +1,13 @@
-import chrome from '@sparticuz/chromium'
-import puppeteer from 'puppeteer-core'
+import playwright from 'playwright-aws-lambda'
 import FormData from 'form-data'
-import { readBody } from 'h3'
 import { createDirectus } from '~~/server/utils/directus-server'
+import { getQuery, readBody } from 'h3'
 
 // Aspect ratios for social media images
 // OG Image: 1.91:1
 // Square: 1:1
 const viewportSettings = {
-  og: {
+  'og:image': {
     width: 1200,
     height: 630,
   },
@@ -27,25 +26,6 @@ interface ImagePostBody {
   imageSize?: 'og' | 'square'
 }
 
-const exePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-
-async function getOptions(isDev: boolean) {
-  if (isDev) {
-    return {
-      product: 'chrome',
-      args: [],
-      executablePath: exePath,
-      headless: true,
-    }
-  }
-  return {
-    product: 'chrome',
-    args: chrome.args,
-    executablePath: await chrome.executablePath,
-    headless: chrome.headless,
-  }
-}
-
 export default defineEventHandler(async (event) => {
   try {
     const config = useRuntimeConfig()
@@ -54,16 +34,15 @@ export default defineEventHandler(async (event) => {
     const body: ImagePostBody = await readBody(event)
     const { id, collection, seo, slug, url, imageSize } = body
 
-    const options = await getOptions(
-      process.env.HOST_NAME.includes('localhost')
-    )
-    const browser = await puppeteer.launch(options)
-
-    const page = await browser.newPage()
+    const browser = await playwright.launchChromium({
+      headless: true,
+    })
+    const context = await browser.newContext()
+    const page = await context.newPage()
 
     await page.goto(url)
 
-    await page.waitForNetworkIdle()
+    await page.waitForSelector('body')
 
     const screenshot = await page.screenshot({
       type: 'jpeg',
@@ -71,7 +50,7 @@ export default defineEventHandler(async (event) => {
       clip: {
         x: 0,
         y: 0,
-        ...viewportSettings[imageSize ?? 'og'],
+        ...viewportSettings['og:image'],
       },
     })
 
