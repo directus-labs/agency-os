@@ -18,9 +18,9 @@ export default async () => {
     typescript: {
       //   typeCheck: true,
     },
+
     // As of RC12, Nuxt 3 supports Hybrid rendering mode
     // https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering
-    // Hybrid Rendering is not available when using `nuxt generate`.
     routeRules: {
       //   '/**': { swr: true },
       //   '/api/**': { swr: false },
@@ -43,6 +43,7 @@ export default async () => {
 
     modules: [
       '@nuxt/devtools', // https://devtools.nuxtjs.org/
+      '@nuxtjs/color-mode', // https://color-mode.nuxtjs.org/
       'nuxt-icon', // https://github.com/nuxt-modules/icon
       '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/
       //   '@nuxt/image-edge', // https://image.nuxtjs.org/
