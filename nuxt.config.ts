@@ -37,7 +37,7 @@ export default async () => {
 
     app: {
       head: {
-        titleTemplate: `%s - ${globals.title}`,
+        titleTemplate: `%s - ${globals.title ?? 'Agency OS'}`,
       },
     },
 
