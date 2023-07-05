@@ -1,23 +1,18 @@
 <script setup lang="ts">
-const props = defineProps({
+interface HeadlineProps {
+  content: string
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+}
 
-  content: {
-    type: String,
-    required: true,
-  },
-  size: {
-    type: String,
-    default: 'md',
-    // validator: (value: string) => {
-    //   return ['sm', 'md', 'lg', 'xl'].includes(value)
-    // },
-  },
+withDefaults(defineProps<HeadlineProps>(), {
+  size: 'md',
 })
 </script>
 <template>
   <div
     :class="[
       {
+        'text-xl': size === 'xs',
         'text-2xl': size === 'sm',
         'text-3xl': size === 'md',
         'text-4xl': size === 'lg',

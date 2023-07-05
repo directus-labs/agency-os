@@ -1,22 +1,21 @@
 <script setup lang="ts">
-type Cta = {
+export interface CtaBlockProps {
   id: string
-  title: string
-  headline: string
-  content: string
-  buttons: Array<{
+  title?: string
+  headline?: string
+  content?: string
+  buttons?: Array<{
+    id: string
     label: string
-    url: string
+    href: string
     open_in_new_window: boolean
+    variant: 'primary' | 'default' | 'outline'
   }>
 }
 
-const props = defineProps({
-  data: {
-    type: Object as PropType<Cta>,
-    default: () => ({}),
-  },
-})
+defineProps<{
+  data: CtaBlockProps
+}>()
 </script>
 <template>
   <BlockContainer class="w-full max-w-5xl mx-auto">
@@ -34,20 +33,32 @@ const props = defineProps({
           class="relative md:flex md:items-center md:justify-between md:space-x-4"
         >
           <div>
-            <TypographyTitle>{{ data.title }}</TypographyTitle>
-            <TypographyHeadline :content="data.headline" class="font-bold" />
-            <TypographyProse :content="data.content" class="mt-2 font-mono" />
+            <TypographyTitle v-if="data.title">{{
+              data.title
+            }}</TypographyTitle>
+            <TypographyHeadline
+              v-if="data.headline"
+              :content="data.headline"
+              class="font-bold"
+            />
+            <TypographyProse
+              v-if="data.content"
+              :content="data.content"
+              class="mt-2 font-mono"
+            />
           </div>
           <div class="flex-shrink-0 mt-4 md:mt-0">
-            <NuxtLink
+            <VButton
               v-for="button in data.buttons"
               :key="button.id"
               :href="button.href"
               :target="button.open_in_new_window ? '_blank' : '_self'"
-              class="text-xl btn btn-primary"
+              size="xl"
+              variant="primary"
+              class="block"
             >
               {{ button.label }}
-            </NuxtLink>
+            </VButton>
           </div>
         </div>
       </div>

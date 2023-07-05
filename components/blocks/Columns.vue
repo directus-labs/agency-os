@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
-type Columns = {
+const { fileUrl } = useFiles()
+
+export interface ColumnsBlockProps {
   id: string
   title: string
   headline: string
@@ -13,15 +14,12 @@ type Columns = {
     image_position: string
   }>
 }
-const props = defineProps({
-  data: {
-    type: Object as PropType<Columns>,
-    required: true,
-  },
-})
 
-const { fileUrl } = useFiles()
+defineProps<{
+  data: ColumnsBlockProps
+}>()
 </script>
+
 <template>
   <BlockContainer
     class="relative items-center w-full px-5 py-24 mx-auto bg-white md:px-12 lg:px-16 max-w-7xl dark:bg-gray-800"

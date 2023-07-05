@@ -1,9 +1,10 @@
 <script setup lang="ts">
-const props = defineProps({
-  as: {
-    type: String,
-    default: 'h2',
-  },
+interface TitleProps {
+  as?: string
+}
+
+withDefaults(defineProps<TitleProps>(), {
+  as: 'h2',
 })
 </script>
 <template>

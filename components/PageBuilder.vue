@@ -21,13 +21,13 @@ const map = {
   block_cardgroup: resolveComponent('BlocksCardGroup'),
 }
 
-const props = defineProps<{
+defineProps<{
   page: Page
 }>()
 </script>
 <template>
   <div class="mx-auto" id="content">
-    <template v-for="(block, blockIdx) in page.blocks" :key="blockIdx">
+    <template v-for="block in page.blocks" :key="block.id">
       <component :is="map[block.collection]" :data="block.item" />
     </template>
   </div>

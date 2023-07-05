@@ -1,13 +1,14 @@
-import { createDirectus } from '~~/server/utils/directus-server'
-import playwright from 'playwright-aws-lambda'
+import chrome from '@sparticuz/chromium'
+import puppeteer from 'puppeteer-core'
 import FormData from 'form-data'
-import { getQuery, readBody } from 'h3'
+import { readBody } from 'h3'
+import { createDirectus } from '~~/server/utils/directus-server'
 
 // Aspect ratios for social media images
 // OG Image: 1.91:1
 // Square: 1:1
 const viewportSettings = {
-  'og:image': {
+  og: {
     width: 1200,
     height: 630,
   },
@@ -17,52 +18,84 @@ const viewportSettings = {
   },
 }
 
+interface ImagePostBody {
+  id: string
+  collection: string
+  seo: string
+  slug: string
+  url: string
+  imageSize?: 'og' | 'square'
+}
+
+const exePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+
+async function getOptions(isDev: boolean) {
+  if (isDev) {
+    return {
+      product: 'chrome',
+      args: [],
+      executablePath: exePath,
+      headless: true,
+    }
+  }
+  return {
+    product: 'chrome',
+    args: chrome.args,
+    executablePath: await chrome.executablePath,
+    headless: chrome.headless,
+  }
+}
+
 export default defineEventHandler(async (event) => {
   try {
     const config = useRuntimeConfig()
     const $directus = createDirectus(config)
 
-    const body = await readBody(event)
-    const { id, seo, slug, url } = body
+    const body: ImagePostBody = await readBody(event)
+    const { id, collection, seo, slug, url, imageSize } = body
 
-    // Initialize the browser
-    const browser = await playwright.launchChromium({
-      headless: true,
-    })
-    const context = await browser.newContext()
-    const page = await context.newPage()
+    const options = await getOptions(
+      process.env.HOST_NAME.includes('localhost')
+    )
+    const browser = await puppeteer.launch(options)
+
+    const page = await browser.newPage()
 
     await page.goto(url)
 
-    // Wait for the page to load
-    await page.waitForSelector('body')
+    await page.waitForNetworkIdle()
 
-    // Take a screenshot of the page
     const screenshot = await page.screenshot({
       type: 'jpeg',
       quality: 100,
       clip: {
         x: 0,
         y: 0,
-        ...viewportSettings['og:image'],
+        ...viewportSettings[imageSize ?? 'og'],
       },
     })
 
-    // Close the browser instance
     await browser.close()
 
-    // Get timestamp for filename
     const timestamp = new Date().toISOString()
     const form = new FormData()
-    form.append('file', screenshot, `posts-${slug}-${timestamp}.jpg`)
+    form.append(
+      'file',
+      screenshot,
+      `${collection}-${slug ?? id}-${timestamp}.jpg`
+    )
 
-    // Upload the screenshot to Directus
     const fileId = await $directus.files.createOne(form)
 
-    // Update the post.seo with the screenshot
-    await $directus.items('seo').updateOne(seo, {
-      og_image: fileId,
-    })
+    if (!fileId) {
+      throw new Error('File not created')
+    }
+
+    if (seo) {
+      await $directus.items('seo').updateOne(seo, {
+        og_image: fileId,
+      })
+    }
 
     return {
       statusCode: 200,

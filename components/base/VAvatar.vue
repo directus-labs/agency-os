@@ -1,15 +1,15 @@
 <script setup lang="ts">
-const props = defineProps({
-  author: {
-    type: Object,
-    default: () => ({}),
-  },
-  size: {
-    type: String,
-    default: 'md',
-    validator: (value: string) => ['sm', 'md', 'lg'].includes(value),
-  },
+import { User } from '~~/types'
+
+interface AvatarProps {
+  author: Partial<User>
+  size?: 'sm' | 'md' | 'lg'
+}
+
+withDefaults(defineProps<AvatarProps>(), {
+  size: 'md',
 })
+
 const { fileUrl } = useFiles()
 </script>
 <template>

@@ -1,19 +1,16 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
-
 import { useIntersectionObserver, useResizeObserver } from '@vueuse/core'
-type Team = {
+
+export interface TeamBlockProps {
   id: string
   headline?: string
   title?: string
   content?: string
 }
-const props = defineProps({
-  data: {
-    type: Object as PropType<Team>,
-    required: true,
-  },
-})
+
+defineProps<{
+  data: TeamBlockProps
+}>()
 
 // Import the $directus plugin
 const { $directus } = useNuxtApp()
@@ -21,9 +18,6 @@ const { fileUrl } = useFiles()
 
 // Get the params from the Nuxt route
 const { params, path } = useRoute()
-
-// Fetch the page data from the Directus API using the Nuxt useAsyncData composable
-// https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
 
 const {
   data: team,
