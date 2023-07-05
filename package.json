@@ -40,10 +40,10 @@
         "vue-tsc": "^1.8.3"
     },
     "dependencies": {
-        "@sparticuz/chromium": "^114.0.0",
+        "@sparticuz/chromium": "92.0.0",
         "chrome-aws-lambda": "^8.0.2",
         "playwright-aws-lambda": "0.10.0",
         "playwright-core": "1.35.1",
-        "puppeteer-core": "^8.0.0"
+        "puppeteer-core": "^10.1.0"
     }
 }
