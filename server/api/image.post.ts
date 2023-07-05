@@ -1,9 +1,7 @@
-// import chromium from 'chrome-aws-lambda'
 import chrome from '@sparticuz/chromium'
 import puppeteer from 'puppeteer-core'
 import FormData from 'form-data'
 import { readBody } from 'h3'
-// import playwright from 'playwright-aws-lambda'
 import { createDirectus } from '~~/server/utils/directus-server'
 
 // Aspect ratios for social media images
