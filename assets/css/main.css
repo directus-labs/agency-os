@@ -30,7 +30,7 @@
 
 /* Using Tailwind @apply so we can easily re-use these styles for other 'button' based components like NuxtLink or VDropdown or within prose */
 .btn {
-  @apply font-mono inline-flex font-bold text-white transition duration-150 odd:rounded-tr-xl odd:rounded-bl-xl even:rounded-tl-xl even:rounded-br-xl hover:scale-105 active:hover:scale-95 ease-in-out;
+  @apply font-mono inline-flex font-bold text-white transition duration-150 odd:rounded-tr-lg odd:rounded-bl-lg even:rounded-tl-lg even:rounded-br-lg hover:scale-105 active:hover:scale-95 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed;
 }
 
 .btn-xs {
@@ -54,7 +54,7 @@
 }
 
 .btn-default {
-  @apply text-gray-700 bg-gray-300 hover:bg-gray-200 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300;
+  @apply text-gray-800 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300;
 }
 .btn-primary {
   @apply text-white dark:text-gray-900 bg-gray-900 hover:bg-gray-800 dark:bg-accent dark:hover:bg-opacity-90;
