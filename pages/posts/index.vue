@@ -40,7 +40,7 @@ useHead({
 </script>
 <template>
   <PageContainer>
-    <header class="pb-6 border-b-2 border-gray-300 dark:border-gray-700">
+    <header class="pb-6 border-b border-gray-300 dark:border-gray-700">
       <TypographyTitle>Agency Blog</TypographyTitle>
       <TypographyHeadline
         content="<p>Articles on <em>development</em>, marketing, and more.</p>"
@@ -51,13 +51,13 @@ useHead({
         class="relative grid w-full gap-12 pb-12 border-b-2 border-gray-300 md:grid-cols-2 lg:grid-cols-4 dark:border-gray-700"
       >
         <div>
-          <TypographyTitle class="text-gray-700 dark:text-gray-400"
-            >Search</TypographyTitle
-          >
+          <TypographyTitle class="text-gray-700 dark:text-gray-400">
+            Search
+          </TypographyTitle>
           <GlobalSearch :collections="['posts']" class="flex" />
-          <TypographyTitle class="mt-8 text-gray-700 dark:text-gray-400"
-            >Categories</TypographyTitle
-          >
+          <TypographyTitle class="mt-8 text-gray-700 dark:text-gray-400">
+            Categories
+          </TypographyTitle>
           <Categories class="" />
         </div>
         <div class="space-y-4 lg:col-span-3">

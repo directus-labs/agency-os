@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { Page } from '~~/types'
 const { $directus } = useNuxtApp()
 const { params, path } = useRoute()
+
+function getSlug() {
+  if (path == '/') {
+    return 'home'
+  } else return params.slug[0]
+}
 
 // Fetch the page data from the Directus API using the Nuxt useAsyncData composable
 // https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
 const {
-  data: page = {} as Page,
+  data: page,
   pending,
   error,
 } = await useAsyncData(
@@ -14,7 +19,7 @@ const {
   () => {
     return $directus.items('pages').readByQuery({
       filter: {
-        slug: { _eq: 'home' },
+        slug: { _eq: getSlug() },
       },
       fields: [
         '*',
@@ -29,25 +34,30 @@ const {
         'blocks.item.*',
         'blocks.item.rows.*',
         'blocks.item.posts.posts_id.*',
-        'blocks.item.posts.posts_id.category.*',
-        'blocks.item.cards.*',
       ],
       limit: 1,
     })
   },
   {
-    transform: (data) => data.data[0],
+    transform: (data: object) => data.data[0],
     pick: ['title', 'blocks', 'slug', 'id', 'seo'],
   }
 )
 
-const { fileUrl } = useFiles()
-
-onMounted(() => useAnimation())
-
-// Set the page title and meta tags using the Nuxt useHead and useSeoMeta composables
-const pageData = unref(page)
+if (!page.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+}
 </script>
 <template>
-  <PageBuilder :page="page" />
+  <NuxtErrorBoundary>
+    <!-- Render the page using the PageBuilder component -->
+    <PageBuilder :page="page" />
+
+    <!-- If there is an error, display it using the VAlert component -->
+    <template #error="{ error }">
+      <BlockContainer>
+        <VAlert type="error">{{ error }}</VAlert>
+      </BlockContainer>
+    </template>
+  </NuxtErrorBoundary>
 </template>

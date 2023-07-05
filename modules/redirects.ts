@@ -1,11 +1,6 @@
 import { defineNuxtModule, extendRouteRules } from '@nuxt/kit'
 import { Directus } from '@directus/sdk'
-
-interface Redirect {
-  url_old: string
-  url_new: string
-  response_code: string | number
-}
+import { DirectusCollections } from '~/types'
 
 export default defineNuxtModule({
   async setup(moduleOptions, nuxt) {
@@ -15,15 +10,15 @@ export default defineNuxtModule({
     if (!directusToken)
       throw new Error('Missing directusToken in runtimeConfig')
 
-    const directus = new Directus(directusUrl, {
+    const directus = new Directus<DirectusCollections>(directusUrl, {
       auth: {
         staticToken: directusToken,
       },
     })
 
-    const { data: redirects }: Redirect[] = await directus
-      .items('redirects')
-      .readByQuery()
+    const { data: redirects } = await directus.items('redirects').readByQuery()
+
+    if (!redirects) return
 
     for (const redirect of redirects) {
       // Ensure redirect code is an integer

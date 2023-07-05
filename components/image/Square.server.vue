@@ -1,32 +1,32 @@
 <script setup lang="ts">
-const props = defineProps({
-  imageUrl: { type: String, default: '' },
-  title: { type: String, default: '' },
-  summary: { type: String, default: '' },
-  authorName: { type: String, default: '' },
-  authorImage: { type: String, default: '' },
-  readTime: { type: String, default: '' },
-  badgeLabel: { type: String, default: '' },
-  badgeColor: { type: String, default: '' },
-})
+export interface SquareImageProps {
+  imageUrl?: string
+  title?: string
+  summary?: string
+  authorName?: string
+  authorImage?: string
+  readTime?: string
+  badgeLabel?: string
+  badgeColor?: string
+}
+
+defineProps<SquareImageProps>()
 </script>
 <template>
   <div class="relative w-[800px] h-[800px] overflow-hidden">
+    <!-- Image  -->
     <div
       class="absolute inset-0 bg-gradient-to-br from-gray-700 via-gray-900 to-accent"
     />
     <div class="absolute inset-0 grain-bg opacity-20" />
-    <div
-      v-if="imageUrl"
-      class="absolute top-0 left-0 ml-6 mt-6 rounded-bl-3xl border-2 border-gray-700 overflow-hidden h-[450px] dark:outline-gray-800"
-    >
+    <div v-if="imageUrl" class="absolute inset-0 w-full h-full overflow-hidden">
       <img
         :src="imageUrl"
-        class="object-cover w-full h-full saturate-0 dark:brightness-90"
+        class="object-cover w-full h-full saturate-0 dark:brightness-90 opacity-30"
         alt=""
       />
       <div
-        class="absolute inset-0 mix-blend-multiply bg-gradient-to-b from-gray-100 to-gray-900"
+        class="absolute inset-0 mix-blend-multiply bg-gradient-to-r from-gray-100 to-gray-900/10"
       />
     </div>
 
@@ -59,7 +59,10 @@ const props = defineProps({
                   avatar_url: authorImage,
                 }"
               />
-              <p class="flex font-mono text-gray-500 dark:text-gray-300">
+              <p
+                v-if="readTime"
+                class="flex font-mono text-gray-500 dark:text-gray-300"
+              >
                 <Icon name="heroicons:clock" class="w-6 h-6 mr-2" />
                 {{ readTime }}
               </p>
@@ -74,8 +77,8 @@ const props = defineProps({
         </div>
       </div>
     </header>
-    <div class="absolute bottom-8 right-8">
-      <Logo class="h-12 text-white opacity-50" />
+    <div class="absolute top-8 right-8">
+      <Logo class="h-12 text-white" />
     </div>
   </div>
 </template>

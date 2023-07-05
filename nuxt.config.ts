@@ -12,27 +12,40 @@ export default async () => {
   const { data: globals } = await directus.items('globals').readByQuery({})
 
   return defineNuxtConfig({
-    // As of RC12 Nuxt 3 supports Hybrid rendering mode
-    // https://v3.nuxtjs.org/guide/concepts/rendering#route-rules
+    // Nuxt DevTools https://devtools.nuxtjs.org/
+    devtools: { enabled: true },
+
+    typescript: {
+      //   typeCheck: true,
+    },
+
+    // As of RC12, Nuxt 3 supports Hybrid rendering mode
+    // https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering
     routeRules: {
       //   '/**': { swr: true },
       //   '/api/**': { swr: false },
-      // Route rules are causing some issues with the API routes on Vercel
     },
+
+    components: [
+      // Disable prefixing base components with `Base`
+      { path: '~/components/base', pathPrefix: false },
+      // Auto import components from `~/components`
+      '~/components',
+    ],
 
     css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
 
     app: {
       head: {
-        titleTemplate: `%s - ${globals.title}`,
+        titleTemplate: `%s - ${globals.title ?? 'Agency OS'}`,
       },
     },
 
     modules: [
       '@nuxt/devtools', // https://devtools.nuxtjs.org/
+      '@nuxtjs/color-mode', // https://color-mode.nuxtjs.org/
       'nuxt-icon', // https://github.com/nuxt-modules/icon
       '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/
-      '@pinia/nuxt', // https://pinia.esm.dev
       //   '@nuxt/image-edge', // https://image.nuxtjs.org/
       '@vueuse/nuxt', // https://vueuse.org/
       '@vueuse/motion/nuxt', // https://motion.vueuse.org/nuxt.html
@@ -47,13 +60,13 @@ export default async () => {
     runtimeConfig: {
       public: {
         directusUrl: process.env.DIRECTUS_URL,
+        directusWsUrl: process.env.DIRECTUS_WS_URL,
         siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
         ...globals,
       },
       directusToken: process.env.DIRECTUS_ADMIN_TOKEN,
     },
 
-    // Start Modules Configuration
     googleFonts: {
       families: {
         Inter: true,
@@ -63,7 +76,6 @@ export default async () => {
       display: 'swap',
       download: true,
     },
-    // End Modules Configuration
 
     postcss: {
       plugins: {
@@ -71,17 +83,6 @@ export default async () => {
         'tailwindcss/nesting': {},
         tailwindcss: {},
         autoprefixer: {},
-      },
-    },
-
-    // Currently still needed for Headless UI to work
-    build: {
-      transpile: ['@headlessui/vue'],
-    },
-
-    vite: {
-      optimizeDeps: {
-        include: ['@headlessui/vue', 'vue', 'pinia'],
       },
     },
   })

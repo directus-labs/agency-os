@@ -1,22 +1,20 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
-type Hero = {
+export interface HeroBlockProps {
   id: string
   headline: string
   content: string
   image: string
-  buttons: Array<{
+  buttons?: Array<{
     label: string
-    url: string
+    href: string
+    variant: string
     open_in_new_window: boolean
   }>
 }
-const props = defineProps({
-  data: {
-    type: Object as PropType<Hero>,
-    required: true,
-  },
-})
+
+defineProps<{
+  data: HeroBlockProps
+}>()
 
 const { fileUrl } = useFiles()
 </script>
@@ -33,25 +31,19 @@ const { fileUrl } = useFiles()
       >
         {{ data.content }}
       </p>
-
-      <div class="space-y-4 md:space-x-4 md:flex md:space-y-0">
-        <NuxtLink
-          v-for="button in data.buttons"
-          :key="button.id"
+      <div
+        class="flex flex-col space-y-4 md:space-x-4 md:flex-row md:space-y-0"
+      >
+        <VButton
+          v-for="(button, buttonIdx) in data.buttons"
+          :key="buttonIdx"
           :href="button.href"
+          :variant="button.variant"
           :target="button.open_in_new_window ? '_blank' : '_self'"
-          :class="[
-            {
-              'btn-primary': button.variant === 'primary',
-              'btn-default': button.variant === 'default',
-              'btn-danger': button.variant === 'danger',
-              'btn-outline': button.variant === 'outline',
-            },
-            'btn block w-full md:w-auto',
-          ]"
+          size="lg"
         >
           {{ button.label }}
-        </NuxtLink>
+        </VButton>
       </div>
     </div>
     <!-- Image -->
@@ -67,11 +59,5 @@ const { fileUrl } = useFiles()
         />
       </div>
     </div>
-    <!-- Hidden Message -->
-    <!-- <p
-      class="absolute bottom-0 left-0 hidden h-32 p-4 mx-auto font-serif text-5xl font-bold text-white md:block dark:text-gray-900"
-    >
-      Powered by Directus + Nuxt
-    </p> -->
   </BlockContainer>
 </template>

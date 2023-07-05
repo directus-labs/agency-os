@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
-
-type Quote = {
+export interface QuoteBlockProps {
   id: string
   headline: string
   title: string
@@ -10,12 +8,10 @@ type Quote = {
   image: string
   background_color: string
 }
-const props = defineProps({
-  data: {
-    type: Object as PropType<Quote>,
-    required: true,
-  },
-})
+
+defineProps<{
+  data: QuoteBlockProps
+}>()
 
 const { fileUrl } = useFiles()
 </script>
@@ -57,10 +53,10 @@ const { fileUrl } = useFiles()
             <div
               class="p-4 bg-white rounded-bl-none dark:bg-gray-800 chat rounded-xl"
             >
-              <div class="text-accent">
+              <div v-if="data.title" class="text-accent">
                 {{ data.title }}
               </div>
-              <div class="">{{ data.subtitle }}</div>
+              <div v-if="data.subtitle">{{ data.subtitle }}</div>
             </div>
           </div>
         </div>

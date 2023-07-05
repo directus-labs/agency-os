@@ -1,26 +1,42 @@
+<script setup lang="ts">
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+
+interface DropdownProps {
+  buttonLabel?: string
+  variant?: 'default' | 'primary' | 'outline' | 'danger'
+  menuItems?: Array<{
+    label: string
+    action: () => void
+  }>
+}
+
+withDefaults(defineProps<DropdownProps>(), {
+  buttonLabel: 'Actions',
+  variant: 'primary',
+  menuItems: [
+    {
+      label: 'Action',
+      action: () => {},
+    },
+  ],
+})
+
+function handleMenuItemClick(item = { action: () => {} }) {
+  item.action()
+}
+</script>
+
 <template>
   <div class="relative">
     <Menu as="div" class="relative inline-block text-left">
-      <div>
-        <MenuButton
-          :class="[
-            'btn',
-            {
-              'btn-default': variant === 'default',
-              'btn-primary': variant === 'primary',
-              'btn-outline': variant === 'outline',
-              'btn-danger': variant === 'danger',
-            },
-          ]"
-        >
-          <span>{{ buttonLabel }}</span>
-          <Icon
-            name="heroicons:chevron-down"
-            class="w-5 h-5 ml-2 -mr-1 text-primary-200 hover:text-primary-100"
-            aria-hidden="true"
-          />
-        </MenuButton>
-      </div>
+      <VButton>
+        <span>{{ buttonLabel }}</span>
+        <Icon
+          name="heroicons:chevron-down"
+          class="w-5 h-5 ml-2 -mr-1 text-primary-200 hover:text-primary-100"
+          aria-hidden="true"
+        />
+      </VButton>
 
       <transition
         enter-active-class="transition duration-100 ease-out"
@@ -58,34 +74,3 @@
     </Menu>
   </div>
 </template>
-
-<script setup>
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
-const props = defineProps({
-  buttonLabel: {
-    type: String,
-    default: 'Actions',
-  },
-  variant: {
-    type: String,
-    default: 'primary',
-  },
-  menuItems: {
-    type: Array,
-    default: () => [
-      {
-        label: 'Action',
-        onClick: () => {},
-      },
-    ],
-    validator: (value) => {
-      return value.every((item) => {
-        return item.hasOwnProperty('label') && item.hasOwnProperty('action')
-      })
-    },
-  },
-})
-function handleMenuItemClick(item) {
-  item.action()
-}
-</script>

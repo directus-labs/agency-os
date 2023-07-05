@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import { Form } from '~~/types'
 
-const props = defineProps({
-  form: {
-    type: Object as PropType<Form>,
-    required: true,
-  },
-})
+const props = defineProps<{
+  form: Form
+}>()
 
 const { $directus } = useNuxtApp()
 
@@ -17,7 +14,7 @@ const loading = ref(false)
 const error = ref(null)
 const success = ref(false)
 
-function tranformSchema(schema: object) {
+function tranformSchema(schema: Array<{}>) {
   // Loop through the form schema from Directus
   // This is required for FormKit to work
   const items = unref(schema)
@@ -54,8 +51,8 @@ async function submitForm() {
       data: formData,
     })
     success.value = true
-    if (form.on_success === 'redirect') {
-      return navigateTo(form.redirect_url)
+    if (props.form.on_success === 'redirect') {
+      return navigateTo(props.form.redirect_url)
     }
   } catch (err) {
     error.value = err

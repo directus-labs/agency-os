@@ -1,22 +1,18 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
-
-type LogoCloud = {
+export interface LogoCloudBlockProps {
   id: string
-  headline: string
-  title: string
+  headline?: string
+  title?: string
   logos: Array<{
     file: {
       id: string
     }
   }>
 }
-const props = defineProps({
-  data: {
-    type: Object as PropType<LogoCloud>,
-    required: true,
-  },
-})
+
+defineProps<{
+  data: LogoCloudBlockProps
+}>()
 
 const { fileUrl } = useFiles()
 </script>

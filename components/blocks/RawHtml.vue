@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
-type RawHtml = {
+export interface RawHtmlBlockProps {
   id: string
   raw_html: string
 }
-const props = defineProps({
-  data: {
-    type: Object as PropType<RawHtml>,
-    default: () => ({}),
-  },
-})
+defineProps<{
+  data: RawHtmlBlockProps
+}>()
 </script>
 <template>
   <BlockContainer>
