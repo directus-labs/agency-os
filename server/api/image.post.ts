@@ -62,7 +62,7 @@ export default defineEventHandler(async (event) => {
     const options = await getOptions(
       process.env.HOST_NAME.includes('localhost')
     )
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch(options)
 
     // const context = await browser.newContext()
     const page = await browser.newPage()
