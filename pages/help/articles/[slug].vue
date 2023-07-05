@@ -60,8 +60,8 @@ const {
             />
           </div>
           <div class="">
-            <div class="article intercom-force-break">
-              <div class="mb-10 max-lg:mb-6" dir="ltr">
+            <div class="article">
+              <div class="mb-10 max-lg:mb-6">
                 <div class="flex flex-col gap-4">
                   <div class="flex flex-col">
                     <TypographyHeadline
@@ -76,8 +76,8 @@ const {
                   <VAvatar v-if="article.owner" :author="article.owner" />
                 </div>
               </div>
-              <div class="flex-col jsx-fedcff3ed0872aac">
-                <div class="ml-0 mb-7 text-md max-messenger:mb-6 lg:hidden">
+              <div class="flex-col">
+                <div class="ml-0 mb-7 text-md lg:hidden">
                   <!-- Table of Contents -->
                 </div>
                 <article>
@@ -89,7 +89,13 @@ const {
               </div>
             </div>
           </div>
+          <hr class="mt-12 dark:border-gray-700" />
           <!-- Feedback Widget -->
+          <HelpFeedback
+            class="mt-4"
+            :title="article.title"
+            :url="`/help/articles/${article.slug}`"
+          />
         </div>
       </div>
     </section>

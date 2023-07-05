@@ -1,3 +1,5 @@
+// ** Content Types **
+
 export interface Page {
   id: string
   title: string
@@ -160,8 +162,100 @@ export interface Redirect {
   user_updated?: string
 }
 
-// Create a type for the Directus SDK
+export interface Globals {
+  id: string
+  // SEO
+  url?: string
+  title?: string
+  tagline?: string
+  description?: string
+  // Social
+  og_image?: string
+  social_links?: Array<{
+    service?: string
+    url?: string
+  }>
+  // Contact
+  street_address?: string
+  address_locality?: string
+  address_region?: string
+  postal_code?: string
+  email?: string
+  phone?: string
+  // Deployment
+  notice_deployment?: string
+  build_hook_url?: string
+  routes?: Array<{
+    collection?: string
+    route?: string
+  }>
+}
+
+// ** Help Center Types **
+
+export interface HelpCollection {
+  id: string
+  sort: number
+  title?: string
+  slug?: string
+  icon?: string
+  description?: string
+  articles?: HelpArticle[]
+}
+
+export interface HelpArticle {
+  id: string
+  sort: number
+  title?: string
+  slug?: string
+  summary?: string
+  owner?: User
+  content?: string
+  help_collection?: HelpCollection | string
+  user_created?: string
+  user_updated?: string
+  date_created?: string
+  date_updated?: string
+}
+
+export interface HelpFeedback {
+  id?: string
+  title?: string
+  url?: string
+  rating: number
+  visitor_id?: string
+  comments?: string
+  user_created?: string
+  user_updated?: string
+  date_created?: string
+  date_updated?: string
+}
+
+// ** Realtime Types **
+
+export interface Conversation {
+  id: string
+  status: string
+  date_created: string
+  date_updated: string
+  title?: string
+  messages?: Message[]
+  visitor_id?: string
+}
+
+export interface Message {
+  id: string
+  text: string
+  conversation: Conversation | string
+  user_created?: string
+  user_updated?: string
+  date_created?: string
+  date_updated?: string
+}
+
+// ** Directus SDK Types **
 // This is not required, but it makes it easier to use the SDK
+
 export interface DirectusCollections {
   pages: Page[]
   posts: Post[]
@@ -172,4 +266,12 @@ export interface DirectusCollections {
   navigation: Navigation[]
   navigation_items: NavigationItem[]
   redirects: Redirect[]
+  globals: Globals
+  // Help Center
+  help_collections: HelpCollection[]
+  help_articles: HelpArticle[]
+  help_feedback: HelpFeedback[]
+  // Realtime
+  conversations: Conversation[]
+  messages: Message[]
 }
