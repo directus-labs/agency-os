@@ -34,6 +34,8 @@
         "form-data": "4.0.0",
         "nuxt": "3.5.3",
         "nuxt-icon": "0.4.2",
+        "chrome-aws-lambda": "^8.0.2",
+        "puppeteer-core": "^8.0.0",
         "playwright-aws-lambda": "0.10.0",
         "playwright-core": "1.35.1",
         "prettier": "2.8.8",

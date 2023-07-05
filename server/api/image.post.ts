@@ -1,6 +1,7 @@
-import playwright from 'playwright-aws-lambda'
+import chromium from 'chrome-aws-lambda'
 import FormData from 'form-data'
 import { readBody } from 'h3'
+// import playwright from 'playwright-aws-lambda'
 import { createDirectus } from '~~/server/utils/directus-server'
 
 // Aspect ratios for social media images
@@ -34,14 +35,27 @@ export default defineEventHandler(async (event) => {
     const body: ImagePostBody = await readBody(event)
     const { id, collection, seo, slug, url, imageSize } = body
 
-    const browser = await playwright.launchChromium({
-      headless: true,
+    // const browser = await playwright.launchChromium({
+    //   headless: true,
+    // })
+
+    const browser = await chromium.puppeteer.launch({
+      executablePath: process.env.HOST_NAME.includes('localhost')
+        ? null
+        : await chromium.executablePath,
+      args: chromium.args,
+      defaultViewport: {
+        ...viewportSettings[imageSize ?? 'og'],
+      },
+      headless: chromium.headless,
     })
-    const context = await browser.newContext()
-    const page = await context.newPage()
+
+    // const context = await browser.newContext()
+    const page = await browser.newPage()
 
     await page.goto(url)
-    await page.waitForLoadState('networkidle')
+
+    await page.waitForNetworkIdle()
 
     const screenshot = await page.screenshot({
       type: 'jpeg',
