@@ -43,7 +43,21 @@ const {
     pick: ['title', 'blocks', 'slug', 'id', 'seo'],
   }
 )
+
+if (!page.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+}
 </script>
 <template>
-  <PageBuilder :page="page" />
+  <NuxtErrorBoundary>
+    <!-- Render the page using the PageBuilder component -->
+    <PageBuilder :page="page" />
+
+    <!-- If there is an error, display it using the VAlert component -->
+    <template #error="{ error }">
+      <BlockContainer>
+        <VAlert type="error">{{ error }}</VAlert>
+      </BlockContainer>
+    </template>
+  </NuxtErrorBoundary>
 </template>
