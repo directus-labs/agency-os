@@ -1,4 +1,6 @@
-import chromium from 'chrome-aws-lambda'
+// import chromium from 'chrome-aws-lambda'
+import chrome from '@sparticuz/chromium'
+import puppeteer from 'puppeteer-core'
 import FormData from 'form-data'
 import { readBody } from 'h3'
 // import playwright from 'playwright-aws-lambda'
@@ -27,6 +29,25 @@ interface ImagePostBody {
   imageSize?: 'og' | 'square'
 }
 
+const exePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+
+async function getOptions(isDev: boolean) {
+  if (isDev) {
+    return {
+      product: 'chrome',
+      args: [],
+      executablePath: exePath,
+      headless: true,
+    }
+  }
+  return {
+    product: 'chrome',
+    args: chrome.args,
+    executablePath: await chrome.executablePath,
+    headless: chrome.headless,
+  }
+}
+
 export default defineEventHandler(async (event) => {
   try {
     const config = useRuntimeConfig()
@@ -38,17 +59,10 @@ export default defineEventHandler(async (event) => {
     // const browser = await playwright.launchChromium({
     //   headless: true,
     // })
-
-    const browser = await chromium.puppeteer.launch({
-      executablePath: process.env.HOST_NAME.includes('localhost')
-        ? null
-        : await chromium.executablePath,
-      args: chromium.args,
-      defaultViewport: {
-        ...viewportSettings[imageSize ?? 'og'],
-      },
-      headless: chromium.headless,
-    })
+    const options = await getOptions(
+      process.env.HOST_NAME.includes('localhost')
+    )
+    const browser = await puppeteer.launch()
 
     // const context = await browser.newContext()
     const page = await browser.newPage()
