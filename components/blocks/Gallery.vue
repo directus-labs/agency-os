@@ -15,10 +15,11 @@ export interface GalleryBlockProps {
   }>
 }
 
-const props = defineProps<{
+defineProps<{
   data: GalleryBlockProps
 }>()
 </script>
+
 <template>
   <BlockContainer>
     <!-- Title -->
