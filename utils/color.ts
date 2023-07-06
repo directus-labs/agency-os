@@ -1,4 +1,4 @@
-function getContrastColor(hexColor) {
+function getContrastColor(hexColor: string) {
   // Convert hex color to RGB format
   const red = parseInt(hexColor.slice(1, 3), 16)
   const green = parseInt(hexColor.slice(3, 5), 16)
