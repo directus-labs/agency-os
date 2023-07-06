@@ -43,9 +43,6 @@ const {
         <DarkModeToggle
           class="hidden text-gray-200 md:block hover:text-gray-400"
         />
-        <AnimationToggle
-          class="hidden text-gray-200 md:block hover:text-gray-400"
-        />
       </div>
     </div>
 

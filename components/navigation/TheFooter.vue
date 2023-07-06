@@ -59,12 +59,6 @@ function getUrl(item: object) {
           <DarkModeToggle
             class="hidden text-gray-600 md:block hover:text-gray-400"
           />
-          <button
-            id="animation-toggle"
-            class="hidden text-gray-600 md:block hover:text-gray-400"
-          >
-            <Icon name="heroicons:sparkles" class="w-8 h-8" />
-          </button>
         </div>
       </div>
 
@@ -130,8 +124,9 @@ function getUrl(item: object) {
             href="/"
             class="mx-2 hover:text-accent"
             rel="noopener noreferrer"
-            >{{ title }}.</NuxtLink
           >
+            {{ title }}.
+          </NuxtLink>
           All rights reserved.
         </span>
         <!-- You're free to remove this footer if you want. But we'd appreciate it if you keep the credits. -->
@@ -143,16 +138,19 @@ function getUrl(item: object) {
             target="_blank"
             rel="noopener noreferrer"
             class="border-b dark:border-b-gray-700 hover:text-accent"
-            >Directus</NuxtLink
           >
+            Directus
+          </NuxtLink>
           and
           <NuxtLink
             href="https://www.nuxt.com?ref=agencyos_footer"
             target="_blank"
             rel="noopener noreferrer"
             class="border-b dark:border-b-gray-700 hover:text-accent"
-            >Nuxt</NuxtLink
-          >.
+          >
+            Nuxt
+          </NuxtLink>
+          .
         </span>
       </div>
     </div>
