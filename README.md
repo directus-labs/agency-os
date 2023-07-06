@@ -80,7 +80,7 @@ Open your terminal run the following command and simply follow the prompts.
 
 `npx directus-template-cli apply`
 
-1. Choose the `Headless CMS - Website` template.
+1. Choose the `Agency OS` template.
 2. Paste the URL to your Directus instance
 3. Paste your Admin user static token
 4. Wait for script to finish
