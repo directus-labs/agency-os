@@ -2,8 +2,8 @@
 import { generateVideoEmbed } from '~~/utils/embed'
 interface VideoProps {
   url: string
-  title: string
-  name: string
+  title?: string
+  name?: string
 }
 
 defineProps<VideoProps>()
