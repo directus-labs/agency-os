@@ -92,14 +92,12 @@ const flipped = ref(false)
       <div class="absolute z-10 bottom-4 left-7 right-7">
         <h3
           class="pb-2 font-serif text-3xl text-white font-extralight text-shadow leading-tight-2 2xl:text-4xl 2xl:leading-tight-2"
-          title="Dan Sheetz | Co-Founder &amp; Chief Strategy Officer"
         >
           {{ person.name }}
         </h3>
 
         <p
           class="font-mono text-sm font-bold tracking-widest uppercase word-spacing-tight text-accent"
-          title="Dan Sheetz | Co-Founder &amp; Chief Strategy Officer"
         >
           {{ person.job_title }}
         </p>
