@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { markdownToHtml } from '~~/utils/markdown'
 const { $directus } = useNuxtApp()
 const { params } = useRoute()
 // Fetch the page data from the Directus API using the Nuxt useAsyncData composable
@@ -44,7 +45,7 @@ const {
     <section class="max-w-full mt-8">
       <div class="flex flex-row-reverse justify-between">
         <div class="sticky self-start mt-16 max-lg:hidden">
-          Table of Contents
+          <!-- Table of Contents -->
         </div>
         <div class="relative w-full z-3 lg:max-w-160">
           <div class="flex pb-6 max-md:pb-2 lg:max-w-160">
@@ -83,7 +84,7 @@ const {
                 <article>
                   <TypographyProse
                     v-if="article.content"
-                    :content="article.content"
+                    :content="markdownToHtml(article.content)"
                   />
                 </article>
               </div>
