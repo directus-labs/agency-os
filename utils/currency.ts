@@ -1,4 +1,9 @@
-const formatCurrency = (number, options) => {
+const formatCurrency = (
+  number: number,
+  options: {
+    hideZeros?: boolean
+  }
+) => {
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -9,14 +14,15 @@ const formatCurrency = (number, options) => {
         maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501))
       }),
   })
+
   return formatter.format(number)
 }
 
-function centsToDollars(cents) {
+function centsToDollars(cents: number) {
   return Number((cents / 100).toFixed(2))
 }
 
-function dollarsToCents(dollars) {
+function dollarsToCents(dollars: number) {
   return Math.round(dollars * 100)
 }
 

@@ -1,5 +1,4 @@
-// Define the time units
-const months = [
+const months: string[] = [
   'January',
   'February',
   'March',
@@ -14,7 +13,7 @@ const months = [
   'December',
 ]
 
-const days = [
+const days: string[] = [
   'Sunday',
   'Monday',
   'Tuesday',
@@ -24,7 +23,7 @@ const days = [
   'Saturday',
 ]
 
-const monthsAbbr = [
+const monthsAbbr: string[] = [
   'Jan',
   'Feb',
   'Mar',
@@ -39,9 +38,9 @@ const monthsAbbr = [
   'Dec',
 ]
 
-const daysAbbr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const daysAbbr: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-const units = {
+const units: Record<string, number> = {
   year: 24 * 60 * 60 * 1000 * 365,
   month: (24 * 60 * 60 * 1000 * 365) / 12,
   week: 24 * 60 * 60 * 1000 * 7,
@@ -51,28 +50,31 @@ const units = {
   second: 1000,
 }
 
-// You probably want to change this to your own locale
 const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' })
 
-// Get relative time without libraries like moment.js or dayjs (ie '2 days ago')
-function getRelativeTime(d1, d2 = new Date()) {
-  // Check if d1 is a date object
+function getRelativeTime(d1: Date | string, d2: Date = new Date()): string {
   if (!(d1 instanceof Date)) d1 = new Date(d1)
 
-  const elapsed = d1 - d2
-  // "Math.abs" accounts for both "past" & "future" scenarios
-  for (const u in units)
-    if (Math.abs(elapsed) > units[u] || u === 'second')
-      return rtf.format(Math.round(elapsed / units[u]), u)
+  const elapsed = d1.getTime() - d2.getTime()
+
+  for (const u in units) {
+    if (Math.abs(elapsed) > units[u] || u === 'second') {
+      return rtf.format(
+        Math.round(elapsed / units[u]),
+        u as Intl.RelativeTimeFormatUnit
+      )
+    }
+  }
+
+  return ''
 }
 
-// Format date to be more readable
-function getFriendlyDate(dateString) {
+function getFriendlyDate(dateString: string): string {
   const d = new Date(dateString)
   const year = d.getFullYear()
   const date = d.getDate()
-  const dateSuffix = (date) => {
-    if (date > 3 && d < 21) return 'th'
+  const dateSuffix = (date: number): string => {
+    if (date > 3 && date < 21) return 'th'
     switch (date % 10) {
       case 1:
         return 'st'
@@ -87,12 +89,13 @@ function getFriendlyDate(dateString) {
   const monthIndex = d.getMonth()
   const monthName = months[monthIndex]
   const dayName = daysAbbr[d.getDay()]
-  const formatted = `${dayName}, ${monthName} ${date}${dateSuffix()}, ${year}`
+  const formatted = `${dayName}, ${monthName} ${date}${dateSuffix(
+    date
+  )}, ${year}`
   return formatted
 }
 
-// Break down a date into its specific parts
-function destructureDate(date) {
+function destructureDate(date: string): Record<string, number | string> {
   const d = new Date(date)
   const year = d.getFullYear()
   const month = d.getMonth()
@@ -105,23 +108,24 @@ function destructureDate(date) {
   return { year, month, day, hour, minute, second, dayName, monthName }
 }
 
-// Greeting for user based on time of day
-function greetUser() {
+function greetUser(): string {
   const hour = new Date().getHours()
   if (hour < 12) return 'Good Morning'
   if (hour < 18) return 'Good Afternoon'
   return 'Good Evening'
 }
 
-// Subtract two dates and return the duration. Add an optional unit to return a specific unit.
-function subtractDates(date1, date2, unit) {
-  // Check if the dates are valid and if not, try to convert them to dates
-  if (isNaN(date1) || isNaN(date2)) {
+function subtractDates(
+  date1: string | number | Date,
+  date2: string | number | Date,
+  unit?: string
+): number {
+  if (isNaN(date1 as number) || isNaN(date2 as number)) {
     date1 = new Date(date1)
     date2 = new Date(date2)
   }
 
-  const diff = date1 - date2
+  const diff = (date1 as Date).getTime() - (date2 as Date).getTime()
   if (unit === 'years') return diff / units.year
   if (unit === 'months') return diff / units.month
   if (unit === 'weeks') return diff / units.week
@@ -132,25 +136,24 @@ function subtractDates(date1, date2, unit) {
   return diff
 }
 
-// Convert a Stripe date to a DateTime object
-function toDateTime(secs) {
-  var t = new Date('1970-01-01T00:30:00Z') // Unix epoch start.
+function toDateTime(secs: number): Date {
+  const t = new Date('1970-01-01T00:30:00Z')
   t.setSeconds(secs)
   return t
 }
 
-function getMonth(dateString) {
+function getMonth(dateString: string): string {
   const d = new Date(dateString)
   const monthIndex = d.getMonth()
   return monthsAbbr[monthIndex]
 }
 
-function getDate(dateString) {
+function getDate(dateString: string): number {
   const d = new Date(dateString)
   return d.getDate()
 }
 
-function getDay(dateString) {
+function getDay(dateString: string): string {
   const d = new Date(dateString)
   const dayIndex = d.getDay()
   return days[dayIndex]
@@ -161,7 +164,7 @@ export {
   getFriendlyDate,
   greetUser,
   toDateTime,
-  subtractDates,
+  subtractDates as subtractDates,
   monthsAbbr,
   destructureDate,
   getMonth,
