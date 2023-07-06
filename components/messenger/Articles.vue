@@ -26,7 +26,7 @@ const {
   pending,
   error,
 } = await useAsyncData(
-  'posts',
+  'articles-messenger',
   () => {
     return $directus.items('posts').readByQuery({
       sort: ['date_published'],
