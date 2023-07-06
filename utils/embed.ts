@@ -10,8 +10,7 @@ export function generateVideoEmbed(url: string) {
     return `https://player.vimeo.com/video/${url.split('vimeo.com/')[1]}`
   } else if (url.includes('loom.com')) {
     return `https://www.loom.com/embed/${url.split('loom.com/share/')[1]}`
-  }
-  else {
+  } else {
     return url
   }
 }
