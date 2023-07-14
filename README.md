@@ -25,7 +25,7 @@
 
 Spin up a beautiful site for your agency or freelancing business in minutes. Or use Agency OS as the foundation for your next client project.
 
-[**-> View The Demo Site**](https://agency-os.vercel.app/)
+[**-> View The Demo Site**](https://agencyos.dev/)
 
 **Features**
 
