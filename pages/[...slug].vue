@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { $directus } = useNuxtApp()
 const { params, path } = useRoute()
+const { fileUrl } = useFiles()
 
 function getSlug() {
   if (path == '/') {
@@ -47,6 +48,23 @@ const {
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
+
+useHead({
+  title: () => page.value.title,
+})
+
+useSeoMeta({
+  title: () => page.value.title,
+  description: () => page.value.summary,
+  ogDescription: () => page.value.seo ? page.value.seo.meta_description : null,
+  ogUrl: () => `https://directus.io/posts/${page.value.slug}`,
+  ogTitle: () => (page.value.seo ? page.value.seo.og_title : null),
+  ogImage: () => (page.value.seo?.og_image ? fileUrl(page.value.seo.og_image) : null),
+  twitterTitle: '[twitter:title]',
+  twitterDescription: '[twitter:description]',
+  twitterImage: '[twitter:image]',
+  twitterCard: 'summary',
+})
 </script>
 <template>
   <NuxtErrorBoundary>

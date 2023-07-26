@@ -45,11 +45,10 @@ useHead({
 useSeoMeta({
   title: () => page.value.title,
   description: () => page.value.summary,
-  ogDescription: () =>
-    page.value.seo ? page.value.seo.meta_description : null,
+  ogDescription: () => page.value.seo ? page.value.seo.meta_description : null,
   ogUrl: () => `https://directus.io/posts/${page.value.slug}`,
   ogTitle: () => (page.value.seo ? page.value.seo.og_title : null),
-  ogImage: () => (page.value.seo ? fileUrl(page.value.seo.og_image) : null),
+  ogImage: () => (page.value.seo?.og_image ? fileUrl(page.value.seo.og_image) : null),
   twitterTitle: '[twitter:title]',
   twitterDescription: '[twitter:description]',
   twitterImage: '[twitter:image]',
