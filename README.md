@@ -23,7 +23,8 @@
 
 # Introduction
 
-Spin up a beautiful site for your agency or freelancing business in minutes. Or use Agency OS as the foundation for your next client project.
+Spin up a beautiful site for your agency or freelancing business in minutes. Or use Agency OS as the foundation for your
+next client project.
 
 [**-> View The Demo Site**](https://agencyos.dev/)
 
@@ -58,7 +59,8 @@ Spin up a beautiful site for your agency or freelancing business in minutes. Or 
 
 [https://directus.cloud/register](https://directus.cloud/register)
 
-If you're prefer the self-hosted version, you can find [install instructions using Docker here](https://docs.directus.io/self-hosted/quickstart.html).
+If you're prefer the self-hosted version, you can
+find [install instructions using Docker here](https://docs.directus.io/self-hosted/quickstart.html).
 
 ### 2 - Create a new project
 
@@ -119,17 +121,17 @@ DIRECTUS_ADMIN_TOKEN="your_admin_static_token_here"
 
 ### 3 - Install your dependencies
 
-`yarn install`
+`pnpm i`
 
 ### 4 - Start the development server
 
-`yarn dev`
+`pnpm dev`
 
 [http://localhost:3000](http://localhost:3000/)
 
 ### 5 - Build for production when you're ready
 
-`yarn build`
+`pnpm build`
 
 <br />
 
@@ -151,9 +153,11 @@ Please check the official [Nuxt Deployment Documentation](https://nuxt.com/docs/
 
 ## Deploying Directus
 
-If you don't want to mess with DevOps or spinning up servers, you can [spin up a new project on Directus Cloud](https://railway.app/template/2fy758) in about 90 seconds.
+If you don't want to mess with DevOps or spinning up servers, you can
+[spin up a new project on Directus Cloud](https://railway.app/template/2fy758) in about 90 seconds.
 
-If you prefer self-hosting, Docker is the recommended way to deploy Directus. Please check the official [Directus Docker Guide](https://docs.directus.io/self-hosted/docker-guide.html)
+If you prefer self-hosting, Docker is the recommended way to deploy Directus. Please check the official
+[Directus Docker Guide](https://docs.directus.io/self-hosted/docker-guide.html)
 
 <br />
 
@@ -191,7 +195,8 @@ Agency OS has full dark mode support.
 
 Dark mode is already enabled in the `tailwind.config.js` and all the base components included have full support.
 
-Dark mode toggling is provided by [VueUse `useDark` composable](https://vueuse.org/core/usedark/#usedark). And there is an example toggle component you can use.
+Dark mode toggling is provided by [VueUse `useDark` composable](https://vueuse.org/core/usedark/#usedark). And there is
+an example toggle component you can use.
 
 If you don't wish to use dark mode, you can simply remove the composable and the `dark:` classes from the components.
 
@@ -244,7 +249,8 @@ If you don't wish to use dark mode, you can simply remove the composable and the
 
 ## Nuxt
 
-Build your next Vue.js application with confidence using Nuxt. An open source framework under MIT license that makes web development simple and powerful. The leading Vue framework that handles routing, server side rendering, and more.
+Build your next Vue.js application with confidence using Nuxt. An open source framework under MIT license that makes web
+development simple and powerful. The leading Vue framework that handles routing, server side rendering, and more.
 
 [Learn more about Nuxt](https://nuxt.com)
 
@@ -254,10 +260,13 @@ Build your next Vue.js application with confidence using Nuxt. An open source fr
 
 ## Directus
 
-Directus is a headless CMS that instantly turns your SQL database into REST and GraphQL APIs and gives you a beautiful, intuitive no-code app to manage all your content and data.
-But it's also more than just a headless CMS. It’s an open data platform that has all the tools you need for creating, managing, serving, visualizing, and even automating your data for your next web, mobile, or digital project.
+Directus is a headless CMS that instantly turns your SQL database into REST and GraphQL APIs and gives you a beautiful,
+intuitive no-code app to manage all your content and data. But it's also more than just a headless CMS. It’s an open
+data platform that has all the tools you need for creating, managing, serving, visualizing, and even automating your
+data for your next web, mobile, or digital project.
 
-For a smooth experience, the [Directus SDK](https://docs.directus.io/reference/sdk/#javascript-sdk) is already integrated for you and availably globally as a Nuxt plugin.
+For a smooth experience, the [Directus SDK](https://docs.directus.io/reference/sdk/#javascript-sdk) is already
+integrated for you and availably globally as a Nuxt plugin.
 
 [Learn more about Directus](https://directus.io)
 
@@ -265,21 +274,28 @@ For a smooth experience, the [Directus SDK](https://docs.directus.io/reference/
 
 ## UI
 
-- [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework that allows you to rapidly build sites and maintain consistency across team members. There are several Tailwind Plugins installed and ready to use as well – [Typography](https://tailwindcss.com/docs/typography-plugin) and [Forms](https://tailwindcss.com/docs/plugins#forms).
+- [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework that allows you to rapidly build sites and
+  maintain consistency across team members. There are several Tailwind Plugins installed and ready to use as well –
+  [Typography](https://tailwindcss.com/docs/typography-plugin) and [Forms](https://tailwindcss.com/docs/plugins#forms).
 - [Headless UI](https://headlessui.dev/) – Completely unstyled, fully accessible UI components.
-- [FormKit](https://formkit.com/) – Form library for Vue that saves you hours of time by simplifying form creation. Includes error handling, validation, theming, and even generation from a schema out of the box.
-- [Nuxt Icon](https://github.com/nuxt-modules/icon) - Adds `<Icon>` component that allows you use tons of icons. [See available icons here](https://icones.js.org/).
+- [FormKit](https://formkit.com/) – Form library for Vue that saves you hours of time by simplifying form creation.
+  Includes error handling, validation, theming, and even generation from a schema out of the box.
+- [Nuxt Icon](https://github.com/nuxt-modules/icon) - Adds `<Icon>` component that allows you use tons of icons.
+  [See available icons here](https://icones.js.org/).
 
 ## Utilities
 
-- [VueUse](https://vueuse.org/) – Collection of Vue Composition Utilities. Already installed and configured so you can just import any of the composables in their library straight away.
-- [VueUse Motion](https://motion.vueuse.org/) – Composables putting your components in motion. Makes it easy to provide tasteful animations with less effort.
+- [VueUse](https://vueuse.org/) – Collection of Vue Composition Utilities. Already installed and configured so you can
+  just import any of the composables in their library straight away.
+- [VueUse Motion](https://motion.vueuse.org/) – Composables putting your components in motion. Makes it easy to provide
+  tasteful animations with less effort.
 
 <br />
 
 # 💼 Other Resources
 
-- **[Directus Discord](https://discord.com/invite/directus)** – Join over 10k+ developers and community members to ask questions and live discussion around Directus.
+- **[Directus Discord](https://discord.com/invite/directus)** – Join over 10k+ developers and community members to ask
+  questions and live discussion around Directus.
 - **[Nuxt Discord](https://discord.com/invite/ps2h6QT)**
 
 <br />
