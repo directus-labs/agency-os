@@ -7,6 +7,6 @@ node_modules
 .env
 dist
 .DS_Store
-
-# Local Netlify folder
+.vscode
+.eslintcache
 .netlify
