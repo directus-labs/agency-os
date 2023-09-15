@@ -1,17 +1,17 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'default',
-})
+	layout: 'default',
+});
 
 const props = defineProps({
-  error: Object,
-})
+	error: Object,
+});
 
-const handleError = () => clearError({ redirect: '/' })
+const handleError = () => clearError({ redirect: '/' });
 </script>
 
 <template>
-  <div>
-    {{ error }}
-  </div>
+	<div>
+		{{ error }}
+	</div>
 </template>

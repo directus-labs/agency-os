@@ -1,37 +1,37 @@
-import { createDirectus } from '~~/server/utils/directus-server'
-import { HelpFeedback } from 'types'
+import { directus, updateItem, createItem } from '~~/server/utils/directus-server';
 
 export default defineEventHandler(async (event) => {
-  try {
-    const config = useRuntimeConfig()
-    const $directus = createDirectus(config)
+	try {
+		const body = await readBody(event);
+		const { id, title, url, rating, visitor_id, comments } = body;
 
-    const body: HelpFeedback = await readBody(event)
-    const { id, title, url, rating, visitor_id, comments } = body
+		let response;
 
-    let response
+		if (id) {
+			response = await directus.request(
+				updateItem('help_feedback', id, {
+					title,
+					url,
+					rating,
+					visitor_id,
+					comments,
+				}),
+			);
+		} else {
+			response = await directus.request(
+				createItem('help_feedback', {
+					title,
+					url,
+					rating,
+					visitor_id,
+					comments,
+				}),
+			);
+		}
 
-    if (id) {
-      response = await $directus.items('help_feedback').updateOne(id, {
-        title,
-        url,
-        rating,
-        visitor_id,
-        comments,
-      })
-    } else {
-      response = await $directus.items('help_feedback').createOne({
-        title,
-        url,
-        rating,
-        visitor_id,
-        comments,
-      })
-    }
-
-    return response
-  } catch (error) {
-    console.error(error)
-    return error
-  }
-})
+		return response;
+	} catch (error) {
+		console.error(error);
+		return error;
+	}
+});

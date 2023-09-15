@@ -10,3 +10,5 @@ dist
 .vscode
 .eslintcache
 .netlify
+.directus/data
+.directus/uploads

@@ -13,7 +13,7 @@ export interface BlockStep {
 export interface BlockStepItem {
 	block_steps?: (string | BlockStep) | null;
 	content?: string | null;
-	id?: number;
+	id?: string;
 	image?: (string | File) | null;
 	sort?: number | null;
 	title?: string | null;

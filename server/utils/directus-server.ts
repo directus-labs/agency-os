@@ -1,13 +1,23 @@
-import { Directus } from '@directus/sdk'
-import { RuntimeConfig } from 'nuxt/schema'
+import {
+	aggregate,
+	createDirectus,
+	readItem,
+	readItems,
+	readSingleton,
+	rest,
+	createItem,
+	createItems,
+	updateItem,
+	updateItems,
+	staticToken,
+} from '@directus/sdk';
+import type { Schema } from '~/types/schema';
 
-export function createDirectus(config: RuntimeConfig) {
-  const directusUrl = config.public.directusUrl
-  const directusToken = config.directusToken
-  const $directus = new Directus(directusUrl, {
-    auth: {
-      staticToken: directusToken,
-    },
-  })
-  return $directus
-}
+const config = useRuntimeConfig();
+const directusUrl = config.public.directusUrl as string;
+
+const directus = createDirectus<Schema>(directusUrl)
+	.with(rest())
+	.with(staticToken(config.public.directusToken as string));
+
+export { directus, readItem, readItems, readSingleton, aggregate, createItem, createItems, updateItem, updateItems };

@@ -1,25 +1,31 @@
-import { Directus } from '@directus/sdk'
-import { DirectusCollections } from 'types'
-// Make sure you review the Directus SDK documentation for more information
-// https://docs.directus.io/reference/sdk.html
+import {
+	aggregate,
+	createDirectus,
+	readItem,
+	createItem,
+	readItems,
+	readSingleton,
+	uploadFiles,
+	rest,
+	realtime,
+	staticToken,
+} from '@directus/sdk';
+import type { Schema } from '~/types/schema';
 
-export default defineNuxtPlugin((nuxtApp) => {
-  const config = useRuntimeConfig()
+export default defineNuxtPlugin(() => {
+	const config = useRuntimeConfig();
+	const directusUrl = config.public.directusUrl as string;
+	const directusWsUrl = config.public.directusWsUrl as string;
 
-  // Create a new instance of the SDK
-  const directus = new Directus<DirectusCollections>(
-    config.public.directusUrl,
-    {
-      // auth: {
-      //   staticToken: config.directusToken,
-      // },
-    }
-  )
+	const directus = createDirectus<Schema>(directusUrl).with(rest());
 
-  // Inject the SDK into the Nuxt app
-  // Can be accessed from anywhere in the app using $directus
-  // Ex:
-  // const { $directus } = useNuxtApp()
-  //
-  nuxtApp.provide('directus', directus)
-})
+	const ws = createDirectus<Schema>(directusWsUrl)
+		.with(staticToken('c2f6b_Zbz4NPEZqO4ikfUg352PRkoqdm'))
+		.with(
+			realtime({
+				authMode: 'public',
+			}),
+		);
+
+	return { provide: { directus, ws, readItem, createItem, readItems, uploadFiles, readSingleton, aggregate } };
+});
