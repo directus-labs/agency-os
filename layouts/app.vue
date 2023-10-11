@@ -1,11 +1,5 @@
 <template>
-	<AppLayout>
+	<PortalLayout>
 		<slot />
-		<DevOnly>
-			<!-- <DevToolbar /> -->
-		</DevOnly>
-		<ChatWidget />
-	</AppLayout>
+	</PortalLayout>
 </template>
-
-<style></style>
