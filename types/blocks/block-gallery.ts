@@ -4,7 +4,7 @@ export interface BlockGallery {
 	headline?: string | null;
 	id?: string;
 	title?: string | null;
-	gallery_items?: (number | BlockGalleryFile)[];
+	gallery_items?: BlockGalleryFile[] | null;
 }
 export interface BlockGalleryFile {
 	block_gallery?: (string | BlockGallery) | null;

@@ -1,5 +1,22 @@
 import type { SEO } from '../meta';
 import type { User } from '../system';
+import type {
+	BlockCardgroup,
+	BlockColumn,
+	BlockCta,
+	BlockFaq,
+	BlockForm,
+	BlockGallery,
+	BlockHero,
+	BlockHtml,
+	BlockLogocloud,
+	BlockQuote,
+	BlockRichtext,
+	BlockStep,
+	BlockTeam,
+	BlockTestimonial,
+	BlockVideo,
+} from '../blocks';
 
 export interface Page {
 	date_created?: string | null;
@@ -17,24 +34,24 @@ export interface Page {
 
 export interface PageBlock {
 	collection?: string | null;
-	id?: number;
+	id?: string;
 	item?:
 		| (
 				| string
 				| BlockCardgroup
-				| BlockColumns
-				| BlockCTA
-				| BlockFaqs
+				| BlockColumn
+				| BlockCta
+				| BlockFaq
 				| BlockForm
 				| BlockGallery
 				| BlockHero
-				| BlockHTML
+				| BlockHtml
 				| BlockLogocloud
 				| BlockQuote
 				| BlockRichtext
-				| BlockSteps
+				| BlockStep
 				| BlockTeam
-				| BlockTestimonials
+				| BlockTestimonial
 				| BlockVideo
 		  )[]
 		| null;

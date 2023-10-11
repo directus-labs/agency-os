@@ -3,4 +3,5 @@ export interface BlockRichtext {
 	headline?: string | null;
 	id?: string;
 	title?: string | null;
+	alignment?: 'left' | 'center' | null;
 }
