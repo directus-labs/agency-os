@@ -41,7 +41,7 @@ useHead({
 });
 </script>
 <template>
-	<PageContainer>
+	<BlockContainer>
 		<header class="pb-6 border-b-2 border-gray-300 dark:border-gray-700">
 			<TypographyTitle>Agency Blog</TypographyTitle>
 			<TypographyHeadline content="<p>Articles on <em>development</em>, marketing, and more.</p>" />
@@ -75,5 +75,5 @@ useHead({
 				</div>
 			</div>
 		</section>
-	</PageContainer>
+	</BlockContainer>
 </template>

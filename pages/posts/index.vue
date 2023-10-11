@@ -29,7 +29,7 @@ useHead({
 });
 </script>
 <template>
-	<PageContainer>
+	<BlockContainer>
 		<header class="pb-6 border-b border-gray-300 dark:border-gray-700">
 			<TypographyTitle>Agency Blog</TypographyTitle>
 			<TypographyHeadline content="<p>Articles on <em>development</em>, marketing, and more.</p>" />
@@ -46,17 +46,17 @@ useHead({
 				</div>
 				<div class="space-y-4 lg:col-span-3">
 					<TypographyTitle>Featured Article</TypographyTitle>
-					<FeaturePostCard :post="posts[0]" />
+
+					<PostCard :post="posts[0]" direction="horizontal" />
 				</div>
 			</div>
 			<div class="space-y-4">
 				<TypographyTitle>Latest & Greatest</TypographyTitle>
-				<div class="relative grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+				<div class="relative grid gap-8 md:grid-cols-3 lg:grid-cols-4">
 					<PostCard
-						v-for="(post, postIdx) in posts"
+						v-for="(post, postIdx) in posts.slice(1)"
 						:key="post.id"
 						:post="post"
-						:even="isEven(postIdx)"
 						:class="[
 							'border-b border-gray-300 pb-6 dark:border-gray-700',
 							// Make the first two posts span two columns
@@ -66,5 +66,5 @@ useHead({
 				</div>
 			</div>
 		</section>
-	</PageContainer>
+	</BlockContainer>
 </template>
