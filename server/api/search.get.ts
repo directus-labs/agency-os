@@ -2,24 +2,32 @@ import { getQuery } from 'h3';
 import { directus, readItems, updateItem, createItem } from '~~/server/utils/directus-server';
 
 function mapEntity({
+	title,
 	entity,
 	type,
 	urlPattern,
 	description = '',
 	image = '',
 }: {
+	title?: string;
 	entity: any;
 	type: string;
 	urlPattern: string;
 	description?: string;
 	image?: string;
 }) {
+	if (urlPattern.includes(':slug')) {
+		urlPattern = urlPattern.replace(':slug', entity.slug);
+	}
+	if (urlPattern.includes(':id')) {
+		urlPattern = urlPattern.replace(':id', entity.id);
+	}
 	return {
+		title,
 		type,
-		title: entity.title,
 		description,
 		image,
-		url: urlPattern.replace(':slug', entity.slug),
+		url: urlPattern,
 	};
 }
 
@@ -28,6 +36,7 @@ function mapResults(collection: string, results: any[]) {
 		posts: (post: any) =>
 			mapEntity({
 				entity: post,
+				title: post.title,
 				type: 'post',
 				urlPattern: '/posts/:slug',
 				description: post.summary,
@@ -36,6 +45,7 @@ function mapResults(collection: string, results: any[]) {
 		projects: (project: any) =>
 			mapEntity({
 				entity: project,
+				title: project.title,
 				type: 'project',
 				urlPattern: '/projects/:slug',
 				description: project.summary,
@@ -44,18 +54,21 @@ function mapResults(collection: string, results: any[]) {
 		pages: (page: any) =>
 			mapEntity({
 				entity: page,
+				title: page.title,
 				type: 'page',
 				urlPattern: '/:slug',
 			}),
 		categories: (category: any) =>
 			mapEntity({
 				entity: category,
+				title: category.title,
 				type: 'category',
 				urlPattern: '/posts/categories/:slug',
 			}),
 		help_articles: (article: any) =>
 			mapEntity({
 				entity: article,
+				title: article.title,
 				type: 'article',
 				urlPattern: '/help/articles/:slug',
 				description: '',
