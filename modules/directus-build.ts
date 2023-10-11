@@ -1,6 +1,6 @@
 import { defineNuxtModule, extendRouteRules, useLogger } from '@nuxt/kit';
 import { createDirectus, readItems, rest } from '@directus/sdk';
-import type { Schema } from '~/types';
+import type { Schema } from '../types';
 
 const log = useLogger();
 
@@ -19,7 +19,7 @@ export default defineNuxtModule({
 			throw new Error('Missing directusToken in runtimeConfig');
 		}
 
-		const directus = createDirectus(directusUrl).with(rest());
+		const directus = createDirectus<Schema>(directusUrl).with(rest());
 
 		// ** Handle Redirects **
 		const redirects = await directus.request(readItems('redirects'));
@@ -50,13 +50,10 @@ export default defineNuxtModule({
 		// ** Add Globals **
 		const globals = await directus.request(readItems('globals'));
 
-		// Add the globals to the runtime config – overwriting any existing values
-		nuxt.options.runtimeConfig.public = {
-			...nuxt.options.runtimeConfig.public,
-			...globals,
-		};
+		// Add the globals to the app config under the globals key
+		nuxt.options.appConfig.globals = globals;
 
-		log.success('Globals loaded into runtimeConfig');
+		log.success('Globals loaded into appConfig');
 
 		// Add title template to the app head for use with useHead composable
 		nuxt.options.app.head.titleTemplate = `%s - ${globals?.title ?? 'Agency OS'}`;
