@@ -1,10 +1,12 @@
 <script setup lang="ts">
 interface HeadlineProps {
 	content: string;
-	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+	as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
+	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'title';
 }
 
 withDefaults(defineProps<HeadlineProps>(), {
+	as: 'h2',
 	size: 'md',
 });
 </script>
@@ -17,17 +19,18 @@ withDefaults(defineProps<HeadlineProps>(), {
 				'text-3xl': size === 'md',
 				'text-4xl': size === 'lg',
 				'text-5xl': size === 'xl',
+				'text-4xl xs:text-5xl md:text-7xl lg:text-8xl dark:drop-shadow': size === 'title',
 			},
-			'font-serif font-bold leading-snug tracking-tight color-em dark:text-white',
+			'font-display font-semibold leading-snug tracking-tight color-em dark:text-white',
 		]"
 		v-html="content"
 	/>
 </template>
 
-<style>
+<style lang="postcss">
 .color-em {
 	em {
-		@apply text-accent not-italic;
+		@apply text-primary not-italic;
 	}
 }
 </style>

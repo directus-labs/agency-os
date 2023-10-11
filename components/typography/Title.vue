@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface TitleProps {
-	as?: string;
+	as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'p' | 'div';
 }
 
 withDefaults(defineProps<TitleProps>(), {
@@ -8,7 +8,7 @@ withDefaults(defineProps<TitleProps>(), {
 });
 </script>
 <template>
-	<component :is="as" class="font-mono font-bold tracking-wider uppercase text-accent">
+	<component :is="as" class="font-medium tracking-wider uppercase font-display text-primary">
 		<slot />
 	</component>
 </template>
