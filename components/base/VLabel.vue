@@ -1,5 +1,5 @@
 <template>
-	<label :for="name" class="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-200">{{ label }}</label>
+	<label :for="name" class="block mb-1 text-sm font-semibold text-gray-600 dark:text-gray-300">{{ label }}</label>
 </template>
 
 <script setup>

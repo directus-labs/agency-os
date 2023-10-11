@@ -91,15 +91,15 @@ watch(
 					:key="item"
 					@click="signatureData.type = item"
 					:class="[
-						signatureData.type === item ? ' border-accent' : 'border-transparent',
-						'border-b-4 pb-2 font-mono px-2 capitalize dark:text-white transition duration-150 ease-in-out',
+						signatureData.type === item ? ' border-primary' : 'border-transparent',
+						'border-b-4 pb-2  px-2 capitalize dark:text-white transition duration-150 ease-in-out',
 					]"
 				>
 					{{ item }}
 				</button>
 			</div>
 			<div>
-				<button type="button" class="px-2 pb-2 font-mono dark:text-white" @click="clearData">Clear</button>
+				<button type="button" class="px-2 pb-2 dark:text-white" @click="clearData">Clear</button>
 			</div>
 		</div>
 		<!-- Signature area -->
@@ -108,7 +108,7 @@ watch(
 				<input
 					type="text"
 					v-model="signatureData.text"
-					class="w-full px-4 py-3 text-3xl text-gray-900 border-0 border-b border-gray-300 dark:bg-gray-800 dark:text-white focus:ring-0 focus:border-accent placeholder:text-gray-400 dark:placeholder:text-gray-600 font-signature"
+					class="w-full px-4 py-3 text-3xl text-gray-900 border-0 border-b border-gray-300 dark:bg-gray-800 dark:text-white focus:ring-0 focus:border-primary placeholder:text-gray-400 dark:placeholder:text-gray-600 font-signature"
 					placeholder="Type your signature"
 				/>
 			</template>
@@ -134,7 +134,7 @@ watch(
 			<template v-if="signatureData.type === 'upload'">
 				<div class="p-4">
 					<input
-						class="block w-full text-sm text-gray-900 cursor-pointer dark:text-gray-400 focus:ring-1 focus:ring-accent focus:outline-none"
+						class="block w-full text-sm text-gray-900 cursor-pointer dark:text-gray-400 focus:ring-1 focus:ring-primary focus:outline-none"
 						type="file"
 						@change="onFileChange"
 						accept="image/*"
@@ -150,6 +150,6 @@ watch(
 
 <style lang="postcss">
 input::file-selector-button {
-	@apply font-mono inline-flex items-center font-bold border-none transition duration-150 odd:rounded-tr-lg odd:rounded-bl-lg even:rounded-tl-lg even:rounded-br-lg hover:scale-105 active:hover:scale-95 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed text-gray-800 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300 px-4 py-2 text-sm cursor-pointer mr-2;
+	@apply inline-flex items-center font-bold border-none transition duration-150 odd:rounded-tr-lg odd:rounded-bl-lg even:rounded-tl-lg even:rounded-br-lg hover:scale-105 active:hover:scale-95 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed text-gray-800 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300 px-4 py-2 text-sm cursor-pointer mr-2;
 }
 </style>

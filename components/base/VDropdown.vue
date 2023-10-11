@@ -55,7 +55,7 @@ function handleMenuItemClick(item = { action: () => {} }) {
 								type="button"
 								@click="handleMenuItemClick(item)"
 								:class="[
-									active ? 'bg-accent dark:bg-accent text-white' : 'text-gray-900 dark:text-gray-100',
+									active ? 'bg-primary dark:bg-primary text-white' : 'text-gray-900 dark:text-gray-100',
 									'group flex rounded-md items-center w-full px-2 py-2 text-sm',
 								]"
 							>
