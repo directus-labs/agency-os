@@ -1,14 +1,24 @@
+import { formatFonts } from './utils/fonts';
+
+const fontFamilies = {
+	Inter: true,
+	'Fira Code': true,
+	Poppins: [400, 500, 600, 700, 800, 900],
+	'Nothing You Could Do': true,
+};
+
 export default defineNuxtConfig({
 	// https://nuxt.com/docs/api/configuration/nuxt-config
 
-	// Nuxt DevTools https://devtools.nuxtjs.org/
-	devtools: { enabled: true },
-
-	// https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering
 	routeRules: {
 		//   '/**': { swr: true },
 		//   '/api/**': { swr: false },
 	},
+
+	extends: [
+		'./layers/portal', // Client portal module
+		'./layers/proposals', // Proposals module
+	],
 
 	components: [
 		// Disable prefixing base components with `Base`
@@ -21,17 +31,20 @@ export default defineNuxtConfig({
 
 	modules: [
 		'@nuxt/devtools', // https://devtools.nuxtjs.org/
-		'@nuxtjs/color-mode', // https://color-mode.nuxtjs.org/
+		'@nuxtjs/color-mode',
+		'@nuxt/image',
 		'nuxt-icon', // https://github.com/nuxt-modules/icon
-		'@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/
-		'@nuxt/image', // https://image.nuxt.com/get-started/installation
+		// '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/ Removed because of Nuxt UI
 		'@vueuse/nuxt', // https://vueuse.org/
 		'@vueuse/motion/nuxt', // https://motion.vueuse.org/nuxt.html
 		'@formkit/nuxt', // https://formkit.com/getting-started/installation#with-nuxt
-		'@nuxtjs/google-fonts', // https://google-fonts.nuxtjs.org/
+		'nuxt-og-image',
+		'@nuxtjs/google-fonts',
 		'nuxt-simple-sitemap', // https://nuxtseo.com/sitemap/getting-started/how-it-works
 		'nuxt-schema-org', // https://nuxtseo.com/schema-org/guides/quick-setup
-		'floating-vue/nuxt',
+		// 'floating-vue/nuxt',
+		'@nuxt/ui',
+		'@nuxtjs/color-mode',
 	],
 
 	experimental: {
@@ -47,22 +60,43 @@ export default defineNuxtConfig({
 		directusToken: process.env.DIRECTUS_ADMIN_TOKEN,
 	},
 
+	// Nuxt DevTools - https://devtools.nuxtjs.org/
+	devtools: { enabled: true },
+
+	ui: {
+		icons: 'all',
+	},
+
+	// Color Mode Configuration - https://color-mode.nuxtjs.org/
+	colorMode: {
+		classSuffix: '', // This is so we play nice with TailwindCSS
+	},
+
+	// Image Configuration - https://image.nuxt.com/providers/directus
 	image: {
-		proivder: 'directus',
+		provider: 'directus',
 		directus: {
-			baseURL: process.env.DIRECTUS_URL,
+			baseURL: `${process.env.DIRECTUS_URL}/assets/`,
 		},
 	},
 
+	// Google Fonts Configuration - https://google-fonts.nuxtjs.org/
 	googleFonts: {
-		families: {
-			Inter: true,
-			'Fira Code': true,
-			'Playfair Display': [400, 500, 600, 700, 800, 900],
-			'Nothing You Could Do': true,
-		},
+		families: fontFamilies,
 		display: 'swap',
 		download: true,
+	},
+
+	// OG Image Configuration - https://nuxtseo.com/og-image/getting-started/installation
+	ogImage: {
+		defaults: {
+			component: 'ImageOg',
+			width: 1200,
+			height: 630,
+		},
+		// We're adjusting the default directory for OG image components because I don't like the standard convention 🤣
+		componentDirs: ['image'],
+		fonts: formatFonts(fontFamilies),
 	},
 
 	postcss: {
