@@ -1,6 +1,9 @@
 <script setup lang="ts">
 const { $directus, $readItem } = useNuxtApp();
-const { title } = useRuntimeConfig();
+const {
+	theme,
+	globals: { title },
+} = useAppConfig();
 
 const {
 	data: navigation,
@@ -11,7 +14,34 @@ const {
 	() => {
 		return $directus.request(
 			$readItem('navigation', 'main', {
-				fields: ['items.*', 'items.page.slug', 'items.children.*'],
+				fields: [
+					{
+						items: [
+							'id',
+							'has_children',
+							'title',
+							'icon',
+							'label',
+							'type',
+							'url',
+							{
+								page: ['permalink', 'title'],
+								children: [
+									'id',
+									'title',
+									'has_children',
+									'icon',
+									'label',
+									'type',
+									'url',
+									{
+										page: ['permalink', 'title'],
+									},
+								],
+							},
+						],
+					},
+				],
 			}),
 		);
 	},
@@ -21,24 +51,29 @@ const {
 );
 </script>
 <template>
-	<header class="relative w-full space-y-4 md:flex md:items-center md:space-x-6 md:space-y-0">
-		<div class="flex items-center bg-gray-800 md:justify-between rounded-tl-xl rounded-br-xl md:flex-1">
-			<NuxtLink href="/" class="px-4 py-4">
+	<header class="relative w-full mx-auto space-y-4 md:flex md:items-center md:space-y-0 md:gap-x-4">
+		<div
+			:class="[
+				`rounded-${theme.borderRadius}`,
+				'flex items-center bg-gray-900 md:justify-between py-2 px-6  md:flex-1',
+			]"
+		>
+			<NuxtLink href="/" class="py-2">
 				<Logo class="h-6 text-white" />
 				<span class="sr-only">{{ title }}</span>
 			</NuxtLink>
-			<nav class="hidden font-mono md:flex md:space-x-4 lg:space-x-6" aria-label="Global">
+			<nav class="hidden md:flex md:space-x-4 lg:space-x-6" aria-label="Global">
 				<NavigationMenuItem v-for="item in navigation.items" :key="item.id" :item="item" />
 			</nav>
-			<div class="flex items-center justify-end flex-shrink-0 p-3 space-x-2">
-				<DarkModeToggle class="hidden text-gray-200 md:block hover:text-gray-400" />
+			<div class="flex items-center justify-end flex-shrink-0 space-x-2">
+				<DarkModeToggle class="hidden text-gray-200 md:block hover:text-gray-400" bg="dark" />
 			</div>
 		</div>
 
-		<div class="hidden md:block">
-			<VButton href="/contact-us" variant="primary" class="uppercase">Let's Talk</VButton>
+		<div class="hidden h-full gap-4 md:flex">
+			<UButton to="/contact-us" color="primary" size="xl">Let's Talk</UButton>
+			<UButton to="/portal" color="primary" variant="ghost" size="xl">Login</UButton>
 		</div>
-
 		<NavigationMobileMenu :navigation="navigation" />
 	</header>
 </template>

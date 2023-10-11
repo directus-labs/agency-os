@@ -37,7 +37,7 @@ watch(
 );
 </script>
 <template>
-	<div class="">
+	<div class="md:hidden">
 		<!-- Menu -->
 		<div>
 			<Motionable
@@ -68,10 +68,10 @@ watch(
 					<NuxtLink href="/">
 						<Logo class="h-6 dark:text-white" />
 					</NuxtLink>
-					<p class="pb-4 mt-2 font-mono text-gray-400 border-b border-gray-500">
+					<p class="pb-4 mt-2 text-gray-400 border-b border-gray-500">
 						{{ tagline }}
 					</p>
-					<DarkModeToggle class="absolute text-gray-500 top-4 right-4 dark:text-gray-200 hover:text-accent" />
+					<DarkModeToggle class="absolute text-gray-500 top-4 right-4 dark:text-gray-200 hover:text-primary" />
 				</div>
 				<div class="flex flex-col justify-center h-full px-6 space-y-2">
 					<NavigationMobileMenuItem v-for="item in navigation.items" :key="item.id" :item="item" @close="toggle" />
@@ -85,9 +85,9 @@ watch(
 		<button
 			@click="toggle"
 			:class="{
-				'bg-accent': isOpen || !isOpen,
+				'bg-primary': isOpen || !isOpen,
 			}"
-			class="fixed z-50 p-4 text-white transition duration-300 shadow-md md:hidden bottom-4 right-4 bg-accent hover:bg-opacity-75 rounded-tr-xl rounded-bl-xl"
+			class="fixed z-50 p-4 text-white transition duration-300 shadow-md md:hidden bottom-4 right-4 bg-primary hover:bg-opacity-75 rounded-xl"
 		>
 			<div>
 				<span class="sr-only">Close</span>
