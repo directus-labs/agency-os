@@ -16,7 +16,7 @@ const {
 <template>
 	<div class="mt-4 space-y-2">
 		<div v-for="category in categories" :key="category.id">
-			<NuxtLink :href="`/posts/categories/${category.slug}`" class="font-mono dark:text-gray-200 hover:opacity-80">
+			<NuxtLink :href="`/posts/categories/${category.slug}`" class="dark:text-gray-200 hover:opacity-80">
 				<VBadge :color="category.color" size="lg">
 					{{ category.title }}
 				</VBadge>

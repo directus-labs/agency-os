@@ -8,7 +8,7 @@ withDefaults(defineProps<BlockContainerProps>(), {
 });
 </script>
 <template>
-	<section :class="['py-12 mx-auto', !fullWidth ? ' lg:px-12 px-6 max-w-7xl' : '']">
+	<section :class="['py-24 mx-auto', !fullWidth ? 'px-6 lg:px-16 max-w-6xl' : '']">
 		<slot />
 	</section>
 </template>

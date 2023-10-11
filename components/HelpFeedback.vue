@@ -18,7 +18,7 @@ const feedback = reactive<HelpFeedback>({
 
 const ratingOptions = [
 	{
-		label: 'Worst 😭',
+		label: 'The Worst 😭',
 		value: 1,
 		message: 'Sorry about that. How do we fix it?',
 	},
@@ -82,42 +82,35 @@ async function handleSubmission(rating?: number) {
 	<div class="">
 		<Transition name="fade" mode="out-in">
 			<!-- Ask For Rating -->
-
 			<div v-if="!feedback.rating" class="step">
-				<TypographyHeadline content="How helpful was this article?" size="sm" />
-				<div class="mt-4 space-x-4">
-					<VButton
+				<TypographyHeadline content="How <em>helpful</em> was this article?" size="xs" />
+				<div class="flex flex-col gap-3 mt-4 md:flex-row">
+					<UButton
 						v-for="item in ratingOptions"
+						size="lg"
 						:key="item.value"
-						variant="default"
-						size="sm"
+						color="white"
 						@click="handleSubmission(item.value)"
 					>
 						<span>{{ item.label }}</span>
-					</VButton>
+					</UButton>
 				</div>
 			</div>
 			<!-- Ask For Comments -->
-
 			<div v-else-if="feedback.rating && !success" class="space-y-4">
-				<p class="font-mono dark:text-gray-200">This article is:</p>
+				<p class="dark:text-gray-200">You chose:</p>
 				<div class="space-x-4">
-					<span class="font-mono text-xl font-bold dark:text-white">
+					<span class="text-xl font-bold dark:text-white">
 						{{ getRatingOption(feedback.rating)?.label }}
 					</span>
-					<VButton variant="outline" size="xs" @click="feedback.rating = undefined">
-						<Icon name="heroicons:x-mark" class="w-5 h-5" />
-					</VButton>
+					<UButton variant="outline" size="xs" @click="feedback.rating = undefined" icon="heroicons:x-mark" />
 				</div>
 
 				<TypographyHeadline :content="getRatingOption(feedback.rating)?.message" size="sm" />
 				<FormKit type="textarea" v-model="feedback.comments" autofocus />
-				<VButton variant="primary" size="md" :disabled="!feedback.comments" @click="handleSubmission()">
-					Send Us Your Feedback
-				</VButton>
+				<UButton :disabled="!feedback.comments" @click="handleSubmission()" size="lg">Send Us Your Feedback</UButton>
 			</div>
 			<!-- Success State -->
-
 			<div v-else>
 				<TypographyHeadline content="Thanks for your feedback!" size="sm" />
 			</div>

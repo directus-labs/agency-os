@@ -48,7 +48,7 @@ onKeyDown('Escape', () => {
 				y: 50,
 				transformOrigin: 'bottom right',
 			}"
-			class="chat-widget fixed flex flex-col overflow-hidden bottom-[84px] max-w-[350px] w-96 right-4 z-50 bg-white dark:bg-gray-800 shadow-lg border-2 border-accent rounded-bl-xl rounded-tr-xl dark:border-gray-700"
+			class="chat-widget fixed flex flex-col overflow-hidden bottom-[84px] max-w-[350px] w-96 right-4 z-50 bg-white dark:bg-gray-800 shadow-lg border-2 border-primary dark:border-gray-700"
 		>
 			<div id="wrapper" class="absolute inset-0 flex flex-col">
 				<component :is="map[page]" />
@@ -58,7 +58,7 @@ onKeyDown('Escape', () => {
 		<!-- Button -->
 		<button
 			@click="toggle"
-			class="fixed z-50 hidden p-3 text-white transition duration-300 shadow-md md:block bg-accent bottom-4 right-4 hover:bg-opacity-75 rounded-tr-xl rounded-bl-xl"
+			class="fixed z-50 hidden p-3 text-white transition duration-300 shadow-md md:block bg-primary bottom-4 right-4 hover:bg-opacity-75"
 		>
 			<div>
 				<span class="sr-only">Close</span>

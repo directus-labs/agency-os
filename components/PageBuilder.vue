@@ -22,13 +22,21 @@ const map = {
 	block_divider: resolveComponent('BlocksDivider'),
 };
 
-defineProps<{
+const props = defineProps<{
 	page: Page;
 }>();
+
+const blocks = computed(() => {
+	// Filter out hidden blocks
+	if (!props.page) return;
+	return props.page.blocks.filter((block) => {
+		return !block.hide_block;
+	});
+});
 </script>
 <template>
 	<div class="mx-auto" id="content">
-		<template v-for="block in page.blocks" :key="block.id">
+		<template v-for="block in blocks" :key="block.id">
 			<component :is="map[block.collection]" :data="block.item" />
 		</template>
 	</div>
