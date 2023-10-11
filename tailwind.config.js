@@ -17,7 +17,7 @@ module.exports = {
 	],
 
 	// Using a separate config file for typography to keep things clean and tidy
-	presets: [require('./tailwind.config.typography.js')],
+	// presets: [require('./tailwind.config.typography.js')],
 
 	theme: {
 		extend: {
@@ -30,7 +30,7 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ['Inter', ...defaultTheme.fontFamily.sans],
-				serif: ['Playfair Display', ...defaultTheme.fontFamily.serif],
+				display: ['Poppins', ...defaultTheme.fontFamily.serif],
 				mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
 				signature: ['Nothing You Could Do', 'cursive', 'sans-serif'],
 			},
