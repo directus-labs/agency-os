@@ -1,21 +1,18 @@
 <script setup lang="ts">
-export interface RichTextBlockProps {
-	id: string;
-	title: string;
-	headline: string;
-	content: string;
-	alignment: 'left' | 'center';
-}
+import type { BlockRichtext } from '~/types';
 
 withDefaults(
 	defineProps<{
-		data: RichTextBlockProps;
+		data: BlockRichtext;
 	}>(),
 	{
-		alignment: 'center',
+		data: () => ({
+			alignment: 'center',
+		}),
 	},
 );
 </script>
+
 <template>
 	<BlockContainer>
 		<div
@@ -27,7 +24,7 @@ withDefaults(
 			]"
 		>
 			<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
-			<TypographyHeadline v-if="data.headline" :content="data.headline" size="xl" />
+			<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
 		</div>
 		<TypographyProse
 			:content="data.content"
@@ -35,7 +32,7 @@ withDefaults(
 				{
 					'mx-auto': data.alignment === 'center',
 				},
-				'mt-8 font-mono',
+				'mt-8 ',
 			]"
 		/>
 	</BlockContainer>

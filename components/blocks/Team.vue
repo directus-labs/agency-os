@@ -35,7 +35,7 @@ const {
 
 const teamMembers = ref(team.value);
 
-function splitArray(array, numParts) {
+function splitArray(array: any[], numParts: number = 2) {
 	let result = [];
 	for (let i = 0; i < array.length; i++) {
 		let index = i % numParts;
@@ -93,27 +93,27 @@ const duration = computed(() => {
 <template>
 	<section>
 		<BlockContainer>
-			<div class="flex flex-col py-24 mx-auto lg:flex-row">
+			<div class="flex flex-col mx-auto lg:flex-row">
 				<!-- Text -->
 				<div class="flex flex-col pr-4 lg:w-2/5">
 					<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
 					<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
-					<TypographyProse v-if="data.content" :content="data.content" class="mt-4 font-mono" />
+					<TypographyProse v-if="data.content" :content="data.content" class="mt-4" />
 				</div>
 
 				<!-- Team -->
 				<div
-					class="relative grid h-[49rem] max-h-[60vh] grid-cols-1 items-start gap-8 overflow-hidden px-4 md:grid-cols-2 border-t-4 border-t-accent border-b-4 border-b-gray-500 mt-8 lg:mt-0"
+					class="relative grid h-[49rem] max-h-[60vh] grid-cols-1 items-start gap-8 overflow-hidden px-4 md:grid-cols-2 border-t-4 border-t-primary border-b-4 border-b-gray-500 mt-8 lg:mt-0"
 					ref="target"
 				>
-					<div class="absolute top-0 z-10 w-full h-16 bg-gradient-to-b from-white to-transparent dark:from-gray-800" />
-					<div
+					<!-- <div class="absolute top-0 z-10 w-full h-16 bg-gradient-to-b from-white to-transparent dark:from-gray-800" /> -->
+					<!-- <div
 						class="absolute bottom-0 z-10 w-full h-16 bg-gradient-to-t from-white to-transparent dark:from-gray-800"
-					/>
+					/> -->
 
 					<!-- Left Col -->
 					<div
-						:class="[{ 'animate-marquee': isVisible }, 'space-y-10 py-4 -mt-10 max-w-[320px] ']"
+						:class="[{ 'animate-marquee': isVisible }, 'space-y-10 py-4 -mt-10 md:max-w-[320px] ']"
 						:style="{
 							'--marquee-duration': duration,
 						}"
@@ -123,7 +123,7 @@ const duration = computed(() => {
 					</div>
 					<!-- Right Col -->
 					<div
-						:class="[{ 'animate-marquee': isVisible }, 'space-y-10 py-4 max-w-[320px]']"
+						:class="[{ 'animate-marquee': isVisible }, 'space-y-10 py-4 md:max-w-[320px]']"
 						:style="{
 							'--marquee-duration': duration,
 						}"

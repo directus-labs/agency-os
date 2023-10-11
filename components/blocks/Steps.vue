@@ -1,28 +1,14 @@
 <script setup lang="ts">
-export interface StepsBlockProps {
-	id: string;
-	title?: string;
-	headline?: string;
-	steps: Array<{
-		id: string;
-		title: string;
-		content: string;
-		image?: string;
-	}>;
-	show_step_numbers?: boolean;
-	alternate_image_position?: boolean;
-}
+import type { BlockStep } from '~/types/';
 
 defineProps<{
-	data: StepsBlockProps;
+	data: BlockStep;
 }>();
-
-const { fileUrl } = useFiles();
 </script>
 <template>
-	<BlockContainer class="max-w-4xl mx-auto text-center">
+	<BlockContainer>
 		<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
-		<TypographyHeadline v-if="data.headline" :content="data.headline" />
+		<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
 		<div class="mt-8">
 			<template v-for="(step, stepIdx) in data.steps" :key="stepIdx">
 				<div
@@ -43,47 +29,29 @@ const { fileUrl } = useFiles();
 					:delay="300"
 					:class="[
 						{
-							'rounded-br-3xl rounded-tl-3xl mr-8': isEven(stepIdx),
-							'rounded-bl-3xl rounded-tr-3xl ml-8': !isEven(stepIdx),
+							'mr-8 md:mr-24': isEven(stepIdx),
+							'ml-8 md:ml-24': !isEven(stepIdx),
 						},
 						{
 							'md:flex-row': isEven(stepIdx) && !data.alternate_image_position,
 							'md:flex-row-reverse md:space-x-reverse': !isEven(stepIdx) && data.alternate_image_position,
 						},
-						'relative p-6 md:flex md:space-x-8 ring-accent ring-2',
+						'relative p-6 md:flex md:space-x-8 ring-primary/50 ring-1 rounded-xl',
 					]"
 				>
-					<div v-if="step.image" class="flex-shrink-0">
-						<img
-							:class="[
-								{
-									'rounded-br-xl rounded-tl-xl': isEven(stepIdx),
-									'rounded-bl-xl rounded-tr-xl': !isEven(stepIdx),
-								},
-								'object-cover w-full h-32 md:w-48 md:h-full dark:brightness-90',
-							]"
-							alt=""
-							:src="fileUrl(step.image)"
-						/>
+					<div v-if="step.image" class="flex-shrink-0 dark:bg-white dark:brightness-90 rounded-xl">
+						<NuxtImg class="object-cover w-full h-32 rounded-lg md:w-48 md:h-full" alt="" :src="step.image" />
 					</div>
 
 					<div class="w-full mt-4 text-left md:mt-0">
-						<div
-							v-if="data.show_step_numbers"
-							class="font-mono text-sm font-bold tracking-wide uppercase text-accent text-primary"
-						>
-							Step {{ stepIdx + 1 }}
-						</div>
-						<h3 class="mt-2 font-serif text-3xl font-bold dark:text-white">
-							{{ step.title }}
-						</h3>
-						<TypographyProse :content="step.content" class="mt-4 font-mono" />
+						<TypographyTitle v-if="data.show_step_numbers">Step {{ stepIdx + 1 }}</TypographyTitle>
+						<TypographyHeadline :content="step.title" size="sm" />
+						<TypographyProse :content="step.content" class="mt-4" />
 					</div>
 				</div>
-				<!-- Animation Timeline -->
 				<svg
 					v-if="stepIdx !== data.steps.length - 1"
-					class="h-16 m-0 mx-auto stroke-current text-accent md:h-20 steps-animation"
+					class="h-16 m-0 mx-auto stroke-current text-primary md:h-20 steps-animation"
 					viewBox="0 0 60 200"
 				>
 					<line class="path" x1="15" x2="15" y1="0" y2="200" stroke-width="8" stroke-linecap="square" />

@@ -17,9 +17,9 @@ defineProps<{
 const { fileUrl } = useFiles();
 </script>
 <template>
-	<BlockContainer class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
+	<BlockContainer>
 		<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
-		<TypographyHeadline v-if="data.headline" :content="data.headline" />
+		<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
 		<div class="flow-root mt-8 lg:mt-10">
 			<div class="grid gap-4 md:grid-cols-4 md:gap-8">
 				<div
@@ -35,7 +35,7 @@ const { fileUrl } = useFiles();
 					:delay="250 + 100 * fileIdx"
 					v-for="(logo, fileIdx) in data.logos"
 					:key="logo.directus_files_id"
-					class="flex items-center justify-center p-8 border-2 border-gray-200 rounded-tr-3xl rounded-bl-3xl dark:border-gray-700 dark:bg-gray-200"
+					class="flex items-center justify-center p-8 border rounded-xl dark:border-gray-700 dark:bg-gray-200"
 				>
 					<img class="h-12" :src="fileUrl(logo.directus_files_id)" />
 				</div>

@@ -1,30 +1,89 @@
 <script setup lang="ts">
-export interface FaqsBlockProps {
-	id: string;
-	title?: string;
-	headline?: string;
-	faqs?: Array<{
-		title?: string;
-		answer?: string;
-	}>;
-}
+import type { BlockFaq, BlockFaqQuestion } from '~/types';
 
-defineProps<{
-	data: FaqsBlockProps;
+const { theme } = useAppConfig();
+
+const props = defineProps<{
+	data: BlockFaq;
 }>();
+
+const offset = ref(0);
+const limit = ref(5);
+
+const faqs = computed(() => {
+	// We don't want to overwhelm the user with too many FAQs at once so let's only show 5 until they want more
+	return props.data?.faqs?.slice(offset.value, limit.value).map((item: BlockFaqQuestion) => {
+		return {
+			label: item?.title,
+			content: item?.answer,
+		};
+	});
+});
+
+function loadMore() {
+	limit.value += 5;
+}
 </script>
 
 <template>
-	<BlockContainer class="max-w-screen-xl px-4 py-12 mx-auto sm:py-16 sm:px-6 lg:px-8">
-		<div class="max-w-3xl mx-auto text-center">
+	<BlockContainer>
+		<div
+			:class="[
+				{
+					'mx-auto max-w-3xl': data.alignment === 'center',
+				},
+			]"
+		>
 			<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
-			<TypographyHeadline v-if="data.headline" :content="data.headline" />
+			<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
 			<div class="pt-6 mt-6">
-				<dl class="space-y-6">
-					<VAccordion v-for="(item, itemIdx) in data.faqs" :key="itemIdx" :title="item.title">
-						{{ item.answer }}
-					</VAccordion>
-				</dl>
+				<UAccordion v-if="faqs" :items="faqs" :ui="{ wrapper: 'space-y-2' }" v-auto-animate>
+					<template #default="{ item, index, open }">
+						<button
+							:key="index"
+							:class="[
+								open ? 'bg-primary/20' : 'bg-gray-100 dark:bg-gray-800',
+								`rounded-${theme.borderRadius}`,
+								'relative px-6 py-4   0',
+							]"
+							class="flex items-center justify-between w-full text-left text-gray-400 transition duration-150 focus:outline-none focus:text-gray-900 dark:focus:text-primary"
+						>
+							<span class="text-sm font-medium text-gray-900 dark:text-white font-display md:text-base">
+								{{ item.label }}
+							</span>
+							<span class="flex items-center">
+								<UIcon
+									v-if="!open"
+									name="material-symbols:add-rounded"
+									class="w-8 h-8 rounded-full fill-current text-primary"
+								/>
+
+								<UIcon
+									v-if="open"
+									name="material-symbols:remove-rounded"
+									class="w-8 h-8 rounded-full fill-current text-primary"
+								/>
+							</span>
+						</button>
+					</template>
+					<template #item="{ item, index, open }">
+						<div class="relative px-6 pt-2 pb-6" v-show="open">
+							<div class="prose text-left dark:prose-invert">
+								{{ item.content }}
+							</div>
+						</div>
+					</template>
+				</UAccordion>
+				<div class="mt-2 text-center">
+					<UButton
+						v-if="faqs && props.data.faqs && faqs.length < props.data.faqs.length"
+						variant="ghost"
+						size="xl"
+						@click="loadMore"
+					>
+						Load More
+					</UButton>
+				</div>
 			</div>
 		</div>
 	</BlockContainer>

@@ -1,27 +1,16 @@
 <script setup lang="ts">
 import { useDebounceFn } from '@vueuse/shared';
+import type { BlockTestimonial } from '~/types';
 
-export interface TestimonialsBlockProps {
-	id: string;
-	title?: string;
-	headline?: string;
-	subtitle?: string;
-	testimonials: Array<{
-		testimonial: {
-			title: string;
-			subtitle: string;
-			image: string;
-			company: string;
-			company_logo: string;
-			link: string;
-			content: string;
-		};
-	}>;
-}
-
-defineProps<{
-	data: TestimonialsBlockProps;
+const props = defineProps<{
+	data: BlockTestimonial;
 }>();
+
+const testimonials = computed(() => {
+	return props.data.testimonials.map((item) => {
+		return item.testimonials_id;
+	});
+});
 
 const testimonialContainer = ref(null);
 const testimonialRefs = ref([]);
@@ -44,9 +33,6 @@ function handleScroll(e) {
 	} else {
 		currentItemIdx.value = closestTestimonial;
 	}
-	//   currentItemIdx.value = Math.round(
-	//     e.target.scrollLeft / (e.target.scrollWidth / testimonialRefs.value.length)
-	//   )
 }
 
 function handleScrollDebounced(e) {
@@ -64,90 +50,86 @@ function handleNavButton(direction: ['left', 'right']) {
 		testimonialContainer.value.scrollLeft += testimonialRefs.value[currentItemIdx.value].offsetWidth;
 	}
 }
-
-const { fileUrl } = useFiles();
 </script>
 <template>
 	<BlockContainer class="relative overflow-hidden" full-width>
 		<div
-			class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-accent dark:from-gray-700 dark:via-gray-900 dark:to-accent"
+			class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-primary dark:from-gray-700 dark:via-gray-900 dark:to-primary"
 		/>
-		<div class="absolute inset-0 grain-bg dark:opacity-20" />
+		<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
 
-		<div class="relative pt-16 space-y-4 text-center">
+		<div class="relative text-center">
 			<TypographyTitle>{{ data.title }}</TypographyTitle>
-			<TypographyHeadline :content="data.headline" size="xl" />
-
-			<p class="max-w-3xl mx-auto leading-7 text-center">
-				{{ data.subtitle }}
-			</p>
+			<TypographyHeadline :content="data.headline" size="lg" />
 		</div>
-		<div class="relative mt-4">
-			<div class="flex items-center justify-end px-6 space-x-8">
+
+		<div v-if="testimonials.length > 0" class="relative mt-4">
+			<div class="flex items-center justify-end px-6 space-x-8 lg:px-16">
 				<div class="inline-flex space-x-2">
-					<!-- Indicator Buttons -->
 					<button
-						v-for="(item, itemIdx) in data.testimonials"
+						v-for="(item, itemIdx) in testimonials"
 						:class="[
 							{
-								'bg-accent': itemIdx === currentItemIdx,
+								'bg-primary': itemIdx === currentItemIdx,
 								'bg-gray-500 bg-opacity-50 dark:bg-gray-900 ': itemIdx !== currentItemIdx,
 							},
 						]"
 						@click="handleIndicatorButton(itemIdx)"
-						class="flex items-center justify-center w-12 h-3 hover:opacity-75 disabled:opacity-50 disabled:cursor-not-allowed"
+						class="flex items-center justify-center w-12 h-3 rounded hover:opacity-75 disabled:opacity-50 disabled:cursor-not-allowed"
 					/>
 				</div>
-				<!-- Left and Right Circle Buttons to Navigate testimonials -->
-				<div class="flex space-x-2 justify-self-end">
-					<button
+				<div class="flex gap-2 justify-self-end">
+					<UButton
 						:disabled="currentItemIdx === 0"
-						class="flex items-center justify-center w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
 						@click="handleNavButton('left')"
-					>
-						<Icon name="heroicons:arrow-left" class="w-5 h-5 text-white" />
-					</button>
-					<button
-						:disabled="currentItemIdx === data.testimonials.length - 1"
-						class="flex items-center justify-center w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+						icon="material-symbols:arrow-back-rounded"
+						size="lg"
+						square
+					/>
+					<UButton
+						:disabled="currentItemIdx === testimonials.length - 1"
 						@click="handleNavButton('right')"
-					>
-						<Icon name="heroicons:arrow-right" class="w-5 h-5 text-white" />
-					</button>
+						icon="material-symbols:arrow-forward-rounded"
+						size="lg"
+						square
+					/>
 				</div>
 			</div>
 			<div
-				class="flex w-full px-4 py-6 pb-24 space-x-6 overflow-x-auto md:px-6 lg:px-8 scrollbar-hide md:pt-8 snap-x scroll-smooth"
+				class="flex w-full px-4 py-6 space-x-6 overflow-x-auto md:px-6 lg:px-16 scrollbar-hide md:pt-8 snap-x scroll-smooth"
 				ref="testimonialContainer"
 				@scroll="handleScrollDebounced"
 			>
 				<div
-					v-for="({ testimonial }, itemIdx) in data.testimonials"
+					v-for="(testimonial, itemIdx) in testimonials"
 					:key="testimonial.id"
 					ref="testimonialRefs"
 					:class="['snap-center']"
-					class="relative w-[350px] md:w[450px] lg:w-[600px] flex flex-col justify-between flex-shrink-0 p-8 bg-white dark:bg-gray-900 shadow-md even:rounded-bl-3xl even:rounded-tr-3xl odd:rounded-br-3xl odd:rounded-tl-3xl overflow-hidden"
+					class="relative w-[350px] md:w[450px] lg:w-[600px] flex flex-col justify-between flex-shrink-0 p-8 bg-white dark:bg-gray-900 shadow-md rounded-xl overflow-hidden"
 				>
-					<div class="relative font-mono prose-sm prose md:prose-base dark:prose-invert" v-html="testimonial.content" />
-
+					<UIcon
+						name="material-symbols:format-quote-rounded"
+						class="absolute w-20 h-20 rotate-180 left-2 text-primary/20 top-2"
+					/>
+					<TypographyProse :content="testimonial.content" size="lg" class="relative" />
 					<div class="flex pt-6 mt-4 space-x-2 border-t border-gray-300 dark:border-gray-700">
-						<img
+						<NuxtImg
 							v-if="testimonial.image"
 							class="inline-block w-16 h-16 border rounded-full"
-							:src="fileUrl(testimonial.image)"
-							alt=""
+							:src="testimonial.image.id"
+							:alt="testimonial.title ?? ''"
 						/>
-						<Icon
-							name="ic:baseline-account-circle"
+						<UIcon
 							v-else
+							name="material-symbols:account-circle"
 							class="inline-block w-16 h-16 text-gray-300 border rounded-full"
 						/>
 
 						<div class="relative">
-							<p class="font-serif font-bold text-gray-900 lg:text-2xl dark:text-white">
+							<p v-if="testimonial.title" class="font-semibold text-primary font-display lg:text-2xl">
 								{{ testimonial.title }}
 							</p>
-							<p class="font-mono text-sm text-gray-700 lg:text-lg dark:text-gray-300">
+							<p class="text-sm text-gray-700 lg:text-lg dark:text-gray-300">
 								{{ testimonial.subtitle }} at {{ testimonial.company }}
 							</p>
 						</div>
