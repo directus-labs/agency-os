@@ -10,11 +10,6 @@ const fontFamilies = {
 export default defineNuxtConfig({
 	// https://nuxt.com/docs/api/configuration/nuxt-config
 
-	routeRules: {
-		//   '/**': { swr: true },
-		//   '/api/**': { swr: false },
-	},
-
 	extends: [
 		'./layers/portal', // Client portal module
 		'./layers/proposals', // Proposals module
@@ -30,21 +25,20 @@ export default defineNuxtConfig({
 	css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
 
 	modules: [
-		'@nuxt/devtools', // https://devtools.nuxtjs.org/
-		'@nuxtjs/color-mode',
-		'@nuxt/image',
-		'nuxt-icon', // https://github.com/nuxt-modules/icon
-		// '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/ Removed because of Nuxt UI
-		'@vueuse/nuxt', // https://vueuse.org/
-		'@vueuse/motion/nuxt', // https://motion.vueuse.org/nuxt.html
 		'@formkit/nuxt', // https://formkit.com/getting-started/installation#with-nuxt
-		'nuxt-og-image',
-		'@nuxtjs/google-fonts',
-		'nuxt-simple-sitemap', // https://nuxtseo.com/sitemap/getting-started/how-it-works
-		'nuxt-schema-org', // https://nuxtseo.com/schema-org/guides/quick-setup
-		// 'floating-vue/nuxt',
+		'@nuxt/devtools', // https://devtools.nuxtjs.org/
+		'@nuxt/image',
 		'@nuxt/ui',
 		'@nuxtjs/color-mode',
+		'@nuxtjs/color-mode',
+		'@nuxtjs/google-fonts',
+		'@vueuse/motion/nuxt', // https://motion.vueuse.org/nuxt.html
+		'@vueuse/nuxt', // https://vueuse.org/
+		'nuxt-icon', // https://github.com/nuxt-modules/icon
+		'nuxt-og-image',
+		'nuxt-schema-org', // https://nuxtseo.com/schema-org/guides/quick-setup
+		'nuxt-simple-sitemap', // https://nuxtseo.com/sitemap/getting-started/how-it-works
+		// '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/ Removed because of Nuxt UI
 	],
 
 	experimental: {
@@ -56,6 +50,7 @@ export default defineNuxtConfig({
 			directusUrl: process.env.DIRECTUS_URL,
 			directusWsUrl: process.env.DIRECTUS_WS_URL,
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+			directusToken: process.env.DIRECTUS_ADMIN_TOKEN,
 		},
 		directusToken: process.env.DIRECTUS_ADMIN_TOKEN,
 	},
