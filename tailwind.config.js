@@ -1,7 +1,8 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
+import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
+import colors from 'tailwindcss/colors'
 
-module.exports = {
+export default {
 	darkMode: 'class',
 	content: [
 		'./components/**/*.{vue,js,ts}',
@@ -15,19 +16,8 @@ module.exports = {
 		`./form.theme.js`,
 		`./formkit.config.{js,ts}`,
 	],
-
-	// Using a separate config file for typography to keep things clean and tidy
-	// presets: [require('./tailwind.config.typography.js')],
-
 	theme: {
 		extend: {
-			colors: {
-				gray: colors.slate,
-				accent: {
-					DEFAULT: '#FF99DD',
-				},
-				red: colors.rose,
-			},
 			fontFamily: {
 				sans: ['Inter', ...defaultTheme.fontFamily.sans],
 				display: ['Poppins', ...defaultTheme.fontFamily.serif],
@@ -58,4 +48,4 @@ module.exports = {
 		// https://formkit.com/guides/create-a-tailwind-theme
 		require('@formkit/themes/tailwindcss'),
 	],
-};
+} satisfies Config;

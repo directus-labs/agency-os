@@ -1,84 +1,32 @@
-export interface Theme {
+interface Theme {
 	primary: string;
 	gray: string;
 	borderRadius: 'none' | 'sm' | 'base' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full';
-	// panelBackground: 'solid' | 'translucent';
+	googleFonts: {
+		[key: string]: boolean | number[];
+	};
 	fonts: {
-		families: {
-			display: string;
-			body: string;
-			code: string;
-		};
+		display: string;
+		body: string;
+		code: string;
+		signature: string;
 	};
 }
 
 export const theme = {
-	primary: 'teal',
-	gray: 'zinc',
-	borderRadius: 'lg',
-	// panelBackground: 'solid',
+	primary: 'violet',
+	gray: 'slate',
+	borderRadius: 'xl',
+	googleFonts: {
+		Inter: true,
+		'Fira Code': true,
+		Poppins: [400, 500, 600, 700, 800, 900],
+		'Nothing You Could Do': true,
+	},
 	fonts: {
-		families: {
-			display: 'Poppins',
-			body: 'Inter',
-			code: 'Fira Code',
-		},
+		display: 'Poppins',
+		body: 'Inter',
+		code: 'Fira Code',
+		signature: 'Nothing You Could Do',
 	},
 } as Theme;
-
-const borderRadius = {
-	none: {
-		buttons: 'none',
-		inputs: {
-			text: 'none',
-			boxes: 'none',
-		},
-		panels: 'none',
-	},
-	sm: {
-		buttons: 'sm',
-		inputs: {
-			text: 'sm',
-			boxes: 'sm',
-		},
-		panels: 'sm',
-	},
-	base: {
-		buttons: 'base',
-		inputs: {
-			text: 'base',
-			boxes: 'base',
-		},
-		panels: 'base',
-	},
-	md: {
-		buttons: 'md',
-		inputs: 'md',
-		panels: 'md',
-	},
-	lg: {
-		buttons: 'lg',
-		inputs: 'lg',
-		panels: 'lg',
-	},
-	xl: {
-		buttons: 'xl',
-		inputs: 'xl',
-		panels: 'xl',
-	},
-	'2xl': {
-		buttons: '2xl',
-		inputs: '2xl',
-		panels: '2xl',
-	},
-	'3xl': {
-		buttons: '3xl',
-		inputs: '3xl',
-		panels: '3xl',
-	},
-	full: {
-		buttons: 'full',
-		inputs: 'full',
-		panels: '3xl',
-	},
-};
