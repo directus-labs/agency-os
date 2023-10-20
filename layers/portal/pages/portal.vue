@@ -218,7 +218,7 @@ const mobileMenuOpen = ref(false);
 
 		<!-- Meta layer -->
 		<UModal v-model="showCommandPalette">
-			<PortalGlobalSearch @close="showCommandPalette = false" />
+			<PortalSearch @close="showCommandPalette = false" />
 		</UModal>
 		<UNotifications />
 	</div>

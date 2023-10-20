@@ -8,15 +8,14 @@ const props = withDefaults(defineProps<TaskProps>(), {
 	isModal: true,
 });
 
-const { $directus, $readItem, $updateItem } = useNuxtApp();
 const { fileUrl } = useFiles();
 
 const task = ref<Task | null>(null);
 
 async function fetchTask(id: string) {
 	try {
-		const data = await $directus.request(
-			$readItem('os_tasks', id, {
+		const data = await useDirectus(
+			readItem('os_tasks', id, {
 				fields: [
 					'*',
 					{
@@ -35,7 +34,7 @@ async function fetchTask(id: string) {
 
 async function updateTask(id: string, item: Partial<Task>) {
 	try {
-		const data = await $directus.request($updateItem('os_tasks', id, item));
+		const data = await useDirectus($updateItem('os_tasks', id, item));
 		task.value = data;
 	} catch (error) {
 		throw createError(error);

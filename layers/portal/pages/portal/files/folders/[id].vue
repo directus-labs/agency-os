@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // const folderId = '27fe9681-9b11-4969-91c8-765e916894f6';
 const { path, params } = useRoute();
-const { $directus, $readFolder } = useNuxtApp();
 
 const {
 	data: folder,
@@ -10,9 +9,11 @@ const {
 } = await useAsyncData(
 	`folder-${params.id}`,
 	() => {
-		return $directus.request($readFolder(params.id, {}));
+		return useDirectus(readFolder(params.id, {}));
 	},
-	{},
+	{
+		cache: false,
+	},
 );
 </script>
 <template>

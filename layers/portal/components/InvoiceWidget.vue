@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const { $directus, $readItems } = useNuxtApp();
 const {
 	data: invoices,
 	pending,
@@ -7,8 +6,8 @@ const {
 } = await useAsyncData(
 	'organization-open-invoices',
 	() => {
-		return $directus.request(
-			$readItems('os_invoices', {
+		return useDirectus(
+			readItems('os_invoices', {
 				fields: ['*'],
 				filter: {
 					_and: [

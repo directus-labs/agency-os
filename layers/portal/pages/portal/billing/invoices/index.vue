@@ -1,44 +1,99 @@
 <script setup lang="ts">
-const { $directus, $readItems } = useNuxtApp();
-const { path, params } = useRoute();
+const { path, query } = useRoute();
+const router = useRouter();
 
-const {
-	data: invoices,
-	pending,
-	error,
-} = await useAsyncData(
+// Filters
+const search = ref(query.search ?? undefined);
+const debouncedSearch = refDebounced(search, 500);
+const status = ref(query.status ?? undefined);
+const page = ref(1);
+const rowsPerPage = ref(25);
+
+const { data, pending, error, refresh } = await useAsyncData(
 	path,
 	() => {
-		return $directus.request(
-			$readItems('os_invoices', {
+		const invoices = useDirectus(
+			readItems('os_invoices', {
 				fields: [
 					'*',
 					{
 						contact: ['id', 'first_name', 'last_name', 'email'],
 					},
 				],
+				search: unref(search),
+				filter: {
+					...(unref(status) && {
+						status: {
+							_eq: unref(status),
+						},
+					}),
+				},
+				limit: unref(rowsPerPage),
+				page: unref(page),
 			}),
 		);
+		// Total count of invoices
+		const count = useDirectus(
+			readItems('os_invoices', {
+				aggregate: {
+					count: ['*'],
+				},
+				filter: {
+					...(unref(status) && {
+						status: {
+							_eq: unref(status),
+						},
+					}),
+				},
+			}),
+		);
+
+		return Promise.all([invoices, count]);
 	},
-	{},
+	{
+		transform: ([data, count]) => {
+			return {
+				invoices: data,
+				count: parseInt(count[0].count),
+			};
+		},
+	},
 );
+
+const invoices = computed(() => data.value?.invoices ?? []);
+const totalCount = computed(() => data.value?.count ?? 0);
+const pageFrom = computed(() => (page.value - 1) * rowsPerPage.value + (invoices.value.length ? 1 : 0));
+const pageTo = computed(() => Math.min(page.value * rowsPerPage.value, totalCount.value));
+
+const statusOptions = [
+	{
+		label: 'Open',
+		value: 'unpaid',
+	},
+	{
+		label: 'Paid',
+		value: 'paid',
+	},
+	{
+		label: 'All',
+		value: '',
+	},
+];
 
 const columns = [
 	{
 		key: 'invoice_number',
 		label: '#',
-	},
-	{
-		key: 'due_date',
-		label: 'Due Date',
-	},
-	{
-		key: 'issue_date',
-		label: 'Issue Date',
+		sortable: true,
 	},
 	{
 		key: 'status',
 		label: 'Status',
+	},
+	{
+		key: 'due_date',
+		label: 'Due Date',
+		sortable: true,
 	},
 	{
 		key: 'contact',
@@ -47,16 +102,37 @@ const columns = [
 	{
 		key: 'total',
 		label: 'Total',
+		sortable: true,
 	},
 	{
 		key: 'amount_due',
 		label: 'Amount Due',
+		sortable: true,
 	},
-
 	{
 		key: 'actions',
 	},
 ];
+
+const { getPortalLink, loading: stripeLoading } = useStripe();
+
+// Watch the search query and update the URL
+watch([debouncedSearch, status, page], ([search, status, page]) => {
+	router.push({
+		path,
+		query: {
+			search,
+			status,
+			page,
+		},
+	});
+	refresh();
+});
+
+function clearFilters() {
+	search.value = undefined;
+	status.value = undefined;
+}
 </script>
 <template>
 	<div>
@@ -69,22 +145,60 @@ const columns = [
 				},
 				{
 					title: 'Billing',
-					href: '/portal/billing',
 				},
 			]"
 		>
-			<template #actions></template>
+			<template #actions>
+				<UButton
+					color="primary"
+					variant="outline"
+					size="xl"
+					@click="getPortalLink('cus_OlTbJKVanSb1zN')"
+					:loading="stripeLoading"
+				>
+					Update Payment Settings
+				</UButton>
+			</template>
 		</PortalPageHeader>
 		<UCard class="mt-6">
 			<template #header>
 				<!-- Filters -->
 				<div class="flex items-center justify-between gap-3">
 					<UInput v-model="search" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search..." />
-					<!-- <USelectMenu v-model="selectedStatus" :options="todoStatus" multiple placeholder="Status" class="w-40" /> -->
+					<div class="flex gap-3">
+						<USelect v-model="status" :options="statusOptions" placeholder="Invoice Status" class="w-40" />
+						<UButton
+							color="white"
+							@click="clearFilters"
+							size="xs"
+							:disabled="!search && !status"
+							icon="material-symbols:filter-alt-off-outline-rounded"
+						>
+							Reset
+						</UButton>
+					</div>
 				</div>
 			</template>
 			<!-- Table -->
-			<UTable :columns="columns" :rows="invoices" column-attribute="label">
+			<UTable :columns="columns" :rows="invoices" column-attribute="label" :loading="pending" v-auto-animate>
+				<!-- Empty State -->
+				<template #empty-state>
+					<div class="w-1/4 mx-auto text-center">
+						<img src="~/assets/illustrations/tokyo-attention-sign.svg" alt="Empty State" />
+						<TypographyHeadline content="Looks like there's nothing here." size="xs" />
+						<UButton
+							v-if="search || status"
+							color="white"
+							@click="clearFilters"
+							size="xs"
+							icon="material-symbols:filter-alt-off-outline-rounded"
+							class="mt-4"
+						>
+							Reset Filters
+						</UButton>
+					</div>
+				</template>
+				<!-- Columns -->
 				<template #invoice_number-data="{ row }">
 					<UButton variant="outline" :to="`/portal/billing/invoices/${row.id}`" :padding="false">
 						{{ row.invoice_number }}
@@ -99,6 +213,14 @@ const columns = [
 				<template #contact-data="{ row }">
 					<UserBadge :author="row.contact" size="xs" />
 				</template>
+				<template #status-data="{ row }">
+					<UBadge
+						:label="row.status"
+						:color="row.status === 'unpaid' ? 'rose' : 'primary'"
+						size="xs"
+						class="capitalize"
+					/>
+				</template>
 				<template #due_date-data="{ row }">
 					<VText size="xs">
 						{{
@@ -109,16 +231,6 @@ const columns = [
 					</VText>
 					<VText size="xs" text-color="light">{{ getRelativeTime(row.due_date) }}</VText>
 				</template>
-				<template #issue_date-data="{ row }">
-					<VText size="xs">
-						{{
-							getFriendlyDate(row.issue_date, {
-								monthAbbr: true,
-							})
-						}}
-					</VText>
-					<VText size="xs" text-color="light">{{ getRelativeTime(row.issue_date) }}</VText>
-				</template>
 				<template #actions-data="{ row }">
 					<UButton
 						:to="`/portal/billing/invoices/${row.id}`"
@@ -128,6 +240,23 @@ const columns = [
 					/>
 				</template>
 			</UTable>
+			<!-- Number of rows & Pagination -->
+			<template #footer>
+				<div class="flex flex-wrap items-center justify-between">
+					<VText>
+						<span class="text-sm leading-5">
+							Showing
+							<span class="font-medium">{{ pageFrom }}</span>
+							to
+							<span class="font-medium">{{ pageTo }}</span>
+							of
+							<span class="font-medium">{{ totalCount }}</span>
+							results
+						</span>
+					</VText>
+					<UPagination v-model="page" :page-count="rowsPerPage" :total="totalCount" />
+				</div>
+			</template>
 		</UCard>
 	</div>
 </template>

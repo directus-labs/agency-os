@@ -4,6 +4,11 @@ export default defineNuxtConfig({
 		{ path: './components/', prefix: 'Portal' },
 	],
 
+	routeRules: {
+		'/auth/**': { ssr: false },
+		'/portal/**': { ssr: false },
+	},
+
 	runtimeConfig: {
 		public: {
 			stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,

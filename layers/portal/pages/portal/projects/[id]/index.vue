@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const { $directus, $readItem } = useNuxtApp();
 const { path, params } = useRoute();
 
 const {
@@ -7,16 +6,16 @@ const {
 	pending,
 	error,
 } = await useAsyncData(
-	path,
+	Math.random().toString(36).substring(2, 15),
 	() => {
-		return $directus.request(
-			$readItem('os_projects', params.id, {
+		return useDirectus(
+			readItem('os_projects', params.id, {
 				fields: [
 					'*',
 					{
 						organization: ['id', 'name', 'logo'],
 						owner: ['id', 'first_name', 'last_name', 'email', 'avatar'],
-						contacts: [{ contacts_id: ['id', 'first_name', 'last_name', 'email'] }],
+						contacts: ['*'],
 						tasks: ['id', 'name', 'type', 'status', 'due_date', 'date_completed'],
 						updates: ['id', 'message', 'user_created', 'date_created', 'date_updated', 'user_updated'],
 					},
@@ -42,7 +41,7 @@ const {
 			}),
 		);
 	},
-	{},
+	{ cache: false },
 );
 
 const { fileUrl } = useFiles();

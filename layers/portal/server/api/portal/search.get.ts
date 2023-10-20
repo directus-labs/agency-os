@@ -1,5 +1,5 @@
 import { getQuery } from 'h3';
-import { directus, readItems, updateItem, createItem } from '~~/server/utils/directus-server';
+import { directus, readItems, updateItem, createItem, withToken } from '~~/server/utils/directus-server';
 
 function mapEntity({
 	title,
@@ -18,6 +18,9 @@ function mapEntity({
 }) {
 	if (urlPattern.includes(':slug')) {
 		urlPattern = urlPattern.replace(':slug', entity.slug);
+	}
+	if (urlPattern.includes(':project')) {
+		urlPattern = urlPattern.replace(':project', entity.project);
 	}
 	if (urlPattern.includes(':id')) {
 		urlPattern = urlPattern.replace(':id', entity.id);
@@ -58,7 +61,7 @@ function mapResults(collection: string, results: any[]) {
 				entity: task,
 				title: task.name,
 				type: 'task',
-				urlPattern: '/portal/projects/:id/tasks',
+				urlPattern: '/portal/projects/:project/tasks',
 				description: task.description,
 				image: '',
 			}),
@@ -77,12 +80,20 @@ function mapResults(collection: string, results: any[]) {
 	return results.map(mapping[collection]);
 }
 
+// Caching this call because we don't want to give our Directus server a heart attack on every keystroke
 export default cachedEventHandler(
 	async (event) => {
 		try {
 			const config = useRuntimeConfig();
 
 			const query = getQuery(event);
+
+			const cookies = parseCookies(event);
+
+			const directusData = JSON.parse(cookies['directus-data']);
+			const access_token = directusData?.access_token;
+
+			// console.log(access_token);
 
 			let { collections, search, raw } = query;
 
@@ -101,7 +112,7 @@ export default cachedEventHandler(
 
 			const data = await Promise.all(
 				collections.map(async (collection) => {
-					const data = await directus.request(readItems(collection, { search: search ?? '' }));
+					const data = await directus.request(withToken(access_token, readItems(collection, { search: search ?? '' })));
 
 					if (raw) {
 						return data;
@@ -121,7 +132,9 @@ export default cachedEventHandler(
 		}
 	},
 	{
-		swr: true,
-		maxAge: 0, // 60 * 5, // Cache the results for 5 minutes
+		// Cache for 60 seconds
+		maxAge: 60,
+		// Normally cachedEventHandler drops all the headers from the original request. This ensures that the cookie header is passed through.
+		varies: ['cookie'],
 	},
 );

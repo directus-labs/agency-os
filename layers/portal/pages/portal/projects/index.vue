@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const { $directus, $readItems } = useNuxtApp();
 const { path, params } = useRoute();
 
 const {
@@ -9,8 +8,8 @@ const {
 } = await useAsyncData(
 	path,
 	() => {
-		return $directus.request(
-			$readItems('os_projects', {
+		return useDirectus(
+			readItems('os_projects', {
 				fields: [
 					'id',
 					'name',
@@ -98,7 +97,7 @@ const projectsShown = computed(() => {
 				return {
 					isComplete: task.status === 'completed',
 					isCurrent: task.status === 'active' || task.status === 'in_progress' || task.status === 'in_review',
-					// icon: taskStatus ? taskStatuses[task.status].icon : null,
+					icon: 'i-heroicons-calendar',
 					name: task.name,
 					// status: taskStatuses[task.status].label,
 				};

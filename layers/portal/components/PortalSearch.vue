@@ -8,6 +8,9 @@ const props = defineProps({
 
 const emit = defineEmits(['close']);
 
+// Pass the cookies to the server call so we can authenticate the request
+const headers = useRequestHeaders(['cookie']);
+
 const actions = [
 	{
 		id: 'projects',
@@ -49,6 +52,7 @@ const groups = computed(() => {
 							search: q,
 							collections: ['os_projects', 'os_tasks', 'os_invoices', 'help_articles'],
 						},
+						headers,
 					});
 					return data.map((hit) => {
 						return {

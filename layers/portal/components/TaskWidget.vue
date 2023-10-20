@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const { $directus, $readItems } = useNuxtApp();
-
 const page = ref(1);
 const rowsPerPage = ref(5);
 
@@ -27,8 +25,8 @@ const {
 			],
 		};
 
-		const data = $directus.request(
-			$readItems('os_tasks', {
+		const data = useDirectus(
+			readItems('os_tasks', {
 				fields: ['id', 'name', 'due_date'],
 				sort: ['due_date'],
 				filter,
@@ -37,8 +35,8 @@ const {
 			}),
 		);
 
-		const count = $directus.request(
-			$readItems('os_tasks', {
+		const count = useDirectus(
+			readItems('os_tasks', {
 				filter,
 				aggregate: { count: ['*'] },
 			}),

@@ -7,15 +7,13 @@ const props = defineProps<MessageListProps>();
 
 const { fileUrl } = useFiles();
 
-const { $directus, $readItems, $createItem, $updateItem } = useNuxtApp();
-
 const {
 	data: conversations,
 	pending,
 	error,
 } = await useAsyncData(`${props.projectId}-conversations`, () => {
-	return $directus.request(
-		$readItems('conversations', {
+	return useDirectus(
+		readItems('conversations', {
 			filter: {
 				_and: [
 					{
@@ -47,8 +45,8 @@ const columns = [
 const selectedConversationId = ref<string | null>(null);
 
 async function fetchConversationMessages(conversationId: string) {
-	const data = await $directus.request(
-		$readItems('messages', {
+	const data = await useDirectus(
+		readItems('messages', {
 			sort: ['date_created'],
 			fields: [
 				'*',
@@ -77,10 +75,10 @@ async function upsertMessage(messageId: string | null = null) {
 	};
 
 	if (messageId) {
-		await $directus.request($updateItem('messages', messageId, message));
+		await useDirectus($updateItem('messages', messageId, message));
 	} else {
 		// Create
-		await $directus.request($createItem('messages', message));
+		await useDirectus($createItem('messages', message));
 	}
 	messages.value.push(message);
 	newMessage.text = '';

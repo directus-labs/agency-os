@@ -5,15 +5,13 @@ export interface TaskListProps {
 
 const props = defineProps<TaskListProps>();
 
-const { $directus, $readItems } = useNuxtApp();
-
 const {
 	data: tasks,
 	pending,
 	error,
 } = await useAsyncData(`${props.projectId}-tasks`, () => {
-	return $directus.request(
-		$readItems('os_tasks', {
+	return useDirectus(
+		readItems('os_tasks', {
 			fields: [
 				'*',
 				{

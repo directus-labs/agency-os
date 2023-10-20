@@ -5,31 +5,37 @@ export interface FilesViewProps {
 
 const props = defineProps<FilesViewProps>();
 
-const { $directus, $readItem, $readFolders, $readFiles } = useNuxtApp();
 const { fileUrl } = useFiles();
 
 const { data, pending, error } = await useAsyncData(
-	`folder-detail-${props.folderId}`,
+	`folder-detail-${props.folderId ?? Math.random().toString(36).substring(7)}`,
 	() => {
-		const folderReq = $directus.request(
-			$readFolders({
+		const folderReq = useDirectus(
+			readFolders({
 				fields: ['*'],
-				filter: {
-					parent: {
-						_eq: props.folderId || null,
+
+				// Make this conditional on the folderId prop
+
+				...(props.folderId && {
+					filter: {
+						parent: {
+							_eq: props.folderId,
+						},
 					},
-				},
+				}),
 			}),
 		);
 
-		const fileReq = $directus.request(
-			$readFiles({
+		const fileReq = useDirectus(
+			readFiles({
 				fields: ['*'],
-				filter: {
-					folder: {
-						_eq: props.folderId || null,
+				...(props.folderId && {
+					filter: {
+						folder: {
+							_eq: props.folderId,
+						},
 					},
-				},
+				}),
 			}),
 		);
 
@@ -42,6 +48,7 @@ const { data, pending, error } = await useAsyncData(
 				files,
 			};
 		},
+		cache: false,
 	},
 );
 
