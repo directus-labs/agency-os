@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BlockCta } from '~/types/blocks';
+import type { BlockCta } from '~/types';
 
 defineProps<{
 	data: BlockCta;

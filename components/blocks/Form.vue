@@ -1,14 +1,8 @@
 <script setup lang="ts">
-import { Form } from '~~/types';
-
-export interface FormBlockProps {
-	title?: string;
-	headline?: string;
-	form: Form;
-}
+import type { Form } from '~/types';
 
 defineProps<{
-	data: FormBlockProps;
+	data: Form;
 }>();
 </script>
 <template>

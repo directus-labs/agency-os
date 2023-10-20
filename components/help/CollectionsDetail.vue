@@ -6,7 +6,6 @@ export interface HelpCollectionsDetailProps {
 const props = defineProps<HelpCollectionsDetailProps>();
 
 import { convertIconName } from '~~/utils/strings';
-const { $directus, $readItems } = useNuxtApp();
 const { params, path } = useRoute();
 
 const {
@@ -16,8 +15,8 @@ const {
 } = await useAsyncData(
 	path,
 	() => {
-		return $directus.request(
-			$readItems('help_collections', {
+		return useDirectus(
+			readItems('help_collections', {
 				filter: {
 					slug: {
 						_eq: params.slug,

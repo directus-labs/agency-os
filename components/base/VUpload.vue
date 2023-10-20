@@ -19,7 +19,6 @@ const props = withDefaults(defineProps<UploadProps>(), {
 
 const emit = defineEmits(['update:modelValue', 'error', 'success']);
 
-const { $directus, $uploadFiles } = useNuxtApp();
 const { fileUrl } = useFiles();
 const { dragging, onDragEnter, onDragLeave, onDrop } = useDragging();
 const { uploading, error, onSelect, processUpload } = useUpload();
@@ -112,7 +111,7 @@ function useUpload() {
 				form.append('folder', props.folderId);
 			}
 			form.append('file', file);
-			const uploadedFile = await $directus.request($uploadFiles(form));
+			const uploadedFile = await useDirectus($uploadFiles(form));
 			return uploadedFile;
 		} catch (e) {
 			throw new Error(e);

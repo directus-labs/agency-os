@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { Form } from '~~/types';
+import type { Form } from '~/types';
 import { transformSchema } from '~/utils/formkit';
 
 const props = defineProps<{
 	form: Form;
 }>();
 
-const { $directus, $createItem } = useNuxtApp();
 const emit = defineEmits(['submit', 'update:modelValue']);
 
 // Get query params to allow prefilling of form fields
@@ -28,7 +27,7 @@ const validate = (state: any): FormError[] => {
 async function submitForm() {
 	loading.value = true;
 	try {
-		await $directus.request(
+		await useDirectus(
 			$createItem('inbox', {
 				data: formData,
 			}),

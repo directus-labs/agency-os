@@ -16,7 +16,7 @@ const flipped = ref(false);
 </script>
 <template>
 	<div class="opacity-0 cursor-pointer select-none animate-fade-in" @click="flipped = !flipped">
-		<div :class="`relative w-full h-full overflow-hidden group rounded-${theme.borderRadius}`">
+		<div :class="`relative w-full h-full overflow-hidden group rounded-xl`">
 			<!-- Front of Team Card -->
 			<NuxtImg
 				class="object-cover w-full h-full transition duration-300 grayscale group-hover:grayscale-0"

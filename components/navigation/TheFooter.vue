@@ -1,11 +1,9 @@
 <script setup lang="ts">
-const { $directus, $readItem, $readItems } = useNuxtApp();
-
 const { globals, theme } = useAppConfig();
 
 const { data: navigation } = await useAsyncData('footerNav', () => {
-	return $directus.request(
-		$readItem('navigation', 'footer', {
+	return useDirectus(
+		readItem('navigation', 'footer', {
 			fields: [
 				{
 					items: [
@@ -41,8 +39,8 @@ const { data: navigation } = await useAsyncData('footerNav', () => {
 const { data: form } = await useAsyncData(
 	'newsletterForm',
 	() => {
-		return $directus.request(
-			$readItems('forms', {
+		return useDirectus(
+			readItems('forms', {
 				filter: {
 					key: {
 						_eq: 'newsletter',

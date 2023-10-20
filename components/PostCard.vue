@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Post } from '~~/types';
+import type { Post } from '~~/types';
 
 withDefaults(
 	defineProps<{
@@ -33,7 +33,7 @@ withDefaults(
 		>
 			<NuxtImg
 				class="relative flex-shrink-0 object-cover w-full h-full transition duration-300 saturate-0 group-hover:opacity-75"
-				:src="post.image"
+				:src="post.image ?? 'https://source.unsplash.com/random/800x800?sig=' + post.id"
 				alt=""
 			/>
 			<div

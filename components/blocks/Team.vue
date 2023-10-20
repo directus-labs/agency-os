@@ -12,8 +12,6 @@ defineProps<{
 	data: TeamBlockProps;
 }>();
 
-// Import the $directus plugin
-const { $directus, $readItems } = useNuxtApp();
 const { fileUrl } = useFiles();
 
 // Get the params from the Nuxt route
@@ -26,7 +24,7 @@ const {
 } = await useAsyncData(
 	'team',
 	() => {
-		return $directus.request($readItems('team', {}));
+		return useDirectus(readItems('team', {}));
 	},
 	{
 		transform: (data) => data,
@@ -95,7 +93,7 @@ const duration = computed(() => {
 		<BlockContainer>
 			<div class="flex flex-col mx-auto lg:flex-row">
 				<!-- Text -->
-				<div class="flex flex-col pr-4 lg:w-2/5">
+				<div class="flex flex-col pr-4 lg:w-3/5">
 					<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
 					<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
 					<TypographyProse v-if="data.content" :content="data.content" class="mt-4" />
@@ -103,7 +101,7 @@ const duration = computed(() => {
 
 				<!-- Team -->
 				<div
-					class="relative grid h-[49rem] max-h-[60vh] grid-cols-1 items-start gap-8 overflow-hidden px-4 md:grid-cols-2 border-t-4 border-t-primary border-b-4 border-b-gray-500 mt-8 lg:mt-0"
+					class="w-full relative grid h-[49rem] max-h-[60vh] grid-cols-1 items-start gap-8 overflow-hidden px-4 md:grid-cols-2 border-t-4 border-t-primary border-b-4 border-b-gray-500 mt-8 lg:mt-0"
 					ref="target"
 				>
 					<!-- <div class="absolute top-0 z-10 w-full h-16 bg-gradient-to-b from-white to-transparent dark:from-gray-800" /> -->

@@ -1,19 +1,8 @@
 <script setup lang="ts">
-export interface HeroBlockProps {
-	id: string;
-	headline: string;
-	content: string;
-	image: string;
-	buttons?: Array<{
-		label: string;
-		href: string;
-		variant: string;
-		open_in_new_window: boolean;
-	}>;
-}
+import type { BlockHero } from '~/types';
 
 defineProps<{
-	data: HeroBlockProps;
+	data: BlockHero;
 }>();
 </script>
 <template>
@@ -22,20 +11,7 @@ defineProps<{
 		<div class="md:pt-12 md:col-span-2">
 			<TypographyHeadline :content="data.headline" size="title" as="h1" />
 			<TypographyProse :content="data.content" size="lg" class="py-6 font-display" />
-			<div class="flex flex-col space-y-4 md:space-x-4 md:flex-row md:space-y-0">
-				<UButton
-					v-for="(button, buttonIdx) in data.buttons"
-					:key="buttonIdx"
-					:href="button.href"
-					:color="button.color"
-					:variant="button.variant"
-					:target="button.open_in_new_window ? '_blank' : '_self'"
-					size="xl"
-					trailing-icon="material-symbols:arrow-forward-rounded"
-				>
-					{{ button.label }}
-				</UButton>
-			</div>
+			<BlocksButtonGroup :data="data.button_group" />
 		</div>
 		<!-- Image -->
 		<div

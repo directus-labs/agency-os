@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { defineProps, defineOptions } from 'vue';
-
 export interface OgImageProps {
 	imageUrl?: string;
 	title?: string;

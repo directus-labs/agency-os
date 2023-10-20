@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { BlockColumns } from '~/types/blocks';
+import type { BlockColumn } from '~/types';
 
 defineProps<{
-	data: BlockColumns;
+	data: BlockColumn;
 }>();
 </script>
 

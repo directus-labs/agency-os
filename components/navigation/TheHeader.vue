@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const { $directus, $readItem } = useNuxtApp();
 const {
 	theme,
 	globals: { title },
@@ -12,8 +11,8 @@ const {
 } = await useAsyncData(
 	'mainNavigation',
 	() => {
-		return $directus.request(
-			$readItem('navigation', 'main', {
+		return useDirectus(
+			readItem('navigation', 'main', {
 				fields: [
 					{
 						items: [

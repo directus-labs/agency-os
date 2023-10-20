@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BlockGallery, BlockGalleryFile } from '~/types';
+import type { BlockGallery, BlockGalleryFile } from '~/types';
 
 const props = defineProps<{
 	data: BlockGallery;

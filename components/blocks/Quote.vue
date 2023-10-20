@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BlockQuote } from '~/types/block';
+import type { BlockQuote } from '~/types';
 
 defineProps<{
 	data: BlockQuote;

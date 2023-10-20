@@ -56,10 +56,10 @@ const emit = defineEmits(['close']);
 				</NuxtLink>
 			</div>
 			<div class="absolute bottom-4 left-4">
-				<VButton class="inline-flex" @click="subMenuOpen = false">
+				<UButton class="inline-flex" @click="subMenuOpen = false">
 					<Icon name="heroicons:arrow-left" class="w-5 h-5 mr-2" />
 					<span class="text-sm font-bold">Back</span>
-				</VButton>
+				</UButton>
 			</div>
 		</Motionable>
 	</div>

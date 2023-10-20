@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
-import { NavigationItem } from '~~/types';
+import type { NavigationItem } from '~~/types';
 
 const route = useRoute();
 

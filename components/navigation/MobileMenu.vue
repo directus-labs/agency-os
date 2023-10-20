@@ -76,7 +76,7 @@ watch(
 				<div class="flex flex-col justify-center h-full px-6 space-y-2">
 					<NavigationMobileMenuItem v-for="item in navigation.items" :key="item.id" :item="item" @close="toggle" />
 					<div class="flex flex-col w-full px-4">
-						<VButton href="/contact-us" variant="primary">Let's Talk</VButton>
+						<UButton href="/contact-us" variant="primary">Let's Talk</UButton>
 					</div>
 				</div>
 			</Motionable>

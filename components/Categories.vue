@@ -1,13 +1,11 @@
 <script setup lang="ts">
-const { $directus, $readItems } = useNuxtApp();
-
 const {
 	data: categories,
 	pending,
 	error,
 } = await useAsyncData('categories', () => {
-	return $directus.request(
-		$readItems('categories', {
+	return useDirectus(
+		readItems('categories', {
 			fields: ['*'],
 		}),
 	);

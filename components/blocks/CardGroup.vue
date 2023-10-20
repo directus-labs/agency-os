@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Post } from '~~/types';
+import type { Post } from '~/types';
 
 export interface CardGroupBlockProps {
 	id: string;

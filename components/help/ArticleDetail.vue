@@ -6,7 +6,6 @@ export interface HelpCollectionsProps {
 const props = defineProps<HelpCollectionsProps>();
 
 import { markdownToHtml } from '~~/utils/markdown';
-const { $directus, $readItems } = useNuxtApp();
 const { params } = useRoute();
 // Fetch the page data from the Directus API using the Nuxt useAsyncData composable
 // https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
@@ -17,8 +16,8 @@ const {
 } = await useAsyncData(
 	params.slug,
 	() => {
-		return $directus.request(
-			$readItems('help_articles', {
+		return useDirectus(
+			readItems('help_articles', {
 				filter: {
 					slug: {
 						_eq: params.slug,

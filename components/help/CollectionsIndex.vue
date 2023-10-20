@@ -3,9 +3,9 @@ export interface HelpCollectionsProps {
 	baseUrl?: string | null;
 }
 
-const props = defineProps<HelpCollectionsProps>();
-
-const { $directus, $readItems } = useNuxtApp();
+const props = withDefaults(defineProps<HelpCollectionsProps>(), {
+	baseUrl: '',
+});
 
 const {
 	data: collections,
@@ -14,8 +14,8 @@ const {
 } = await useAsyncData(
 	'posts',
 	() => {
-		return $directus.request(
-			$readItems('help_collections', {
+		return useDirectus(
+			readItems('help_collections', {
 				filter: {
 					articles: {
 						_nnull: true,

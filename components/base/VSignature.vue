@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { VPerfectSignature } from 'v-perfect-signature';
-const { isDark } = useDark();
+const colorMode = useColorMode();
 
 const props = defineProps({
 	context: Object,
@@ -28,7 +28,7 @@ const strokeOptions = {
 const isDrawing = ref(false);
 
 const signatureColor = computed(() => {
-	return isDark.value ? '#ffffff' : '#0f172a';
+	return colorMode.value === 'light' ? '#ffffff' : '#0f172a';
 });
 
 function startDrawing() {

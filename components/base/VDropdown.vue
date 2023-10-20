@@ -29,14 +29,14 @@ function handleMenuItemClick(item = { action: () => {} }) {
 <template>
 	<div class="relative">
 		<Menu as="div" class="relative inline-block text-left">
-			<VButton>
+			<UButton>
 				<span>{{ buttonLabel }}</span>
 				<Icon
 					name="heroicons:chevron-down"
 					class="w-5 h-5 ml-2 -mr-1 text-primary-200 hover:text-primary-100"
 					aria-hidden="true"
 				/>
-			</VButton>
+			</UButton>
 
 			<transition
 				enter-active-class="transition duration-100 ease-out"
