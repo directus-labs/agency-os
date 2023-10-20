@@ -1,4 +1,4 @@
-import { User } from '../system';
+import type { User } from '../system';
 
 export interface Conversation {
 	date_created?: string | null;

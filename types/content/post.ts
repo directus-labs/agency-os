@@ -1,4 +1,4 @@
-import { User } from '../system';
+import type { User } from '../system';
 import { SEO } from '../meta';
 import { Category } from '../content';
 

@@ -1,4 +1,4 @@
-import { User } from '../system';
+import type { User } from '../system';
 import { Organization, Contact, OsDeal } from './';
 
 export interface OsActivity {

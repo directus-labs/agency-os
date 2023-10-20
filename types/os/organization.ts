@@ -43,6 +43,7 @@ export interface OrganizationAddress {
 	address_country?: string | null;
 	/** City */
 	address_locality?: string | null;
+	is_primary_billing?: boolean | null;
 }
 
 export interface OrganizationContact {

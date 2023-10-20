@@ -23,7 +23,7 @@ export interface Page {
 	date_updated?: string | null;
 	id?: string;
 	seo?: (string | SEO) | null;
-	slug?: string | null;
+	permalink?: string | null;
 	sort?: number | null;
 	status?: string;
 	title?: string | null;
