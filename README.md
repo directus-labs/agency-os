@@ -3,7 +3,7 @@
   <h1 align="center">Agency OS</h1>
 </a>
 
-<p align="center">Fully complete, opinionated agency website template. Nuxt 3 Frontend + Directus for Headless CMS / Backend.</p>
+<p align="center">AgencyOS is everything you need to get your agency off the ground, or improve tooling for your existing company. Nuxt 3 Application + Directus Backend.</p>
 
 <p align="center"><em>Brought to you by partnership magic ✨ between <a href="https://directus.io" target="_blank">Directus</a> and <a href="https://nuxtlabs.com" target="_blank">NuxtLabs</a>.</em>
 </p>
@@ -215,32 +215,6 @@ If you don't wish to use dark mode, you can simply remove the composable and the
 
 ---
 
-## Pre-Built Components
-
-**Global Search**
-
-**Typography**
-
-- Title
-- Headline
-- Prose
-
-**Image Gallery**
-
-**Accordion**
-
-**Badges**
-
-**Modals**
-
-**Dropdown**
-
-**Alert**
-
-**Video**
-
-**Buttons**
-
 <br />
 
 # 🧰 Tech Stack
@@ -274,6 +248,7 @@ integrated for you and availably globally as a Nuxt plugin.
 
 ## UI
 
+- [Nuxt UI]
 - [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework that allows you to rapidly build sites and
   maintain consistency across team members. There are several Tailwind Plugins installed and ready to use as well –
   [Typography](https://tailwindcss.com/docs/typography-plugin) and [Forms](https://tailwindcss.com/docs/plugins#forms).
@@ -303,3 +278,8 @@ integrated for you and availably globally as a Nuxt plugin.
 # 👥 Contributors
 
 - Bryant Gillespie ([@bryantgillespie](https://twitter.com/bryantgillespie))
+
+# 🙏 Thanks To
+
+- [@becem-gharbi](https://github.com/becem-gharbi) for his
+  [`nuxt-directus` module](https://github.com/becem-gharbi/nuxt-directus)
