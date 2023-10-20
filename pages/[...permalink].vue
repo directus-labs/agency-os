@@ -1,6 +1,9 @@
 <script setup lang="ts">
-const { $directus, $readItems } = useNuxtApp();
+import { readItems } from '@directus/sdk';
 const { params, path } = useRoute();
+const { fileUrl } = useFiles();
+const { globals } = useAppConfig();
+const { $directus } = useNuxtApp();
 
 const pageFilter = computed(() => {
 	let finalPath;
@@ -16,8 +19,6 @@ const pageFilter = computed(() => {
 	return { permalink: { _eq: finalPath } };
 });
 
-// Fetch the page data from the Directus API using the Nuxt useAsyncData composable
-// https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
 const {
 	data: page,
 	pending,
@@ -26,7 +27,7 @@ const {
 	path,
 	() => {
 		return $directus.request(
-			$readItems('pages', {
+			readItems('pages', {
 				filter: unref(pageFilter),
 				fields: [
 					'*',
@@ -38,7 +39,16 @@ const {
 							'hide_block',
 							{
 								item: {
-									block_hero: ['id', 'title', 'headline', 'content', 'image', 'buttons', 'image_position'],
+									block_hero: [
+										'id',
+										'title',
+										'headline',
+										'content',
+										'image',
+										'buttons',
+										'image_position',
+										{ button_group: ['*', { buttons: ['*', { page: ['permalink'], post: ['slug'] }] }] },
+									],
 									block_faqs: ['id', 'title', 'faqs', 'headline', 'alignment'],
 									block_richtext: ['id', 'title', 'headline', 'content', 'alignment'],
 									block_testimonials: [
@@ -127,17 +137,9 @@ if (!unref(page)) {
 }
 
 defineOgImage({
-	title: 'My awesome home page.',
-	summary:
-		'Laboris deserunt occaecat esse incididunt laborum tempor adipisicing minim ex tempor eu est. Dolore occaecat anim mollit laborum anim exercitation eiusmod occaecat aliqua. Laborum est in mollit ad eiusmod cupidatat dolore sunt. Minim nisi nostrud voluptate esse Lorem minim velit nulla.',
-	imageUrl:
-		'https://images.unsplash.com/photo-1603202662706-62ead3176b8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1569&q=80',
-	authorName: 'Bryant Gillespie',
-	authorImage:
-		'https://images.unsplash.com/photo-1603202662706-62ead3176b8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1569&q=80',
-
-	badgeLabel: 'Badge Label',
-	badgeColor: 'gray',
+	title: computed(() => unref(page)?.seo?.title ?? unref(page)?.title ?? null),
+	summary: computed(() => unref(page)?.seo?.meta_description ?? unref(page)?.summary ?? null),
+	imageUrl: computed(() => fileUrl(unref(globals)?.og_image) ?? undefined),
 });
 
 useHead({

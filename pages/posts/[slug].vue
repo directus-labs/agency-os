@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const { $directus, $readItems } = useNuxtApp();
 const { fileUrl } = useFiles();
 const { params, path } = useRoute();
 
@@ -10,8 +9,8 @@ const {
 } = await useAsyncData(
 	path,
 	() => {
-		return $directus.request(
-			$readItems('posts', {
+		return useDirectus(
+			readItems('posts', {
 				filter: { slug: { _eq: params.slug } },
 				limit: 1,
 				fields: [
@@ -22,7 +21,7 @@ const {
 					'date_published',
 					'image',
 					{
-						author: ['first_name', 'last_name', 'avatar', 'title'],
+						author: ['name', 'job_title', 'image'],
 						category: ['title', 'slug', 'color'],
 						seo: ['meta_description', 'og_title', 'og_image'],
 					},
@@ -76,7 +75,7 @@ useSeoMeta({
 					>
 						<VBadge size="lg" :color="page.category.color">{{ page.category.title }}</VBadge>
 					</NuxtLink>
-					<VAvatar v-if="page.author" :author="page.author" />
+					<Author v-if="page.author" v-bind="page.author" />
 					<div class="space-y-2">
 						<p class="flex text-gray-500 dark:text-gray-300">
 							<UIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
@@ -105,7 +104,7 @@ useSeoMeta({
 			</div>
 
 			<div class="block px-6 mt-6 md:hidden">
-				<VAvatar v-if="page.author" :author="page.author" />
+				<Author v-if="page.author" v-bind="page.author" />
 				<div class="flex justify-between pb-4 mt-4 border-b dark:border-gray-700">
 					<div class="space-y-2">
 						<p class="flex text-gray-500 dark:text-gray-300">

@@ -1,28 +1,45 @@
 <script setup lang="ts">
-// Import the $directus plugin
-const { $directus, $readItems } = useNuxtApp();
-
 // Get the params from the Nuxt route
 const { params, path } = useRoute();
 
 // Fetch the page data from the Directus API using the Nuxt useAsyncData composable
 // https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
-const {
-	data: posts,
-	pending,
-	error,
-} = await useAsyncData(path, () => {
-	return $directus.request(
-		$readItems('posts', {
-			filter: {
-				// status: { _eq: 'published' },
-			},
-			sort: ['date_published'],
+const { data, pending, error } = await useAsyncData(
+	path,
+	() => {
+		const postPromise = useDirectus(
+			readItems('posts', {
+				filter: {
+					type: { _eq: 'blog' },
+				},
+				sort: ['date_published'],
+				fields: [
+					'*',
+					{
+						category: ['title', 'slug', 'color'],
+						author: ['first_name', 'last_name', 'avatar'],
+					},
+				],
+			}),
+		);
 
-			fields: ['*', 'author.*', 'category.title', 'category.slug', 'category.color'],
-		}),
-	);
-});
+		const pagePromise = useDirectus(
+			readSingleton('pages_blog', {
+				fields: ['*', { seo: ['*'] }],
+			}),
+		);
+
+		return Promise.all([postPromise, pagePromise]);
+	},
+	{
+		transform: ([posts, page]) => {
+			return {
+				posts,
+				page,
+			};
+		},
+	},
+);
 
 useHead({
 	title: 'Posts',
@@ -31,8 +48,8 @@ useHead({
 <template>
 	<BlockContainer>
 		<header class="pb-6 border-b border-gray-300 dark:border-gray-700">
-			<TypographyTitle>Agency Blog</TypographyTitle>
-			<TypographyHeadline content="<p>Articles on <em>development</em>, marketing, and more.</p>" />
+			<TypographyTitle>{{ data?.page.title }}</TypographyTitle>
+			<TypographyHeadline :content="data?.page.headline" />
 		</header>
 		<section class="relative w-full py-12 space-y-12">
 			<div
@@ -47,14 +64,14 @@ useHead({
 				<div class="space-y-4 lg:col-span-3">
 					<TypographyTitle>Featured Article</TypographyTitle>
 
-					<PostCard :post="posts[0]" direction="horizontal" />
+					<PostCard :post="data.posts[0]" direction="horizontal" />
 				</div>
 			</div>
 			<div class="space-y-4">
 				<TypographyTitle>Latest & Greatest</TypographyTitle>
 				<div class="relative grid gap-8 md:grid-cols-3 lg:grid-cols-4">
 					<PostCard
-						v-for="(post, postIdx) in posts.slice(1)"
+						v-for="(post, postIdx) in data.posts.slice(1)"
 						:key="post.id"
 						:post="post"
 						:class="[

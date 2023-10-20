@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const { $directus, $readItems } = useNuxtApp();
 const { params, path } = useRoute();
 
 const {
@@ -9,8 +8,8 @@ const {
 } = await useAsyncData(
 	path,
 	() => {
-		return $directus.request(
-			$readItems('projects', {
+		return useDirectus(
+			readItems('posts', {
 				filter: { slug: { _eq: params.slug } },
 				limit: 1,
 				fields: ['*', 'gallery.directus_files_id.*'],

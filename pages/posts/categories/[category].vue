@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const { $directus, $readItems } = useNuxtApp();
 const { params, path } = useRoute();
 
 const {
@@ -7,8 +6,8 @@ const {
 	pending,
 	error,
 } = await useAsyncData(path, () => {
-	return $directus.request(
-		$readItems('posts', {
+	return useDirectus(
+		readItems('posts', {
 			filter: {
 				category: {
 					slug: {

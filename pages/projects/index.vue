@@ -1,29 +1,29 @@
 <script setup lang="ts">
-const { $directus, $readItems } = useNuxtApp();
-const { theme } = useAppConfig();
-
-const { params, path } = useRoute();
-
-const {
-	data: projects,
-	pending,
-	error,
-} = await useAsyncData(
-	path,
+const { data, pending, error } = await useAsyncData(
+	`projects-index`,
 	() => {
-		return $directus.request(
-			$readItems('projects', {
+		const postPromise = useDirectus(
+			readItems('posts', {
 				filter: {
-					// status: { _eq: 'published' },
+					type: { _eq: 'project' },
 				},
-
-				fields: [],
 			}),
 		);
+		const pagePromise = useDirectus(
+			readSingleton('pages_projects', {
+				fields: ['*', { seo: ['*'] }],
+			}),
+		);
+
+		return Promise.all([postPromise, pagePromise]);
 	},
 	{
-		transform: (data) => data,
-		// pick: [],
+		transform: ([posts, page]) => {
+			return {
+				posts,
+				page,
+			};
+		},
 	},
 );
 
@@ -34,19 +34,19 @@ useHead({
 <template>
 	<BlockContainer>
 		<header class="pb-6 border-b-2 dark:border-gray-700">
-			<TypographyTitle>Agency Projects</TypographyTitle>
-			<TypographyHeadline content="<p>We kill it for you <em>(our clients)</em>.</p>" />
+			<TypographyTitle>{{ data.page.title }}</TypographyTitle>
+			<TypographyHeadline :content="data.page.headline" />
 		</header>
 		<section class="relative items-center w-full py-12">
 			<TypographyTitle>Latest Projects</TypographyTitle>
 			<div class="grid gap-6 mt-4 md:grid-cols-3">
 				<NuxtLink
-					v-for="(project, projectIdx) in projects"
+					v-for="(project, projectIdx) in data.posts"
 					:key="project.id"
 					:href="`/projects/${project.slug}`"
-					:class="`relative block w-full mb-6 overflow-hidden transition duration-300 border rounded-${theme.borderRadius} dark:border-gray-700`"
+					:class="`relative block w-full mb-6 overflow-hidden transition duration-300 border rounded-lg dark:border-gray-700`"
 				>
-					<div :class="`relative h-56 overflow-hidden rounded-${theme.borderRadius} group`">
+					<div :class="`relative h-56 overflow-hidden rounded-lg group`">
 						<NuxtImg :src="project.image" class="object-cover transition duration-300 group-hover:scale-110" />
 						<div
 							class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
