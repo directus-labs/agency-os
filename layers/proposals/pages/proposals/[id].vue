@@ -2,7 +2,6 @@
 definePageMeta({
 	layout: 'proposal',
 });
-const { $directus, $readItem } = useNuxtApp();
 const { params, path } = useRoute();
 
 const { showSidebar, toggleSidebar } = useProposals();
@@ -14,8 +13,8 @@ const {
 	pending,
 	error,
 } = await useAsyncData(path, () => {
-	return $directus.request(
-		$readItem('os_proposals', params.id, {
+	return useDirectus(
+		readItem('os_proposals', params.id, {
 			fields: [
 				'name',
 				{

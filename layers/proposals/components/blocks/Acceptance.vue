@@ -4,14 +4,13 @@ import { createInput } from '@formkit/vue';
 import VSignature from '~/components/base/VSignature.vue';
 import { transformSchema } from '~/utils/formkit';
 
-const { $directus, $uploadFiles, $readItems, $readItem, $createItem } = useNuxtApp();
 // Get query params to allow prefilling of form fields
 
 const { query, params } = useRoute();
 
 if (query && query.approver) {
-	const approver = await $directus.request(
-		$readItem('contacts', query.approver, { fields: ['first_name', 'last_name', 'email'] }),
+	const approver = await useDirectus(
+		readItem('contacts', query.approver, { fields: ['first_name', 'last_name', 'email'] }),
 	);
 	query.first_name = approver.first_name;
 	query.last_name = approver.last_name;
@@ -26,7 +25,6 @@ const loading = ref(false);
 const error = ref(null);
 const success = ref(false);
 
-const { isDark } = useDark();
 // @TODO - Move this into formkit.config.ts config file but for now I can't figure out how to get register the custome imput with Nuxt.
 const signature = createInput(VSignature, {
 	props: ['options'],
@@ -94,7 +92,7 @@ function uploadFiles(files: File[]) {
 	files.forEach((file, idx) => {
 		formData.append('file', file);
 	});
-	return $directus.request($uploadFiles(formData));
+	return useDirectus($uploadFiles(formData));
 }
 
 async function submitForm() {
@@ -118,7 +116,7 @@ async function submitForm() {
 			proposal: params.id ?? undefined,
 		};
 
-		await $directus.request($createItem('os_proposal_approvals', approval));
+		await useDirectus($createItem('os_proposal_approvals', approval));
 
 		success.value = true;
 	} catch (err) {
