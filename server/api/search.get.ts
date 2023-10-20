@@ -123,7 +123,6 @@ export default cachedEventHandler(
 		}
 	},
 	{
-		swr: true,
-		maxAge: 0, // 60 * 5, // Cache the results for 5 minutes
+		maxAge: 60 * 5, // Cache the results for 5 minutes
 	},
 );
