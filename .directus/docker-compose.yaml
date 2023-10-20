@@ -13,12 +13,11 @@ services:
       POSTGRES_PASSWORD: 'directus'
       POSTGRES_DB: 'directus'
 
-
   cache:
     image: redis:6
 
   directus:
-    image: directus/directus:10.6.1
+    image: directus/directus:10.6.3
     ports:
       - 8055:8055
     volumes:
@@ -51,7 +50,11 @@ services:
       WEBSOCKETS_ENABLED: 'true'
       # WEBSOCKETS_AUTH_MODE: 'public'
 
+
       EXTENSIONS_AUTO_RELOAD: 'true'
+
+      # The default config prevents importing files from 0.0.0.0. See https://docs.directus.io/self-hosted/config-options.html#security . This can be removed in production but in local development it is recommended to keep it so you can import logos from Organization > website.
+      IMPORT_IP_DENY_LIST: ''
 
       # Make sure to set this in production
       # (see https://docs.directus.io/self-hosted/config-options#general)
