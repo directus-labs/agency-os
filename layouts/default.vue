@@ -16,10 +16,10 @@
 		</div>
 
 		<div class="fixed z-10 bottom-4 left-4">
-			<ScrollTop />
+			<!-- <ScrollTop /> -->
 		</div>
 		<DevOnly>
-			<DevToolbar />
+			<!-- <DevToolbar /> -->
 		</DevOnly>
 	</div>
 </template>
