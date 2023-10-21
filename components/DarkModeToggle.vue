@@ -8,6 +8,7 @@ withDefaults(defineProps<DarkModeToggleProps>(), {
 });
 
 const colorMode = useColorMode();
+
 const isDark = computed({
 	get() {
 		return colorMode.value === 'dark';
@@ -24,9 +25,9 @@ const isDark = computed({
 			variant="ghost"
 			color="gray"
 			aria-label="Theme"
-			@click="isDark = !isDark"
 			size="lg"
 			:class="[bg === 'dark' ? 'text-white' : '']"
+			@click="isDark = !isDark"
 		/>
 		<template #fallback>
 			<div class="w-10 h-10" />

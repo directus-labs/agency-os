@@ -20,10 +20,12 @@ const groups = computed(() => {
 
 			search: async (q: string) => {
 				loading.value = true;
+
 				if (!q || q.length < 3) {
 					loading.value = false;
 					return [];
 				}
+
 				try {
 					const { data } = await $fetch('/api/search', {
 						params: {
@@ -31,6 +33,7 @@ const groups = computed(() => {
 							collections: props.collections, // Use the collections prop to filter the search
 						},
 					});
+
 					return data.map((hit) => {
 						return {
 							id: hit.id,
@@ -122,7 +125,7 @@ const ui = {
 </script>
 <template>
 	<div>
-		<UButton @click="isOpen = true" icon="material-symbols:search-rounded" color="white" size="lg">
+		<UButton icon="material-symbols:search-rounded" color="white" size="lg" @click="isOpen = true">
 			Search
 			<div class="flex items-center gap-0.5">
 				<UKbd>⌘</UKbd>
@@ -130,7 +133,7 @@ const ui = {
 			</div>
 		</UButton>
 		<UModal v-model="isOpen">
-			<UCommandPalette :loading="loading" :groups="groups" @update:model-value="onSelect" :ui="ui" />
+			<UCommandPalette :loading="loading" :groups="groups" :ui="ui" @update:model-value="onSelect" />
 		</UModal>
 	</div>
 </template>

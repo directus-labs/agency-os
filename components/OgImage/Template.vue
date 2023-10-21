@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import colors from 'tailwindcss/colors';
+
+const appConfig = useAppConfig();
+
+// console.log(colors[appConfig.ui.primary]);
+
 export interface OgImageProps {
 	imageUrl?: string;
 	title?: string;
@@ -7,9 +13,19 @@ export interface OgImageProps {
 	authorImage?: string;
 	badgeLabel?: string;
 	badgeColor?: string;
+	primaryColor?: string;
+	grayColor?: string;
 }
 
 defineProps<OgImageProps>();
+
+const primaryColor = computed(() => {
+	return colors[appConfig.ui.primary];
+});
+
+const grayColor = computed(() => {
+	return colors[appConfig.ui.gray];
+});
 
 // inherited attrs can mess up the satori parser
 defineOptions({
@@ -34,7 +50,7 @@ const fonts = {
 	>
 		<div
 			:style="{
-				background: 'linear-gradient(to bottom right, #1F2937, #FF99DD)',
+				background: `linear-gradient(to bottom right,${grayColor['900']}, ${primaryColor['900']})`,
 				position: 'absolute',
 				inset: '0px',
 				width: '100%',
@@ -88,112 +104,105 @@ const fonts = {
 					:style="{
 						position: 'relative',
 						width: '100%',
-						padding: '0.5rem',
+						padding: '2.5rem',
 						display: 'flex',
 						flexDirection: 'column',
-						border: '4px solid #FF99DD',
-						borderRadius: '1rem',
+						borderRadius: '0.5rem',
+						border: `2px solid ${primaryColor['500']}`,
+
+						backgroundColor: '#ffffff',
 					}"
 				>
-					<div
+					<h1
+						v-if="title"
 						:style="{
-							position: 'relative',
-							width: '100%',
-							padding: '2.5rem',
-							display: 'flex',
-							flexDirection: 'column',
-							borderRadius: '0.5rem',
-							backgroundColor: '#ffffff',
+							fontFamily: fonts.display,
+							fontSize: '4rem',
+							fontWeight: '700',
+							lineHeight: '0.9',
+							color: '#111827',
 						}"
 					>
-						<h1
-							v-if="title"
-							:style="{
-								fontFamily: fonts.display,
-								fontSize: '4rem',
-								fontWeight: '700',
-								lineHeight: '0.9',
-								color: '#111827',
-							}"
-						>
-							{{ title }}
-						</h1>
-						<p
-							v-if="summary"
-							:style="{
-								fontFamily: fonts.body,
-								fontSize: '1.5rem',
-								fontWeight: '400',
-								lineHeight: '1.5',
-								color: '#334155',
-								marginTop: '1rem',
-							}"
-						>
-							{{ truncateString(summary, 100) }}
-						</p>
-						<!-- Footer with Page Author and Badge -->
+						{{ title }}
+					</h1>
+					<p
+						v-if="summary"
+						:style="{
+							fontFamily: fonts.body,
+							fontSize: '1.5rem',
+							fontWeight: '400',
+							lineHeight: '1.5',
+							color: '#334155',
+							marginTop: '1rem',
+						}"
+					>
+						{{ summary ? truncateString(summary, 150) : '' }}
+					</p>
+					<!-- Footer with Page Author and Badge -->
+					<div
+						:style="{
+							display: 'flex',
+							alignItems: 'center',
+							marginTop: '1rem',
+							paddingTop: '1rem',
+							borderTop: '1px solid #E5E7EB',
+							justifyContent: 'space-between',
+						}"
+					>
+						<!-- Author -->
 						<div
 							:style="{
 								display: 'flex',
 								alignItems: 'center',
-								marginTop: '1rem',
-								paddingTop: '1rem',
-								borderTop: '1px solid #E5E7EB',
-								justifyContent: 'space-between',
 							}"
 						>
-							<!-- Author -->
 							<div
 								:style="{
-									display: 'flex',
-									alignItems: 'center',
+									marginRight: '0.5rem',
 								}"
 							>
-								<div
+								<img
+									v-if="authorImage"
 									:style="{
-										marginRight: '0.5rem',
+										objectFit: 'cover',
+										objectPosition: 'center',
+										width: '3rem',
+										height: '3rem',
+										borderRadius: '9999px',
 									}"
-								>
-									<img
-										:style="{
-											objectFit: 'cover',
-											objectPosition: 'center',
-											width: '3rem',
-											height: '3rem',
-											borderRadius: '9999px',
-										}"
-										:src="authorImage"
-									/>
-								</div>
-
-								<div
-									:style="{
-										fontFamily: fonts.display,
-										fontSize: '1.5rem',
-										fontWeight: '400',
-										lineHeight: '1.5',
-										color: '#111827',
-									}"
-								>
-									{{ authorName }}
-								</div>
+									:src="authorImage"
+								/>
 							</div>
-							<!-- Badge -->
+
 							<div
+								v-if="authorName"
 								:style="{
 									fontFamily: fonts.display,
-									fontSize: '1rem',
-									fontWeight: '500',
-									backgroundColor: '#4B5563',
-									color: '#ffffff',
-									display: 'flex',
-									alignItems: 'center',
-									padding: '0.5rem 1rem',
-									borderRadius: '.5rem',
+									fontSize: '1.5rem',
+									fontWeight: '400',
+									lineHeight: '1.5',
+									color: '#111827',
 								}"
 							>
-								{{ badgeLabel }}
+								{{ authorName }}
 							</div>
+						</div>
+						<!-- Badge -->
+						<div
+							v-if="badgeLabel"
+							:style="{
+								fontFamily: fonts.display,
+								fontSize: '1rem',
+								fontWeight: '500',
+								backgroundColor: `${badgeColor}`,
+								color: '#ffffff',
+								display: 'flex',
+								alignItems: 'center',
+								padding: '0.5rem 1rem',
+								borderRadius: '.5rem',
+							}"
+						>
+							{{ badgeLabel }}
 						</div>
 					</div>
 				</div>
@@ -211,6 +220,7 @@ const fonts = {
 				height: '3rem',
 				color: '#ffffff',
 			}"
+			:color="primaryColor['500']"
 		/>
 	</div>
 </template>

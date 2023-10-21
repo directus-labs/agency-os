@@ -14,18 +14,23 @@ const props = withDefaults(defineProps<MotionableProps>(), {
 
 const motions = useMotions();
 const leaved = ref(!props.show);
+
 watch(
 	() => props.show,
 	async (newShow) => {
 		const motion = motions[props.name];
+
 		if (motion && motion.isAnimating.value) {
 			motion.stop('leave');
+
 			if (newShow) {
 				motion.apply('enter');
 			}
 		}
+
 		if (!newShow) {
 			leaved.value = false;
+
 			motion.leave(() => {
 				leaved.value = true;
 			});
