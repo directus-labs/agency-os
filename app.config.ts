@@ -1,7 +1,9 @@
 import { theme } from '~/theme';
+
 export default defineAppConfig({
 	theme,
 	ui: {
+		strategy: 'override',
 		icons: 'all',
 		primary: theme.primary,
 		gray: theme.gray,
@@ -15,31 +17,37 @@ export default defineAppConfig({
 			body: {
 				base: 'h-full flex flex-col',
 			},
-			// rounded: `rounded-${theme.borderRadius}`,
+			rounded: `rounded-card`,
 		},
 
 		button: {
-			base: 'hover:scale-105 active:hover:scale-95 transition duration-150',
+			// base: 'hover:scale-105 active:hover:scale-95 transition duration-150',
 			font: 'font-bold',
-			rounded: `rounded-${theme.borderRadius}`,
+			rounded: 'rounded-button',
 			default: {
 				loadingIcon: 'material-symbols:sync-rounded',
 			},
 		},
 		input: {
 			default: {
-				loadingIcon: 'i-octicon-sync-24',
+				loadingIcon: 'material-symbols:sync-rounded',
 			},
+			rounded: `rounded-${theme.borderRadius}`,
 		},
 		select: {
+			rounded: 'rounded-input',
 			default: {
-				loadingIcon: 'i-octicon-sync-24',
-				trailingIcon: 'i-octicon-chevron-down-24',
+				loadingIcon: 'material-symbols:sync-rounded',
+				trailingIcon: 'material-symbols:expand-more-rounded',
 			},
 		},
+		textarea: {
+			rounded: 'rounded-input',
+		},
 		selectMenu: {
+			rounded: 'rounded-input',
 			default: {
-				selectedIcon: 'i-octicon-check-24',
+				selectedIcon: 'material-symbols:fitbit-check-small-rounded',
 			},
 		},
 		notification: {
@@ -51,11 +59,11 @@ export default defineAppConfig({
 		},
 		commandPalette: {
 			default: {
-				icon: 'i-octicon-search-24',
-				loadingIcon: 'i-octicon-sync-24',
-				selectedIcon: 'i-octicon-check-24',
+				icon: 'material-symbols:search-rounded',
+				loadingIcon: 'material-symbols:sync-rounded',
+				selectedIcon: 'material-symbols:fitbit-check-small-rounded',
 				emptyState: {
-					icon: 'i-octicon-search-24',
+					icon: 'material-symbols:search-rounded',
 				},
 			},
 		},
@@ -64,23 +72,23 @@ export default defineAppConfig({
 				sortAscIcon: 'i-octicon-sort-asc-24',
 				sortDescIcon: 'i-octicon-sort-desc-24',
 				sortButton: {
-					icon: 'i-octicon-arrow-switch-24',
+					icon: 'material-symbols:swap-horiz-rounded',
 				},
 				loadingState: {
-					icon: 'i-octicon-sync-24',
+					icon: 'material-symbols:sync-rounded',
 				},
 				emptyState: {
-					icon: 'i-octicon-database-24',
+					icon: 'material-symbols:database-outline',
 				},
 			},
 		},
 		pagination: {
 			default: {
 				prevButton: {
-					icon: 'i-octicon-arrow-left-24',
+					icon: 'material-symbols:arrow-back-rounded',
 				},
 				nextButton: {
-					icon: 'i-octicon-arrow-right-24',
+					icon: 'material-symbols:arrow-forward-rounded',
 				},
 			},
 		},

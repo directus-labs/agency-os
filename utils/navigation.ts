@@ -6,5 +6,6 @@ export function getNavItemUrl(item: NavigationItem): string | null {
 	} else if (item.type === 'url' && item.url) {
 		return item.url as string;
 	}
+
 	return null;
 }

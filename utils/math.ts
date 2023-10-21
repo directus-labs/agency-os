@@ -7,8 +7,10 @@ function percentChange(num1: number, num2: number) {
 	return (num1 - num2) / num1;
 }
 
-function roundToDecimal(value: number | string, decimals: number) {
-	return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+function roundToDecimal(value: number | string, decimals: number | string) {
+	const val = typeof value === 'string' ? parseFloat(value) : value;
+	const dec = typeof decimals === 'string' ? parseInt(decimals, 10) : decimals;
+	return Number(Math.round(val + 'e' + dec) + 'e-' + dec);
 }
 
 function isEven(n: number) {
