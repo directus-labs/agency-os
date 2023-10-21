@@ -50,7 +50,6 @@ services:
       WEBSOCKETS_ENABLED: 'true'
       # WEBSOCKETS_AUTH_MODE: 'public'
 
-
       EXTENSIONS_AUTO_RELOAD: 'true'
 
       # The default config prevents importing files from 0.0.0.0. See https://docs.directus.io/self-hosted/config-options.html#security . This can be removed in production but in local development it is recommended to keep it so you can import logos from Organization > website.
