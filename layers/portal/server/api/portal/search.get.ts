@@ -19,12 +19,15 @@ function mapEntity({
 	if (urlPattern.includes(':slug')) {
 		urlPattern = urlPattern.replace(':slug', entity.slug);
 	}
+
 	if (urlPattern.includes(':project')) {
 		urlPattern = urlPattern.replace(':project', entity.project);
 	}
+
 	if (urlPattern.includes(':id')) {
 		urlPattern = urlPattern.replace(':id', entity.id);
 	}
+
 	return {
 		title,
 		type,

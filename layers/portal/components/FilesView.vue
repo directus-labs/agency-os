@@ -5,17 +5,12 @@ export interface FilesViewProps {
 
 const props = defineProps<FilesViewProps>();
 
-const { fileUrl } = useFiles();
-
 const { data, pending, error } = await useAsyncData(
-	`folder-detail-${props.folderId ?? Math.random().toString(36).substring(7)}`,
+	`folder-detail-${props.folderId}`,
 	() => {
 		const folderReq = useDirectus(
 			readFolders({
 				fields: ['*'],
-
-				// Make this conditional on the folderId prop
-
 				...(props.folderId && {
 					filter: {
 						parent: {
@@ -48,30 +43,26 @@ const { data, pending, error } = await useAsyncData(
 				files,
 			};
 		},
-		cache: false,
 	},
 );
 
-// async function downloadAllFiles() {
-// 	for (const file of data.value.files) {
-// 		await navigateTo(fileUrl(file.id + '?download'), {
-// 			external: true,
-// 			open: {
-// 				target: '_blank',
-// 			},
-// 		});
-// 	}
-// }
+const folders = computed(() => {
+	return unref(data)?.folders;
+});
+
+const files = computed(() => {
+	return unref(data)?.files;
+});
 </script>
 <template>
 	<div class="flex flex-col gap-6">
-		<section v-if="data.folders && data.folders.length > 0">
-			<!-- <TypographyHeadline content="Folders" size="xs" /> -->
+		<section v-if="folders && folders.length > 0">
 			<div class="grid gap-6 md:grid-cols-4">
-				<NuxtLink v-for="folder in data.folders" :key="folder.id" :href="`/portal/files/folders/${folder.id}`">
+				<NuxtLink v-for="folder in folders" :key="folder.id" :href="`/portal/files/folders/${folder.id}`">
 					<UCard
 						class="h-full"
 						:ui="{
+							strategy: 'merge',
 							ring: 'hover:ring-primary dark:hover:ring-primary',
 							body: {
 								base: 'h-full flex flex-col',
@@ -79,7 +70,7 @@ const { data, pending, error } = await useAsyncData(
 							},
 						}"
 					>
-						<div class="flex gap-x-4">
+						<div class="flex gap-2">
 							<UIcon name="material-symbols:folder" class="w-6 h-6 text-gray-500" />
 							<p class="text-sm truncate">{{ folder.name }}</p>
 						</div>
@@ -88,16 +79,9 @@ const { data, pending, error } = await useAsyncData(
 			</div>
 		</section>
 		<section class="">
-			<!-- <TypographyHeadline content="Files" size="xs" /> -->
-			<!-- <UButton @click="downloadAllFiles">Download All Files</UButton> -->
 			<div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-				<PortalFileCard :file="file" v-for="file in data.files" :key="file.id" />
+				<PortalFileCard v-for="file in files" :key="file.id" :file="file" />
 			</div>
 		</section>
 	</div>
 </template>
-<style>
-.aspect-square {
-	aspect-ratio: 1 / 1;
-}
-</style>

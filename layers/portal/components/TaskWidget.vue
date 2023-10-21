@@ -78,9 +78,7 @@ async function openTask(id) {
 }
 </script>
 <template>
-	<div
-		class="flex flex-col px-4 py-10 bg-white border border-gray-300 rounded-lg dark:border-gray-700 dark:bg-gray-900"
-	>
+	<div class="px-4 py-10 bg-white border border-gray-300 rounded-panel dark:border-gray-700 dark:bg-gray-900">
 		<div>
 			<dt class="font-medium leading-6 text-gray-500 font-display dark:text-gray-300">Open Tasks</dt>
 			<dd class="flex-none w-full text-3xl font-medium leading-10 tracking-tight text-gray-900 dark:text-white">

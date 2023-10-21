@@ -32,6 +32,7 @@ const { data, pending, error, refresh } = await useAsyncData(
 				page: unref(page),
 			}),
 		);
+
 		// Total count of invoices
 		const count = useDirectus(
 			readItems('os_invoices', {
@@ -126,6 +127,7 @@ watch([debouncedSearch, status, page], ([search, status, page]) => {
 			page,
 		},
 	});
+
 	refresh();
 });
 
@@ -153,8 +155,8 @@ function clearFilters() {
 					color="primary"
 					variant="outline"
 					size="xl"
-					@click="getPortalLink('cus_OlTbJKVanSb1zN')"
 					:loading="stripeLoading"
+					@click="getPortalLink('cus_OlTbJKVanSb1zN')"
 				>
 					Update Payment Settings
 				</UButton>
@@ -169,10 +171,10 @@ function clearFilters() {
 						<USelect v-model="status" :options="statusOptions" placeholder="Invoice Status" class="w-40" />
 						<UButton
 							color="white"
-							@click="clearFilters"
 							size="xs"
 							:disabled="!search && !status"
 							icon="material-symbols:filter-alt-off-outline-rounded"
+							@click="clearFilters"
 						>
 							Reset
 						</UButton>
@@ -180,7 +182,7 @@ function clearFilters() {
 				</div>
 			</template>
 			<!-- Table -->
-			<UTable :columns="columns" :rows="invoices" column-attribute="label" :loading="pending" v-auto-animate>
+			<UTable v-auto-animate :columns="columns" :rows="invoices" column-attribute="label" :loading="pending">
 				<!-- Empty State -->
 				<template #empty-state>
 					<div class="w-1/4 mx-auto text-center">
@@ -189,10 +191,10 @@ function clearFilters() {
 						<UButton
 							v-if="search || status"
 							color="white"
-							@click="clearFilters"
 							size="xs"
 							icon="material-symbols:filter-alt-off-outline-rounded"
 							class="mt-4"
+							@click="clearFilters"
 						>
 							Reset Filters
 						</UButton>
@@ -211,7 +213,7 @@ function clearFilters() {
 					{{ formatCurrency(row.total) }}
 				</template>
 				<template #contact-data="{ row }">
-					<UserBadge :author="row.contact" size="xs" />
+					<UserBadge :user="row.contact" size="xs" />
 				</template>
 				<template #status-data="{ row }">
 					<UBadge

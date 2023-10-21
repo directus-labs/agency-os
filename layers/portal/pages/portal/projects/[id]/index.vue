@@ -1,64 +1,66 @@
 <script setup lang="ts">
+import type { OsProject, OsTask } from '~/types';
 const { path, params } = useRoute();
 
 const {
 	data: project,
 	pending,
 	error,
-} = await useAsyncData(
-	Math.random().toString(36).substring(2, 15),
-	() => {
-		return useDirectus(
-			readItem('os_projects', params.id, {
-				fields: [
-					'*',
-					{
-						organization: ['id', 'name', 'logo'],
-						owner: ['id', 'first_name', 'last_name', 'email', 'avatar'],
-						contacts: ['*'],
-						tasks: ['id', 'name', 'type', 'status', 'due_date', 'date_completed'],
-						updates: ['id', 'message', 'user_created', 'date_created', 'date_updated', 'user_updated'],
-					},
-				],
-				deep: {
-					tasks: {
-						_filter: {
-							_or: [
-								{
-									is_visible_to_client: {
-										_eq: true,
-									},
+} = await useAsyncData(`/portal/projects/${params.id}-index`, () => {
+	return useDirectus(
+		readItem('os_projects', params.id as string, {
+			fields: [
+				'*',
+				{
+					organization: ['id', 'name', 'logo'],
+					owner: ['id', 'first_name', 'last_name', 'email', 'avatar'],
+					contacts: ['*'],
+					tasks: ['id', 'name', 'type', 'status', 'due_date', 'date_completed'],
+					updates: ['id', 'message', 'user_created', 'date_created', 'date_updated', 'user_updated'],
+				},
+			],
+			deep: {
+				tasks: {
+					_filter: {
+						_or: [
+							{
+								is_visible_to_client: {
+									_eq: true,
 								},
-								{
-									type: {
-										_eq: 'milestone',
-									},
+							},
+							{
+								type: {
+									_eq: 'milestone',
 								},
-							],
-						},
+							},
+						],
 					},
 				},
-			}),
-		);
-	},
-	{ cache: false },
-);
+			},
+		}),
+	);
+});
 
 const { fileUrl } = useFiles();
 
 const milestones = computed(() => {
-	const items = unref(project)
-		?.tasks?.filter((task) => task.type === 'milestone')
+	const projectData = unref(project as OsProject);
+
+	if (!projectData || !projectData?.tasks) return [];
+
+	const items: OsTask[] = projectData?.tasks
+		?.filter((task): task is OsTask => typeof task !== 'string' && task.type === 'milestone')
 		.sort((a, b) => {
-			return new Date(a.due_date).getTime() - new Date(b.due_date).getTime();
+			return new Date(a.due_date as string).getTime() - new Date(b.due_date as string).getTime();
 		});
+
 	return items.map((task) => {
 		return {
 			isComplete: task.status === 'completed',
 			isCurrent: task.status !== 'completed' && task.status !== 'pending',
 			icon: 'heroicons:calendar',
 			name: task.name,
-			status: task.status === 'completed' ? getRelativeTime(task.date_completed) : '',
+			status: task.status === 'completed' ? task.date_completed && getRelativeTime(task.date_completed) : '',
 			date: task.due_date,
 		};
 	});
@@ -73,7 +75,7 @@ const milestones = computed(() => {
 		</UCard>
 		<section class="px-4 py-3 mt-8 space-y-4">
 			<TypographyHeadline content="Description" size="xs" />
-			<TypographyProse :content="project.description" />
+			<TypographyProse v-if="project?.description" :content="project?.description" />
 		</section>
 		<UCard class="mt-8">
 			<!-- Project Team -->
@@ -84,17 +86,17 @@ const milestones = computed(() => {
 					<p class="text-sm font-bold">{{ /* @TODO */ 'Company Name' }}</p>
 
 					<VLabel label="Project Owner" />
-					<VAvatar :author="project.owner" size="sm" />
+					<VAvatar :author="project?.owner" size="sm" />
 				</div>
 				<div class="p-4 space-y-4">
-					<img v-if="project.organization.logo" :src="fileUrl(project.organization.logo)" class="h-6" />
-					<p class="text-sm font-bold">{{ project.organization.name }}</p>
+					<img v-if="project?.organization?.logo" :src="fileUrl(project?.organization?.logo as string)" class="h-6" />
+					<p class="text-sm font-bold">{{ project?.organization?.name }}</p>
 
 					<VLabel label="Contacts" />
 					<UserBadge
-						v-for="contact in project.contacts"
+						v-for="contact in project?.contacts"
 						:key="contact.contacts_id?.id"
-						:author="contact.contacts_id"
+						:user="contact.contacts_id"
 						size="sm"
 					/>
 				</div>

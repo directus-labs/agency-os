@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// const folderId = '27fe9681-9b11-4969-91c8-765e916894f6';
 const { path, params } = useRoute();
 
 const {

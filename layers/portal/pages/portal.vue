@@ -1,5 +1,6 @@
 <script setup>
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue';
+
 definePageMeta({
 	layout: 'blank',
 });
@@ -54,9 +55,9 @@ const mobileMenuOpen = ref(false);
 
 <template>
 	<div class="flex h-full transition duration-150 bg-gray-100 dark:bg-gray-950">
-		<div class="p-3">
+		<div class="hidden p-3 md:block">
 			<!-- Narrow sidebar -->
-			<div class="hidden w-24 h-full bg-gray-900 rounded-lg md:block">
+			<div class="w-24 h-full bg-gray-900 rounded-panel">
 				<div class="flex flex-col items-center w-full h-full py-6">
 					<div class="flex items-center flex-shrink-0">
 						<Logo class="w-20 text-white" alt="Your Company" />
@@ -68,12 +69,12 @@ const mobileMenuOpen = ref(false);
 								v-for="item in sidebarNavigation.top"
 								:key="item.name"
 								:href="item.href ?? undefined"
-								@click="item.click ? item.click() : undefined"
 								:class="[
 									item.current ? 'bg-gray-800 text-white' : 'text-gray-100 hover:bg-gray-800 hover:text-white',
-									'group flex w-full flex-col items-center rounded-md py-3 px-2 text-xs font-bold ',
+									'group flex w-full flex-col items-center rounded-card py-3 px-2 text-xs font-bold ',
 								]"
 								:aria-current="item.current ? 'page' : undefined"
+								@click="item.click ? item.click() : undefined"
 							>
 								<UIcon
 									:name="item.icon"
@@ -83,14 +84,14 @@ const mobileMenuOpen = ref(false);
 								<span class="mt-2">{{ item.name }}</span>
 							</component>
 						</div>
-						<div class="mx-auto">
+						<div class="flex flex-col items-center justify-center w-full px-2 space-y-2">
 							<NuxtLink
 								v-for="item in sidebarNavigation.bottom"
 								:key="item.name"
 								:href="item.href"
 								:class="[
 									item.current ? 'bg-gray-800 text-white' : 'text-gray-100 hover:bg-gray-800 hover:text-white',
-									'group flex w-full flex-col items-center rounded-md p-3 text-xs font-bold ',
+									'group flex w-full flex-col items-center rounded-card py-3 px-2 text-xs font-bold ',
 								]"
 								:aria-current="item.current ? 'page' : undefined"
 							>
@@ -101,15 +102,15 @@ const mobileMenuOpen = ref(false);
 								/>
 								<span class="mt-2">{{ item.name }}</span>
 							</NuxtLink>
-							<DarkModeToggle bg="dark" class="justify-center" />
+							<DarkModeToggle bg="dark" class="" />
 							<!-- Profile dropdown -->
-							<UDropdown class="relative flex justify-center flex-shrink-0" :items="userNavigation">
+							<UDropdown class="relative" :items="userNavigation">
 								<button
-									class="flex text-sm bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+									class="inline-flex text-sm bg-white rounded-card focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
 								>
 									<span class="sr-only">Open user menu</span>
 									<img
-										class="w-12 h-12 rounded-md"
+										class="w-12 h-12 mx-auto rounded-card"
 										src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
 										alt=""
 									/>
@@ -207,7 +208,7 @@ const mobileMenuOpen = ref(false);
 			<NuxtErrorBoundary>
 				<template #error="{ error, clearError }">
 					<VAlert type="error">{{ error }}</VAlert>
-					<button @click="clearError" class="mt-4 text-sm text-gray-500 underline">Try again</button>
+					<button class="mt-4 text-sm text-gray-500 underline" @click="clearError">Try again</button>
 					<p>An error occurred: {{ error }}</p>
 				</template>
 				<div class="w-full max-w-5xl p-4 mx-auto">

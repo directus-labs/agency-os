@@ -99,6 +99,7 @@ const groupedActivity = computed(() => {
 				month: 'long',
 				day: 'numeric',
 			});
+
 			const existing = acc.find((a) => a.date === date);
 
 			if (existing) {
@@ -109,6 +110,7 @@ const groupedActivity = computed(() => {
 					activity: [item],
 				});
 			}
+
 			return acc;
 		}, [])
 		.sort((a, b) => {

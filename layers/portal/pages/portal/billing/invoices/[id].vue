@@ -100,10 +100,10 @@ const billingAddress = computed(() => {
 				</div>
 			</template>
 			<template #actions>
-				<UButton v-if="!isPaid" color="primary" size="xl" @click="handleCheckout(invoice?.id)" :loading="stripeLoading">
+				<UButton v-if="!isPaid" color="primary" size="xl" :loading="stripeLoading" @click="handleCheckout(invoice?.id)">
 					Pay Invoice
 				</UButton>
-				<div v-if="isPaid" class="inline-flex items-center gap-2 px-4 py-2 border rounded-full border-primary">
+				<div v-if="isPaid" class="inline-flex items-center gap-2 px-4 py-2 border rounded-button border-primary">
 					<UIcon name="material-symbols:price-check-rounded" class="w-8 h-8 text-primary" />
 					<VText size="lg" class="font-bold uppercase font-display">Paid</VText>
 				</div>
@@ -111,7 +111,7 @@ const billingAddress = computed(() => {
 		</PortalPageHeader>
 
 		<main
-			class="relative flex flex-col p-8 mt-8 space-y-8 bg-white border rounded-lg dark:bg-gray-900 dark:border-gray-700"
+			class="relative flex flex-col p-8 mt-8 space-y-8 bg-white border rounded-panel dark:bg-gray-900 dark:border-gray-700"
 		>
 			<section class="relative flex flex-col gap-8 md:justify-between md:flex-row">
 				<div id="invoice-details" class="space-y-1">
@@ -169,7 +169,7 @@ const billingAddress = computed(() => {
 						</p>
 					</div>
 					<div>
-						<UserBadge :author="invoice?.contact" size="xs" />
+						<UserBadge :user="invoice?.contact" size="xs" />
 						<p>{{ invoice?.contact.email }}</p>
 						<p>{{ invoice?.contact.phone }}</p>
 					</div>
@@ -194,7 +194,7 @@ const billingAddress = computed(() => {
 			</section>
 
 			<section id="totals" class="md:flex md:justify-end">
-				<div class="w-full px-3 py-3 mt-8 border rounded-lg dark:border-gray-700 lg:mt-0 md:max-w-[300px]">
+				<div class="w-full px-3 py-3 mt-8 border rounded-panel dark:border-gray-700 lg:mt-0 md:max-w-[300px]">
 					<div class="flex items-baseline justify-between py-1">
 						<VText text-color="light">Subtotal</VText>
 						<VText>{{ formatCurrency(invoice?.subtotal) }}</VText>

@@ -35,13 +35,14 @@ function useGreetings() {
 const { getTodaysMessage } = useGreetings();
 </script>
 <template>
-	<img class="w-48 ml-auto mr-0" src="~/assets/illustrations/tokyo-luminous-table-lamp-on-boxes.svg" />
-	<TypographyTitle class="normal-case">{{ greetUser() }} Bryant,</TypographyTitle>
-	<TypographyHeadline :content="getTodaysMessage()" size="xl" />
-	<VDivider class="my-8" />
-
-	<div class="grid gap-6 md:grid-cols-2">
-		<PortalInvoiceWidget />
-		<PortalTaskWidget />
-	</div>
+	<PageContainer>
+		<img class="w-48 ml-auto mr-0" src="~/assets/illustrations/tokyo-luminous-table-lamp-on-boxes.svg" />
+		<TypographyTitle class="normal-case">{{ greetUser() }} Bryant,</TypographyTitle>
+		<TypographyHeadline :content="getTodaysMessage()" size="xl" />
+		<VDivider class="my-8" />
+		<div class="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
+			<PortalInvoiceWidget />
+			<PortalTaskWidget />
+		</div>
+	</PageContainer>
 </template>

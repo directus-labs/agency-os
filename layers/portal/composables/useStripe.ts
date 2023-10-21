@@ -7,6 +7,7 @@ const getStripe = (stripePublishableKey: string) => {
 	if (!stripePromise) {
 		stripePromise = loadStripe(stripePublishableKey);
 	}
+
 	return stripePromise;
 };
 
@@ -20,8 +21,9 @@ export default function useStripe() {
 	const loading = ref<boolean>(false);
 
 	// Create a Checkout Session and redirect to the Checkout page
-	const handleCheckout = async (invoiceId: String) => {
+	const handleCheckout = async (invoiceId: string) => {
 		loading.value = true;
+
 		try {
 			const session = await $fetch('/api/stripe/create-checkout-session', {
 				method: 'POST',
@@ -55,6 +57,7 @@ export default function useStripe() {
 	// Create a Customer Portal session and redirect to the Customer Portal page
 	async function getPortalLink(customerId: string) {
 		loading.value = true;
+
 		try {
 			const portalSession = await $fetch('/api/stripe/create-portal-link', {
 				method: 'POST',
@@ -62,6 +65,7 @@ export default function useStripe() {
 					customerId,
 				},
 			});
+
 			window.location.href = portalSession.url;
 		} catch (error) {
 			toast.add({

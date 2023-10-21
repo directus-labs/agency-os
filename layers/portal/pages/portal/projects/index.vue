@@ -88,6 +88,7 @@ const projectsShown = computed(() => {
 	if (!projects.value) {
 		return [];
 	}
+
 	return projects.value?.map((project) => {
 		return {
 			id: project.id,

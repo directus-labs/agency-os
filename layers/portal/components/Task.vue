@@ -26,6 +26,7 @@ async function fetchTask(id: string) {
 				],
 			}),
 		);
+
 		task.value = data;
 	} catch (error) {
 		throw createError(error);
@@ -165,24 +166,23 @@ const emit = defineEmits(['close']);
 
 			<div>
 				<VLabel label="Description" />
-				<div v-html="task?.description" class="prose dark:prose-invert" />
+				<div class="prose dark:prose-invert" v-html="task?.description" />
 			</div>
 			<div class="space-y-2">
 				<VLabel label="Files" />
-				<div class="grid gap-4 sm:grid-cols-2" v-if="task.files.length > 0">
+				<div v-if="task.files.length > 0" class="grid gap-4 sm:grid-cols-2">
 					<PortalFileCard v-for="file in task.files" :key="file.directus_files_id.id" :file="file.directus_files_id" />
 				</div>
-				<VUpload />
 			</div>
 			<div v-if="task.form">
 				<VLabel label="Form" />
-				<VForm :form="task.form" />
+				<UForm :form="task.form" />
 			</div>
 			<div v-if="task.embed_url">
 				<VLabel label="Embed" />
 				<iframe
 					:src="transformUrlToIframeSrc(task.embed_url)"
-					class="w-full h-[550px] overflow-hidden border border-gray-300 dark:border-gray-700 rounded-xl"
+					class="w-full h-[550px] overflow-hidden border border-gray-300 dark:border-gray-700 rounded-panel"
 				/>
 			</div>
 		</UContainer>

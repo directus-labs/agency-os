@@ -65,6 +65,7 @@ async function fetchConversationMessages(conversationId: string) {
 			},
 		}),
 	);
+
 	messages.value = data;
 }
 
@@ -80,6 +81,7 @@ async function upsertMessage(messageId: string | null = null) {
 		// Create
 		await useDirectus($createItem('messages', message));
 	}
+
 	messages.value.push(message);
 	newMessage.text = '';
 }
@@ -131,7 +133,7 @@ const selectedStatus = ref<string | null>('open');
 							'bg-primary-50 dark:bg-primary-900': selectedConversationId === row.id,
 						}"
 					>
-						<UButton @click="openConversation(row.id)" variant="link">{{ row.title }}</UButton>
+						<UButton variant="link" @click="openConversation(row.id)">{{ row.title }}</UButton>
 					</div>
 				</template>
 				<template #status-data="{ row }">

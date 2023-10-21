@@ -42,10 +42,12 @@ const groups = computed(() => {
 
 			search: async (q: string) => {
 				loading.value = true;
+
 				if (!q || q.length < 3) {
 					loading.value = false;
 					return [];
 				}
+
 				try {
 					const { data } = await $fetch('/api/portal/search', {
 						params: {
@@ -54,6 +56,7 @@ const groups = computed(() => {
 						},
 						headers,
 					});
+
 					return data.map((hit) => {
 						return {
 							id: hit.id,
@@ -84,6 +87,7 @@ function onSelect(option) {
 	} else if (option.href) {
 		navigateTo(option.href);
 	}
+
 	emit('close');
 }
 
@@ -138,8 +142,8 @@ const ui = {
 			ref="commandPaletteRef"
 			:loading="loading"
 			:groups="groups"
-			@update:model-value="onSelect"
 			:ui="ui"
+			@update:model-value="onSelect"
 		/>
 	</div>
 </template>

@@ -109,6 +109,7 @@ export default defineEventHandler(async (event) => {
 	} else {
 		console.log('Unhandled event!');
 	}
+
 	return {
 		received: true,
 	};

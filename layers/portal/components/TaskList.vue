@@ -107,7 +107,7 @@ const tasksShown = computed(() => {
 	<!-- Table -->
 	<UTable :columns="columns" :rows="tasksShown" column-attribute="label">
 		<template #name-data="{ row }">
-			<UButton @click="openTask(row.id)" variant="link" :padded="false">{{ row.name }}</UButton>
+			<UButton variant="link" :padded="false" @click="openTask(row.id)">{{ row.name }}</UButton>
 		</template>
 		<template #due_date-data="{ row }">
 			<p class="font-medium text-gray-900">
@@ -123,10 +123,10 @@ const tasksShown = computed(() => {
 			<UBadge class="capitalize" variant="subtle">{{ row.type }}</UBadge>
 		</template>
 		<template #assigned_to-data="{ row }">
-			<UserBadge v-if="row.assigned_to" :author="row.assigned_to" size="sm" />
+			<UserBadge v-if="row.assigned_to" :user="row.assigned_to" size="sm" />
 		</template>
 		<template #actions-data="{ row }">
-			<UButton @click="openTask(row.id)" icon="i-heroicons-arrow-right" color="primary" size="sm" variant="outline" />
+			<UButton icon="i-heroicons-arrow-right" color="primary" size="sm" variant="outline" @click="openTask(row.id)" />
 		</template>
 	</UTable>
 	<!-- Task Item -->
