@@ -1,6 +1,6 @@
-import type { Config } from 'tailwindcss'
-import defaultTheme from 'tailwindcss/defaultTheme'
-import colors from 'tailwindcss/colors'
+import type { Config } from 'tailwindcss';
+
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: 'class',
@@ -18,11 +18,17 @@ export default {
 	],
 	theme: {
 		extend: {
+			borderRadius: {
+				card: 'var(--border-radius-card)',
+				button: 'var(--border-radius-button)',
+				input: 'var(--border-radius-input)',
+				panel: 'var(--border-radius-panel)',
+			},
 			fontFamily: {
-				sans: ['Inter', ...defaultTheme.fontFamily.sans],
-				display: ['Poppins', ...defaultTheme.fontFamily.serif],
-				mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
-				signature: ['Nothing You Could Do', 'cursive', 'sans-serif'],
+				sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+				display: ['var(--font-display)', ...defaultTheme.fontFamily.serif],
+				mono: ['var(--font-mono)', ...defaultTheme.fontFamily.mono],
+				signature: ['var(--font-signature)', 'cursive', 'sans-serif'],
 			},
 			animation: {
 				'fade-in': 'fade-in 0.5s linear forwards',
@@ -30,10 +36,10 @@ export default {
 			keyframes: {
 				'fade-in': {
 					from: {
-						opacity: 0,
+						opacity: '0',
 					},
 					to: {
-						opacity: 1,
+						opacity: '1',
 					},
 				},
 			},
@@ -46,6 +52,6 @@ export default {
 		require('@tailwindcss/forms'),
 		// Formkit Plugin for Tailwind
 		// https://formkit.com/guides/create-a-tailwind-theme
-		require('@formkit/themes/tailwindcss'),
+		// require('@formkit/themes/tailwindcss'),
 	],
 } satisfies Config;
