@@ -6,12 +6,6 @@ html {
 	scroll-margin-top: 4rem;
 }
 
-.visual-effects .mouse-gradient {
-	background: repeating-linear-gradient(to right, #6644ff 0%, #947cff 50%, #ff99dd 100%);
-	filter: blur(100px);
-	opacity: 0.5;
-}
-
 .grain-bg {
 	background-image: url('~~/assets/img/noise.png');
 }
@@ -29,56 +23,4 @@ html {
 .scrollbar-hide {
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
-}
-
-/* Using Tailwind @apply so we can easily re-use these styles for other 'button' based components like NuxtLink or VDropdown or within prose */
-.btn {
-	@apply inline-flex items-center font-bold text-white transition duration-150 rounded-lg hover:scale-105 active:hover:scale-95 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed;
-}
-
-.btn-xs {
-	@apply px-3 py-1 text-xs;
-}
-
-.btn-sm {
-	@apply px-4 py-2 text-sm;
-}
-
-.btn-md {
-	@apply px-5 py-3 text-base;
-}
-
-.btn-lg {
-	@apply px-6 py-3 text-lg;
-}
-
-.btn-xl {
-	@apply px-8 py-4 text-lg;
-}
-
-.btn-default {
-	@apply text-gray-800 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300;
-}
-.btn-primary {
-	@apply text-white dark:text-gray-900 bg-gray-800 hover:bg-gray-900 dark:bg-primary dark:hover:bg-opacity-90;
-}
-.btn-outline {
-	@apply text-gray-900 bg-transparent border-2 border-gray-900 hover:border-primary hover:text-primary dark:text-primary dark:hover:text-white focus:ring-primary dark:border-primary dark:hover:border-white;
-}
-.btn-danger {
-	@apply text-white bg-red-600 hover:bg-red-700 focus:ring-red-500;
-}
-
-.input {
-	@apply block w-full dark:bg-gray-800 dark:text-white text-lg md:text-base border-gray-300 dark:border-gray-700  shadow-sm focus:ring-primary focus:border-primary placeholder:text-gray-400 dark:placeholder:text-gray-600;
-}
-
-.bg-checkerboard {
-	background: #eee
-		url('data:image/svg+xml,\
-   <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" fill-opacity=".10" >\
-            <rect x="200" width="200" height="200" />\
-            <rect y="200" width="200" height="200" />\
-            </svg>');
-	background-size: 30px 30px;
 }
