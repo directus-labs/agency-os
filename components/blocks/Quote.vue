@@ -36,7 +36,7 @@ defineProps<{
 			<p v-if="data.title" class="text-primary">
 				{{ data.title }}
 			</p>
-			<p class="dark:text-white" v-if="data.subtitle">{{ data.subtitle }}</p>
+			<p v-if="data.subtitle" class="dark:text-white">{{ data.subtitle }}</p>
 		</div>
 	</BlockContainer>
 </template>

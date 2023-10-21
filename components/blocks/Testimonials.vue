@@ -24,6 +24,7 @@ function handleScroll(e) {
 	const scrollLeft = e.target.scrollLeft;
 	const scrollCenter = scrollLeft + testimonialCenter;
 	const closestTestimonial = Math.round(scrollCenter / testimonialWidth);
+
 	// If the scoll postiion is at the beginning of the container, set the current item to the first item
 	// If the scoll postiion is at the end of the container, set the current item to the last item
 	if (scrollLeft === 0) {
@@ -74,30 +75,30 @@ function handleNavButton(direction: ['left', 'right']) {
 								'bg-gray-500 bg-opacity-50 dark:bg-gray-900 ': itemIdx !== currentItemIdx,
 							},
 						]"
+						class="flex items-center justify-center w-12 h-3 rounded-button hover:opacity-75 disabled:opacity-50 disabled:cursor-not-allowed"
 						@click="handleIndicatorButton(itemIdx)"
-						class="flex items-center justify-center w-12 h-3 rounded hover:opacity-75 disabled:opacity-50 disabled:cursor-not-allowed"
 					/>
 				</div>
 				<div class="flex gap-2 justify-self-end">
 					<UButton
 						:disabled="currentItemIdx === 0"
-						@click="handleNavButton('left')"
 						icon="material-symbols:arrow-back-rounded"
 						size="lg"
 						square
+						@click="handleNavButton('left')"
 					/>
 					<UButton
 						:disabled="currentItemIdx === testimonials.length - 1"
-						@click="handleNavButton('right')"
 						icon="material-symbols:arrow-forward-rounded"
 						size="lg"
 						square
+						@click="handleNavButton('right')"
 					/>
 				</div>
 			</div>
 			<div
-				class="flex w-full px-4 py-6 space-x-6 overflow-x-auto md:px-6 lg:px-16 scrollbar-hide md:pt-8 snap-x scroll-smooth"
 				ref="testimonialContainer"
+				class="flex w-full px-4 py-6 space-x-6 overflow-x-auto md:px-6 lg:px-16 scrollbar-hide md:pt-8 snap-x scroll-smooth"
 				@scroll="handleScrollDebounced"
 			>
 				<div
@@ -105,7 +106,7 @@ function handleNavButton(direction: ['left', 'right']) {
 					:key="testimonial.id"
 					ref="testimonialRefs"
 					:class="['snap-center']"
-					class="relative w-[350px] md:w[450px] lg:w-[600px] flex flex-col justify-between flex-shrink-0 p-8 bg-white dark:bg-gray-900 shadow-md rounded-xl overflow-hidden"
+					class="relative w-[350px] md:w[450px] lg:w-[600px] flex flex-col justify-between flex-shrink-0 p-8 bg-white dark:bg-gray-900 shadow-md rounded-card overflow-hidden"
 				>
 					<UIcon
 						name="material-symbols:format-quote-rounded"
@@ -115,14 +116,14 @@ function handleNavButton(direction: ['left', 'right']) {
 					<div class="flex pt-6 mt-4 space-x-2 border-t border-gray-300 dark:border-gray-700">
 						<NuxtImg
 							v-if="testimonial.image"
-							class="inline-block w-16 h-16 border rounded-full"
+							class="inline-block w-16 h-16 border rounded-button"
 							:src="testimonial.image.id"
 							:alt="testimonial.title ?? ''"
 						/>
 						<UIcon
 							v-else
 							name="material-symbols:account-circle"
-							class="inline-block w-16 h-16 text-gray-300 border rounded-full"
+							class="inline-block w-16 h-16 text-gray-300 border rounded-button"
 						/>
 
 						<div class="relative">

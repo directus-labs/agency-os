@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import type { BlockStep } from '~/types/';
+import type { BlockStep, BlockStepItem } from '~/types/';
 
-defineProps<{
+const props = defineProps<{
 	data: BlockStep;
 }>();
+
+const steps = computed(() => {
+	if (!unref(props.data?.steps)) return [];
+	return unref(props.data)?.steps as BlockStepItem[];
+});
 </script>
 <template>
 	<BlockContainer>
 		<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
 		<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
 		<div class="mt-8">
-			<template v-for="(step, stepIdx) in data.steps" :key="stepIdx">
+			<template v-for="(step, stepIdx) in steps" :key="stepIdx">
 				<div
 					v-motion
 					:initial="{
@@ -36,11 +41,11 @@ defineProps<{
 							'md:flex-row': isEven(stepIdx) && !data.alternate_image_position,
 							'md:flex-row-reverse md:space-x-reverse': !isEven(stepIdx) && data.alternate_image_position,
 						},
-						'relative p-6 md:flex md:space-x-8 ring-primary/50 ring-1 rounded-xl',
+						'relative p-6 md:flex md:space-x-8 ring-primary/50 ring-1 rounded-panel',
 					]"
 				>
-					<div v-if="step.image" class="flex-shrink-0 dark:bg-white dark:brightness-90 rounded-xl">
-						<NuxtImg class="object-cover w-full h-32 rounded-lg md:w-48 md:h-full" alt="" :src="step.image" />
+					<div v-if="step.image" class="flex-shrink-0 dark:bg-white dark:brightness-90 rounded-panel">
+						<NuxtImg class="object-cover w-full h-32 rounded-card md:w-48 md:h-full" alt="" :src="step.image" />
 					</div>
 
 					<div class="w-full mt-4 text-left md:mt-0">
@@ -50,7 +55,7 @@ defineProps<{
 					</div>
 				</div>
 				<svg
-					v-if="stepIdx !== data.steps.length - 1"
+					v-if="stepIdx !== steps.length - 1"
 					class="h-16 m-0 mx-auto stroke-current text-primary md:h-20 steps-animation"
 					viewBox="0 0 60 200"
 				>

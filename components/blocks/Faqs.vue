@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import type { BlockFaq, BlockFaqQuestion } from '~/types';
 
-const { theme } = useAppConfig();
-
 const props = defineProps<{
 	data: BlockFaq;
 }>();
@@ -37,13 +35,13 @@ function loadMore() {
 			<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
 			<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
 			<div class="pt-6 mt-6">
-				<UAccordion v-if="faqs" :items="faqs" :ui="{ wrapper: 'space-y-2' }" v-auto-animate>
+				<UAccordion v-if="faqs" v-auto-animate :items="faqs" :ui="{ wrapper: 'space-y-2' }">
 					<template #default="{ item, index, open }">
 						<button
 							:key="index"
 							:class="[
 								open ? 'bg-primary/20' : 'bg-gray-100 dark:bg-gray-800',
-								`rounded-${theme.borderRadius}`,
+								`rounded-card`,
 								'relative px-6 py-4   0',
 							]"
 							class="flex items-center justify-between w-full text-left text-gray-400 transition duration-150 focus:outline-none focus:text-gray-900 dark:focus:text-primary"
@@ -66,8 +64,8 @@ function loadMore() {
 							</span>
 						</button>
 					</template>
-					<template #item="{ item, index, open }">
-						<div class="relative px-6 pt-2 pb-6" v-show="open">
+					<template #item="{ item, open }">
+						<div v-show="open" class="relative px-6 pt-2 pb-6">
 							<div class="prose text-left dark:prose-invert">
 								{{ item.content }}
 							</div>

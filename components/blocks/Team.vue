@@ -1,27 +1,12 @@
 <script setup lang="ts">
+import type { BlockTeam, Team } from '~/types';
 import { useIntersectionObserver, useResizeObserver } from '@vueuse/core';
 
-export interface TeamBlockProps {
-	id: string;
-	headline?: string;
-	title?: string;
-	content?: string;
-}
-
 defineProps<{
-	data: TeamBlockProps;
+	data: BlockTeam;
 }>();
 
-const { fileUrl } = useFiles();
-
-// Get the params from the Nuxt route
-const { params, path } = useRoute();
-
-const {
-	data: team,
-	pending,
-	error,
-} = await useAsyncData(
+const { data: team }: { data: Ref<Team[]> } = await useAsyncData(
 	'team',
 	() => {
 		return useDirectus(readItems('team', {}));
@@ -31,23 +16,25 @@ const {
 	},
 );
 
-const teamMembers = ref(team.value);
-
 function splitArray(array: any[], numParts: number = 2) {
-	let result = [];
+	let result = [] as any[];
+
 	for (let i = 0; i < array.length; i++) {
 		let index = i % numParts;
+
 		if (!result[index]) {
 			result[index] = [];
 		}
+
 		result[index].push(array[i]);
 	}
+
 	return result;
 }
 
 const teamToDisplay = computed(() => {
 	// Split the array into two arrays
-	const teamMembersSplit = splitArray(team.value, 2);
+	const teamMembersSplit = splitArray(unref(team), 2);
 
 	// Return the two arrays as an object
 	return {
@@ -64,8 +51,8 @@ function animationDelay() {
 
 const target = ref(null);
 const isVisible = ref(false);
-const leftCol = ref(null);
-const rightCol = ref(null);
+const leftCol: Ref<HTMLElement | null> = ref(null);
+const rightCol: Ref<HTMLElement | null> = ref(null);
 const colHeight = ref(0);
 const leftColHeight = ref(0);
 const rightColHeight = ref(0);
@@ -81,7 +68,8 @@ const { stop } = useIntersectionObserver(
 );
 
 useResizeObserver(leftCol, (entries) => {
-	colHeight.value = entries[0].target.offsetHeight;
+	if (!entries[0]) return;
+	colHeight.value = (entries[0].target as HTMLElement).offsetHeight;
 });
 
 const duration = computed(() => {
@@ -101,8 +89,8 @@ const duration = computed(() => {
 
 				<!-- Team -->
 				<div
-					class="w-full relative grid h-[49rem] max-h-[60vh] grid-cols-1 items-start gap-8 overflow-hidden px-4 md:grid-cols-2 border-t-4 border-t-primary border-b-4 border-b-gray-500 mt-8 lg:mt-0"
 					ref="target"
+					class="w-full relative grid h-[49rem] max-h-[60vh] grid-cols-1 items-start gap-8 overflow-hidden px-4 md:grid-cols-2 border-t-4 border-t-primary border-b-4 border-b-gray-500 mt-8 lg:mt-0"
 				>
 					<!-- <div class="absolute top-0 z-10 w-full h-16 bg-gradient-to-b from-white to-transparent dark:from-gray-800" /> -->
 					<!-- <div
@@ -111,29 +99,29 @@ const duration = computed(() => {
 
 					<!-- Left Col -->
 					<div
+						ref="leftCol"
 						:class="[{ 'animate-marquee': isVisible }, 'space-y-10 py-4 -mt-10 md:max-w-[320px] ']"
 						:style="{
 							'--marquee-duration': duration,
 						}"
-						ref="leftCol"
 					>
-						<TeamCard v-for="(person, personIdx) in teamToDisplay.left" :key="person.id" :person="person" />
+						<TeamCard v-for="person in teamToDisplay.left" :key="person.id" :person="person" />
 					</div>
 					<!-- Right Col -->
 					<div
+						ref="rightCol"
 						:class="[{ 'animate-marquee': isVisible }, 'space-y-10 py-4 md:max-w-[320px]']"
 						:style="{
 							'--marquee-duration': duration,
 						}"
-						ref="rightCol"
 					>
 						>
 						<TeamCard
+							v-for="person in teamToDisplay.right"
+							:key="person.id"
 							:style="{
 								animationDelay: animationDelay(),
 							}"
-							v-for="person in teamToDisplay.right"
-							:key="person.id"
 							:person="person"
 						/>
 					</div>

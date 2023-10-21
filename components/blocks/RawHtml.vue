@@ -3,6 +3,7 @@ export interface RawHtmlBlockProps {
 	id: string;
 	raw_html: string;
 }
+
 defineProps<{
 	data: RawHtmlBlockProps;
 }>();
