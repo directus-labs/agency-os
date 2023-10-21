@@ -14,6 +14,7 @@ export function getPrimaryBillingAddress(organization: Organization): Organizati
 		if (typeof address === 'string') {
 			continue;
 		}
+
 		if (address.is_primary_billing) {
 			return address;
 		}

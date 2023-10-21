@@ -8,6 +8,7 @@ export const formatFonts = (families: FontFamilies, defaultWeights: number[] = [
 	for (const font in families) {
 		const formattedFont = font.replace(/ /g, '+'); // Replace spaces with '+'
 		const weights = families[font];
+
 		if (weights === true) {
 			for (const weight of defaultWeights) {
 				formatted.push(`${formattedFont}:${weight}`);

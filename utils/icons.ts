@@ -51,6 +51,12 @@ export const fileIconMap: Record<FileType, string> = {
 	'application/vnd.openxmlformats-officedocument.presentationml.presentation': 'material-symbols:slides',
 };
 
-export function getFileIcon(filetype: FileType) {
-	return fileIconMap[filetype] || 'material-symbols:attachment';
+export function getFileIcon(filetype: FileType | string | null | undefined) {
+	if (!filetype) return 'material-symbols:attachment';
+
+	if (typeof filetype === 'string' && !(filetype in fileIconMap)) {
+		return 'material-symbols:attachment';
+	}
+
+	return fileIconMap[filetype as FileType];
 }

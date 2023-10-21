@@ -30,7 +30,7 @@ export function mapConditions(conditions: Condition[]) {
 	// Both $el and $cmp schema nodes can leverage an if property that roughly equates to a v-if in Vue. If the expression assigned to the if property is truthy, the node is rendered, otherwise it is not:
 }
 
-export function transformSchema(schema: Array<{}>) {
+export function transformSchema(schema: Array<object>) {
 	// Loop through the form schema from Directus
 	// This is required for FormKit to work
 	const items = unref(schema);
@@ -69,6 +69,7 @@ export function transformSchema(schema: Array<{}>) {
 			default:
 				cmpSchema.props.outerClass = 'md:col-span-6';
 		}
+
 		return cmpSchema;
 	});
 }

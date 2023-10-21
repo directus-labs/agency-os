@@ -49,8 +49,10 @@ function getFriendlyDate(dateString: string, { monthAbbr } = {}): string {
 	const d = new Date(dateString);
 	const year = d.getFullYear();
 	const date = d.getDate();
+
 	const dateSuffix = (date: number): string => {
 		if (date > 3 && date < 21) return 'th';
+
 		switch (date % 10) {
 			case 1:
 				return 'st';
@@ -62,6 +64,7 @@ function getFriendlyDate(dateString: string, { monthAbbr } = {}): string {
 				return 'th';
 		}
 	};
+
 	const monthIndex = d.getMonth();
 
 	const monthName = monthAbbr ? monthsAbbr[monthIndex] : months[monthIndex];
