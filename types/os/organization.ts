@@ -10,7 +10,7 @@ export interface Organization {
 	date_updated?: string | null;
 	name?: string | null;
 	website?: string | null;
-	logo?: (string | File) | null;
+	logo?: string | File | null;
 	brand_color?: string | null;
 	organization_notes?: string | null;
 	/** Company email address (sales@company.com) */

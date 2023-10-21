@@ -4,11 +4,11 @@ export interface BlockLogocloud {
 	headline?: string | null;
 	id?: string;
 	title?: string | null;
-	logos?: (number | BlockLogocloudFile)[];
+	logos?: (string | BlockLogocloudFile)[];
 }
 export interface BlockLogocloudFile {
-	block_logocloud_id?: (string | BlockLogocloud) | null;
-	file?: (string | File) | null;
-	id?: number;
+	id?: string;
 	sort?: number | null;
+	block_logocloud_id?: (string | BlockLogocloud) | null;
+	directus_files_id?: (string | File) | null;
 }

@@ -19,16 +19,16 @@ import type {
 } from '../blocks';
 
 export interface Page {
+	id?: string;
+	permalink: string;
 	date_created?: string | null;
 	date_updated?: string | null;
-	id?: string;
 	seo?: (string | SEO) | null;
-	permalink?: string | null;
 	sort?: number | null;
 	status?: string;
 	title?: string | null;
-	user_created?: string | null;
-	user_updated?: string | null;
+	user_created?: (string | User) | null;
+	user_updated?: (string | User) | null;
 	blocks?: (number | PageBlock)[];
 }
 

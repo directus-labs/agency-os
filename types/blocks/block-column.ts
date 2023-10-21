@@ -11,7 +11,7 @@ export interface BlockColumnRow {
 	block_columns?: (string | BlockColumn) | null;
 	content?: string | null;
 	headline?: string | null;
-	id?: number;
+	id?: string;
 	image?: (string | File) | null;
 	image_position?: string | null;
 	title?: string | null;

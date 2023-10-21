@@ -1,4 +1,4 @@
-import type { File, User } from '../system';
+import type { User } from '../system';
 import type { Form } from '../content';
 
 export interface HelpArticle {
