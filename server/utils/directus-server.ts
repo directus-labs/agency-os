@@ -10,6 +10,7 @@ import {
 	updateItem,
 	updateItems,
 	staticToken,
+	withToken,
 } from '@directus/sdk';
 import type { Schema } from '~/types/schema';
 
@@ -20,4 +21,15 @@ const directus = createDirectus<Schema>(directusUrl)
 	.with(rest())
 	.with(staticToken(config.public.directusToken as string));
 
-export { directus, readItem, readItems, readSingleton, aggregate, createItem, createItems, updateItem, updateItems };
+export {
+	directus,
+	readItem,
+	readItems,
+	readSingleton,
+	aggregate,
+	createItem,
+	createItems,
+	updateItem,
+	updateItems,
+	withToken,
+};

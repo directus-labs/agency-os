@@ -19,9 +19,11 @@ function mapEntity({
 	if (urlPattern.includes(':slug')) {
 		urlPattern = urlPattern.replace(':slug', entity.slug);
 	}
+
 	if (urlPattern.includes(':id')) {
 		urlPattern = urlPattern.replace(':id', entity.id);
 	}
+
 	return {
 		title,
 		type,
