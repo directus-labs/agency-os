@@ -12,7 +12,7 @@ const {
 	pending,
 	error,
 } = await useAsyncData(
-	'posts',
+	'help-collections-index',
 	() => {
 		return useDirectus(
 			readItems('help_collections', {
@@ -35,7 +35,7 @@ const {
 			v-for="collection in collections"
 			:key="collection.id"
 			:href="`${baseUrl}/help/collections/${collection.slug}`"
-			class="flex overflow-hidden no-underline transition duration-200 bg-white border dark:bg-gray-800 hover:border-primary dark:border-gray-700 rounded-xl dark:hover:border-primary"
+			class="flex overflow-hidden no-underline transition duration-200 bg-white border dark:bg-gray-800 hover:border-primary dark:border-gray-700 rounded-card dark:hover:border-primary"
 		>
 			<div class="flex flex-col p-5 sm:p-6">
 				<div class="flex items-center">

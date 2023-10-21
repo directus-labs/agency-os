@@ -5,7 +5,6 @@ export interface HelpCollectionsDetailProps {
 
 const props = defineProps<HelpCollectionsDetailProps>();
 
-import { convertIconName } from '~~/utils/strings';
 const { params, path } = useRoute();
 
 const {
@@ -37,26 +36,26 @@ const {
 			<div>
 				<div class="mb-5">
 					<Icon
-						v-if="collection.icon"
-						:name="convertIconName(collection.icon)"
+						v-if="collection?.icon"
+						:name="convertIconName(collection?.icon)"
 						class="h-9 w-9 sm:h-10 sm:w-10 text-primary"
 					></Icon>
 				</div>
 				<div class="flex flex-col">
-					<TypographyHeadline :content="collection.title" />
+					<TypographyHeadline :content="collection?.title" />
 
 					<div class="text-gray-500 text-md">
-						<p>{{ collection.description }}</p>
+						<p>{{ collection?.description }}</p>
 					</div>
 				</div>
-				<div class="mt-5 text-gray-500">{{ collection.articles.length }} articles</div>
+				<div class="mt-5 text-gray-500">{{ collection?.articles.length }} articles</div>
 			</div>
-			<div class="flex flex-col gap-5 p-2 border-2 dark:border-gray-600 rounded-xl">
-				<UCard
-					v-for="article in collection.articles"
+			<div class="flex flex-col gap-5 p-2 border-2 dark:border-gray-600 rounded-card">
+				<NuxtLink
+					v-for="article in collection?.articles"
 					:key="article.id"
-					:href="`${baseUrl}/help/articles/${article.slug}`"
-					class="flex flex-col p-3 transition duration-150 rounded-lg hover:bg-primary/10 dark:hover:bg-gray-900"
+					:to="`${baseUrl}/help/articles/${article.slug}`"
+					class="flex flex-col p-3 transition duration-150 rounded-card hover:bg-primary/10 dark:hover:bg-gray-900"
 				>
 					<div class="flex items-center justify-between">
 						<div>
@@ -67,7 +66,7 @@ const {
 						</div>
 						<Icon name="heroicons:arrow-right" class="w-6 h-6 dark:text-gray-300" />
 					</div>
-				</UCard>
+				</NuxtLink>
 			</div>
 		</div>
 	</section>

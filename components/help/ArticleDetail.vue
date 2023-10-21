@@ -1,20 +1,20 @@
 <script setup lang="ts">
 export interface HelpCollectionsProps {
-	baseUrl: string;
+	baseUrl?: string;
 }
 
 const props = defineProps<HelpCollectionsProps>();
 
 import { markdownToHtml } from '~~/utils/markdown';
-const { params } = useRoute();
-// Fetch the page data from the Directus API using the Nuxt useAsyncData composable
-// https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
+
+const { path, params } = useRoute();
+
 const {
 	data: article,
 	pending,
 	error,
 } = await useAsyncData(
-	params.slug,
+	path as string,
 	() => {
 		return useDirectus(
 			readItems('help_articles', {
@@ -25,12 +25,10 @@ const {
 				},
 				fields: [
 					'*',
-					'help_collection.slug',
-					'help_collection.title',
-					'help_collection.id',
-					'owner.first_name',
-					'owner.last_name',
-					'owner.avatar',
+					{
+						help_collection: ['slug', 'title', 'id'],
+						owner: ['first_name', 'last_name', 'avatar'],
+					},
 				],
 			}),
 		);
@@ -43,22 +41,23 @@ const {
 <template>
 	<div class="">
 		<div class="flex flex-col">
-			<TypographyHeadline v-if="article.title" :content="article.title" />
+			<TypographyHeadline v-if="article?.title" :content="article?.title" />
 
-			<p v-if="article.summary" class="">
-				{{ article.summary }}
+			<p v-if="article?.summary" class="">
+				{{ article?.summary }}
 			</p>
 		</div>
 
-		<VAvatar v-if="article.owner" :author="article.owner" />
+		<UserBadge v-if="article?.owner" :user="article?.owner" />
 
 		<div class="flex-col">
 			<article>
-				<TypographyProse v-if="article.content" :content="markdownToHtml(article.content)" />
+				<TypographyProse v-if="article?.content" :content="markdownToHtml(article?.content)" />
 			</article>
 		</div>
+
 		<hr class="mt-12 dark:border-gray-700" />
-		<!-- Feedback Widget -->
-		<HelpFeedback class="mt-4" :title="article.title" :url="`/help/articles/${article.slug}`" />
+
+		<HelpFeedback class="mt-4" :title="article?.title" :url="`/help/articles/${article?.slug}`" />
 	</div>
 </template>
