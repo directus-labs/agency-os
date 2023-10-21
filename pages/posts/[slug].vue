@@ -1,12 +1,15 @@
 <script setup lang="ts">
 const { fileUrl } = useFiles();
+const { globals } = useAppConfig();
 const { params, path } = useRoute();
 
-const {
-	data: page,
-	pending,
-	error,
-} = await useAsyncData(
+const componentMap = {
+	blog: resolveComponent('PostBlog'),
+	project: resolveComponent('PostProject'),
+	video: resolveComponent('PostVideo'),
+};
+
+const { data: page } = await useAsyncData(
 	path,
 	() => {
 		return useDirectus(
@@ -20,7 +23,13 @@ const {
 					'content',
 					'date_published',
 					'image',
+					'type',
+					'client',
+					'cost',
+					'built_with',
+					'video_url',
 					{
+						gallery: [{ directus_files_id: ['id', 'title', 'description'] }],
 						author: ['name', 'job_title', 'image'],
 						category: ['title', 'slug', 'color'],
 						seo: ['meta_description', 'og_title', 'og_image'],
@@ -34,102 +43,63 @@ const {
 	},
 );
 
-useHead({
-	title: () => page.value.title,
+// Compute metadata here to make it easier to populate all the different SEO tags
+const metadata = computed(() => {
+	const pageData = unref(page);
+	return {
+		title: pageData?.seo?.title ?? pageData?.title ?? undefined,
+		description: pageData?.seo?.meta_description ?? pageData?.summary ?? undefined,
+		image: pageData?.image ? fileUrl(pageData?.image) : undefined,
+		authorImage: pageData?.author?.image ? fileUrl(pageData?.author?.image) : undefined,
+		authorName: pageData?.author?.name ?? undefined,
+	};
 });
 
-useSeoMeta({
-	title: () => page.value.title,
-	description: () => page.value.summary,
-	ogDescription: () => (page.value.seo ? page.value.seo.meta_description : null),
-	ogUrl: () => `https://directus.io/posts/${page.value.slug}`,
-	ogTitle: () => (page.value.seo ? page.value.seo.og_title : null),
-	ogImage: () => (page.value.seo ? fileUrl(page.value.seo.og_image) : null),
-	twitterTitle: '[twitter:title]',
-	twitterDescription: '[twitter:description]',
-	twitterImage: '[twitter:image]',
-	twitterCard: 'summary',
+// Dynamic OG Images
+defineOgImage({
+	title: unref(metadata)?.title,
+	summary: unref(metadata)?.description,
+	imageUrl: unref(metadata)?.image,
+	authorName: unref(metadata)?.authorName,
+	authorImage: unref(metadata)?.authorImage,
+	badgeColor: unref(page)?.category?.color ?? undefined,
+	badgeLabel: unref(page)?.category?.title ?? undefined,
+});
+
+// JSON-LD
+useSchemaOrg([
+	defineArticle({
+		headline: unref(metadata)?.title,
+		description: unref(metadata)?.description,
+		image: unref(metadata)?.image,
+		datePublished: unref(page)?.date_published ?? undefined,
+		author: [
+			{
+				name: unref(metadata)?.authorName,
+				url: unref(page)?.author?.slug ? `https://directus.io/team/${unref(page)?.author?.slug}` : undefined,
+				image: unref(metadata)?.authorImage,
+			},
+		],
+	}),
+]);
+
+// Page Title
+useHead({
+	title: () => unref(metadata)?.title,
+});
+
+// SEO Meta
+useServerSeoMeta({
+	title: () => unref(metadata)?.title,
+	description: () => unref(metadata)?.description,
+	ogTitle: () => unref(metadata)?.title,
+	ogDescription: () => unref(metadata)?.description,
 });
 </script>
 
 <template>
-	<BlockContainer>
-		<header>
-			<div class="md:flex">
-				<!-- Post Image -->
-				<div class="relative w-full max-w-3xl">
-					<div
-						class="relative w-full mx-auto rounded-xl overflow-hidden bg-cover h-[300px] md:h-[450px] dark:outline-gray-800"
-					>
-						<NuxtImg :src="page.image" class="object-cover w-full h-full saturate-0 dark:brightness-90" alt="" />
-						<div class="absolute inset-0 mix-blend-multiply bg-gradient-to-b from-gray-100 to-gray-900" />
-					</div>
-				</div>
-
-				<!-- Post Meta -->
-				<div class="hidden p-8 mt-12 space-y-6 md:block">
-					<NuxtLink
-						v-if="page.category"
-						:href="`/posts/categories/${page.category.slug}`"
-						class="inline-block hover:opacity-90"
-					>
-						<VBadge size="lg" :color="page.category.color">{{ page.category.title }}</VBadge>
-					</NuxtLink>
-					<Author v-if="page.author" v-bind="page.author" />
-					<div class="space-y-2">
-						<p class="flex text-gray-500 dark:text-gray-300">
-							<UIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
-							{{ calculateReadTime(page.content) }}
-						</p>
-						<p class="flex text-gray-500 dark:text-gray-300">
-							<UIcon name="material-symbols:calendar-today-rounded" class="w-6 h-6 mr-2" />
-							{{ getRelativeTime(page.date_published) }}
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Title Container -->
-			<div
-				class="relative w-full max-w-4xl p-2 px-8 py-8 mx-auto -mt-12 overflow-hidden text-gray-900 border md:-mt-32 rounded-xl border-primary md:px-16 md:py-12"
-			>
-				<div
-					class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-primary dark:from-gray-700 dark:via-gray-900 dark:to-primary/50"
-				/>
-				<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
-				<div class="relative">
-					<TypographyHeadline :content="page.title" as="h1" size="lg" />
-					<TypographyProse :content="page.summary" class="mt-2" />
-				</div>
-			</div>
-
-			<div class="block px-6 mt-6 md:hidden">
-				<Author v-if="page.author" v-bind="page.author" />
-				<div class="flex justify-between pb-4 mt-4 border-b dark:border-gray-700">
-					<div class="space-y-2">
-						<p class="flex text-gray-500 dark:text-gray-300">
-							<Icon name="heroicons:clock" class="w-6 h-6 mr-2" />
-							{{ calculateReadTime(page.content) }}
-						</p>
-						<p class="flex text-gray-500 dark:text-gray-300">
-							<Icon name="heroicons:calendar" class="w-6 h-6 mr-2" />
-							{{ getRelativeTime(page.date_published) }}
-						</p>
-					</div>
-					<NuxtLink
-						v-if="page.category"
-						:href="`/posts/categories/${page.category.slug}`"
-						class="inline-block hover:opacity-90"
-					>
-						<VBadge size="lg" :color="page.category.color">{{ page.category.title }}</VBadge>
-					</NuxtLink>
-				</div>
-			</div>
-		</header>
-
-		<!-- Article -->
-		<main class="w-full max-w-4xl mx-auto mt-12">
-			<TypographyProse :content="page.content" ref="article" />
-		</main>
-	</BlockContainer>
+	<div>
+		<!-- Use the component map to render the correct component based on the type of the post -->
+		<component :is="componentMap[page.type]" :page="page" />
+	</div>
 </template>
