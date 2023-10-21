@@ -1,4 +1,5 @@
 import { formatFonts } from './utils/fonts';
+import { theme } from './theme';
 
 const fontFamilies = {
 	Inter: true,
@@ -25,7 +26,7 @@ export default defineNuxtConfig({
 	css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
 
 	modules: [
-		'@formkit/nuxt', // https://formkit.com/getting-started/installation#with-nuxt
+		// '@formkit/nuxt', // https://formkit.com/getting-started/installation#with-nuxt
 		'@nuxt/devtools', // https://devtools.nuxtjs.org/
 		'@nuxt/image',
 		'@nuxt/ui',
@@ -77,7 +78,7 @@ export default defineNuxtConfig({
 
 	// Google Fonts Configuration - https://google-fonts.nuxtjs.org/
 	googleFonts: {
-		families: fontFamilies,
+		families: theme.googleFonts,
 		display: 'swap',
 		download: true,
 	},
@@ -85,12 +86,10 @@ export default defineNuxtConfig({
 	// OG Image Configuration - https://nuxtseo.com/og-image/getting-started/installation
 	ogImage: {
 		defaults: {
-			component: 'ImageOg',
+			component: 'OgImageTemplate',
 			width: 1200,
 			height: 630,
 		},
-		// We're adjusting the default directory for OG image components because I don't like the standard convention 🤣
-		componentDirs: ['image'],
 		fonts: formatFonts(fontFamilies),
 	},
 
