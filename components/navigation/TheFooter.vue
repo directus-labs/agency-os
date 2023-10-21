@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { NavigationItem } from '~~/types';
 const { globals, theme } = useAppConfig();
 
 const { data: navigation } = await useAsyncData('footerNav', () => {
@@ -53,23 +54,10 @@ const { data: form } = await useAsyncData(
 		transform: (data) => data[0],
 	},
 );
-
-const {
-	public: { tagline, title, social_links },
-} = useRuntimeConfig();
-
-function getUrl(item: object) {
-	return '#';
-	if (item.type === 'page') {
-		return `/${item.page.slug}`;
-	} else {
-		return item.url;
-	}
-}
 </script>
 <template>
 	<footer
-		class="relative px-8 py-8 bg-white md:px-12 md:py-12 dark:bg-gray-900 rounded-xl"
+		class="relative px-8 py-8 bg-white md:px-12 md:py-10 dark:bg-gray-900 rounded-panel"
 		aria-labelledby="footer-heading"
 	>
 		<div class="mx-auto">
@@ -83,7 +71,7 @@ function getUrl(item: object) {
 						{{ tagline }}
 					</p>
 				</div>
-				<div class="flex items-center justify-end w-full space-x-2">
+				<div class="flex items-center justify-end w-full">
 					<DarkModeToggle class="hidden text-gray-600 md:block hover:text-gray-400" />
 				</div>
 			</div>
@@ -92,10 +80,10 @@ function getUrl(item: object) {
 			<nav class="grid gap-8 mt-8 md:grid-cols-2 xl:mt-0 xl:col-span-2">
 				<div class="mt-4">
 					<TypographyTitle>Menu</TypographyTitle>
-					<ul role="list" class="grid grid-flow-col mt-2 md:grid-cols-2">
-						<li v-for="(item, itemIdx) in navigation.items" :key="item.id">
+					<ul role="list" class="grid gap-2 mt-2 md:grid-cols-2">
+						<li v-for="item in navigation?.items as NavigationItem[]" :key="item.id">
 							<NuxtLink
-								:href="getUrl(item)"
+								:href="getNavItemUrl(item)"
 								class="font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-primary"
 							>
 								{{ item.title }}
@@ -104,13 +92,11 @@ function getUrl(item: object) {
 					</ul>
 				</div>
 
-				<div class="relative lg:justify-end md:grid md:grid-cols-1">
-					<div class="relative w-full md:mt-0">
-						<TypographyHeadline :content="`<p>Subscribe to our <em>newsletter</em></p>`" size="sm">
-							Subscribe to our newsletter
-						</TypographyHeadline>
-						<VForm class="mt-4" :form="form" />
-					</div>
+				<div class="relative">
+					<TypographyHeadline :content="`<p>Subscribe to our <em>newsletter</em></p>`" size="sm">
+						Subscribe to our newsletter
+					</TypographyHeadline>
+					<UForm class="mt-4 mb-8" :form="form" />
 				</div>
 			</nav>
 		</div>
@@ -118,7 +104,7 @@ function getUrl(item: object) {
 		<!-- Bottom -->
 		<div class="pt-6 mx-auto border-t dark:border-t-gray-700 max-w-7xl md:flex md:items-center md:justify-between">
 			<div class="flex items-center justify-center space-x-6 md:order-last md:mb-0">
-				<NuxtLink v-for="link in social_links" target="_blank" :href="link.url" class="w-6 h-6 text-white">
+				<NuxtLink v-for="link in globals.social_links" target="_blank" :href="link.url" class="w-6 h-6 text-white">
 					<span class="sr-only">{{ link.service }}</span>
 					<Icon class="w-8 h-8 text-gray-700 dark:text-white hover:opacity-75" :name="`mdi:${link.service}`" />
 				</NuxtLink>

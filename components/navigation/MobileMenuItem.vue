@@ -1,26 +1,28 @@
 <script setup lang="ts">
 const subMenuOpen = ref(false);
+
 const props = defineProps({
 	item: {
 		type: Object,
 		required: true,
 	},
 });
+
 const emit = defineEmits(['close']);
 </script>
 <template>
 	<div v-if="item.children.length > 0">
-		<button @click="subMenuOpen = !subMenuOpen" class="flex items-center px-3 py-2 rounded-md">
+		<button class="flex items-center px-3 py-2 rounded-md" @click="subMenuOpen = !subMenuOpen">
 			<span class="ml-2 text-2xl font-semibold dark:text-white">
 				{{ item.title }}
 			</span>
-			<Icon name="heroicons:plus" v-if="item.children.length > 0" class="w-6 h-6 ml-2 text-primary" />
+			<Icon v-if="item.children.length > 0" name="heroicons:plus" class="w-6 h-6 ml-2 text-primary" />
 		</button>
 		<Motionable
+			v-motion
 			as="div"
 			name="submenu"
 			:show="subMenuOpen"
-			v-motion
 			:initial="{ opacity: 0, x: 400, scale: 0.9 }"
 			:enter="{
 				opacity: 1,
@@ -44,6 +46,7 @@ const emit = defineEmits(['close']);
 				<TypographyTitle class="pb-2 border-b border-b-primary">{{ item.title }}</TypographyTitle>
 				<NuxtLink
 					v-for="child in item.children"
+					:key="child.id"
 					:href="child.url"
 					class="items-center px-3 py-2 rounded-md dark:text-white"
 				>

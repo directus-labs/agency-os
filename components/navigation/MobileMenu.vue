@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const isOpen = ref(false);
 const subMenuOpen = ref(false);
+
 const toggle = () => {
 	isOpen.value = !isOpen.value;
 	subMenuOpen.value = false;
@@ -16,6 +17,7 @@ const props = defineProps({
 });
 
 const route = useRoute();
+
 // Watch route changes and close the menu
 watch(
 	() => route.path,
@@ -41,10 +43,10 @@ watch(
 		<!-- Menu -->
 		<div>
 			<Motionable
+				v-motion
 				as="div"
 				name="menu"
 				:show="isOpen"
-				v-motion
 				:initial="{ opacity: 0, y: 400, scale: 0.9 }"
 				:enter="{
 					opacity: 1,
@@ -83,16 +85,16 @@ watch(
 		</div>
 		<!-- Button -->
 		<button
-			@click="toggle"
 			:class="{
 				'bg-primary': isOpen || !isOpen,
 			}"
 			class="fixed z-50 p-4 text-white transition duration-300 shadow-md md:hidden bottom-4 right-4 bg-primary hover:bg-opacity-75 rounded-xl"
+			@click="toggle"
 		>
 			<div>
 				<span class="sr-only">Close</span>
-				<Icon name="heroicons:bars-3" v-if="!isOpen" class="w-6 h-6" />
-				<Icon name="heroicons:x-mark" v-if="isOpen" class="w-6 h-6" />
+				<Icon v-if="!isOpen" name="heroicons:bars-3" class="w-6 h-6" />
+				<Icon v-if="isOpen" name="heroicons:x-mark" class="w-6 h-6" />
 			</div>
 		</button>
 	</div>
