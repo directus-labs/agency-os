@@ -16,8 +16,8 @@
 		<form class="grid gap-4" @submit.prevent="login">
 			<UFormGroup label="Email" required>
 				<UInput
-					type="email"
 					v-model="credentials.email"
+					type="email"
 					:disabled="loading"
 					size="lg"
 					name="email"

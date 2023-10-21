@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { generateVideoEmbed } from '~~/utils/embed';
+
 interface VideoProps {
 	url: string;
 	title?: string;
@@ -11,8 +12,8 @@ defineProps<VideoProps>();
 
 <template>
 	<iframe
-		class="w-full aspect-video"
 		:id="name"
+		class="w-full aspect-video"
 		loading="lazy"
 		:src="generateVideoEmbed(url)"
 		frameborder="0"

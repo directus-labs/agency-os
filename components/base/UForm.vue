@@ -20,19 +20,23 @@ const schema = transformSchema(props.form.schema);
 const validate = (state: any): FormError[] => {
 	const errors = [];
 	if (!state.email) errors.push({ path: 'email', message: 'Required' });
-	if (!state.password) errors.push({ path: 'password', message: 'Required' });
+
 	return errors;
 };
 
 async function submitForm() {
 	loading.value = true;
+
 	try {
 		await useDirectus(
-			$createItem('inbox', {
+			createItem('inbox', {
 				data: formData,
+				form: props.form.id,
 			}),
 		);
+
 		success.value = true;
+
 		if (props.form.on_success === 'redirect') {
 			return navigateTo(props.form.redirect_url);
 		}
@@ -64,10 +68,12 @@ watch(
 		<!-- <FormKit v-if="!success" type="form" v-model="formData" @submit="submitForm" :submit-label="form.submit_label"> -->
 		<div>
 			<FormCustom
+				v-if="!success"
 				:schema="props.form.schema"
 				:state="formData"
 				:validate="validate"
 				class="grid gap-6 md:grid-cols-6"
+				:on-submit="submitForm"
 			/>
 			<!-- <FormKitSchema :schema="schema" /> -->
 		</div>

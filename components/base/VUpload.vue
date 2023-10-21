@@ -39,6 +39,7 @@ function useDragging() {
 
 	function onDragEnter() {
 		dragCounter++;
+
 		if (dragCounter === 1) {
 			dragging.value = true;
 		}
@@ -46,14 +47,17 @@ function useDragging() {
 
 	function onDragLeave() {
 		dragCounter--;
+
 		if (dragCounter === 0) {
 			dragging.value = false;
 		}
 	}
+
 	function onDrop(event) {
 		dragCounter = 0;
 		dragging.value = false;
 		const fileList = event.dataTransfer.files;
+
 		if (fileList.length > 0) {
 			processUpload(fileList);
 		}
@@ -97,7 +101,7 @@ function useUpload() {
 			// Emit success event
 			emit('success', files.value);
 		} catch (e) {
-			console.log(e);
+			// console.log(e);
 			error.value = e.message;
 		} finally {
 			uploading.value = false;
@@ -107,11 +111,13 @@ function useUpload() {
 	async function uploadFile(file) {
 		try {
 			const form = new FormData();
+
 			if (props.folderId) {
 				form.append('folder', props.folderId);
 			}
+
 			form.append('file', file);
-			const uploadedFile = await useDirectus($uploadFiles(form));
+			const uploadedFile = await useDirectus(uploadFiles(form));
 			return uploadedFile;
 		} catch (e) {
 			throw new Error(e);
@@ -121,6 +127,7 @@ function useUpload() {
 	function checkFileSize(file) {
 		if (props.sizeLimitMb) {
 			const fileSize = file.size / 1000000;
+
 			if (fileSize > props.sizeLimitMb) {
 				throw new Error(`Oops. Your file size is ${fileSize.toFixed(2)}MB, the max is ${props.sizeLimitMb}MB`);
 			}
@@ -129,6 +136,7 @@ function useUpload() {
 
 	function onSelect(event: Event) {
 		const fileList = event.target?.files;
+
 		if (fileList.length > 0) {
 			processUpload(fileList);
 		}
@@ -141,10 +149,6 @@ function useUpload() {
 		<!-- Dropzone -->
 		<div
 			v-if="multiple ? true : files.length === 0"
-			@dragenter.prevent="onDragEnter"
-			@dragover.prevent
-			@dragleave.prevent="onDragLeave"
-			@drop.stop.prevent="onDrop"
 			:class="[
 				'dropzone',
 				{
@@ -156,13 +160,17 @@ function useUpload() {
 					'cursor-not-allowed dark:border-gray-700 dark:text-gray-100 text-gray-500 border-gray-300': uploading,
 				},
 			]"
+			@dragenter.prevent="onDragEnter"
+			@dragover.prevent
+			@dragleave.prevent="onDragLeave"
+			@drop.stop.prevent="onDrop"
 		>
 			<input
 				type="file"
 				class="absolute inset-0 opacity-0 appearance-none cursor-pointer"
-				@change="onSelect"
 				:multiple="multiple"
 				:accept="accept"
+				@change="onSelect"
 			/>
 			<div class="h-full mx-auto text-sm font-medium text-center">
 				<Icon name="heroicons:cloud-arrow-up" class="w-8 h-8 mx-auto mb-2" />
@@ -172,7 +180,7 @@ function useUpload() {
 				<template v-else>
 					<p>Drag and drop files here or click to browse</p>
 				</template>
-				<p class="mt-1 text-xs" v-if="sizeLimitMb">Max File Size: {{ sizeLimitMb }} MB</p>
+				<p v-if="sizeLimitMb" class="mt-1 text-xs">Max File Size: {{ sizeLimitMb }} MB</p>
 			</div>
 
 			<!-- Show spinner while uploading -->

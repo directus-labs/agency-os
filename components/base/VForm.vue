@@ -19,13 +19,16 @@ const schema = transformSchema(props.form.schema);
 
 async function submitForm() {
 	loading.value = true;
+
 	try {
 		await useDirectus(
 			createItem('inbox', {
 				data: formData,
 			}),
 		);
+
 		success.value = true;
+
 		if (props.form.on_success === 'redirect') {
 			return navigateTo(props.form.redirect_url);
 		}
@@ -54,7 +57,7 @@ watch(
 				v-html="form.success_message ?? 'Success! Your form has been submitted.'"
 			/>
 		</div>
-		<FormKit v-if="!success" type="form" v-model="formData" @submit="submitForm" :submit-label="form.submit_label">
+		<FormKit v-if="!success" v-model="formData" type="form" :submit-label="form.submit_label" @submit="submitForm">
 			<div class="grid gap-6 md:grid-cols-6">
 				<FormKitSchema :schema="schema" />
 			</div>

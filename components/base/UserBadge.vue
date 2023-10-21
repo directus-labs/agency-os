@@ -2,7 +2,7 @@
 import type { User } from '~~/types';
 
 export interface AvatarProps {
-	author: Partial<User>;
+	user: Partial<User>;
 	size?: 'sm' | 'md' | 'lg';
 }
 
@@ -15,7 +15,7 @@ const { fileUrl } = useFiles();
 <template>
 	<div class="flex items-center flex-none group dark:text-gray-100">
 		<div class="mr-3">
-			<UAvatar :size="size" :src="author.avatar_url ?? fileUrl(author.avatar)" :alt="userName(author)" />
+			<UAvatar v-if="user.avatar" :size="size" :src="fileUrl(user.avatar as string)" :alt="userName(user)" />
 		</div>
 
 		<div
@@ -28,10 +28,10 @@ const { fileUrl } = useFiles();
 				'font-display font-bold word-spacing-tight',
 			]"
 		>
-			{{ userName(author) }}
+			{{ userName(user) }}
 
 			<span
-				v-if="author.title"
+				v-if="user.title"
 				:class="[
 					{
 						'text-xs': size === 'sm',
@@ -41,7 +41,7 @@ const { fileUrl } = useFiles();
 					'block  font-bold tracking-widest uppercase pt-0.5',
 				]"
 			>
-				{{ author.title }}
+				{{ user.title }}
 			</span>
 		</div>
 	</div>

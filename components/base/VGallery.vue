@@ -45,19 +45,24 @@ function toggleHelp() {
 // Add keyboard navigation
 function onKeydown(e: KeyboardEvent) {
 	if (!isOpen.value) return;
+
 	if (e.key === 'Escape') {
 		toggle();
 	}
+
 	if (e.key === 'ArrowRight') {
 		next();
 	}
+
 	if (e.key === 'ArrowLeft') {
 		prev();
 	}
 }
+
 onMounted(() => {
 	window.addEventListener('keydown', onKeydown);
 });
+
 onUnmounted(() => {
 	window.removeEventListener('keydown', onKeydown);
 });
@@ -68,15 +73,17 @@ onUnmounted(() => {
 		<button
 			v-for="(item, itemIdx) in items"
 			:key="itemIdx"
+			:class="[
+				'block relative w-full mb-6 overflow-hidden border dark:border-gray-700 rounded-card focus:outline-none',
+			]"
 			@click="
 				() => {
 					currentItemIdx = itemIdx;
 					toggle();
 				}
 			"
-			:class="['block relative w-full mb-6 overflow-hidden border dark:border-gray-700 rounded-xl focus:outline-none']"
 		>
-			<div class="relative block w-full overflow-hidden rounded-md group">
+			<div class="relative block w-full overflow-hidden rounded-card group">
 				<NuxtImg
 					:src="item.id"
 					:alt="item.description ?? ''"
@@ -104,20 +111,20 @@ onUnmounted(() => {
 			<div class="relative flex flex-col items-center justify-center w-full h-full max-w-7xl">
 				<!-- Help Button -->
 				<div
-					class="absolute z-50 hidden gap-2 text-white bg-opacity-75 item-center md:flex top-4 left-4"
 					v-auto-animate
+					class="absolute z-50 hidden gap-2 text-white bg-opacity-75 item-center md:flex top-4 left-4"
 				>
 					<div>
 						<UButton
-							@click="toggleHelp"
 							:icon="isHelpOpen ? 'material-symbols:hide' : 'material-symbols:help-outline-rounded'"
 							size="xl"
+							@click="toggleHelp"
 						/>
 					</div>
 
 					<div
 						v-if="isHelpOpen"
-						class="flex items-center px-3 py-1 text-xs bg-gray-900 backdrop-blur-sm rounded-xl gap-x-4"
+						class="flex items-center px-3 py-1 text-xs bg-gray-900 backdrop-blur-sm rounded-button gap-x-4"
 					>
 						<p>
 							Press
@@ -134,15 +141,15 @@ onUnmounted(() => {
 					</div>
 				</div>
 				<!-- Close Button -->
-				<UButton @click="toggle" class="absolute z-50 top-4 right-4" icon="material-symbols:close-rounded" size="xl" />
+				<UButton class="absolute z-50 top-4 right-4" icon="material-symbols:close-rounded" size="xl" @click="toggle" />
 				<div class="flex items-center justify-center w-full h-full">
 					<!-- Nav Buttons -->
-					<UButton @click="prev" class="absolute z-50 left-4" icon="material-symbols:arrow-back-rounded" size="xl" />
+					<UButton class="absolute z-50 left-4" icon="material-symbols:arrow-back-rounded" size="xl" @click="prev" />
 					<UButton
-						@click="next"
 						class="absolute z-50 right-4"
 						icon="material-symbols:arrow-forward-rounded"
 						size="xl"
+						@click="next"
 					/>
 					<!-- Image -->
 					<div class="relative flex flex-col items-center justify-center w-full h-full p-20 mx-auto">
@@ -158,7 +165,7 @@ onUnmounted(() => {
 								v-show="currentItemIdx === itemIdx"
 								:src="item.id"
 								:alt="item.description ?? ''"
-								class="object-contain w-full rounded-xl"
+								class="object-contain w-full rounded-card"
 							/>
 						</template>
 					</div>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { VPerfectSignature } from 'v-perfect-signature';
+
 const colorMode = useColorMode();
 
 const props = defineProps({
@@ -18,6 +19,7 @@ const signatureData = ref(
 
 // Signature Pad Settings
 const signaturePad = ref(null);
+
 const strokeOptions = {
 	size: 8,
 	thinning: 0.75,
@@ -28,12 +30,13 @@ const strokeOptions = {
 const isDrawing = ref(false);
 
 const signatureColor = computed(() => {
-	return colorMode.value === 'light' ? '#ffffff' : '#0f172a';
+	return colorMode.value === 'dark' ? '#ffffff' : '#0f172a';
 });
 
 function startDrawing() {
 	isDrawing.value = true;
 }
+
 function endDrawing() {
 	isDrawing.value = false;
 	//  Convert to a File to standardize across all other form inputs
@@ -45,6 +48,7 @@ function endDrawing() {
 
 function onFileChange(e: Event) {
 	const files = (e.target as HTMLInputElement).files;
+
 	if (files && files.length > 0) {
 		const file = files[0];
 		signatureData.value.image = file;
@@ -86,14 +90,14 @@ watch(
 		<div class="flex justify-between border-b dark:border-gray-700">
 			<div class="flex gap-x-4">
 				<button
-					type="button"
 					v-for="item in options"
 					:key="item"
-					@click="signatureData.type = item"
+					type="button"
 					:class="[
 						signatureData.type === item ? ' border-primary' : 'border-transparent',
 						'border-b-4 pb-2  px-2 capitalize dark:text-white transition duration-150 ease-in-out',
 					]"
+					@click="signatureData.type = item"
 				>
 					{{ item }}
 				</button>
@@ -103,11 +107,11 @@ watch(
 			</div>
 		</div>
 		<!-- Signature area -->
-		<div class="relative w-full" v-auto-animate>
+		<div v-auto-animate class="relative w-full">
 			<template v-if="signatureData.type === 'type'">
 				<input
-					type="text"
 					v-model="signatureData.text"
+					type="text"
 					class="w-full px-4 py-3 text-3xl text-gray-900 border-0 border-b border-gray-300 dark:bg-gray-800 dark:text-white focus:ring-0 focus:border-primary placeholder:text-gray-400 dark:placeholder:text-gray-600 font-signature"
 					placeholder="Type your signature"
 				/>
@@ -122,8 +126,8 @@ watch(
 				</div>
 				<div class="z-10">
 					<VPerfectSignature
-						:stroke-options="strokeOptions"
 						ref="signaturePad"
+						:stroke-options="strokeOptions"
 						height="200px"
 						:pen-color="signatureColor"
 						@on-begin="startDrawing"
@@ -136,10 +140,10 @@ watch(
 					<input
 						class="block w-full text-sm text-gray-900 cursor-pointer dark:text-gray-400 focus:ring-1 focus:ring-primary focus:outline-none"
 						type="file"
-						@change="onFileChange"
 						accept="image/*"
+						@change="onFileChange"
 					/>
-					<p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">
+					<p id="file_input_help" class="mt-1 text-sm text-gray-500 dark:text-gray-300">
 						Accepted: SVG, PNG, JPG or GIF
 					</p>
 				</div>

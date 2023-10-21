@@ -3,6 +3,9 @@ import FormGroup from '#ui/components/forms/FormGroup.vue';
 import Input from '#ui/components/forms/Input.vue';
 import Textarea from '#ui/components/forms/Textarea.vue';
 import Checkbox from '#ui/components/forms/Checkbox.vue';
+import Button from '#ui/components/elements/Button.vue';
+import VUpload from '~/components/base/VUpload.vue';
+import VSignature from '~/components/base/VSignature.vue';
 
 const widthClassMap = {
 	'33': 'md:col-span-2',
@@ -20,6 +23,10 @@ function renderInput(item, name, state) {
 	switch (item.type) {
 		case 'textarea':
 			return h(Textarea, { ...commonProps, placeholder: item.placeholder });
+		case 'file':
+			return h(VUpload, { ...commonProps, placeholder: item.placeholder });
+		case 'signature':
+			return h(VSignature, { ...commonProps, placeholder: item.placeholder });
 		case 'checkbox':
 			return h(Checkbox, commonProps);
 		default:
@@ -40,15 +47,37 @@ export default defineComponent({
 		validate: {
 			type: Function,
 		},
+		onSubmit: {
+			type: Function,
+		},
 	},
 	setup(props) {
 		const groups = props.schema.map((item) => {
-			const { name, label, placeholder, width } = item;
+			const { name, label, placeholder, width, description } = item;
 
 			const cssClass = widthClassMap[item.width] || 'md:col-span-6';
 
-			return h(FormGroup, { name, label, class: cssClass }, () => [renderInput(item, name, props.state)]);
+			return h(FormGroup, { name, label, description, class: cssClass, size: 'lg' }, () => [
+				renderInput(item, name, props.state),
+			]);
 		});
+
+		// Add the submit button to the groups array
+		groups.push(
+			h(
+				'div',
+				{ class: 'md:col-span-6' },
+				h(Button, {
+					type: 'submit',
+					size: 'lg',
+					label: 'Submit',
+					onClick: (event) => {
+						event.preventDefault();
+						props.onSubmit();
+					},
+				}),
+			),
+		);
 
 		return () => h(Form, { state: props.state, validate: props.validate }, () => groups);
 	},

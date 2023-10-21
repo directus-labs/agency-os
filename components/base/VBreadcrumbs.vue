@@ -5,6 +5,7 @@ export interface BreadcrumbsProps {
 		href: string;
 	}>;
 }
+
 defineProps<BreadcrumbsProps>();
 </script>
 <template>
