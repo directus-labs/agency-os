@@ -145,8 +145,9 @@ export default defineNuxtModule({
 		}
 
 		log.success(`${redirects.length} Redirects loaded`);
+
 		for (const redirect of redirects) {
-			console.log(`  • ${redirect.response_code}`, `From: ${redirect.url_old}`, `To: ${redirect.url_new}`);
+			log.info(`  • ${redirect.response_code}`, `From: ${redirect.url_old}`, `To: ${redirect.url_new}`);
 		}
 
 		// Add Globals
