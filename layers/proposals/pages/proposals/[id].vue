@@ -2,26 +2,23 @@
 definePageMeta({
 	layout: 'proposal',
 });
+
 const { params, path } = useRoute();
 
 const { showSidebar, toggleSidebar } = useProposals();
 
-// Fetch the page data from the Directus API using the Nuxt useAsyncData composable
-// https://v3.nuxtjs.org/docs/usage/data-fetching#useasyncdata
 const {
 	data: proposal,
 	pending,
 	error,
 } = await useAsyncData(path, () => {
 	return useDirectus(
-		readItem('os_proposals', params.id, {
+		readItem('os_proposals', params.id as string, {
 			fields: [
 				'name',
 				{
 					organization: ['name', 'logo', 'brand_color'],
 					owner: ['first_name', 'last_name', 'avatar', 'title'],
-
-					// contacts: { contact_id: ['first_name', 'last_name'] }
 					blocks: [
 						'collection',
 						{
@@ -114,12 +111,12 @@ if (!proposal.value) {
 			<ProposalsBlocksHero
 				class="pt-36"
 				:name="proposal?.name"
-				:owner="proposal.owner"
+				:owner="proposal?.owner"
 				:organization="proposal?.organization?.name"
 			/>
 			<!-- Render the page using the PageBuilder component -->
 
-			<PageBuilder :page="proposal" id="content" />
+			<PageBuilder id="content" :page="proposal" />
 
 			<ProposalsBlocksAcceptance id="accept" class="max-w-3xl mx-auto" />
 		</div>

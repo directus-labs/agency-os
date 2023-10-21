@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-	<section aria-labelledby="pricing" id="pricing">
+	<section id="pricing" aria-labelledby="pricing">
 		<div class="items-center px-8 py-12 mx-auto md:px-12 lg:px-16 xl:px-36 max-w-7xl">
 			<div class="grid grid-cols-1 gap-12 text-center lg:grid-cols-2 lg:gap-24">
 				<div>

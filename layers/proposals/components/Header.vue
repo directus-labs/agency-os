@@ -23,13 +23,13 @@ const { showSidebar, toggleSidebar } = useProposals();
 		</div>
 
 		<div class="hidden gap-2 md:flex">
-			<UButton @click="navigateTo('#accept')" color="primary" size="lg">Accept Proposal</UButton>
+			<UButton color="primary" size="lg" @click="navigateTo('#accept')">Accept Proposal</UButton>
 			<!-- @TODO - Add Chat -->
 			<UButton
-				@click="toggleSidebar"
 				variant="outline"
 				class="uppercase"
 				icon="i-heroicons-chat-bubble-bottom-center-text"
+				@click="toggleSidebar"
 			/>
 		</div>
 	</header>

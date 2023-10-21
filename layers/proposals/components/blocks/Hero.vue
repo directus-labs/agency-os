@@ -27,7 +27,7 @@ defineProps<HeroProps>();
 				<VDivider />
 				<div class="flex flex-col items-center justify-center space-y-2">
 					<TypographyTitle>Prepared by:</TypographyTitle>
-					<VAvatar :author="owner" />
+					<!-- <VAvatar :author="owner" /> -->
 				</div>
 			</div>
 			<NuxtLink to="#content" class="mx-auto">

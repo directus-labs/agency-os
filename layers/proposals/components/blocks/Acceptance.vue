@@ -12,6 +12,7 @@ if (query && query.approver) {
 	const approver = await useDirectus(
 		readItem('contacts', query.approver, { fields: ['first_name', 'last_name', 'email'] }),
 	);
+
 	query.first_name = approver.first_name;
 	query.last_name = approver.last_name;
 	query.email = approver.email;
@@ -32,13 +33,14 @@ const signature = createInput(VSignature, {
 
 const form = {
 	submit_label: 'Accept Proposal',
+	size: 'lg',
 	schema: [
 		{
 			name: 'first_name',
 			type: 'text',
 			label: 'First Name',
 			placeholder: 'John',
-			help: null,
+			description: null,
 			validation: 'required',
 			width: '50',
 		},
@@ -61,15 +63,14 @@ const form = {
 			name: 'organization',
 			type: 'text',
 			label: 'Company',
-			help: `What's the name of your company / organization?`,
+			description: `What's the name of your company / organization?`,
 			width: '100',
-			conditionalIf: '$get(first_name).value',
 		},
 		{
 			name: 'signature',
-			type: signature,
+			type: 'signature',
 			label: 'Signature',
-			help: `Please sign your name above.`,
+			description: `Please sign your name.`,
 			width: '100',
 			validation: 'required',
 			options: ['type', 'draw', 'upload'],
@@ -86,13 +87,15 @@ const form = {
 
 const schema = transformSchema(form.schema);
 
-function uploadFiles(files: File[]) {
+function uploadTheFiles(files: File[]) {
 	// Upload a file to Directus
 	const formData = new FormData();
+
 	files.forEach((file, idx) => {
 		formData.append('file', file);
 	});
-	return useDirectus($uploadFiles(formData));
+
+	return useDirectus(uploadFiles(formData));
 }
 
 async function submitForm() {
@@ -101,11 +104,13 @@ async function submitForm() {
 		let approval = {};
 
 		const signatureImage = formData.signature?.image;
+
 		if (signatureImage) {
-			const signatureFile = await uploadFiles([signatureImage]);
+			const signatureFile = await uploadTheFiles([signatureImage]);
 			console.log(signatureFile);
 			approval.signature_image = signatureFile.id;
 		}
+
 		approval.signature_type = formData.signature?.type;
 		approval.signture_text = formData.signature?.text;
 
@@ -116,7 +121,7 @@ async function submitForm() {
 			proposal: params.id ?? undefined,
 		};
 
-		await useDirectus($createItem('os_proposal_approvals', approval));
+		await useDirectus(createItem('os_proposal_approvals', approval));
 
 		success.value = true;
 	} catch (err) {
@@ -127,38 +132,35 @@ async function submitForm() {
 <template>
 	<BlockContainer>
 		<div
-			class="relative max-w-3xl p-2 mx-auto overflow-hidden text-gray-900 bg-transparent border-2 dark:bg-transparent border-primary rounded-xl"
+			class="relative max-w-3xl p-8 mx-auto overflow-hidden text-gray-900 bg-transparent bg-gray-100 border-2 dark:bg-gray-800 border-primary rounded-xl"
 		>
-			<div class="relative px-6 py-8 overflow-hidden bg-gray-100 dark:bg-gray-800 rounded-xl">
-				<div class="space-y-2 text-center">
-					<span class="px-3 py-4 rounded-tr-lg rounded-bl-lg bg-primary">
-						<Icon name="solar:check-read-outline" class="w-12 h-12 text-white" />
-					</span>
-					<TypographyHeadline content="Accept Proposal" />
-					<p class="dark:text-gray-200">To accept this document, fill out the form and click the button below.</p>
-				</div>
-				<div class="mt-8">
-					<div v-auto-animate>
-						<div class="mb-4">
-							<VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
-							<VAlert
-								v-if="success"
-								type="success"
-								v-html="form.success_message ?? 'Success! Your form has been submitted.'"
-							/>
-						</div>
-						<FormKit
-							v-if="!success"
-							type="form"
-							v-model="formData"
-							@submit="submitForm"
-							:submit-label="form.submit_label"
-						>
-							<div class="grid gap-6 md:grid-cols-6">
-								<FormKitSchema :schema="schema" />
-							</div>
-						</FormKit>
+			<div class="space-y-2 text-center">
+				<span class="px-3 py-4 rounded-lg bg-primary">
+					<Icon name="solar:check-read-outline" class="w-12 h-12 text-white" />
+				</span>
+				<TypographyHeadline content="Accept Proposal" />
+				<p class="dark:text-gray-200">To accept this document, fill out the form and click the button below.</p>
+			</div>
+			<div class="mt-8">
+				<div v-auto-animate>
+					<div class="mb-4">
+						<VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
+						<VAlert
+							v-if="success"
+							type="success"
+							v-html="form.success_message ?? 'Success! Your form has been submitted.'"
+						/>
 					</div>
+					<UForm
+						v-if="!success"
+						v-model="formData"
+						:form="{
+							schema: form.schema,
+						}"
+						type="form"
+						:on-submit="submitForm"
+						:submit-label="form.submit_label"
+					></UForm>
 				</div>
 			</div>
 		</div>
