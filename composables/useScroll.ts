@@ -20,6 +20,7 @@ export default function useScroll() {
 	onMounted(() => {
 		window.addEventListener('scroll', updateProgress);
 	});
+
 	onUnmounted(() => {
 		window.removeEventListener('scroll', updateProgress);
 	});
