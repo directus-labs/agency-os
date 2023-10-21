@@ -4,6 +4,6 @@
 		<header class="pb-8 border-b border-gray-300 dark:border-gray-700">
 			<GlobalSearch placeholder="Search for articles" :collections="['help_articles']" class="flex" />
 		</header>
-		<HelpArticleDetail base-url="" />
+		<HelpArticleDetail />
 	</BlockContainer>
 </template>

@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { readItems } from '@directus/sdk';
-const { params, path } = useRoute();
+
+const { path } = useRoute();
+const url = useRequestURL();
 const { fileUrl } = useFiles();
 const { globals } = useAppConfig();
-const { $directus } = useNuxtApp();
 
 const pageFilter = computed(() => {
 	let finalPath;
@@ -19,14 +20,10 @@ const pageFilter = computed(() => {
 	return { permalink: { _eq: finalPath } };
 });
 
-const {
-	data: page,
-	pending,
-	error,
-} = await useAsyncData(
+const { data: page } = await useAsyncData(
 	path,
 	() => {
-		return $directus.request(
+		return useDirectus(
 			readItems('pages', {
 				filter: unref(pageFilter),
 				fields: [
@@ -74,7 +71,19 @@ const {
 									block_quote: ['id', 'title', 'subtitle', 'content'],
 									block_cta: ['id', 'title', 'headline', 'content', 'buttons'],
 									block_form: ['id', 'title', 'headline', { form: ['*'] }],
-									block_logocloud: ['id', 'title', 'headline', { logos: ['*'] }],
+									block_logocloud: [
+										'id',
+										'title',
+										'headline',
+										{
+											logos: [
+												'id',
+												{
+													directus_files_id: ['id', 'title', 'description'],
+												},
+											],
+										},
+									],
 									block_gallery: [
 										'id',
 										'title',
@@ -132,34 +141,55 @@ const {
 	},
 );
 
+// Error Handling
 if (!unref(page)) {
 	throw createError({ statusCode: 404, statusMessage: 'Page Not Found' });
 }
 
+// Compute metadata here to make it easier to populate all the different SEO tags
+const metadata = computed(() => {
+	const pageData = unref(page);
+	return {
+		title: pageData?.seo?.title ?? pageData?.title ?? undefined,
+		description: pageData?.seo?.meta_description ?? pageData?.summary ?? undefined,
+		image: globals.og_image ? fileUrl(globals.og_image) : undefined,
+		canonical: pageData?.seo?.canonical ?? url,
+	};
+});
+
+// Dynamic OG Images
 defineOgImage({
-	title: computed(() => unref(page)?.seo?.title ?? unref(page)?.title ?? null),
-	summary: computed(() => unref(page)?.seo?.meta_description ?? unref(page)?.summary ?? null),
-	imageUrl: computed(() => fileUrl(unref(globals)?.og_image) ?? undefined),
+	title: unref(metadata)?.title,
+	summary: unref(metadata)?.description,
+	imageUrl: unref(metadata)?.image,
 });
 
-useHead({
-	title: computed(() => unref(page)?.seo?.title ?? unref(page)?.title ?? null),
-});
-
-useServerSeoMeta({
-	title: computed(() => unref(page)?.seo?.title ?? unref(page)?.title ?? null),
-	description: computed(() => unref(page)?.seo?.meta_description ?? null),
-	ogTitle: computed(() => unref(page)?.seo?.title ?? unref(page)?.title ?? null),
-	ogDescription: computed(() => unref(page)?.seo?.meta_description ?? null),
-});
-
+// JSON-LD
 useSchemaOrg([
 	defineWebPage({
-		url: `${path}`,
-		name: unref(page)?.seo?.title ?? unref(page)?.title ?? undefined,
-		description: unref(page)?.seo?.meta_description ?? undefined,
+		name: unref(metadata)?.title,
+		description: unref(metadata)?.description,
 	}),
 ]);
+
+// Page Title
+useHead({
+	title: () => unref(metadata)?.title,
+	link: [
+		{
+			rel: 'canonical',
+			href: () => unref(metadata)?.canonical,
+		},
+	],
+});
+
+// SEO Meta
+useServerSeoMeta({
+	title: () => unref(metadata)?.title,
+	description: () => unref(metadata)?.description,
+	ogTitle: () => unref(metadata)?.title,
+	ogDescription: () => unref(metadata)?.description,
+});
 </script>
 <template>
 	<NuxtErrorBoundary>
