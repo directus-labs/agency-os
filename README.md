@@ -1,9 +1,9 @@
 <a href="https://directus.io" target="_blank">
   <img alt="Agency OS - Complete Nuxt3 + Directus project" src="./public/logos/agencyos.png">
-  <h1 align="center">Agency OS</h1>
+  <h1 align="center">AgencyOS</h1>
 </a>
 
-<p align="center">AgencyOS is everything you need to get your agency off the ground, or improve tooling for your existing company. Nuxt 3 Application + Directus Backend.</p>
+<p align="center">AgencyOS is everything you need to get your agency off the ground, or improve tooling for your existing company. Nuxt 3 Website Application + Directus Backend.</p>
 
 <p align="center"><em>Brought to you by partnership magic ✨ between <a href="https://directus.io" target="_blank">Directus</a> and <a href="https://nuxtlabs.com" target="_blank">NuxtLabs</a>.</em>
 </p>
@@ -23,75 +23,132 @@
 
 # Introduction
 
-Spin up a beautiful site for your agency or freelancing business in minutes. Or use Agency OS as the foundation for your
-next client project.
+One of the **easiest parts** of running a successful digital agency is doing the **actual work**. I mean - who doesn’t
+love to put their head down to collaborate, design, and build amazing stuff for clients?
+
+The **hard bits** are everything else that goes along with that – managing large projects with tons of moving pieces,
+communicating with clients to properly manage expectations, ensuring you’re paid on time, and more.
+
+Yes, there are plenty of tools out there that exist to help with these problems. But the problem with those tools is
+that you . When every billable hour counts, you don’t have the time to build your own tools from scratch. And you
+shouldn’t be forced to settle for tech that only does half the job you need it to.
+
+**AgencyOS is the open source operating system to help you run (or start) your digital agency.** It’s built on open
+source tools (Nuxt and Directus) and designed to be 100% hackable so you can build YOUR solution, YOUR project
+management app, YOUR agency’s operating system – in record time.
+
+It’s time to stop compromising and start composing your own solution.
 
 [**-> View The Demo Site**](https://agencyos.dev/)
 
-**Features**
+---
 
-- Complete Nuxt 3 website example
-- Built-in Directus - Headless CMS support
-- Tailwind CSS and HeadlessUI
-- Dynamic Page Builder (M2A Interface) within Directus
+# ⭐ Features
+
+### Website
+
+When you’re hard at work delivering for clients - your own site tends to suffer. AgencyOS includes beautiful website
+template that’s easily customizable and already integrated with an easy-to-use headless CMS - Directus.
+
+It’s not a starter template. It’s a complete website project for you customize or inspire you to build an even better
+solution.
+
+- Dynamic page builder with live preview
 - Blog posts and categories
-- Projects pages
 - Dynamic form generation with validation
-- Dynamic social image generation
-- SEO support
-- Global search component and API route
-- Redirects module
-- Ready to use common components like modals, dropdowns, and file upload input
+- Dynamic OG image generation
+- Full SEO support out of the box – (meta tags, sitemap, redirects, JSON-LD, and more)
+- Global search functionality
 - Common utilities so you don't need to include yet another package
-- Easy SVG Icons using Nuxt Icon module
 - Google Fonts support
-- ESLint and Prettier already configured
-- Full Dark mode support
-- Written in Typescript
+- ESLint and Prettier pre-configured
+- Full dark mode support
+- Themeable with easy config file
 
-<br />
+### CRM / Project Tracker
 
-# 🚧 Installation and Development
+### Client Portal
 
-## Directus - Headless CMS
+---
 
-### 1 - Register for a Directus Cloud account
+# **🚧 Installation and Development**
 
-[https://directus.cloud/register](https://directus.cloud/register)
+There are two main pieces to AgencyOS - the backend and APIs powered by [Directus](https://directus.io) and the frontend
+website and application powered by [Nuxt](https://nuxt.com).
 
-If you're prefer the self-hosted version, you can
-find [install instructions using Docker here](https://docs.directus.io/self-hosted/quickstart.html).
+## **🐰 Directus - Backend + Headless CMS**
 
-### 2 - Create a new project
+### 1 - Create a Directus project
 
-Make sure you save your project URL.
+There are two ways you can quickly setup a Directus project to use for AgencyOS.
 
-### 3 - Generate a static token for the admin user
+**1a - Register for a Directus Cloud account**
+
+https://directus.cloud/register
+
+This is the easy button. You don’t have to mess with Docker or working out how to deploy a Directus instance at AWS,
+Digital Ocean, or similar hosts. A couple of clicks and in less than 2 minutes you’ll have a ready to go Directus
+project.
+
+Directus offers a 14 day free trial for Cloud projects which is plenty of time to give AgencyOS a spin. Note: After the
+14 day trial you will need to pay for the service.
+[Consult the Directus pricing page](https://directus.io/pricing/cloud) for the latest pricing information.
+
+OR
+
+**1b - Self Host a Directus Instance**
+
+If you're prefer to self-host Directus, we highly recommend you do so with Docker.
+
+You’ll find a `docker-compose.yaml` inside the repo that you can use to quickly spin up a local instance of Directus to
+test with. You should have Docker installed and running on your machine first. You
+can **[download it here](https://docs.docker.com/get-docker/)**.
+
+```bash
+# Navigate to the .directus directory
+$ cd .directus
+
+# Run docker compose
+$ docker compose up
+
+# Docker does it's thing and your Directus project will be available at http://localhost:8055/ or http://0.0.0.0:8055/
+```
+
+You can find more [install instructions using Docker here](https://docs.directus.io/self-hosted/quickstart.html) on the
+Directus documentation.
+
+For deploying the project live, please see the [Deployment](#deployment) section.
+
+### 2 **- Generate a static token for the admin user**
 
 You need the static token to seed the project.
 
 1. Go to the User Directory
-2. Choose the Adminstrative User
+2. Choose the Administrative User
 3. Scroll down to the Token field
 4. Generate token and copy it
-5. Save the user (don't forget to save!)
+5. Save the user (do NOT forget to save because you’ll get an error that shows Invalid token!)
 
-### 4 - Apply the Template
+### 3 **- Apply the AgencyOS Template**
 
-Open your terminal run the following command and simply follow the prompts.
+Open your terminal, run the following command, and simply follow the prompts.
 
 `npx directus-template-cli apply`
 
-1. Choose the `Agency OS` template.
+1. Choose the `Agency OS` template.
 2. Paste the URL to your Directus instance
 3. Paste your Admin user static token
 4. Wait for script to finish
 
+   _Note_: It can take a few minutes for the template script to run if you’re using a remotely hosted Directus instance.
+
 ---
 
-## Nuxt - Frontend
+## **⛰️ Nuxt - Frontend**
 
-### 1 - Clone the repo
+For your website and client portal, AgencyOS uses Nuxt as the frontend framework of choice.
+
+### **1 - Clone the repo**
 
 [Use This Template](https://github.com/directus-community/agency-os/generate)
 
@@ -99,37 +156,41 @@ _Or from the terminal_
 
 `git clone https://github.com/directus-community/agency-os.git your-project`
 
-### 2 - Fix your .env file
+Navigate to the project
+
+`cd your-project`
+
+### **2 - Fix your .env file**
 
 - Change the filename `env.example` to `.env`
 - Add the url to your Directus instance
 - Add the static token for your admin user you generated above
 
-If you're using Directus Cloud, it should look something like this.
+Your `.env` file should look similar to this.
 
 ```
-DIRECTUS_URL="https://youruniquedomain.directus.app"
-DIRECTUS_ADMIN_TOKEN="your_admin_static_token_here"
+# Directus Setup
+DIRECTUS_URL="https://your-instance.directus.app"
+DIRECTUS_ADMIN_TOKEN="your_directus_admin_token"
+HOSTNAME="http://localhost:3000"
+
+# Stripe Setup (If you want to allow payments within the portal)
+STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxxxx
+STRIPE_PUBLISHABLE_KEY=pk_xxxxxxxxxxxxxxx
+STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxx
 ```
 
-If you're using the self hosted version, it should look something like this.
-
-```
-DIRECTUS_URL="http://localhost:8055"
-DIRECTUS_ADMIN_TOKEN="your_admin_static_token_here"
-```
-
-### 3 - Install your dependencies
+### **3 - Install your dependencies**
 
 `pnpm i`
 
-### 4 - Start the development server
+### **4 - Start the development server**
 
 `pnpm dev`
 
 [http://localhost:3000](http://localhost:3000/)
 
-### 5 - Build for production when you're ready
+### **5 - Build for production when you're ready**
 
 `pnpm build`
 
@@ -137,9 +198,10 @@ DIRECTUS_ADMIN_TOKEN="your_admin_static_token_here"
 
 # 🚢 Deployment
 
-## Deploying Nuxt Front End
+## **Deploying Nuxt - Frontend**
 
-Please check the official [Nuxt Deployment Documentation](https://nuxt.com/docs/getting-started/deployment).
+Please check the official [Nuxt Deployment Documentation](https://nuxt.com/docs/getting-started/deployment) for the
+supported providers. Here’s a few of the more popular hosts that work well with Nuxt.
 
 ### One Click Options
 
@@ -151,67 +213,18 @@ Please check the official [Nuxt Deployment Documentation](https://nuxt.com/docs/
 
 <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdirectus-community%2Fagency-os&env=DIRECTUS_URL,DIRECTUS_TOKEN&demo-title=Agency%20OS%20-%20Directus%20%2B%20Nuxt%20Project&demo-description=Fully%20complete%2C%20opinionated%20agency%20website%20template.%20Nuxt%203%20Frontend%20%2B%20Directus%20for%20Headless%20CMS%20%2F%20Backend.&demo-url=https%3A%2F%2Fagency-os.vercel.app&demo-image=https%3A%2F%2Fgithub.com%2Fdirectus-community%2Fagency-os%2Fblob%2Freadme-fixes%2Fpublic%2Flogos%2Fagencyos.png%3Fraw%3Dtrue"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
 
-## Deploying Directus
+## **Deploying Directus - Backend**
 
-If you don't want to mess with DevOps or spinning up servers, you can
-[spin up a new project on Directus Cloud](https://railway.app/template/2fy758) in about 90 seconds.
+If you don't want to mess with DevOps or spinning up servers, you
+can [spin up a new project on Directus Cloud](https://railway.app/template/2fy758) in about 90 seconds.
 
-If you prefer self-hosting, Docker is the recommended way to deploy Directus. Please check the official
-[Directus Docker Guide](https://docs.directus.io/self-hosted/docker-guide.html)
+If you prefer self-hosting, Docker is the recommended way to deploy Directus. Please check the
+official [Directus Docker Guide](https://docs.directus.io/self-hosted/docker-guide.html)
 
-<br />
+**Resources for Self Hosting Directus**
 
-# ⭐ Features
-
-### Dynamic Page Builder
-
-Includes 15 ready-to-go page blocks
-
-- Hero
-- Columns
-- FAQs
-- Call To Action
-- Form
-- Card Group
-- Logo Cloud
-- Rich Text
-- Quote
-- Steps
-- Gallery
-- Team
-- Testimonial Slider
-- Video
-- Raw HTML
-
-### Dynamic Forms
-
-### Dynamic Navigation
-
-### Dynamic Social Image Generation
-
-### Dark Mode Support
-
-Agency OS has full dark mode support.
-
-Dark mode is already enabled in the `tailwind.config.js` and all the base components included have full support.
-
-Dark mode toggling is provided by [VueUse `useDark` composable](https://vueuse.org/core/usedark/#usedark). And there is
-an example toggle component you can use.
-
-If you don't wish to use dark mode, you can simply remove the composable and the `dark:` classes from the components.
-
-### Dev Toolbar
-
-### Guest-Author Ready
-
-### Content Dashboard
-
-### Pre-Built Automations
-
-- Deploy Your Site
-- Generate Social Images
-- Create Slugs Automatically
-- Post Approval Notifications
+- [Deploy Directus to DigitalOcean with Docker](https://docs.directus.io/blog/deploy-directus-digital-ocean-docker.html)
+- [Deploy Directus on Railway](https://railway.app/template/2fy758)
 
 ---
 
