@@ -5,7 +5,7 @@ export default function useFiles() {
 	const config = useRuntimeConfig();
 
 	function fileUrl(fileId: string) {
-		if (!fileId) return null;
+		if (!fileId) return undefined;
 
 		if (typeof fileId === 'string') {
 			return `${config.public.directusUrl}/assets/${fileId}`;
@@ -16,7 +16,7 @@ export default function useFiles() {
 			return `${config.public.directusUrl}/assets/${(fileId as File).id}`;
 		}
 
-		return null;
+		return undefined;
 	}
 
 	return {

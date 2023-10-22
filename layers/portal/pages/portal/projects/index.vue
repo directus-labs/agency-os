@@ -1,11 +1,9 @@
 <script setup lang="ts">
-const { path, params } = useRoute();
+import type { OsTask } from '~/types';
 
-const {
-	data: projects,
-	pending,
-	error,
-} = await useAsyncData(
+const { path } = useRoute();
+
+const { data: projects, error } = await useAsyncData(
 	path,
 	() => {
 		return useDirectus(
@@ -35,7 +33,7 @@ const {
 );
 
 if (error) {
-	console.log(error);
+	// console.log(error);
 }
 
 const taskStatuses = {
@@ -90,11 +88,13 @@ const projectsShown = computed(() => {
 	}
 
 	return projects.value?.map((project) => {
+		const tasks = project.tasks as OsTask[];
+
 		return {
 			id: project.id,
 			name: project.name,
 			due_date: project.due_date,
-			tasks: project.tasks.map((task) => {
+			tasks: tasks.map((task) => {
 				return {
 					isComplete: task.status === 'completed',
 					isCurrent: task.status === 'active' || task.status === 'in_progress' || task.status === 'in_review',
@@ -144,7 +144,7 @@ const projectsShown = computed(() => {
 				</template>
 				<template #milestones-data="{ row }">
 					<ul class="flex items-center">
-						<template v-for="({ isComplete, isCurrent, icon, name, status }, i) in row.tasks" :key="i">
+						<template v-for="({ isComplete, isCurrent, icon }, i) in row.tasks" :key="i">
 							<li :class="[i !== row.tasks.length - 1 ? '' : '', 'relative']">
 								<div
 									:class="{
@@ -152,7 +152,7 @@ const projectsShown = computed(() => {
 										'bg-primary w-5 h-5': isComplete,
 										'dark:border-gray-700 border-gray-300 border-2 w-5 h-5': !isCurrent && !isComplete,
 									}"
-									class="relative flex items-center justify-center flex-shrink-0 rounded-full"
+									class="relative flex items-center justify-center flex-shrink-0 rounded-card"
 								>
 									<UIcon v-if="isComplete" name="i-heroicons-check" class="w-4 text-white" />
 									<UIcon

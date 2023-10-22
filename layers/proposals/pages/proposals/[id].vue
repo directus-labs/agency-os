@@ -5,8 +5,6 @@ definePageMeta({
 
 const { params, path } = useRoute();
 
-const { showSidebar, toggleSidebar } = useProposals();
-
 const {
 	data: proposal,
 	pending,

@@ -14,10 +14,10 @@ const widthClassMap = {
 	'100': 'md:col-span-6',
 };
 
-function renderInput(item, name, state) {
+function renderInput(item: { [key: string]: any }, name: string, state: any) {
 	const commonProps = {
 		modelValue: state[name],
-		'onUpdate:modelValue': (value) => (state[name] = value),
+		'onUpdate:modelValue': (value: any) => (state[name] = value),
 	};
 
 	switch (item.type) {
@@ -53,11 +53,13 @@ export default defineComponent({
 	},
 	setup(props) {
 		const groups = props.schema.map((item) => {
-			const { name, label, placeholder, width, description } = item;
+			const { name, label, placeholder, width, description } = item as { [key: string]: any };
 
+			// @ts-ignore
 			const cssClass = widthClassMap[item.width] || 'md:col-span-6';
 
 			return h(FormGroup, { name, label, description, class: cssClass, size: 'lg' }, () => [
+				// @ts-ignore
 				renderInput(item, name, props.state),
 			]);
 		});
@@ -71,14 +73,16 @@ export default defineComponent({
 					type: 'submit',
 					size: 'lg',
 					label: 'Submit',
-					onClick: (event) => {
+					onClick: (event: Event) => {
 						event.preventDefault();
+						// @ts-ignore
 						props.onSubmit();
 					},
 				}),
 			),
 		);
 
+		// @ts-ignore
 		return () => h(Form, { state: props.state, validate: props.validate }, () => groups);
 	},
 });

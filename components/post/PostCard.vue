@@ -1,21 +1,25 @@
 <script setup lang="ts">
-import type { Post } from '~~/types';
+import type { Post, PostType, Category } from '~/types';
 
-withDefaults(
+const props = withDefaults(
 	defineProps<{
 		post: Post;
-		direction: 'horizontal' | 'vertical';
+		direction?: 'horizontal' | 'vertical';
 	}>(),
 	{
 		direction: 'vertical',
 	},
 );
 
-const iconMap = {
+const iconMap: Record<PostType, string> = {
 	blog: 'material-symbols:article-outline-rounded',
 	video: 'material-symbols:video-library-outline-rounded',
 	project: 'material-symbols:trophy-outline-rounded',
 };
+
+const postCategory = computed(() => {
+	return (unref(props.post.category) as Category) ?? null;
+});
 </script>
 <template>
 	<figure
@@ -39,17 +43,21 @@ const iconMap = {
 		>
 			<NuxtImg
 				class="relative flex-shrink-0 object-cover w-full h-full transition duration-300 saturate-0 group-hover:opacity-75"
-				:src="post.image ?? 'https://source.unsplash.com/random/800x800?sig=' + post.id"
-				alt=""
+				:src="safeRelationId(post.image)"
+				:alt="safeRelation(post.image)?.alt ?? ''"
 			/>
 			<div
 				class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-br from-transparent via-transparent to-primary group-hover:opacity-100"
 			/>
-			<Category v-if="post.category" size="lg" :color="post.category.color" class="absolute bottom-0 left-0 mb-4 ml-4">
-				{{ post.category.title }}
+			<Category v-if="postCategory" size="lg" :color="postCategory.color" class="absolute bottom-0 left-0 mb-4 ml-4">
+				{{ postCategory.title }}
 			</Category>
 			<div v-if="post.type" class="absolute top-0 right-0 p-1.5 mt-4 mr-4 rounded-button bg-gray-900/50">
-				<UIcon :name="iconMap[post.type ?? 'blog']" class="w-6 h-6 text-white" />
+				<UIcon
+					v-if="post.type"
+					:name="iconMap[post.type ?? 'blog'] ?? 'material-symbols:article-outline-rounded'"
+					class="w-6 h-6 text-white"
+				/>
 			</div>
 		</NuxtLink>
 

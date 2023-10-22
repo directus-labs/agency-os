@@ -1,3 +1,0 @@
-[functions]
-  external_node_modules = ["puppeteer-core", "@sparticuz/chromium"]
-  node_bundler = "esbuild"

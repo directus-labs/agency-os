@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import { VPerfectSignature } from 'v-perfect-signature';
-import { createInput } from '@formkit/vue';
-import VSignature from '~/components/base/VSignature.vue';
 import { transformSchema } from '~/utils/formkit';
+import type { OsProposalApproval } from '~/types';
+import type { LocationQuery } from 'vue-router';
 
 // Get query params to allow prefilling of form fields
-
 const { query, params } = useRoute();
 
 if (query && query.approver) {
 	const approver = await useDirectus(
-		readItem('contacts', query.approver, { fields: ['first_name', 'last_name', 'email'] }),
+		readItem('contacts', query.approver as string, { fields: ['first_name', 'last_name', 'email'] }),
 	);
 
 	query.first_name = approver.first_name;
@@ -18,21 +16,42 @@ if (query && query.approver) {
 	query.email = approver.email;
 }
 
-const formData = reactive({ ...query });
+export interface AcceptanceForm {
+	first_name: string;
+	last_name: string;
+	email: string;
+	organization: string;
+	signature: {
+		type: string;
+		text: string;
+		image: File;
+	};
+	esignature_agreement: boolean;
+}
 
-const filesUploaded = ref([]);
+// You can use `prefill_` prefix to prefill form fields in the query params
+// e.g. `prefill_first_name=John`
+function getPrefillData(query: LocationQuery) {
+	const prefillData: { [key: string]: string } = {};
 
-const loading = ref(false);
+	Object.keys(query).forEach((key) => {
+		if (key.startsWith('prefill_')) {
+			const fieldName = key.replace('prefill_', '');
+			prefillData[fieldName] = query[key] as string;
+		}
+	});
+
+	return prefillData;
+}
+
+const formData: AcceptanceForm | Partial<AcceptanceForm> = reactive({ ...getPrefillData(query) });
+
 const error = ref(null);
 const success = ref(false);
 
-// @TODO - Move this into formkit.config.ts config file but for now I can't figure out how to get register the custome imput with Nuxt.
-const signature = createInput(VSignature, {
-	props: ['options'],
-});
-
 const form = {
 	submit_label: 'Accept Proposal',
+	success_message: 'Success! Your form has been submitted.',
 	size: 'lg',
 	schema: [
 		{
@@ -85,8 +104,6 @@ const form = {
 	],
 };
 
-const schema = transformSchema(form.schema);
-
 function uploadTheFiles(files: File[]) {
 	// Upload a file to Directus
 	const formData = new FormData();
@@ -101,31 +118,30 @@ function uploadTheFiles(files: File[]) {
 async function submitForm() {
 	try {
 		const { signature, ...data } = formData;
-		let approval = {};
+		let approval: Partial<OsProposalApproval> = {};
 
 		const signatureImage = formData.signature?.image;
 
 		if (signatureImage) {
 			const signatureFile = await uploadTheFiles([signatureImage]);
-			console.log(signatureFile);
 			approval.signature_image = signatureFile.id;
 		}
 
 		approval.signature_type = formData.signature?.type;
-		approval.signture_text = formData.signature?.text;
+		approval.signature_text = formData.signature?.text;
 
 		approval = {
 			...approval,
 			...data,
-			contact: query.approver ?? undefined,
-			proposal: params.id ?? undefined,
+			contact: (query?.approver as string) ?? undefined,
+			proposal: (params.id as string) ?? undefined,
 		};
 
 		await useDirectus(createItem('os_proposal_approvals', approval));
 
 		success.value = true;
 	} catch (err) {
-		console.log(err);
+		// console.log(err);
 	}
 }
 </script>
@@ -145,11 +161,9 @@ async function submitForm() {
 				<div v-auto-animate>
 					<div class="mb-4">
 						<VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
-						<VAlert
-							v-if="success"
-							type="success"
-							v-html="form.success_message ?? 'Success! Your form has been submitted.'"
-						/>
+						<VAlert v-if="success" type="success">
+							{{ form.success_message || 'Success! Your form has been submitted.' }}
+						</VAlert>
 					</div>
 					<UForm
 						v-if="!success"

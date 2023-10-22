@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { OsProject, OsTask } from '~/types';
+
 const { path, params } = useRoute();
 
 const {
@@ -89,7 +90,7 @@ const milestones = computed(() => {
 					<VAvatar :author="project?.owner" size="sm" />
 				</div>
 				<div class="p-4 space-y-4">
-					<img v-if="project?.organization?.logo" :src="fileUrl(project?.organization?.logo as string)" class="h-6" />
+					<img v-if="project?.organization?.logo" :src="fileUrl(project?.organization?.logo)" class="h-6" />
 					<p class="text-sm font-bold">{{ project?.organization?.name }}</p>
 
 					<VLabel label="Contacts" />

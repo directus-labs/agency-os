@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import type { HelpFeedback } from '~/types';
+import type { Session } from '~/middleware/session.global';
 
-const session = useCookie('session');
-const route = useRoute();
+const session: Ref<Session> = useCookie('session');
 
 const props = defineProps<{ title: string; url: string }>();
 
@@ -12,7 +12,7 @@ const error = ref<any>(null);
 const success = ref(false);
 
 const feedback = reactive<HelpFeedback>({
-	id: null,
+	id: undefined,
 	rating: null,
 	comments: null,
 });
@@ -54,18 +54,18 @@ async function handleSubmission(rating?: number) {
 		comments: feedback.comments,
 		title: props.title,
 		url: props.url,
-		visitor_id: session.value.id,
+		visitor_id: session?.value?.id ?? undefined,
 	};
 
 	try {
-		const { data } = await useFetch('/api/feedback', {
+		const { data }: { data: Ref<HelpFeedback> } = await useFetch('/api/feedback', {
 			method: 'POST',
 			body: JSON.stringify(body),
 		});
 
-		console.log(data.value);
-
-		feedback.id = data.value.id;
+		if (data.value.id) {
+			feedback.id = data.value.id;
+		}
 
 		// If the reponse has comments, we can assume they've completed the second step.
 		if (data.value.comments) {

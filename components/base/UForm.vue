@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Form } from '~/types';
+import type { FormError } from '@nuxt/ui/dist/runtime/types';
 import { transformSchema } from '~/utils/formkit';
 
 const props = defineProps<{
@@ -12,10 +13,10 @@ const emit = defineEmits(['submit', 'update:modelValue']);
 const { query } = useRoute();
 const formData = reactive({ ...query });
 const loading = ref(false);
-const error = ref(null);
+const error: any = ref(null);
 const success = ref(false);
 
-const schema = transformSchema(props.form.schema);
+// const schema = transformSchema(props.form.schema);
 
 const validate = (state: any): FormError[] => {
 	const errors = [];
@@ -40,7 +41,7 @@ async function submitForm() {
 		if (props.form.on_success === 'redirect') {
 			return navigateTo(props.form.redirect_url);
 		}
-	} catch (err) {
+	} catch (err: any) {
 		error.value = err;
 	} finally {
 		loading.value = false;
@@ -59,11 +60,9 @@ watch(
 	<div v-auto-animate>
 		<div class="mb-4">
 			<VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
-			<VAlert
-				v-if="form.on_success === 'message' && success"
-				type="success"
-				v-html="form.success_message ?? 'Success! Your form has been submitted.'"
-			/>
+			<VAlert v-if="form.on_success === 'message' && success" type="success">
+				{{ form.success_message ?? 'Success! Your form has been submitted.' }}
+			</VAlert>
 		</div>
 		<!-- <FormKit v-if="!success" type="form" v-model="formData" @submit="submitForm" :submit-label="form.submit_label"> -->
 		<div>

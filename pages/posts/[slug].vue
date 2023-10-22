@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { PostType } from '~/types';
+
 const { fileUrl } = useFiles();
-const { globals } = useAppConfig();
 const { params, path } = useRoute();
 
-const componentMap = {
+const componentMap: Record<PostType, any> = {
 	blog: resolveComponent('PostBlog'),
 	project: resolveComponent('PostProject'),
 	video: resolveComponent('PostVideo'),
@@ -100,6 +101,6 @@ useServerSeoMeta({
 <template>
 	<div>
 		<!-- Use the component map to render the correct component based on the type of the post -->
-		<component :is="componentMap[page.type]" :page="page" />
+		<component :is="componentMap[page.type as PostType]" v-if="page && page.type" :page="page" />
 	</div>
 </template>

@@ -1,6 +1,3 @@
-import { deleteCookie, getCookie, setCookie, splitCookiesString, appendResponseHeader } from 'h3';
-import { ofetch } from 'ofetch';
-
 import { createDirectus, rest, staticToken, authentication } from '@directus/sdk';
 import type { Schema } from '~/types/schema';
 
@@ -30,7 +27,7 @@ export default defineNuxtPlugin(() => {
 
 	return {
 		provide: {
-			directus,
+			directus /*: $directus */,
 		},
 	};
 });

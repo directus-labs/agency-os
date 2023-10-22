@@ -30,17 +30,19 @@ defineProps<{
 						},
 					]"
 				>
-					<NuxtImg
-						v-if="row.image"
+					<div
 						v-motion
 						:initial="{ opacity: 0, scale: 0.8, y: 50 }"
 						:visible-once="{ opacity: 1, scale: 1, y: 0 }"
 						:duration="1000"
 						:delay="250"
-						:alt="(row.image as File)?.description ?? ''"
-						:src="(row.image as File)?.id"
-						class="object-cover object-center w-full h-full bg-gray-100 rounded-card dark:brightness-90"
-					/>
+					>
+						<NuxtImg
+							:alt="safeRelation(row.image)?.description ?? ''"
+							:src="safeRelationId(row.image)"
+							class="object-cover object-center w-full h-full bg-gray-100 rounded-card dark:brightness-90"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -26,18 +26,32 @@ const colorChoices = [
 	'yellow',
 ];
 
-function randomBackgroundColor(seed, colors) {
+function randomBackgroundColor(seed: number, colors: string[]) {
 	return colors[seed % colors.length];
 }
 
 const badgeColor = computed(() => {
-	return props.color || randomBackgroundColor(slots.default()[0].children.length, colorChoices);
+	if (props.color) return props.color;
+
+	const defaultSlot = slots.default ? slots.default()[0] : undefined;
+
+	if (!defaultSlot || !defaultSlot?.children) return null;
+
+	return randomBackgroundColor(defaultSlot?.children.length as number, colorChoices);
+});
+
+const styleProp = computed(() => {
+	if (!props.color) return undefined;
+	return {
+		backgroundColor: props.color,
+		color: getContrastColor(props.color),
+	};
 });
 </script>
 
 <template>
 	<span
-		:style="[props.color ? { backgroundColor: props.color, color: getContrastColor(props.color) } : null]"
+		:style="styleProp"
 		:class="[
 			'inline-flex items-center font-display font-medium rounded-button',
 			badgeColor === 'gray' ? `bg-gray-100 text-gray-800` : '',

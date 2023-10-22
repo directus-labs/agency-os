@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { NavigationItem } from '~~/types';
-const { globals, theme } = useAppConfig();
+
+const { globals } = useAppConfig();
 
 const { data: navigation } = await useAsyncData('footerNav', () => {
 	return useDirectus(
@@ -14,9 +15,9 @@ const { data: navigation } = await useAsyncData('footerNav', () => {
 						'label',
 						'type',
 						'url',
-						'slug',
+						'has_children',
 						{
-							page: ['slug', 'title'],
+							page: ['permalink', 'title'],
 							children: [
 								'id',
 								'title',
@@ -24,9 +25,8 @@ const { data: navigation } = await useAsyncData('footerNav', () => {
 								'label',
 								'type',
 								'url',
-								'slug',
 								{
-									page: ['slug', 'title'],
+									page: ['permalink', 'title'],
 								},
 							],
 						},
@@ -62,16 +62,16 @@ const { data: form } = await useAsyncData(
 	>
 		<div class="mx-auto">
 			<!-- Header -->
-			<div class="flex justify-between">
+			<div class="flex justify-between items-start">
 				<div class="w-full">
 					<NuxtLink href="/">
 						<Logo class="h-8 dark:text-white" />
 					</NuxtLink>
-					<p class="mt-2 text-sm text-gray-500">
-						{{ tagline }}
-					</p>
+					<VText v-if="globals.tagline" text-color="light" class="mt-2">
+						{{ globals.tagline }}
+					</VText>
 				</div>
-				<div class="flex items-center justify-end w-full">
+				<div class="flex items-center justify-end">
 					<DarkModeToggle class="hidden text-gray-600 md:block hover:text-gray-400" />
 				</div>
 			</div>
@@ -83,7 +83,7 @@ const { data: form } = await useAsyncData(
 					<ul role="list" class="grid gap-2 mt-2 md:grid-cols-2">
 						<li v-for="item in navigation?.items as NavigationItem[]" :key="item.id">
 							<NuxtLink
-								:href="getNavItemUrl(item)"
+								:to="getNavItemUrl(item)"
 								class="font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-primary"
 							>
 								{{ item.title }}
@@ -104,7 +104,13 @@ const { data: form } = await useAsyncData(
 		<!-- Bottom -->
 		<div class="pt-6 mx-auto border-t dark:border-t-gray-700 max-w-7xl md:flex md:items-center md:justify-between">
 			<div class="flex items-center justify-center space-x-6 md:order-last md:mb-0">
-				<NuxtLink v-for="link in globals.social_links" target="_blank" :href="link.url" class="w-6 h-6 text-white">
+				<NuxtLink
+					v-for="link in globals.social_links"
+					:key="link.url"
+					:href="link.url"
+					class="w-6 h-6 text-white"
+					target="_blank"
+				>
 					<span class="sr-only">{{ link.service }}</span>
 					<Icon class="w-8 h-8 text-gray-700 dark:text-white hover:opacity-75" :name="`mdi:${link.service}`" />
 				</NuxtLink>

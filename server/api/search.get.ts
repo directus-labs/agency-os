@@ -1,5 +1,4 @@
-import { getQuery } from 'h3';
-import { directus, readItems, updateItem, createItem } from '~~/server/utils/directus-server';
+import type { GlobalSearchResult } from '~/types/api/global-search';
 
 function mapEntity({
 	title,
@@ -15,7 +14,7 @@ function mapEntity({
 	urlPattern: string;
 	description?: string;
 	image?: string;
-}) {
+}): GlobalSearchResult {
 	if (urlPattern.includes(':slug')) {
 		urlPattern = urlPattern.replace(':slug', entity.slug);
 	}
@@ -33,7 +32,7 @@ function mapEntity({
 	};
 }
 
-function mapResults(collection: string, results: any[]) {
+function mapResults(collection: string, results: GlobalSearchResult[]) {
 	const mapping = {
 		posts: (post: any) =>
 			mapEntity({
@@ -78,17 +77,24 @@ function mapResults(collection: string, results: any[]) {
 			}),
 	};
 
-	return results.map(mapping[collection]);
+	return results.map((result: GlobalSearchResult) => {
+		const mapFunction = mapping[collection as keyof typeof mapping];
+
+		if (typeof mapFunction === 'function') {
+			return mapFunction(result);
+		} else {
+			throw new Error(`Invalid collection: ${collection}`);
+		}
+	});
 }
 
 export default cachedEventHandler(
 	async (event) => {
 		try {
-			const config = useRuntimeConfig();
-
 			const query = getQuery(event);
 
-			let { collections, search, raw } = query;
+			let { collections } = query;
+			const { search, raw } = query;
 
 			if (typeof collections === 'string') {
 				collections = [collections];
@@ -96,6 +102,7 @@ export default cachedEventHandler(
 
 			if (
 				!collections ||
+				!Array.isArray(collections) ||
 				collections.every(
 					(collection: string) => !['posts', 'projects', 'pages', 'categories', 'help_articles'].includes(collection),
 				)
@@ -105,7 +112,9 @@ export default cachedEventHandler(
 
 			const data = await Promise.all(
 				collections.map(async (collection) => {
-					const data = await directus.request(readItems(collection, { search: search ?? '' }));
+					const searchQuery = search ?? '';
+					const searchParam = typeof searchQuery === 'string' ? searchQuery : String(searchQuery);
+					const data = await directusServer.request(readItems(collection, { search: searchParam }));
 
 					if (raw) {
 						return data;
@@ -119,9 +128,11 @@ export default cachedEventHandler(
 				statusCode: 200,
 				data: data.flat(),
 			};
-		} catch (error) {
-			console.error(error);
-			return error;
+		} catch (err: any) {
+			throw createError({
+				statusCode: 500,
+				statusMessage: err.message,
+			});
 		}
 	},
 	{

@@ -15,8 +15,8 @@ interface Theme {
 
 export const theme = {
 	primary: 'lime',
-	gray: 'zinc',
-	borderRadius: 'none',
+	gray: 'neutral',
+	borderRadius: 'md',
 	googleFonts: {
 		Inter: true,
 		'Fira Code': true,

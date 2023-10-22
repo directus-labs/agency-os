@@ -1,5 +1,3 @@
-import { directus, updateItem, createItem } from '~~/server/utils/directus-server';
-
 export default defineEventHandler(async (event) => {
 	try {
 		const body = await readBody(event);
@@ -8,7 +6,7 @@ export default defineEventHandler(async (event) => {
 		let response;
 
 		if (id) {
-			response = await directus.request(
+			response = await directusServer.request(
 				updateItem('help_feedback', id, {
 					title,
 					url,
@@ -18,7 +16,7 @@ export default defineEventHandler(async (event) => {
 				}),
 			);
 		} else {
-			response = await directus.request(
+			response = await directusServer.request(
 				createItem('help_feedback', {
 					title,
 					url,
@@ -30,8 +28,10 @@ export default defineEventHandler(async (event) => {
 		}
 
 		return response;
-	} catch (error) {
-		console.error(error);
-		return error;
+	} catch (err: any) {
+		throw createError({
+			statusCode: 500,
+			statusMessage: err.message,
+		});
 	}
 });

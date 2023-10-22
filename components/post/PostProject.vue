@@ -19,13 +19,13 @@ const galleryItems = computed(() => {
 		<header class="relative h-[400px] overflow-hidden flex justify-center items-center">
 			<NuxtImg class="absolute inset-0 object-cover w-full h-full" :src="page?.image" />
 			<div class="absolute inset-0 bg-gray-900 opacity-75" />
-			<div class="relative max-w-3xl p-8 mx-auto overflow-hidden bg-gray-900 bg-opacity-50 rounded-xl">
+			<div class="relative max-w-3xl p-8 mx-auto overflow-hidden bg-gray-900 bg-opacity-50 rounded-card">
 				<TypographyHeadline :content="page?.title" class="text-white" size="xl" />
-				<TypographyProse :content="page?.summary" class="text-white" />
+				<TypographyProse :content="page?.summary" class="text-white mt-4" />
 			</div>
 		</header>
 
-		<BlockContainer class="md:flex">
+		<BlockContainer class="md:flex gap-8">
 			<!-- Main -->
 			<main class="p-4">
 				<article class="w-full">
@@ -36,7 +36,7 @@ const galleryItems = computed(() => {
 			</main>
 			<!-- Project Metadata -->
 			<aside class="md:w-[300px] flex-shrink-0">
-				<div class="p-4 space-y-8 border-2 dark:border-gray-700 rounded-xl">
+				<div class="p-4 space-y-8 border-2 dark:border-gray-700 rounded-card">
 					<div>
 						<TypographyTitle>Client</TypographyTitle>
 						<p class="font-bold dark:text-white">
@@ -45,7 +45,7 @@ const galleryItems = computed(() => {
 					</div>
 					<div>
 						<TypographyTitle>Built With</TypographyTitle>
-						<div v-for="(item, itemIdx) in page?.built_with" class="mt-2">
+						<div v-for="(item, itemIdx) in page?.built_with" :key="itemIdx" class="mt-2">
 							<UBadge size="lg" color="black">{{ item }}</UBadge>
 						</div>
 					</div>

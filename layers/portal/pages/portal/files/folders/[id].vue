@@ -5,20 +5,14 @@ const {
 	data: folder,
 	pending,
 	error,
-} = await useAsyncData(
-	`folder-${params.id}`,
-	() => {
-		return useDirectus(readFolder(params.id, {}));
-	},
-	{
-		cache: false,
-	},
-);
+} = await useAsyncData(`folder-${params.id}`, () => {
+	return useDirectus(readFolder(params.id as string, {}));
+});
 </script>
 <template>
 	<div>
 		<PortalPageHeader
-			:title="folder.name"
+			:title="folder?.name"
 			:breadcrumbs="[
 				{
 					title: 'Portal',
@@ -32,7 +26,7 @@ const {
 		>
 			<template #actions>
 				<div>
-					<PortalFileUploadModal :folder-id="folder.id" />
+					<PortalFileUploadModal :folder-id="folder?.id" />
 				</div>
 			</template>
 		</PortalPageHeader>

@@ -70,9 +70,9 @@ watch(page, () => {
 });
 
 const showTask = ref(false);
-const selectedTaskId = ref(null);
+const selectedTaskId: Ref<string | null> = ref(null);
 
-async function openTask(id) {
+async function openTask(id: string) {
 	selectedTaskId.value = id;
 	showTask.value = true;
 }
@@ -82,11 +82,11 @@ async function openTask(id) {
 		<div>
 			<dt class="font-medium leading-6 text-gray-500 font-display dark:text-gray-300">Open Tasks</dt>
 			<dd class="flex-none w-full text-3xl font-medium leading-10 tracking-tight text-gray-900 dark:text-white">
-				{{ tasks.count }} tasks
+				{{ tasks?.count }} tasks
 			</dd>
 		</div>
 
-		<UTable :columns="columns" :rows="tasks.data">
+		<UTable :columns="columns" :rows="tasks?.data">
 			<template #name-data="{ row }">
 				<UButton variant="link" class="w-56" @click="openTask(row.id)">
 					<span class="truncate">{{ row.name ?? 'Task with no name' }}</span>
@@ -96,7 +96,7 @@ async function openTask(id) {
 				<p class="capitalize">{{ getRelativeTime(row.due_date) }}</p>
 			</template>
 		</UTable>
-		<UPagination v-model="page" :max="5" :page-count="rowsPerPage" :total="tasks.count" />
+		<UPagination v-model="page" :max="5" :page-count="rowsPerPage" :total="tasks?.count" />
 		<!-- Task Item -->
 		<USlideover
 			v-model="showTask"

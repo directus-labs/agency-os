@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { GlobalSearchResult } from '~/types/api/global-search';
+
 const props = defineProps({
 	placeholder: {
 		type: String,
@@ -38,7 +40,7 @@ const groups = computed(() => {
 	return [
 		{
 			key: 'search',
-			label: (q) => q && `Results matching “${q}”...`,
+			label: (q: string) => q && `Results matching “${q}”...`,
 
 			search: async (q: string) => {
 				loading.value = true;
@@ -49,7 +51,7 @@ const groups = computed(() => {
 				}
 
 				try {
-					const { data } = await $fetch('/api/portal/search', {
+					const { data }: { data: GlobalSearchResult[] } = await $fetch('/api/portal/search', {
 						params: {
 							search: q,
 							collections: ['os_projects', 'os_tasks', 'os_invoices', 'help_articles'],
@@ -66,7 +68,7 @@ const groups = computed(() => {
 						};
 					});
 				} catch (error) {
-					console.log(error);
+					// console.log(error);
 				} finally {
 					loading.value = false;
 				}
@@ -79,7 +81,7 @@ const groups = computed(() => {
 	].filter(Boolean);
 });
 
-function onSelect(option) {
+function onSelect(option: any) {
 	if (option.click) {
 		option.click();
 	} else if (option.to) {

@@ -45,7 +45,7 @@ function getRelativeTime(d1: Date | string, d2: Date = new Date()): string {
 	return '';
 }
 
-function getFriendlyDate(dateString: string, { monthAbbr } = {}): string {
+function getFriendlyDate(dateString: string, { monthAbbr = {} } = {}): string {
 	const d = new Date(dateString);
 	const year = d.getFullYear();
 	const date = d.getDate();

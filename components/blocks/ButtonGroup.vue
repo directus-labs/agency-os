@@ -1,38 +1,35 @@
 <script setup lang="ts">
-import type { BlockButtonGroup, BlockButton } from '~/types';
+import type { BlockButtonGroup, BlockButton, Page, Post } from '~/types';
 
-defineProps({
-	data: {
-		type: Object as PropType<BlockButtonGroup>,
-		required: true,
-	},
-});
+defineProps<{
+	data: BlockButtonGroup;
+}>();
 
-function getUrl(button: BlockButton) {
-	if (button.type === 'pages') {
-		return button.page?.permalink ?? undefined;
-	} else if (button.type === 'posts') {
-		return button.post?.slug ?? undefined;
-	} else if (button.type === 'external') {
-		return button.external_url;
-	} else {
-		return undefined;
+function getUrl(button: BlockButton): string | undefined {
+	switch (button.type) {
+		case 'pages':
+			return (button.page as Page)?.permalink ?? undefined;
+		case 'posts':
+			return (button.post as Post)?.slug ?? undefined;
+		case 'external':
+			return button.external_url ?? undefined;
+		default:
+			return undefined;
 	}
 }
 </script>
 <template>
 	<div class="flex flex-col space-y-4 md:space-x-4 md:flex-row md:space-y-0">
 		<UButton
-			v-for="(button, buttonIdx) in data.buttons"
-			:key="buttonIdx"
+			v-for="button in data.buttons as BlockButton[]"
+			:key="button.id"
 			:to="getUrl(button)"
-			:color="button.color"
-			:variant="button.variant"
-			:target="button.open_in_new_window ? '_blank' : '_self'"
+			:color="button?.color"
+			:variant="button?.variant"
+			:target="button?.external_url ? '_blank' : '_self'"
+			:label="button?.label"
 			size="xl"
 			trailing-icon="material-symbols:arrow-forward-rounded"
-		>
-			{{ button.label }}
-		</UButton>
+		/>
 	</div>
 </template>

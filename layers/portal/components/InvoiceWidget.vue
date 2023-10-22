@@ -50,7 +50,7 @@ const columns = [
 		<div>
 			<dt class="font-medium leading-6 text-gray-500 font-display dark:text-gray-300">Open Invoices</dt>
 			<dd class="flex-none w-full text-3xl font-medium leading-10 tracking-tight text-gray-900 dark:text-white">
-				{{ formatCurrency(totalAmountDue) }}
+				{{ totalAmountDue ? formatCurrency(totalAmountDue) : 'N/A' }}
 			</dd>
 		</div>
 

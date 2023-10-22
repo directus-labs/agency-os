@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import type { Page } from '~/types';
+import type { Page, PageBlock, BlockType } from '~/types';
 
-// Map the page builder collection names to the components
-// https://nuxt.com/docs/guide/directory-structure/components#dynamic-components
-const map = {
+const componentMap: Record<BlockType, any> = {
 	block_hero: resolveComponent('BlocksHero'),
 	block_faqs: resolveComponent('BlocksFaqs'),
 	block_richtext: resolveComponent('BlocksRichText'),
@@ -17,7 +15,7 @@ const map = {
 	block_video: resolveComponent('BlocksVideo'),
 	block_gallery: resolveComponent('BlocksGallery'),
 	block_steps: resolveComponent('BlocksSteps'),
-	block_columns: resolveComponent('BlocksColumns'),
+	block_column: resolveComponent('BlocksColumns'),
 	block_cardgroup: resolveComponent('BlocksCardGroup'),
 	block_divider: resolveComponent('BlocksDivider'),
 };
@@ -27,17 +25,16 @@ const props = defineProps<{
 }>();
 
 const blocks = computed(() => {
-	// Filter out hidden blocks
-	if (!props.page) return;
-	return props.page.blocks.filter((block) => {
-		return !block.hide_block;
+	const blocks = unref(props.page as Page)?.blocks as PageBlock[];
+	return blocks?.filter((block) => {
+		return block.hide_block !== true;
 	});
 });
 </script>
 <template>
 	<div id="content" class="mx-auto">
 		<template v-for="block in blocks" :key="block.id">
-			<component :is="map[block.collection]" :data="block.item" />
+			<component :is="componentMap[block.collection]" v-if="block && block.collection" :data="block.item" />
 		</template>
 	</div>
 </template>

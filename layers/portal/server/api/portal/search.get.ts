@@ -1,5 +1,4 @@
-import { getQuery } from 'h3';
-import { directus, readItems, updateItem, createItem, withToken } from '~~/server/utils/directus-server';
+import type { GlobalSearchResult } from '~/types/api/global-search';
 
 function mapEntity({
 	title,
@@ -15,7 +14,7 @@ function mapEntity({
 	urlPattern: string;
 	description?: string;
 	image?: string;
-}) {
+}): GlobalSearchResult {
 	if (urlPattern.includes(':slug')) {
 		urlPattern = urlPattern.replace(':slug', entity.slug);
 	}
@@ -37,7 +36,7 @@ function mapEntity({
 	};
 }
 
-function mapResults(collection: string, results: any[]) {
+function mapResults(collection: string, results: GlobalSearchResult[]) {
 	const mapping = {
 		help_articles: (article: any) =>
 			mapEntity({
@@ -80,7 +79,15 @@ function mapResults(collection: string, results: any[]) {
 			}),
 	};
 
-	return results.map(mapping[collection]);
+	return results.map((result: GlobalSearchResult) => {
+		const mapFunction = mapping[collection as keyof typeof mapping];
+
+		if (typeof mapFunction === 'function') {
+			return mapFunction(result);
+		} else {
+			throw new Error(`Invalid collection: ${collection}`);
+		}
+	});
 }
 
 // Caching this call because we don't want to give our Directus server a heart attack on every keystroke
@@ -98,7 +105,8 @@ export default cachedEventHandler(
 
 			// console.log(access_token);
 
-			let { collections, search, raw } = query;
+			let { collections } = query;
+			const { search, raw } = query;
 
 			if (typeof collections === 'string') {
 				collections = [collections];
@@ -106,6 +114,7 @@ export default cachedEventHandler(
 
 			if (
 				!collections ||
+				!Array.isArray(collections) ||
 				collections.every(
 					(collection: string) => !['help_articles', 'os_projects', 'os_tasks', 'os_invoices'].includes(collection),
 				)
@@ -115,7 +124,9 @@ export default cachedEventHandler(
 
 			const data = await Promise.all(
 				collections.map(async (collection) => {
-					const data = await directus.request(withToken(access_token, readItems(collection, { search: search ?? '' })));
+					const data = await directusServer.request(
+						withToken(access_token, readItems(collection, { search: search?.toString() ?? '' })),
+					);
 
 					if (raw) {
 						return data;
@@ -129,9 +140,11 @@ export default cachedEventHandler(
 				statusCode: 200,
 				data: data.flat(),
 			};
-		} catch (error) {
-			console.error(error);
-			return error;
+		} catch (err: any) {
+			throw createError({
+				statusCode: 500,
+				statusMessage: err.message,
+			});
 		}
 	},
 	{

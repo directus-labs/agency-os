@@ -18,7 +18,7 @@ const signatureData = ref(
 );
 
 // Signature Pad Settings
-const signaturePad = ref(null);
+const signaturePad: Ref<any> = ref(null);
 
 const strokeOptions = {
 	size: 8,
@@ -42,7 +42,7 @@ function endDrawing() {
 	//  Convert to a File to standardize across all other form inputs
 	// @TODO - Fix type error
 
-	const file = dataURLtoFile((signaturePad.value as any)?.toDataURL(), 'signature.png');
+	const file = dataURLtoFile(signaturePad.value?.toDataURL(), 'signature.png');
 	signatureData.value.image = file;
 }
 
@@ -154,6 +154,6 @@ watch(
 
 <style lang="postcss">
 input::file-selector-button {
-	@apply inline-flex items-center font-bold border-none transition duration-150 odd:rounded-tr-lg odd:rounded-bl-lg even:rounded-tl-lg even:rounded-br-lg hover:scale-105 active:hover:scale-95 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed text-gray-800 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300 px-4 py-2 text-sm cursor-pointer mr-2;
+	@apply inline-flex items-center font-bold border-none transition duration-150 hover:scale-105 active:hover:scale-95 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed text-gray-800 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-300 px-4 py-2 text-sm cursor-pointer mr-2;
 }
 </style>

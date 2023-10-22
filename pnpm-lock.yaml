@@ -16,21 +16,9 @@ devDependencies:
   '@directus/sdk':
     specifier: 12.1.0
     version: 12.1.0
-  '@formkit/addons':
-    specifier: 1.0.0
-    version: 1.0.0
   '@formkit/auto-animate':
     specifier: 1.0.0-beta.6
     version: 1.0.0-beta.6
-  '@formkit/icons':
-    specifier: 1.0.0
-    version: 1.0.0
-  '@formkit/nuxt':
-    specifier: 1.0.0
-    version: 1.0.0(tailwindcss@3.3.3)
-  '@formkit/themes':
-    specifier: 1.0.0
-    version: 1.0.0(tailwindcss@3.3.3)
   '@headlessui/vue':
     specifier: 1.7.16
     version: 1.7.16(vue@3.3.4)
@@ -67,6 +55,9 @@ devDependencies:
   '@tailwindcss/typography':
     specifier: 0.5.10
     version: 0.5.10(tailwindcss@3.3.3)
+  '@types/uuid':
+    specifier: 9.0.0
+    version: 9.0.0
   '@vueuse/core':
     specifier: 10.5.0
     version: 10.5.0(vue@3.3.4)
@@ -994,136 +985,8 @@ packages:
     resolution: {integrity: sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==}
     dev: true
 
-  /@formkit/addons@1.0.0:
-    resolution: {integrity: sha512-MYOjbhF115POxQVNPN6HTuNJSZp5Q6sA7awNx7F8TNgJpqNlaRxIWrv6gzlP7Dnh2lApZiB+JxiXKStoxhFVyg==}
-    dependencies:
-      '@formkit/auto-animate': 0.8.0
-      '@formkit/core': 1.0.0
-      '@formkit/inputs': 1.0.0
-      '@formkit/utils': 1.0.0
-    dev: true
-
-  /@formkit/auto-animate@0.8.0:
-    resolution: {integrity: sha512-G8f7489ka0mWyi+1IEZT+xgIwcpWtRMmE2x+IrVoQ+KM1cP6VDj/TbujZjwxdb0P8w8b16/qBfViRmydbYHwMw==}
-    dev: true
-
   /@formkit/auto-animate@1.0.0-beta.6:
     resolution: {integrity: sha512-PVDhLAlr+B4Xb7e+1wozBUWmXa6BFU8xUPR/W/E+TsQhPS1qkAdAsJ25keEnFrcePSnXHrOsh3tiFbEToOzV9w==}
-    dev: true
-
-  /@formkit/core@1.0.0:
-    resolution: {integrity: sha512-rDFVwNngLcakltasYzmyYDPAYoCoakK+7h4/5V1bE1FQDabhVvJIc5EDH8U80RAKNLGS9xiQ1JK4FHGcZ3K+oQ==}
-    dependencies:
-      '@formkit/utils': 1.0.0
-    dev: true
-
-  /@formkit/dev@1.0.0:
-    resolution: {integrity: sha512-ESX58BklYH1x9312xgyLTJ97wumOfPH98d2F3EL5M6erwHbBssBxBuKqsJkVoBo5Natgtm1VUDd9akA2Qc3dZQ==}
-    dependencies:
-      '@formkit/core': 1.0.0
-      '@formkit/utils': 1.0.0
-    dev: true
-
-  /@formkit/i18n@1.0.0:
-    resolution: {integrity: sha512-Q2jvwy54NufxGplzyuykowTSuqSMZsCRPJqV+taa/2V8J7EJh3YKiyWP69eKKlHtX9rMmjrlFSTbG4a0AJxdRw==}
-    dependencies:
-      '@formkit/core': 1.0.0
-      '@formkit/utils': 1.0.0
-      '@formkit/validation': 1.0.0
-    dev: true
-
-  /@formkit/icons@1.0.0:
-    resolution: {integrity: sha512-VbY1BCVL5keh+spVeB+06dtq+YSEb1Nm/76nEtb4sbirTzdqWrMnTvji4GtsT9Os8EnoM95CovH10B0D2SLaJg==}
-    dependencies:
-      '@formkit/core': 1.0.0
-    dev: true
-
-  /@formkit/inputs@1.0.0:
-    resolution: {integrity: sha512-fP8kBshH3SD19mei6nAqTq6LTHI4/C1eAP4BYMHBuLwKYMq4SrfPKTCrTNefz+DF3yRaUzUqRg5TgBGgt6wtTw==}
-    dependencies:
-      '@formkit/core': 1.0.0
-      '@formkit/utils': 1.0.0
-    dev: true
-
-  /@formkit/nuxt@1.0.0(tailwindcss@3.3.3):
-    resolution: {integrity: sha512-9HyKRk+aDoo9qsNquZNab4VH59YK+0lVMwiyk82ybC6zt2XjwXXat9ZmRYhS65E9LW0tIPaC/B7VdubYIpxWgw==}
-    dependencies:
-      '@formkit/core': 1.0.0
-      '@formkit/i18n': 1.0.0
-      '@formkit/vue': 1.0.0(tailwindcss@3.3.3)
-      '@nuxt/kit': 3.8.0
-      chokidar: 3.5.3
-      pathe: 1.1.1
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-      - tailwindcss
-      - unocss
-      - windicss
-    dev: true
-
-  /@formkit/observer@1.0.0:
-    resolution: {integrity: sha512-fKo2TX5MK6L4Nc0YWIcg2Qhp2Rz0pnQg4j541Pwd3tyQ+auHYKD8wnPkq46XHQUAWaq4HJ4WchpPiPSqXpcXAQ==}
-    dependencies:
-      '@formkit/core': 1.0.0
-      '@formkit/utils': 1.0.0
-    dev: true
-
-  /@formkit/rules@1.0.0:
-    resolution: {integrity: sha512-q9ENjQFEsku8v9M9jybtDh8TVgz4WFrm0wj6v8w8KXqDxdEU6HZ7+IWuF8/0Rh8SwVZLTYTv+dqtw8Xs5Z/b6g==}
-    dependencies:
-      '@formkit/core': 1.0.0
-      '@formkit/utils': 1.0.0
-      '@formkit/validation': 1.0.0
-    dev: true
-
-  /@formkit/themes@1.0.0(tailwindcss@3.3.3):
-    resolution: {integrity: sha512-A5fseWPLp2SWnLpl966vzIIpGDIpZ4FSa4HXaA1PwLg69JVHzoeuls8vd90z7a4VALlslnVUwSm26WWr1BxJgA==}
-    peerDependencies:
-      tailwindcss: ^3.2.0
-      unocss: ^0.31.0
-      windicss: ^3.0.0
-    peerDependenciesMeta:
-      tailwindcss:
-        optional: true
-      unocss:
-        optional: true
-      windicss:
-        optional: true
-    dependencies:
-      '@formkit/core': 1.0.0
-      tailwindcss: 3.3.3
-    dev: true
-
-  /@formkit/utils@1.0.0:
-    resolution: {integrity: sha512-5T8PbHOajP/eJuoEeLgxA0g25nyVUZKfy2V2mW8idoph+9PT0nZUoIP+KA/PJ2mmexqtuykMT0A5knW8MiXqsw==}
-    dev: true
-
-  /@formkit/validation@1.0.0:
-    resolution: {integrity: sha512-XRFbPw/YlOWqDyrZb6qtETFjohgOrBfhhsVM6B7qm4xyXx2pa53zf+RjDD4+aUXjZTif+qKZA8xuK3Z3shGuZQ==}
-    dependencies:
-      '@formkit/core': 1.0.0
-      '@formkit/observer': 1.0.0
-      '@formkit/utils': 1.0.0
-    dev: true
-
-  /@formkit/vue@1.0.0(tailwindcss@3.3.3):
-    resolution: {integrity: sha512-TJ4DIPEI7EgxZ/olXpnyHmezm75acllzbCIHgXB4ckd1AxC2pb0T2Z17B4VK/jYz7Xdkc6apAvYosgVbupbnfw==}
-    dependencies:
-      '@formkit/core': 1.0.0
-      '@formkit/dev': 1.0.0
-      '@formkit/i18n': 1.0.0
-      '@formkit/inputs': 1.0.0
-      '@formkit/observer': 1.0.0
-      '@formkit/rules': 1.0.0
-      '@formkit/themes': 1.0.0(tailwindcss@3.3.3)
-      '@formkit/utils': 1.0.0
-      '@formkit/validation': 1.0.0
-      vue: 3.3.4
-    transitivePeerDependencies:
-      - tailwindcss
-      - unocss
-      - windicss
     dev: true
 
   /@headlessui/tailwindcss@0.2.0(tailwindcss@3.3.3):
@@ -2510,6 +2373,10 @@ packages:
 
   /@types/semver@7.5.4:
     resolution: {integrity: sha512-MMzuxN3GdFwskAnb6fz0orFvhfqi752yjaXylr0Rp4oDg5H0Zn1IuyRhDVvYOwAXoJirx2xuS16I3WjxnAIHiQ==}
+    dev: true
+
+  /@types/uuid@9.0.0:
+    resolution: {integrity: sha512-kr90f+ERiQtKWMz5rP32ltJ/BtULDI5RVO0uavn1HQUOwjx0R1h0rnDYNL0CepF1zL5bSY6FISAfd9tOdDhU5Q==}
     dev: true
 
   /@types/web-bluetooth@0.0.18:

@@ -9,7 +9,6 @@ export interface UploadProps {
 }
 
 const props = withDefaults(defineProps<UploadProps>(), {
-	// label: 'Upload',
 	modelValue: () => [],
 	multiple: false,
 	sizeLimitMb: 5, // 5mb file size limit by default
@@ -19,13 +18,12 @@ const props = withDefaults(defineProps<UploadProps>(), {
 
 const emit = defineEmits(['update:modelValue', 'error', 'success']);
 
-const { fileUrl } = useFiles();
 const { dragging, onDragEnter, onDragLeave, onDrop } = useDragging();
 const { uploading, error, onSelect, processUpload } = useUpload();
 
 const files = ref(props.modelValue);
 
-function deleteImage(index) {
+function deleteImage(index: number) {
 	files.value = files.value.filter((image, i) => i !== index);
 	emit('update:modelValue', files.value);
 }
@@ -53,9 +51,14 @@ function useDragging() {
 		}
 	}
 
-	function onDrop(event) {
+	function onDrop(event: DragEvent) {
 		dragCounter = 0;
 		dragging.value = false;
+
+		if (!event.dataTransfer) {
+			return;
+		}
+
 		const fileList = event.dataTransfer.files;
 
 		if (fileList.length > 0) {
@@ -100,15 +103,14 @@ function useUpload() {
 
 			// Emit success event
 			emit('success', files.value);
-		} catch (e) {
-			// console.log(e);
+		} catch (e: any) {
 			error.value = e.message;
 		} finally {
 			uploading.value = false;
 		}
 	}
 
-	async function uploadFile(file) {
+	async function uploadFile(file: File) {
 		try {
 			const form = new FormData();
 
@@ -120,11 +122,14 @@ function useUpload() {
 			const uploadedFile = await useDirectus(uploadFiles(form));
 			return uploadedFile;
 		} catch (e) {
-			throw new Error(e);
+			throw createError({
+				statusCode: 500,
+				statusMessage: 'Error uploading file...',
+			});
 		}
 	}
 
-	function checkFileSize(file) {
+	function checkFileSize(file: File) {
 		if (props.sizeLimitMb) {
 			const fileSize = file.size / 1000000;
 
@@ -135,9 +140,11 @@ function useUpload() {
 	}
 
 	function onSelect(event: Event) {
-		const fileList = event.target?.files;
+		const input = event.target as HTMLInputElement;
 
-		if (fileList.length > 0) {
+		const fileList = input.files;
+
+		if (fileList && fileList.length > 0) {
 			processUpload(fileList);
 		}
 	}
@@ -204,12 +211,12 @@ function useUpload() {
 		<VAlert v-if="error" type="error" class="mt-2">{{ error }}</VAlert>
 		<!-- File List -->
 		<ul class="mt-2 space-y-2">
-			<li v-for="(file, index) in files" :key="file.id">
+			<li v-for="(file, fileIdx) in files" :key="file.id">
 				<div class="relative flex items-center px-4 py-2 rounded-md bg-gray-50 dark:bg-gray-800">
-					<img :src="fileUrl(file.id)" class="object-contain w-12 h-12 mr-4 dark:brightness-90" />
+					<NuxtImg :src="file.id" class="object-contain w-12 h-12 mr-4 dark:brightness-90" />
 					<span class="sm:text-sm dark:text-gray-200">{{ file.filename_download }}</span>
 					<span class="flex ml-auto cursor-pointer">
-						<button @click="deleteImage(index)">
+						<button @click="deleteImage(fileIdx)">
 							<Icon
 								name="heroicons:trash"
 								class="w-5 h-5 text-red-500 stroke-current hover:text-red-600 flex-shrink-none"
@@ -222,8 +229,8 @@ function useUpload() {
 	</fieldset>
 </template>
 
-<style>
+<style lang="postcss">
 .dropzone {
-	@apply relative flex items-center p-8 min-h-[100px] transition duration-150 border-2 border-dashed rounded-md;
+	@apply relative flex items-center p-8 min-h-[100px] transition duration-150 border-2 border-dashed rounded-card;
 }
 </style>

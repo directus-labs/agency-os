@@ -1,54 +1,75 @@
 <script setup lang="ts">
 import { useDebounceFn } from '@vueuse/shared';
-import type { BlockTestimonial } from '~/types';
+import type { BlockTestimonial, BlockTestimonialItem, Testimonial, File } from '~/types';
 
 const props = defineProps<{
 	data: BlockTestimonial;
 }>();
 
 const testimonials = computed(() => {
-	return props.data.testimonials.map((item) => {
-		return item.testimonials_id;
+	const testimonialsArray = unref(props.data).testimonials as BlockTestimonialItem[];
+
+	if (!testimonialsArray) return [];
+
+	return testimonialsArray.map((item) => {
+		return item.testimonials_id as Testimonial;
 	});
 });
 
-const testimonialContainer = ref(null);
-const testimonialRefs = ref([]);
+const testimonialContainer: Ref<HTMLElement | null> = ref(null);
+const testimonialRefs: Ref<(HTMLElement | null)[]> = ref([]);
 
 const currentItemIdx = ref(0);
 
-function handleScroll(e) {
-	// Select the testimonial that is closest to the center of the screen
-	const testimonialWidth = testimonialRefs.value[0].offsetWidth;
+function handleScroll(e: Event) {
+	const target = e.target as HTMLElement;
+
+	if (!testimonialContainer.value || !testimonialRefs.value) return;
+
+	const testimonialWidth = testimonialRefs.value[0]?.offsetWidth || 0;
 	const testimonialCenter = testimonialWidth / 2;
-	const scrollLeft = e.target.scrollLeft;
+	const scrollLeft = target.scrollLeft;
 	const scrollCenter = scrollLeft + testimonialCenter;
 	const closestTestimonial = Math.round(scrollCenter / testimonialWidth);
 
-	// If the scoll postiion is at the beginning of the container, set the current item to the first item
-	// If the scoll postiion is at the end of the container, set the current item to the last item
 	if (scrollLeft === 0) {
 		currentItemIdx.value = 0;
-	} else if (scrollLeft + e.target.offsetWidth + 1 >= e.target.scrollWidth) {
+	} else if (scrollLeft + target.offsetWidth + 1 >= target.scrollWidth) {
 		currentItemIdx.value = testimonialRefs.value.length - 1;
 	} else {
 		currentItemIdx.value = closestTestimonial;
 	}
 }
 
-function handleScrollDebounced(e) {
-	useDebounceFn(handleScroll(e), 150);
+const debouncedScroll = useDebounceFn(handleScroll, 150);
+
+function handleScrollDebounced(e: Event) {
+	debouncedScroll(e);
 }
 
-function handleIndicatorButton(index) {
-	testimonialContainer.value.scrollLeft = testimonialRefs.value[index].offsetLeft - 16;
+function handleIndicatorButton(index: number) {
+	if (!testimonialContainer.value || !testimonialRefs.value) return;
+
+	const scrollLeft = testimonialContainer?.value?.scrollLeft;
+	const offsetLeft = testimonialRefs?.value[index]?.offsetLeft;
+
+	if (typeof scrollLeft !== 'undefined' && typeof offsetLeft !== 'undefined') {
+		testimonialContainer.value.scrollLeft = offsetLeft - 16;
+	}
 }
 
-function handleNavButton(direction: ['left', 'right']) {
-	if (direction === 'left') {
-		testimonialContainer.value.scrollLeft -= testimonialRefs.value[currentItemIdx.value].offsetWidth;
-	} else {
-		testimonialContainer.value.scrollLeft += testimonialRefs.value[currentItemIdx.value].offsetWidth;
+function handleNavButton(direction: 'left' | 'right') {
+	if (!testimonialContainer.value || !testimonialRefs.value) return;
+
+	const scrollLeft = testimonialContainer?.value?.scrollLeft;
+	const offsetWidth = testimonialRefs?.value[currentItemIdx?.value]?.offsetWidth;
+
+	if (typeof scrollLeft !== 'undefined' && typeof offsetWidth !== 'undefined') {
+		if (direction === 'left') {
+			testimonialContainer.value.scrollLeft -= offsetWidth;
+		} else {
+			testimonialContainer.value.scrollLeft += offsetWidth;
+		}
 	}
 }
 </script>
@@ -69,6 +90,7 @@ function handleNavButton(direction: ['left', 'right']) {
 				<div class="inline-flex space-x-2">
 					<button
 						v-for="(item, itemIdx) in testimonials"
+						:key="item.id"
 						:class="[
 							{
 								'bg-primary': itemIdx === currentItemIdx,
@@ -102,7 +124,7 @@ function handleNavButton(direction: ['left', 'right']) {
 				@scroll="handleScrollDebounced"
 			>
 				<div
-					v-for="(testimonial, itemIdx) in testimonials"
+					v-for="testimonial in testimonials as Testimonial[]"
 					:key="testimonial.id"
 					ref="testimonialRefs"
 					:class="['snap-center']"
@@ -112,12 +134,13 @@ function handleNavButton(direction: ['left', 'right']) {
 						name="material-symbols:format-quote-rounded"
 						class="absolute w-20 h-20 rotate-180 left-2 text-primary/20 top-2"
 					/>
-					<TypographyProse :content="testimonial.content" size="lg" class="relative" />
+					<TypographyProse v-if="testimonial?.content" :content="testimonial?.content" size="lg" class="relative" />
 					<div class="flex pt-6 mt-4 space-x-2 border-t border-gray-300 dark:border-gray-700">
+						<!-- Person Image -->
 						<NuxtImg
-							v-if="testimonial.image"
+							v-if="(testimonial?.image as unknown as File)?.id"
 							class="inline-block w-16 h-16 border rounded-button"
-							:src="testimonial.image.id"
+							:src="(testimonial?.image as unknown as File)?.id"
 							:alt="testimonial.title ?? ''"
 						/>
 						<UIcon

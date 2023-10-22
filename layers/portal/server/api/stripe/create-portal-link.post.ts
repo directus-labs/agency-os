@@ -16,7 +16,6 @@ export default defineEventHandler(async (event) => {
 			return_url: headers.referer,
 		});
 
-		console.log(url);
 		return {
 			url,
 		};

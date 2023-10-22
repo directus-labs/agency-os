@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import colors from 'tailwindcss/colors';
 
-const appConfig = useAppConfig();
+type DefaultColors = typeof colors;
 
-// console.log(colors[appConfig.ui.primary]);
+const appConfig = useAppConfig();
 
 export interface OgImageProps {
 	imageUrl?: string;
@@ -13,18 +13,16 @@ export interface OgImageProps {
 	authorImage?: string;
 	badgeLabel?: string;
 	badgeColor?: string;
-	primaryColor?: string;
-	grayColor?: string;
 }
 
 defineProps<OgImageProps>();
 
 const primaryColor = computed(() => {
-	return colors[appConfig.ui.primary];
+	return colors[appConfig.ui.primary as keyof DefaultColors];
 });
 
 const grayColor = computed(() => {
-	return colors[appConfig.ui.gray];
+	return colors[appConfig.ui.gray as keyof DefaultColors];
 });
 
 // inherited attrs can mess up the satori parser

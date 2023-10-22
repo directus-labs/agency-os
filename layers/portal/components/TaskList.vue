@@ -75,15 +75,14 @@ const columns = [
 ];
 
 const showTask = ref(false);
-const showCompletedTasks = ref(false);
-const selectedTaskId = ref(null);
+const selectedTaskId: Ref<string | null> = ref(null);
 
 async function openTask(id: string) {
 	selectedTaskId.value = id;
 	showTask.value = true;
 }
 
-const searchQuery = ref(null);
+const searchQuery: Ref<string | null> = ref(null);
 
 const tasksShown = computed(() => {
 	// Filter out tasks with a type of "milestone" and use search query to filter tasks
@@ -92,7 +91,7 @@ const tasksShown = computed(() => {
 		?.filter((task) => task.type !== 'milestone')
 		.filter((task) => {
 			if (!searchQuery.value) return true;
-			return task.name.toLowerCase().includes(searchQuery.value.toLowerCase());
+			return task.name.toLowerCase().includes(searchQuery?.value?.toLowerCase());
 		});
 
 	return items;
@@ -102,7 +101,6 @@ const tasksShown = computed(() => {
 	<!-- Filters -->
 	<div class="flex items-center justify-between gap-3 pb-3 border-b dark:border-gray-700">
 		<UInput v-model="searchQuery" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search..." />
-		<!-- <USelectMenu v-model="selectedStatus" :options="todoStatus" multiple placeholder="Status" class="w-40" /> -->
 	</div>
 	<!-- Table -->
 	<UTable :columns="columns" :rows="tasksShown" column-attribute="label">

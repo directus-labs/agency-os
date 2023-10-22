@@ -28,6 +28,9 @@ export default defineAppConfig({
 				loadingIcon: 'material-symbols:sync-rounded',
 			},
 		},
+		badge: {
+			rounded: 'rounded-button',
+		},
 		input: {
 			default: {
 				loadingIcon: 'material-symbols:sync-rounded',

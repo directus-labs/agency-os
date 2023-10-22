@@ -20,7 +20,7 @@ const { data, pending, error, refresh } = await useAsyncData(
 						contact: ['id', 'first_name', 'last_name', 'email'],
 					},
 				],
-				search: unref(search),
+				search: unref(search) as string,
 				filter: {
 					...(unref(status) && {
 						status: {

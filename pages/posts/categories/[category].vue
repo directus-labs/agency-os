@@ -3,7 +3,7 @@ const { params, path } = useRoute();
 const { globals } = useAppConfig();
 const { fileUrl } = useFiles();
 
-const { data, pending, error } = await useAsyncData(
+const { data } = await useAsyncData(
 	path,
 	() => {
 		const categoryPromise = useDirectus(
@@ -129,7 +129,7 @@ useServerSeoMeta({
 					<TypographyTitle as="p">Items for Category: {{ deslugify(params.category as string) }}</TypographyTitle>
 					<div class="relative grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-4">
 						<PostCard
-							v-for="(post, postIdx) in posts"
+							v-for="post in posts"
 							:key="post.id"
 							:post="post"
 							class="col-span-2 pb-6 border-b border-gray-300 dark:border-gray-700"

@@ -1,4 +1,22 @@
 <script setup lang="ts">
+import type { GlobalSearchResult } from '~/types/api/global-search';
+
+const props = defineProps({
+	collections: {
+		type: Array as PropType<string[]>,
+		required: true,
+		validator: (value: string[]) => {
+			return value.every((collection) => {
+				return ['posts', 'pages', 'categories', 'projects'].includes(collection);
+			});
+		},
+	},
+	placeholder: {
+		type: String,
+		default: 'Search items',
+	},
+});
+
 defineShortcuts({
 	meta_k: {
 		usingInput: true,
@@ -16,7 +34,7 @@ const groups = computed(() => {
 	return [
 		{
 			key: 'search',
-			label: (q) => q && `Results matching “${q}”...`,
+			label: (q: string) => q && `Results matching “${q}”...`,
 
 			search: async (q: string) => {
 				loading.value = true;
@@ -27,14 +45,14 @@ const groups = computed(() => {
 				}
 
 				try {
-					const { data } = await $fetch('/api/search', {
+					const { data }: { data: GlobalSearchResult[] } = await $fetch('/api/search', {
 						params: {
 							search: q,
 							collections: props.collections, // Use the collections prop to filter the search
 						},
 					});
 
-					return data.map((hit) => {
+					return data.map((hit: any) => {
 						return {
 							id: hit.id,
 							label: hit.title,
@@ -44,7 +62,7 @@ const groups = computed(() => {
 						};
 					});
 				} catch (error) {
-					console.log(error);
+					// console.log(error);
 				} finally {
 					loading.value = false;
 				}
@@ -53,7 +71,7 @@ const groups = computed(() => {
 	];
 });
 
-function onSelect(option) {
+function onSelect(option: any) {
 	if (option.click) {
 		option.click();
 	} else if (option.to) {
@@ -62,22 +80,6 @@ function onSelect(option) {
 		navigateTo(option.href);
 	}
 }
-
-const props = defineProps({
-	collections: {
-		type: Array as PropType<string[]>,
-		required: true,
-		validator: (value) => {
-			return value.every((collection) => {
-				return ['posts', 'pages', 'categories', 'projects'].includes(collection);
-			});
-		},
-	},
-	placeholder: {
-		type: String,
-		default: 'Search items',
-	},
-});
 
 const query = ref('');
 const results = ref([]);

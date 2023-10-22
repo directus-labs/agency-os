@@ -9,8 +9,8 @@ export interface BreadcrumbsProps {
 defineProps<BreadcrumbsProps>();
 </script>
 <template>
-	<div class="flex flex-wrap items-center space-x-2 text-sm dark:text-gray-200">
-		<template v-for="(item, itemIdx) in items">
+	<div class="flex flex-wrap items-center space-x-2 text -sm dark:text-gray-200">
+		<template v-for="(item, itemIdx) in items" :key="itemIdx">
 			<template v-if="item.href">
 				<NuxtLink :href="item.href" class="hover:text-primary">
 					{{ item.title }}

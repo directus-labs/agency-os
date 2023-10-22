@@ -1,4 +1,4 @@
-import type { User } from '../system';
+import type { User, File } from '../system';
 import type { SEO } from '../meta';
 import type { Category } from '../content';
 
@@ -20,7 +20,19 @@ export interface Post {
 	user_created?: string | null;
 	user_updated?: string | null;
 	links?: string;
-	type?: PostType | null;
+	type?: PostType;
+	details?: string;
+	gallery?: (number | ProjectFile)[];
+	built_with?: { [key: string]: any } | null;
+	client?: string | null;
+	cost?: string | null;
 }
 
 export type PostType = 'blog' | 'video' | 'project';
+
+export interface ProjectFile {
+	directus_files_id?: (string | File) | null;
+	id?: number;
+	project?: (string | File) | null;
+	sort?: number | null;
+}

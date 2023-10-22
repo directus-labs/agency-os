@@ -1,12 +1,12 @@
-import { formatFonts } from './utils/fonts';
+// import { formatFonts } from './utils/fonts';
 import { theme } from './theme';
 
-const fontFamilies = {
-	Inter: true,
-	'Fira Code': true,
-	Poppins: [400, 500, 600, 700, 800, 900],
-	'Nothing You Could Do': true,
-};
+// const fontFamilies = {
+// 	Inter: true,
+// 	'Fira Code': true,
+// 	Poppins: [400, 500, 600, 700, 800, 900],
+// 	'Nothing You Could Do': true,
+// };
 
 export default defineNuxtConfig({
 	// https://nuxt.com/docs/api/configuration/nuxt-config
@@ -90,7 +90,8 @@ export default defineNuxtConfig({
 			width: 1200,
 			height: 630,
 		},
-		fonts: formatFonts(fontFamilies),
+		// @TODO: Fix font families for OG Image
+		// fonts: formatFonts(fontFamilies),
 	},
 
 	postcss: {

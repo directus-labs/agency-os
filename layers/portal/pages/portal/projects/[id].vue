@@ -5,13 +5,9 @@ const {
 	data: project,
 	pending,
 	error,
-} = await useAsyncData(
-	Math.random().toString(36).substring(2, 15),
-	() => {
-		return useDirectus(readItem('os_projects', params.id));
-	},
-	{ cache: false },
-);
+} = await useAsyncData(Math.random().toString(36).substring(2, 15), () => {
+	return useDirectus(readItem('os_projects', params.id as string));
+});
 
 const tabs = [
 	{

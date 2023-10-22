@@ -81,20 +81,15 @@ const activities = ref([
 	},
 ]);
 
-const groupedActivity = computed(() => {
-	// Group activity by the specific date and sort by timestamp
-	// Return an array of objects with the date and activity
-	// [
-	// { date: '2021-05-01', activity: [] },
-	// { date: '2021-04-01', activity: [] },
-	// { date: '2021-03-01', activity: [] },
-	// { date: '2021-02-01', activity: [] },
-	// { date: '2021-01-01', activity: [] }
-	// ]
-	const grouped = activities.value
-		.reduce((acc, item) => {
-			// Convert item.timestamp to a date string
-			const date = new Date(item.timestamp).toLocaleDateString('en-US', {
+type GroupedActivity = {
+	date: string;
+	activity: typeof activities.value;
+};
+
+const groupedActivity = computed<GroupedActivity[]>(() => {
+	const grouped: GroupedActivity[] = activities.value
+		.reduce((acc: GroupedActivity[], currentActivity) => {
+			const date = new Date(currentActivity.timestamp).toLocaleDateString('en-US', {
 				year: 'numeric',
 				month: 'long',
 				day: 'numeric',
@@ -103,19 +98,17 @@ const groupedActivity = computed(() => {
 			const existing = acc.find((a) => a.date === date);
 
 			if (existing) {
-				existing.activity.push(item);
+				existing.activity.push(currentActivity);
 			} else {
 				acc.push({
 					date,
-					activity: [item],
+					activity: [currentActivity],
 				});
 			}
 
 			return acc;
 		}, [])
-		.sort((a, b) => {
-			return new Date(b.date).getTime() - new Date(a.date).getTime();
-		});
+		.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 	return grouped;
 });
@@ -130,7 +123,7 @@ const groupedActivity = computed(() => {
 				<VDivider />
 
 				<ul role="list" class="mt-4">
-					<li v-for="(item, itemIdx) in date.activity" :key="item.id">
+					<li v-for="(item, itemIdx) in date.activity" :key="itemIdx">
 						<div class="relative pb-8">
 							<span
 								v-if="itemIdx !== date.activity.length - 1"

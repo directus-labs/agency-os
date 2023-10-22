@@ -45,7 +45,11 @@ const steps = computed(() => {
 					]"
 				>
 					<div v-if="step.image" class="flex-shrink-0 dark:bg-white dark:brightness-90 rounded-panel">
-						<NuxtImg class="object-cover w-full h-32 rounded-card md:w-48 md:h-full" alt="" :src="step.image" />
+						<NuxtImg
+							class="object-cover w-full h-32 rounded-card md:w-48 md:h-full"
+							:src="safeRelationId(step.image)"
+							:alt="safeRelation(step.image)?.description ?? ''"
+						/>
 					</div>
 
 					<div class="w-full mt-4 text-left md:mt-0">

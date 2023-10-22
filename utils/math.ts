@@ -10,6 +10,7 @@ function percentChange(num1: number, num2: number) {
 function roundToDecimal(value: number | string, decimals: number | string) {
 	const val = typeof value === 'string' ? parseFloat(value) : value;
 	const dec = typeof decimals === 'string' ? parseInt(decimals, 10) : decimals;
+	// @ts-ignore
 	return Number(Math.round(val + 'e' + dec) + 'e-' + dec);
 }
 

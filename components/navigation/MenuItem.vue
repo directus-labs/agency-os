@@ -8,7 +8,7 @@ const props = defineProps<{
 	item: NavigationItem;
 }>();
 
-const popover: Ref<Function | null> = ref(null);
+const popover: Ref<any> = ref(null);
 
 // If route changes close the menu
 watch(
@@ -56,7 +56,7 @@ watch(
 				<div class="p-4">
 					<NuxtLink
 						v-for="childItem in item.children as NavigationItem[]"
-						:key="item.id"
+						:key="childItem.id"
 						:href="getNavItemUrl(childItem)"
 						class="relative flex p-4 leading-6 transition duration-150 rounded-panel group gap-x-6 hover:bg-gray-900"
 					>

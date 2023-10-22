@@ -11,15 +11,12 @@
 			<slot />
 		</div>
 
-		<div class="relative w-full max-w-6xl px-6 pt-6 pb-12 mx-auto lg:px-16">
+		<div class="relative w-full max-w-6xl px-2 pt-6 pb-12 mx-auto lg:px-16">
 			<NavigationTheFooter />
 		</div>
 
 		<div class="fixed z-10 bottom-4 left-4">
 			<!-- <ScrollTop /> -->
 		</div>
-		<DevOnly>
-			<!-- <DevToolbar /> -->
-		</DevOnly>
 	</div>
 </template>

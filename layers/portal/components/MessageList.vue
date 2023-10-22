@@ -76,10 +76,10 @@ async function upsertMessage(messageId: string | null = null) {
 	};
 
 	if (messageId) {
-		await useDirectus($updateItem('messages', messageId, message));
+		await useDirectus(updateItem('messages', messageId, message));
 	} else {
 		// Create
-		await useDirectus($createItem('messages', message));
+		await useDirectus(createItem('messages', message));
 	}
 
 	messages.value.push(message);

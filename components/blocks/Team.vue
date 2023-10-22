@@ -115,7 +115,6 @@ const duration = computed(() => {
 							'--marquee-duration': duration,
 						}"
 					>
-						>
 						<TeamCard
 							v-for="person in teamToDisplay.right"
 							:key="person.id"

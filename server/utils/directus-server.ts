@@ -17,12 +17,12 @@ import type { Schema } from '~/types/schema';
 const config = useRuntimeConfig();
 const directusUrl = config.public.directusUrl as string;
 
-const directus = createDirectus<Schema>(directusUrl)
+const directusServer = createDirectus<Schema>(directusUrl)
 	.with(rest())
-	.with(staticToken(config.public.directusToken as string));
+	.with(staticToken(config.directusToken as string));
 
 export {
-	directus,
+	directusServer,
 	readItem,
 	readItems,
 	readSingleton,

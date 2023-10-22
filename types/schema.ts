@@ -26,7 +26,7 @@ import type {
 	Event,
 	Metric,
 } from './meta';
-import type { Page, PageBlock, Category, Form, Post, Project, Team, Testimonial } from './content';
+import type { Page, PageBlock, Category, Form, Post, Team, Testimonial, PagesProjects, PagesBlog } from './content';
 import type { Inbox, HelpArticle, HelpCollection, HelpFeedback } from './help';
 import type { File, User } from './system';
 import type {
@@ -73,9 +73,10 @@ export interface Schema {
 	categories: Category[];
 	forms: Form[];
 	posts: Post[];
-	projects: Project[];
 	team: Team[];
 	testimonials: Testimonial[];
+	pages_projects: PagesProjects;
+	pages_blog: PagesBlog;
 
 	// Blocks
 	block_cardgroup: BlockCardgroup[];

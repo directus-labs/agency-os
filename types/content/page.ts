@@ -1,5 +1,6 @@
 import type { SEO } from '../meta';
 import type { User } from '../system';
+import type { Post } from '../content';
 import type {
 	BlockCardgroup,
 	BlockColumn,
@@ -59,4 +60,19 @@ export interface PageBlock {
 	pages_id?: (string | Page) | null;
 	sort?: number | null;
 	hide_block?: boolean | null;
+}
+
+export interface PagesProjects {
+	id?: string;
+	title?: string | null;
+	headline?: string | null | undefined;
+	seo: (string | SEO) | null;
+}
+
+export interface PagesBlog {
+	id?: string;
+	title?: string | null;
+	headline?: string | null;
+	featured_post?: (string | Post) | null;
+	seo: (string | SEO) | null;
 }

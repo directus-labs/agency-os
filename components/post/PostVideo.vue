@@ -9,8 +9,10 @@ const props = defineProps<PostVideoProps>();
 </script>
 <template>
 	<div class="py-12">
-		<div class="relative flex items-center justify-center w-full overflow-hidden bg-gray-900/50 dark:bg-gray-900">
-			<VVideo :url="page?.video_url" class="max-w-6xl" />
+		<div
+			class="relative flex items-center justify-center w-full overflow-hidden bg-gray-900 dark:bg-gray-900 border-t-2 border-b-2 border-primary/50"
+		>
+			<VVideo :url="page?.video_url" class="max-w-5xl" />
 		</div>
 
 		<BlockContainer>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const { params, path } = useRoute();
+const { path } = useRoute();
 const { globals } = useAppConfig();
 const { fileUrl } = useFiles();
 
-const { data, pending, error } = await useAsyncData(
+const { data } = await useAsyncData(
 	path,
 	() => {
 		const postPromise = useDirectus(
@@ -21,7 +21,20 @@ const { data, pending, error } = await useAsyncData(
 
 		const pagePromise = useDirectus(
 			readSingleton('pages_blog', {
-				fields: ['*', { seo: ['*'] }],
+				fields: [
+					'*',
+					{
+						seo: ['*'],
+						featured_post: [
+							'id',
+							'slug',
+							'title',
+							'summary',
+							'type',
+							{ image: ['id', 'title', 'description'], author: ['name', 'image', 'job_title'] },
+						],
+					},
+				],
 			}),
 		);
 
@@ -42,7 +55,9 @@ const page = computed(() => {
 });
 
 const posts = computed(() => {
-	return unref(data)?.posts;
+	// If the featured post is in the posts array, remove it
+	const posts = unref(data)?.posts.filter((post) => post.id !== unref(page)?.featured_post?.id);
+	return posts;
 });
 
 // Compute metadata here to make it easier to populate all the different SEO tags
@@ -102,15 +117,14 @@ useServerSeoMeta({
 				</div>
 				<div class="space-y-4 lg:col-span-3">
 					<TypographyTitle>Featured Article</TypographyTitle>
-
-					<PostCard :post="posts[0]" direction="horizontal" />
+					<PostCard :post="page?.featured_post" direction="horizontal" />
 				</div>
 			</div>
 			<div class="space-y-4">
 				<TypographyTitle>Latest & Greatest</TypographyTitle>
 				<div class="relative grid gap-8 md:gap-12 md:grid-cols-3 lg:grid-cols-6">
 					<PostCard
-						v-for="(post, postIdx) in posts.slice(1)"
+						v-for="(post, postIdx) in posts"
 						:key="post.id"
 						:post="post"
 						:class="[

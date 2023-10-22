@@ -1,17 +1,12 @@
-import { createDirectus, readItem, updateItem, rest, staticToken } from '@directus/sdk';
 import Stripe from 'stripe';
-
+import type { Organization, Contact } from '~/types';
 import { dollarsToCents } from '~/utils/currency';
-import type { Schema } from '~/types';
 
 const config = useRuntimeConfig();
 
 const stripe = new Stripe(config.stripeSecretKey, {
 	apiVersion: '2023-08-16',
 });
-
-const directusUrl = config.public.directusUrl as string;
-const directus = createDirectus<Schema>(directusUrl).with(rest()).with(staticToken(config.directusToken));
 
 export default defineEventHandler(async (event) => {
 	const body = await readBody(event);
@@ -21,7 +16,7 @@ export default defineEventHandler(async (event) => {
 		// Get the invoice from the request
 		const { invoiceId } = body;
 
-		const invoice = await directus.request(
+		const invoice = await directusServer.request(
 			readItem('os_invoices', invoiceId, {
 				fields: [
 					'*',
@@ -47,8 +42,15 @@ export default defineEventHandler(async (event) => {
 			}),
 		);
 
+		if (!invoice) {
+			throw new Error('Invoice not found');
+		}
+
+		const organization: Organization | null = invoice?.organization as Organization | null;
+		const contact: Contact | null = invoice?.contact as Contact | null;
+
 		// Check if the invoice, organization, and contact exist
-		if (!invoice.organization || !invoice.contact) {
+		if (!organization || !contact) {
 			throw new Error('Missing organization or contact');
 		}
 
@@ -60,26 +62,31 @@ export default defineEventHandler(async (event) => {
 		// Create or update the Stripe customer
 		let stripeCustomerId;
 
-		if (!invoice.organization.stripe_customer_id) {
+		if (organization?.stripe_customer_id) {
+			stripeCustomerId = organization.stripe_customer_id;
+		} else {
 			const customer = await stripe.customers.create({
-				email: invoice.organization.email,
-				name: invoice.organization.name,
-				phone: invoice.organization.phone,
+				// @ts-ignore Not sure why this is throwing an no overload error
+				email: organization.email,
+				name: organization.name,
+				phone: organization.phone,
 				metadata: {
-					contact_id: invoice.contact.id,
-					organization_id: invoice.organization.id,
+					contact_id: contact.id,
+					organization_id: organization.id,
 				},
 			});
 
 			stripeCustomerId = customer.id;
 
-			await directus.request(
-				updateItem('organizations', invoice.organization.id, {
+			if (!stripeCustomerId || !organization.id) {
+				throw new Error('Stripe customer could not be created');
+			}
+
+			await directusServer.request(
+				updateItem('organizations', organization?.id, {
 					stripe_customer_id: stripeCustomerId,
 				}),
 			);
-		} else {
-			stripeCustomerId = invoice.organization.stripe_customer_id;
 		}
 
 		// Create the Checkout session
@@ -94,7 +101,7 @@ export default defineEventHandler(async (event) => {
 							name: `Payment for INV# ${invoice.invoice_number}`,
 							description: `Reference: ${invoice.reference}`,
 						},
-						unit_amount: dollarsToCents(invoice.amount_due),
+						unit_amount: dollarsToCents(invoice.amount_due ?? 0),
 					},
 				},
 			],
@@ -102,9 +109,9 @@ export default defineEventHandler(async (event) => {
 			success_url: `${headers.referer}?session_id={CHECKOUT_SESSION_ID}`,
 			cancel_url: `${headers.referer}?session_id=cancelled`,
 			metadata: {
-				invoice_id: invoice.id,
-				contact_id: invoice.contact.id,
-				organization_id: invoice.organization.id,
+				invoice_id: invoice.id ?? null,
+				contact_id: contact.id ?? null,
+				organization_id: organization.id ?? null,
 			},
 		});
 

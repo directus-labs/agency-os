@@ -1,24 +1,15 @@
 <script setup lang="ts">
-const { theme } = useAppConfig();
+import type { Team } from '~/types';
 
-const props = defineProps<{
-	person: {
-		id: string;
-		name: string;
-		job_title: string;
-		image: string;
-		social_media?: {
-			service?: string;
-			url?: string;
-		};
-	};
+defineProps<{
+	person: Team;
 }>();
 
 const flipped = ref(false);
 </script>
 <template>
 	<div class="opacity-0 cursor-pointer select-none animate-fade-in" @click="flipped = !flipped">
-		<div :class="`relative w-full h-full overflow-hidden group rounded-card`">
+		<div class="relative w-full h-full overflow-hidden group rounded-card">
 			<!-- Front of Team Card -->
 			<NuxtImg
 				class="object-cover w-full h-full transition duration-300 grayscale group-hover:grayscale-0"
@@ -74,11 +65,11 @@ const flipped = ref(false);
 			</Motionable>
 
 			<div class="absolute z-10 bottom-4 left-7 right-7">
-				<TypographyHeadline :content="person.name" size="sm" class="text-white drop-shadow">
-					{{ person.name }}
+				<TypographyHeadline v-if="person.name" :content="person.name" size="sm" class="text-white drop-shadow">
+					{{ person?.name }}
 				</TypographyHeadline>
-				<TypographyTitle>
-					{{ person.job_title }}
+				<TypographyTitle v-if="person.job_title">
+					{{ person?.job_title }}
 				</TypographyTitle>
 			</div>
 
