@@ -4,11 +4,11 @@ export interface BlockTestimonial {
 	headline?: string | null;
 	id?: string;
 	title?: string | null;
-	testimonials?: (number | BlockTestimonialItem)[];
+	testimonials?: (string | BlockTestimonialItem)[];
 }
 export interface BlockTestimonialItem {
-	block_testimonials_id?: (string | BlockTestimonial) | null;
-	id?: number;
+	block_testimonials_slider_id?: (string | BlockTestimonial) | null;
+	id?: string;
 	sort?: number | null;
-	testimonial?: (string | Testimonial) | null;
+	testimonials_id?: (string | Testimonial) | null;
 }

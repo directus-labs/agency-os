@@ -3,7 +3,7 @@ import type { Post, Page } from '../content';
 export interface BlockButton {
 	id: string;
 	sort: number | null;
-	type: string | null;
+	type: ('pages' | 'posts' | 'external') | null;
 	label: string | null;
 	color: 'primary' | 'white' | 'gray' | 'white' | 'black';
 	variant: 'solid' | 'outline' | 'ghost' | 'link' | 'soft';
@@ -11,5 +11,4 @@ export interface BlockButton {
 	post: string | Post | null;
 	external_url: string | null;
 	icon: string | null;
-	// size: 'small' | 'medium' | 'large';
 }

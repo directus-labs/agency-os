@@ -13,12 +13,13 @@ import type { BlockStep } from './block-steps';
 import type { BlockTeam } from './block-team';
 import type { BlockTestimonial } from './block-testimonial';
 import type { BlockVideo } from './block-video';
+import type { BlockDivider } from './block-divider';
 
 export type BlockType =
 	| 'block_cardgroup'
 	| 'block_column'
 	| 'block_cta'
-	| 'block_faq'
+	| 'block_faqs'
 	| 'block_form'
 	| 'block_gallery'
 	| 'block_hero'
@@ -28,8 +29,9 @@ export type BlockType =
 	| 'block_richtext'
 	| 'block_steps'
 	| 'block_team'
-	| 'block_testimonial'
-	| 'block_video';
+	| 'block_testimonials'
+	| 'block_video'
+	| 'block_divider';
 
 export type Block =
 	| BlockCardgroup
@@ -46,4 +48,5 @@ export type Block =
 	| BlockStep
 	| BlockTeam
 	| BlockTestimonial
-	| BlockVideo;
+	| BlockVideo
+	| BlockDivider;

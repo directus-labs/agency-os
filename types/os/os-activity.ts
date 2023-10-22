@@ -1,5 +1,5 @@
 import type { User } from '../system';
-import { Organization, Contact, OsDeal } from './';
+import type { Organization, Contact, OsDeal } from './';
 
 export interface OsActivity {
 	id?: string;

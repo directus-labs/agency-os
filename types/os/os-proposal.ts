@@ -1,11 +1,11 @@
 import type { User, File } from '../system';
 import type {
 	BlockDivider,
-	BlockFaqs,
+	BlockFaq,
 	BlockLogocloud,
 	BlockQuote,
 	BlockRichtext,
-	BlockSteps,
+	BlockStep,
 	BlockTeam,
 	BlockVideo,
 } from '../blocks';
@@ -64,11 +64,11 @@ export interface OsProposalBlock {
 		| (
 				| string
 				| BlockDivider
-				| BlockFaqs
+				| BlockFaq
 				| BlockLogocloud
 				| BlockQuote
 				| BlockRichtext
-				| BlockSteps
+				| BlockStep
 				| BlockTeam
 				| BlockVideo
 		  )[]

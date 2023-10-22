@@ -1,6 +1,6 @@
 import type { User } from '../system';
-import { SEO } from '../meta';
-import { Category } from '../content';
+import type { SEO } from '../meta';
+import type { Category } from '../content';
 
 export interface Post {
 	author?: (string | User) | null;
@@ -20,4 +20,7 @@ export interface Post {
 	user_created?: string | null;
 	user_updated?: string | null;
 	links?: string;
+	type?: PostType | null;
 }
+
+export type PostType = 'blog' | 'video' | 'project';

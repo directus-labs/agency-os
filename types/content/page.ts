@@ -16,6 +16,7 @@ import type {
 	BlockTeam,
 	BlockTestimonial,
 	BlockVideo,
+	BlockType,
 } from '../blocks';
 
 export interface Page {
@@ -29,11 +30,11 @@ export interface Page {
 	title?: string | null;
 	user_created?: (string | User) | null;
 	user_updated?: (string | User) | null;
-	blocks?: (number | PageBlock)[];
+	blocks?: (string | PageBlock)[];
 }
 
 export interface PageBlock {
-	collection?: string | null;
+	collection?: BlockType | null;
 	id?: string;
 	item?:
 		| (
@@ -57,4 +58,5 @@ export interface PageBlock {
 		| null;
 	pages_id?: (string | Page) | null;
 	sort?: number | null;
+	hide_block?: boolean | null;
 }
