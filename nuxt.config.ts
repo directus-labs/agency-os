@@ -31,7 +31,6 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		'@nuxt/ui',
 		'@nuxtjs/color-mode',
-		'@nuxtjs/color-mode',
 		'@nuxtjs/google-fonts',
 		'@vueuse/motion/nuxt', // https://motion.vueuse.org/nuxt.html
 		'@vueuse/nuxt', // https://vueuse.org/
@@ -51,7 +50,6 @@ export default defineNuxtConfig({
 			directusUrl: process.env.DIRECTUS_URL,
 			directusWsUrl: process.env.DIRECTUS_WS_URL,
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-			directusToken: process.env.DIRECTUS_ADMIN_TOKEN,
 		},
 		directusToken: process.env.DIRECTUS_ADMIN_TOKEN,
 	},
