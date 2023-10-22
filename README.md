@@ -3,22 +3,21 @@
   <h1 align="center">AgencyOS</h1>
 </a>
 
-<p align="center">AgencyOS is everything you need to get your agency off the ground, or improve tooling for your existing company. Nuxt 3 Website Application + Directus Backend.</p>
+<p align="center">AgencyOS is everything you need to get your agency off the ground, or improve tooling for your existing company. Nuxt 3 Website / Application + Directus Backend.</p>
 
 <p align="center"><em>Brought to you by partnership magic ✨ between <a href="https://directus.io" target="_blank">Directus</a> and <a href="https://nuxtlabs.com" target="_blank">NuxtLabs</a>.</em>
 </p>
 
 <p align="center">
   <a href="#introduction"><strong>Introduction</strong></a> ·
+  <a href="#features"><strong>⭐ Features</strong></a> ·
   <a href="#installation-and-development"><strong>🚧 Installation and Development</strong></a> ·
   <a href="#deployment"><strong>🚢 Deployment</strong></a> ·
-  <a href="#features"><strong>⭐ Features</strong></a> ·
   <a href="#stack"><strong>🧰 Tech Stack</strong></a> ·
   <a href="#other-resources"><strong>💼 Other Resources</strong></a> ·
   <a href="#contributors"><strong>👥 Contributors</strong></a>
 </p>
 <br/>
-
 <br />
 
 # Introduction
@@ -29,26 +28,35 @@ love to put their head down to collaborate, design, and build amazing stuff for 
 The **hard bits** are everything else that goes along with that – managing large projects with tons of moving pieces,
 communicating with clients to properly manage expectations, ensuring you’re paid on time, and more.
 
-Yes, there are plenty of tools out there that exist to help with these problems. But the problem with those tools is
-that you . When every billable hour counts, you don’t have the time to build your own tools from scratch. And you
-shouldn’t be forced to settle for tech that only does half the job you need it to.
+When every billable hour counts, you don’t have the time to build your own tools from scratch. And you shouldn’t be
+forced to settle for off-the-shelf tech that falls short of your preferred workflow.
 
 **AgencyOS is the open source operating system to help you run (or start) your digital agency.** It’s built on open
 source tools (Nuxt and Directus) and designed to be 100% hackable so you can build YOUR solution, YOUR project
 management app, YOUR agency’s operating system – in record time.
 
-It’s time to stop compromising and start composing your own solution.
+**Why?**
 
-[**-> View The Demo Site**](https://agencyos.dev/)
+Quite a few folks on the [Directus](https://github.com/directus/directus) core team have experience running agencies and
+we know it’s not all rainbows and sunshine. We wanted to build an tool that our
+[agency partners](https://directus.io/solutions/agencies) (and any other agency) would get a lot of value from. It was
+also created as a complete example to showcase the power and flexibility of Directus as a platform to rapidly build your
+own apps and tools.
+
+**Getting Started**
+
+- → **[Read Installation Instructions](#🚧-installation-and-development)**
+- → **[View The Demo Site](https://agencyos.dev/)**
+- → **[Watch the Video Tutorials](https://www.youtube.com/playlist?list=PLD--x9rY3ZL1tPNZxCTE_-IsFTrFGKHH-)**
 
 ---
 
 # ⭐ Features
 
-### Website
+## Website
 
 When you’re hard at work delivering for clients - your own site tends to suffer. AgencyOS includes beautiful website
-template that’s easily customizable and already integrated with an easy-to-use headless CMS - Directus.
+template that’s easily customizable and already integrated with an easy-to-use headless CMS.
 
 It’s not a starter template. It’s a complete website project for you customize or inspire you to build an even better
 solution.
@@ -67,9 +75,34 @@ solution.
 
 ### CRM / Project Tracker
 
+Maintaining important client relationships doesn’t just fall to the sales team. So why maintain separate project
+management and CRM tools? AgencyOS includes a completely customizable CRM so you can work the way you want.
+
+- Organizations and contacts
+- Sales pipeline and activities
+- Dynamic project proposal builder
+- Project and task management
+- Customizable project templates
+- Invoicing and expense tracking
+- Customize and build your own dashboards without writing code
+- Automate processes using Directus Flows
+
 ### Client Portal
 
+Communication is probably the biggest driver of project success. With AgencyOS’s private client portal - you can insure
+your clients stay up to date and even hold them accountable for delivering the files and information you need to
+complete their project
+
+- Private authenticated portal for clients to self-serve
+- Clients can view their projects, tasks, and files
+- Clients can pay invoices through Stripe
+- Assign tasks to clients as part of project templates
+
+<br />
+
 ---
+
+<br />
 
 # **🚧 Installation and Development**
 
@@ -103,6 +136,9 @@ If you're prefer to self-host Directus, we highly recommend you do so with Docke
 You’ll find a `docker-compose.yaml` inside the repo that you can use to quickly spin up a local instance of Directus to
 test with. You should have Docker installed and running on your machine first. You
 can **[download it here](https://docs.docker.com/get-docker/)**.
+
+[PostgreSQL](https://www.postgresql.org/) is the tested and preferred database vendor for this project, but Directus
+supports many different SQL databases.
 
 ```bash
 # Navigate to the .directus directory
@@ -140,9 +176,15 @@ Open your terminal, run the following command, and simply follow the prompts.
 3. Paste your Admin user static token
 4. Wait for script to finish
 
-   _Note_: It can take a few minutes for the template script to run if you’re using a remotely hosted Directus instance.
+You can learn more about the
+[Directus Template CLI tool here](https://github.com/directus-community/directus-template-cli). _Note_: It can take a
+few minutes for the template script to run if you’re using a remotely hosted Directus instance.
+
+<br />
 
 ---
+
+<br />
 
 ## **⛰️ Nuxt - Frontend**
 
@@ -226,6 +268,8 @@ official [Directus Docker Guide](https://docs.directus.io/self-hosted/docker-gu
 - [Deploy Directus to DigitalOcean with Docker](https://docs.directus.io/blog/deploy-directus-digital-ocean-docker.html)
 - [Deploy Directus on Railway](https://railway.app/template/2fy758)
 
+<br />
+
 ---
 
 <br />
@@ -252,16 +296,14 @@ intuitive no-code app to manage all your content and data. But it's also more th
 data platform that has all the tools you need for creating, managing, serving, visualizing, and even automating your
 data for your next web, mobile, or digital project.
 
-For a smooth experience, the [Directus SDK](https://docs.directus.io/reference/sdk/#javascript-sdk) is already
-integrated for you and availably globally as a Nuxt plugin.
-
 [Learn more about Directus](https://directus.io)
 
 ---
 
 ## UI
 
-- [Nuxt UI]
+- [Nuxt UI](https://ui.nuxt.com/) - Fully styled and customizable components for Nuxt. Nuxt UI is the official UI
+  component library for Nuxt.
 - [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework that allows you to rapidly build sites and
   maintain consistency across team members. There are several Tailwind Plugins installed and ready to use as well –
   [Typography](https://tailwindcss.com/docs/typography-plugin) and [Forms](https://tailwindcss.com/docs/plugins#forms).
@@ -280,7 +322,9 @@ integrated for you and availably globally as a Nuxt plugin.
 
 <br />
 
-# 💼 Other Resources
+# 🛟 Community Help
+
+For community help or support, please see the Directus Discord server.
 
 - **[Directus Discord](https://discord.com/invite/directus)** – Join over 10k+ developers and community members to ask
   questions and live discussion around Directus.
@@ -288,11 +332,23 @@ integrated for you and availably globally as a Nuxt plugin.
 
 <br />
 
-# 👥 Contributors
+# ❤️ Contributing
 
-- Bryant Gillespie ([@bryantgillespie](https://twitter.com/bryantgillespie))
+AgencyOS is a community driven project so we'd love to have your contributions.
 
-# 🙏 Thanks To
+Here's how you can contribute:
 
-- [@becem-gharbi](https://github.com/becem-gharbi) for his
-  [`nuxt-directus` module](https://github.com/becem-gharbi/nuxt-directus)
+- [Open an issue](https://github.com/directus-community/agency-os/issues) if you believe you've encountered a bug.
+- [Make a pull request](https://github.com/directus-community/agency-os/pulls) to add new features/make quality-of-life
+  improvements/fix bugs.
+
+## 🙏 Thanks To
+
+AgencyOS was created by Bryant Gillespie ([@bryantgillespie](https://twitter.com/bryantgillespie)). But big thank yous
+are owed to...
+
+- [@rijkvanzanten](https://github.com/rijkvanzanten) and [@benhaynes](https://github.com/benhaynes) for building
+  Directus and including me on the journey.
+- [@atinux](https://github.com/Atinux) and [@alexchopin](https://github.com/alexchopin) for creating the Nuxt framework.
+- [@intevel](https://github.com/Intevel) and [@becem-gharbi](https://github.com/becem-gharbi) for each of their separate
+  `nuxt-directus` modules.
