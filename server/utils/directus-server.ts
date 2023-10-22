@@ -14,12 +14,11 @@ import {
 } from '@directus/sdk';
 import type { Schema } from '~/types/schema';
 
-const config = useRuntimeConfig();
-const directusUrl = config.public.directusUrl as string;
+const directusUrl = process.env.DIRECTUS_URL as string;
 
 const directusServer = createDirectus<Schema>(directusUrl)
 	.with(rest())
-	.with(staticToken(config.directusToken as string));
+	.with(staticToken(process.env.DIRECTUS_ADMIN_TOKEN as string));
 
 export {
 	directusServer,
