@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { readItems } from '@directus/sdk';
-
 const { path } = useRoute();
 const url = useRequestURL();
 const { fileUrl } = useFiles();
