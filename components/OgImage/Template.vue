@@ -210,8 +210,8 @@ const fonts = {
 		<Logo
 			:style="{
 				position: 'absolute',
-				top: '1rem',
-				right: '1rem',
+				top: '2.5rem',
+				right: '2.5rem',
 				width: '100%',
 				objectFit: 'contain',
 				maxWidth: '12rem',
