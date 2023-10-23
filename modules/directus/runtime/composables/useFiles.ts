@@ -8,12 +8,12 @@ export default function useFiles() {
 		if (!fileId) return undefined;
 
 		if (typeof fileId === 'string') {
-			return `${config.public.directusUrl}/assets/${fileId}`;
+			return `${config.public.directus.rest.baseUrl}/assets/${fileId}`;
 		}
 
 		// Handle case where fileId is an object<File>
 		if (fileId as File) {
-			return `${config.public.directusUrl}/assets/${(fileId as File).id}`;
+			return `${config.public.directus.rest.baseUrl}/assets/${(fileId as File).id}`;
 		}
 
 		return undefined;

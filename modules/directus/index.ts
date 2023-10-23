@@ -8,24 +8,45 @@ import {
 	extendRouteRules,
 	useLogger,
 } from '@nuxt/kit';
-import { createDirectus, readItems, rest } from '@directus/sdk';
-import type { Schema } from '../types';
+import { defu } from 'defu';
+import { createDirectus, rest, readItems, readSingleton } from '@directus/sdk';
+
+import type { Schema, Globals } from '../../types';
 
 const log = useLogger();
 
 export default defineNuxtModule({
+	meta: {
+		name: 'agencyos-nuxt-directus',
+		configKey: 'directus',
+		compatibility: {
+			nuxt: '^3.0.0',
+		},
+
+		defaults: {
+			rest: {
+				baseUrl: 'http://localhost:8055',
+				nuxtBaseUrl: 'http://localhost:3000',
+			},
+			auth: {
+				enabled: true,
+				enableGlobalAuthMiddleware: false,
+				redirect: {
+					home: '/home',
+					login: '/auth/login',
+					logout: '/auth/login',
+					resetPassword: '/auth/reset-password',
+					callback: '/auth/callback',
+				},
+			},
+		},
+	},
+
 	async setup(moduleOptions, nuxt) {
 		log.start('Loading Directus Module');
 
-		const directusUrl = nuxt.options.runtimeConfig.public.directusUrl as string | undefined;
-		const directusToken = nuxt.options.runtimeConfig.directusToken;
-
-		if (!directusUrl) {
-			throw new Error('Missing directusUrl in runtimeConfig');
-		}
-
-		if (!directusToken) {
-			throw new Error('Missing directusToken in runtimeConfig');
+		if (!moduleOptions.rest.baseUrl) {
+			log.warn(`Please make sure to set Directus baseUrl`);
 		}
 
 		// ** Runtime Logic **
@@ -55,10 +76,9 @@ export default defineNuxtModule({
 			'readFields',
 			'updateField',
 
-			'withToken',
 			'aggregate',
 
-			// User and Auth
+			// Users
 			'createUser',
 			'createUsers',
 			'readUser',
@@ -67,6 +87,16 @@ export default defineNuxtModule({
 			'updateUsers',
 			'deleteUser',
 			'deleteUsers',
+
+			// Auth
+			'withToken',
+			// We're not autoimporting these because we're using the authentication composable
+			// 'login',
+			// 'logout',
+			'passwordReset',
+			'resetPassword',
+			'readProviders',
+
 			// Current User
 			'readMe',
 			'updateMe',
@@ -113,22 +143,27 @@ export default defineNuxtModule({
 		// Transpile the runtime directory
 		nuxt.options.build.transpile.push(runtimeDir);
 
+		// Initialize the module options
+		nuxt.options.runtimeConfig.public.directus = defu(nuxt.options.runtimeConfig.public.directus, moduleOptions);
+
 		// Add plugins
 		const restPlugin = resolve(runtimeDir, './plugins/directus');
+		const authPlugin = resolve(runtimeDir, './plugins/auth');
 		addPlugin(restPlugin, { append: true });
+		addPlugin(authPlugin, { append: true });
 
 		// Add composables directory
 		const composables = resolve(runtimeDir, 'composables');
 		addImportsDir(composables);
 
 		// ** Build Logic **
-		const directus = createDirectus<Schema>(directusUrl).with(rest());
+		const directus = createDirectus<Schema>(moduleOptions.rest.baseUrl).with(rest());
 
 		// Handle Redirects
 		const redirects = await directus.request(readItems('redirects'));
 
 		for (const redirect of redirects) {
-			let responseCode = redirect.response_code ? parseInt(redirect.response_code) : 301;
+			let responseCode = redirect.response_code ? parseInt(redirect.response_code as any) : 301;
 
 			if (responseCode !== 301 && responseCode !== 302) {
 				responseCode = 301;
@@ -136,7 +171,7 @@ export default defineNuxtModule({
 
 			// Add the redirect to the route rules
 			// https://nuxt.com/docs/guide/concepts/rendering#route-rules
-			extendRouteRules(redirect.url_old, {
+			extendRouteRules(redirect.url_old as string, {
 				redirect: {
 					to: redirect.url_new,
 					statusCode: responseCode as 301 | 302,
@@ -151,11 +186,13 @@ export default defineNuxtModule({
 		}
 
 		// Add Globals
-		const globals = await directus.request(readItems('globals'));
-		nuxt.options.appConfig.globals = globals;
+		const globals = await directus.request<Omit<Globals, 'id' | 'url'>>(readSingleton('globals'));
+		nuxt.options.appConfig.globals = defu(nuxt.options.appConfig.globals, globals);
 		log.success('Globals loaded into appConfig');
 
 		// Add title template to the app head for use with useHead composable
 		nuxt.options.app.head.titleTemplate = `%s - ${globals?.title ?? 'Agency OS'}`;
+
+		log.success(`Directus Module Loaded`);
 	},
 });

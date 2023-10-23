@@ -1,33 +1,69 @@
-import { createDirectus, rest, staticToken, authentication } from '@directus/sdk';
+import { createDirectus, rest, authentication } from '@directus/sdk';
 import type { Schema } from '~/types/schema';
 
-export default defineNuxtPlugin(() => {
-	const event = useRequestEvent();
+import {
+	defineNuxtPlugin,
+	addRouteMiddleware,
+	useRuntimeConfig,
+	useState,
+	useDirectusAuth,
+	useRoute,
+	useNuxtApp,
+} from '#imports';
+
+export default defineNuxtPlugin((nuxtApp) => {
+	const route = useRoute();
 	const config = useRuntimeConfig();
-	const directusUrl = config.public.directusUrl as string;
-	const directusToken = config.public.directusToken as string;
+	const directusUrl = config.public.directus.rest.baseUrl as string;
+
+	const { isTokenExpired } = useDirectusAuth();
+
+	// We're creating a custom storage class to use the Nuxt so we can use auth on the server and client
+	class CookieStorage {
+		get() {
+			const cookie = useCookie('directus-auth');
+			return cookie.value;
+		}
+
+		set(data: any) {
+			const cookie = useCookie('directus-auth');
+			cookie.value = data;
+		}
+	}
 
 	const directus = createDirectus<Schema>(directusUrl, {
 		globals: {
-			// fetch: $fetch,
+			fetch: $fetch, // We're using the built-in Nuxt $fetch from ofetch
 		},
 	})
+		.with(authentication('json', { storage: new CookieStorage(), credentials: 'include' }))
 		.with(
 			rest({
 				onRequest: async (request) => {
-					// console.log('request', request);
+					const userToken = await directus.getToken();
+
 					return request;
 				},
 			}),
-		)
-		.with(staticToken(directusToken));
-	// .with(authentication('cookie', { autoRefresh: true, credentials: 'include' }));
+		);
 
-	// directus.login('ashley@example.com', 'password');
+	// ** Live Preview Bits **
+	// Check if we are in preview mode
+	const preview = route.query.preview && route.query.preview === 'true';
+	const token = route.query.token as string | undefined;
+
+	// If we are in preview mode, we need to use the token from the query string
+	if (preview && token) {
+		directus.setToken(token);
+
+		nuxtApp.hook('page:finish', () => {
+			refreshNuxtData();
+		});
+	}
 
 	return {
 		provide: {
-			directus /*: $directus */,
+			directus,
 		},
 	};
 });
