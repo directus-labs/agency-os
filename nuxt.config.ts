@@ -1,13 +1,6 @@
 // import { formatFonts } from './utils/fonts';
 import { theme } from './theme';
 
-// const fontFamilies = {
-// 	Inter: true,
-// 	'Fira Code': true,
-// 	Poppins: [400, 500, 600, 700, 800, 900],
-// 	'Nothing You Could Do': true,
-// };
-
 export default defineNuxtConfig({
 	// https://nuxt.com/docs/api/configuration/nuxt-config
 
@@ -38,7 +31,7 @@ export default defineNuxtConfig({
 		'nuxt-og-image',
 		'nuxt-schema-org', // https://nuxtseo.com/schema-org/guides/quick-setup
 		'nuxt-simple-sitemap', // https://nuxtseo.com/sitemap/getting-started/how-it-works
-		// '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/ Removed because of Nuxt UI
+		// '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/ Removed because of Nuxt UI already includes this
 	],
 
 	experimental: {
@@ -90,6 +83,21 @@ export default defineNuxtConfig({
 		},
 		// @TODO: Fix font families for OG Image
 		// fonts: formatFonts(fontFamilies),
+	},
+
+	// Sitemap Configuration - https://nuxtseo.com/sitemap/getting-started/how-it-works
+	sitemap: {
+		sitemaps: {
+			pages: {
+				exclude: ['/posts/**', '/help/**'],
+			},
+			posts: {
+				include: ['/posts/**'],
+			},
+			help: {
+				include: ['/help/**'],
+			},
+		},
 	},
 
 	postcss: {
