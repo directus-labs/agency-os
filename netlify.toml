@@ -1,0 +1,3 @@
+[functions]
+external_node_modules = ["nuxt"]
+node_bundler = "esbuild"
