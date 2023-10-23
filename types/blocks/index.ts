@@ -1,4 +1,3 @@
-export type * from './block-cardgroup';
 export type * from './block-column';
 export type * from './block-cta';
 export type * from './block-faq';

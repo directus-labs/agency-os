@@ -16,7 +16,6 @@ import type { BlockVideo } from './block-video';
 import type { BlockDivider } from './block-divider';
 
 export type BlockType =
-	| 'block_cardgroup'
 	| 'block_column'
 	| 'block_cta'
 	| 'block_faqs'
@@ -34,7 +33,6 @@ export type BlockType =
 	| 'block_divider';
 
 export type Block =
-	| BlockCardgroup
 	| BlockColumn
 	| BlockCta
 	| BlockFaq
