@@ -46,7 +46,7 @@ own apps and tools.
 **Getting Started**
 
 - → **[Read Installation Instructions](#🚧-installation-and-development)**
-- → **[View The Demo Site](https://agencyos.dev/)**
+- → **[View The Demo Site](https://agency-os.vercel.app/)**
 - → **[Watch the Video Tutorials](https://www.youtube.com/playlist?list=PLD--x9rY3ZL1tPNZxCTE_-IsFTrFGKHH-)**
 
 ---
@@ -253,7 +253,7 @@ supported providers. Here’s a few of the more popular hosts that work well wit
 
 **Vercel**
 
-<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdirectus-community%2Fagency-os&env=DIRECTUS_URL,DIRECTUS_TOKEN&demo-title=Agency%20OS%20-%20Directus%20%2B%20Nuxt%20Project&demo-description=Fully%20complete%2C%20opinionated%20agency%20website%20template.%20Nuxt%203%20Frontend%20%2B%20Directus%20for%20Headless%20CMS%20%2F%20Backend.&demo-url=https%3A%2F%2Fagency-os.vercel.app&demo-image=https%3A%2F%2Fgithub.com%2Fdirectus-community%2Fagency-os%2Fblob%2Freadme-fixes%2Fpublic%2Flogos%2Fagencyos.png%3Fraw%3Dtrue"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
+<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdirectus-community%2Fagency-os&env=DIRECTUS_URL,DIRECTUS_ADMIN_TOKEN,NUXT_PUBLIC_SITE_URL,NUXT_PUBLIC_HOST_NAME,STRIPE_SECRET_KEY,STRIPE_PUBLISHABLE_KEY,STRIPE_WEBHOOK_SECRET&project-name=agency-os&demo-title=AgencyOS&demo-description=AgencyOS%20is%20everything%20you%20need%20to%20get%20your%20agency%20off%20the%20ground%2C%20or%20improve%20tooling%20for%20your%20existing%20company.%20Nuxt%203%20Website%20%2F%20Application%20%2B%20Directus%20Backend.&demo-url=https%3A%2F%2Fagencyos.dev&demo-image=https%3A%2F%2Fgithub.com%2Fdirectus-community%2Fagency-os%2Fraw%2Fdev%2Fpublic%2Flogos%2Fagencyos.png&skippable-integrations=1"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
 
 ## **Deploying Directus - Backend**
 
