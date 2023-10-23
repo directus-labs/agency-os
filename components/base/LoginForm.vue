@@ -13,7 +13,7 @@
 			Error: {{ error }}
 		</UAlert>
 
-		<form class="grid gap-4" @submit.prevent="login">
+		<form class="grid gap-4" @submit.prevent="attemptLogin">
 			<UFormGroup label="Email" required>
 				<UInput
 					v-model="credentials.email"
@@ -49,17 +49,28 @@
 </template>
 
 <script setup>
+const { login } = useDirectusAuth();
 const loading = ref(false);
 const error = ref(null);
 
 const credentials = reactive({
-	email: null,
-	password: null,
+	email: 'ashley@example.com',
+	password: 'password',
 });
 
-async function login() {
+async function attemptLogin() {
+	const { email, password } = unref(credentials);
 	loading.value = true;
-	error.value = 'This is broken';
-	navigateTo('/portal');
+	error.value = null;
+
+	try {
+		// Be careful when using the login function because you have to pass the email and password as arguments.
+		await login(email, password);
+	} catch (err) {
+		console.log(err);
+		error.value = err.message;
+	}
+
+	loading.value = false;
 }
 </script>

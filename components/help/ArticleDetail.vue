@@ -5,7 +5,7 @@ export interface HelpCollectionsProps {
 
 const props = defineProps<HelpCollectionsProps>();
 
-import { markdownToHtml } from '~~/utils/markdown';
+import { markdownToHtml } from '~/utils/markdown';
 
 const { path, params } = useRoute();
 

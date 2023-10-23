@@ -16,7 +16,6 @@ const componentMap: Record<BlockType, any> = {
 	block_gallery: resolveComponent('BlocksGallery'),
 	block_steps: resolveComponent('BlocksSteps'),
 	block_column: resolveComponent('BlocksColumns'),
-	block_cardgroup: resolveComponent('BlocksCardGroup'),
 	block_divider: resolveComponent('BlocksDivider'),
 };
 
