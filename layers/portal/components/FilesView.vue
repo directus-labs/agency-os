@@ -1,23 +1,19 @@
 <script setup lang="ts">
 export interface FilesViewProps {
-	folderId?: string;
+	folderId?: string | undefined | null;
 }
 
 const props = defineProps<FilesViewProps>();
 
-const { data, pending, error } = await useAsyncData(
-	`folder-detail-${props.folderId}`,
-	() => {
+// We're not using the useAsyncData composables inside the portal because we're authenticated and there's no need for SSR. See ~/layers/portal/nuxt.config.ts
+async function fetchData(props: FilesViewProps = {}) {
+	try {
 		const folderReq = useDirectus(
 			readFolders({
 				fields: ['*'],
-				...(props.folderId && {
-					filter: {
-						parent: {
-							_eq: props.folderId,
-						},
-					},
-				}),
+				filter: {
+					_and: [],
+				},
 			}),
 		);
 
@@ -34,17 +30,19 @@ const { data, pending, error } = await useAsyncData(
 			}),
 		);
 
-		return Promise.all([folderReq, fileReq]);
-	},
-	{
-		transform: ([folders, files]) => {
-			return {
-				folders,
-				files,
-			};
-		},
-	},
-);
+		const [folders, files] = await Promise.all([folderReq, fileReq]);
+
+		return {
+			folders,
+			files,
+		};
+	} catch (error) {
+		console.log(error);
+		return null;
+	}
+}
+
+const data = await fetchData(props);
 
 const folders = computed(() => {
 	return unref(data)?.folders;

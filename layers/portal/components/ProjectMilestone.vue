@@ -8,7 +8,7 @@
 					'border-primary border-dashed border-2': isCurrent,
 					'border-2 border-dashed dark:border-gray-700': !isCurrent && !isComplete,
 				}"
-				class="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full"
+				class="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-button"
 			>
 				<!-- Show check if complete -->
 				<UIcon v-if="isComplete" name="heroicons:check" class="w-8 h-8 text-white fill-current" solid />

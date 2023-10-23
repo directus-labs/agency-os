@@ -100,7 +100,7 @@ const projectsShown = computed(() => {
 					isCurrent: task.status === 'active' || task.status === 'in_progress' || task.status === 'in_review',
 					icon: 'i-heroicons-calendar',
 					name: task.name,
-					// status: taskStatuses[task.status].label,
+					status: taskStatuses[task.status].label,
 				};
 			}),
 		};

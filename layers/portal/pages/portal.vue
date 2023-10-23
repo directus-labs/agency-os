@@ -3,7 +3,10 @@ import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessu
 
 definePageMeta({
 	layout: 'blank',
+	middleware: ['auth'],
 });
+
+const { logout } = useDirectusAuth();
 
 const NuxtLink = resolveComponent('NuxtLink');
 
@@ -45,7 +48,7 @@ const userNavigation = [
 				navigateTo('/portal/account#profile');
 			},
 		},
-		{ label: 'Sign out', icon: 'i-heroicons-arrow-left-on-rectangle' },
+		{ label: 'Sign out', icon: 'i-heroicons-arrow-left-on-rectangle', click: () => logout() },
 	],
 ];
 

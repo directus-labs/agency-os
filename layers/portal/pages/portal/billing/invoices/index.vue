@@ -3,15 +3,34 @@ const { path, query } = useRoute();
 const router = useRouter();
 
 // Filters
-const search = ref(query.search ?? undefined);
-const debouncedSearch = refDebounced(search, 500);
-const status = ref(query.status ?? undefined);
+const search: Ref<string | null | undefined> = ref(query?.search?.toString() ?? undefined);
+const debouncedSearch = refDebounced(search as any, 500);
+const status: Ref<string | null | undefined> = ref(query.status?.toString() ?? undefined);
 const page = ref(1);
 const rowsPerPage = ref(25);
 
 const { data, pending, error, refresh } = await useAsyncData(
 	path,
 	() => {
+		// Build the params object
+		const params: object = Object.assign(
+			{},
+			unref(search) && {
+				search: unref(search),
+			},
+			unref(status) && {
+				filter: {
+					status: {
+						_eq: unref(status),
+					},
+				},
+			},
+			{
+				limit: unref(rowsPerPage),
+				page: unref(page),
+			},
+		);
+
 		const invoices = useDirectus(
 			readItems('os_invoices', {
 				fields: [
@@ -20,16 +39,7 @@ const { data, pending, error, refresh } = await useAsyncData(
 						contact: ['id', 'first_name', 'last_name', 'email'],
 					},
 				],
-				search: unref(search) as string,
-				filter: {
-					...(unref(status) && {
-						status: {
-							_eq: unref(status),
-						},
-					}),
-				},
-				limit: unref(rowsPerPage),
-				page: unref(page),
+				...params,
 			}),
 		);
 
@@ -122,9 +132,9 @@ watch([debouncedSearch, status, page], ([search, status, page]) => {
 	router.push({
 		path,
 		query: {
-			search,
-			status,
-			page,
+			search: search?.toString(),
+			status: status?.toString(),
+			page: page?.toString(),
 		},
 	});
 
@@ -168,7 +178,7 @@ function clearFilters() {
 				<div class="flex items-center justify-between gap-3">
 					<UInput v-model="search" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search..." />
 					<div class="flex gap-3">
-						<USelect v-model="status" :options="statusOptions" placeholder="Invoice Status" class="w-40" />
+						<USelect v-model="status" :options="statusOptions" placeholder="Invoice Status" />
 						<UButton
 							color="white"
 							size="xs"

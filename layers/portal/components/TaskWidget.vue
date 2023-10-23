@@ -2,12 +2,7 @@
 const page = ref(1);
 const rowsPerPage = ref(5);
 
-const {
-	data: tasks,
-	pending,
-	error,
-	refresh,
-} = await useAsyncData(
+const { data, pending, error, refresh } = await useAsyncData(
 	'user-open-tasks',
 	() => {
 		const filter = {
@@ -25,7 +20,7 @@ const {
 			],
 		};
 
-		const data = useDirectus(
+		const tasks = useDirectus(
 			readItems('os_tasks', {
 				fields: ['id', 'name', 'due_date'],
 				sort: ['due_date'],
@@ -42,13 +37,13 @@ const {
 			}),
 		);
 
-		return Promise.all([data, count]);
+		return Promise.all([tasks, count]);
 	},
 	{
 		transform: ([data, count]) => {
 			return {
-				data,
-				count: parseInt(count[0].count),
+				tasks: data,
+				count: parseInt(count[0].count) ?? 0,
 			};
 		},
 	},
@@ -64,6 +59,14 @@ const columns = [
 		label: 'Due Date',
 	},
 ];
+
+const tasks = computed(() => {
+	return data.value?.tasks ?? [];
+});
+
+const count = computed(() => {
+	return data.value?.count ?? 0;
+});
 
 watch(page, () => {
 	refresh();
@@ -82,13 +85,13 @@ async function openTask(id: string) {
 		<div>
 			<dt class="font-medium leading-6 text-gray-500 font-display dark:text-gray-300">Open Tasks</dt>
 			<dd class="flex-none w-full text-3xl font-medium leading-10 tracking-tight text-gray-900 dark:text-white">
-				{{ tasks?.count }} tasks
+				{{ count }} tasks
 			</dd>
 		</div>
 
-		<UTable :columns="columns" :rows="tasks?.data">
+		<UTable :columns="columns" :rows="tasks">
 			<template #name-data="{ row }">
-				<UButton variant="link" class="w-56" @click="openTask(row.id)">
+				<UButton variant="link" class="max-w-[250px]" @click="openTask(row.id)" :padded="false">
 					<span class="truncate">{{ row.name ?? 'Task with no name' }}</span>
 				</UButton>
 			</template>
@@ -96,7 +99,7 @@ async function openTask(id: string) {
 				<p class="capitalize">{{ getRelativeTime(row.due_date) }}</p>
 			</template>
 		</UTable>
-		<UPagination v-model="page" :max="5" :page-count="rowsPerPage" :total="tasks?.count" />
+		<UPagination v-model="page" :max="5" :page-count="rowsPerPage" :total="count" />
 		<!-- Task Item -->
 		<USlideover
 			v-model="showTask"
