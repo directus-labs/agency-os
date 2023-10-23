@@ -45,13 +45,12 @@ services:
       ADMIN_EMAIL: 'admin@example.com'
       ADMIN_PASSWORD: 'd1r3ctu5'
 
+      # These is helpful for local developement but should probably be removed in production
       CORS_ENABLED: 'true'
-
-      WEBSOCKETS_ENABLED: 'true'
-      # WEBSOCKETS_AUTH_MODE: 'public'
-
+      REFRESH_TOKEN_COOKIE_DOMAIN: 'localhost'
       EXTENSIONS_AUTO_RELOAD: 'true'
 
+      WEBSOCKETS_ENABLED: 'true'
       # The default config prevents importing files from 0.0.0.0. See https://docs.directus.io/self-hosted/config-options.html#security . This can be removed in production but in local development it is recommended to keep it so you can import logos from Organization > website.
       IMPORT_IP_DENY_LIST: ''
 
