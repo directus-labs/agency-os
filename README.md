@@ -351,4 +351,4 @@ are owed to...
   Directus and including me on the journey.
 - [@atinux](https://github.com/Atinux) and [@alexchopin](https://github.com/alexchopin) for creating the Nuxt framework.
 - [@intevel](https://github.com/Intevel) and [@becem-gharbi](https://github.com/becem-gharbi) for each of their separate
-  `nuxt-directus` modules.
+  `nuxt-directus` modules which served as source of inspiration.

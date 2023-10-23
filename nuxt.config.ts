@@ -36,15 +36,34 @@ export default defineNuxtConfig({
 
 	experimental: {
 		componentIslands: true,
+		asyncContext: true, // https://nuxt.com/docs/guide/going-further/experimental-features#asynccontext
+		appManifest: true,
 	},
 
 	runtimeConfig: {
 		public: {
-			directusUrl: process.env.DIRECTUS_URL,
-			directusWsUrl: process.env.DIRECTUS_WS_URL,
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
 		},
-		directusToken: process.env.DIRECTUS_ADMIN_TOKEN,
+	},
+
+	// Directus Configuration
+	directus: {
+		rest: {
+			baseUrl: process.env.DIRECTUS_URL,
+			nuxtBaseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+		},
+		auth: {
+			enabled: true,
+			enableGlobalAuthMiddleware: false, // Enable auth middleware on every page
+			userFields: ['*', { contacts: ['*'] }], // Select user fields
+			redirect: {
+				login: '/auth/signin', // Path to redirect when login is required
+				logout: '/', // Path to redirect after logout
+				home: '/portal', // Path to redirect after successful login
+				resetPassword: '/auth/reset-password', // Path to redirect for password reset
+				callback: '/auth/callback', // Path to redirect after login with provider
+			},
+		},
 	},
 
 	// Nuxt DevTools - https://devtools.nuxtjs.org/

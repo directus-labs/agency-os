@@ -1,4 +1,4 @@
-interface Theme {
+export interface Theme {
 	primary: string;
 	gray: string;
 	borderRadius: 'none' | 'sm' | 'base' | 'md' | 'lg' | 'xl' | 'full';
@@ -14,9 +14,9 @@ interface Theme {
 }
 
 export const theme = {
-	primary: 'lime',
-	gray: 'neutral',
-	borderRadius: 'md',
+	primary: 'violet',
+	gray: 'slate',
+	borderRadius: 'lg',
 	googleFonts: {
 		Inter: true,
 		'Fira Code': true,

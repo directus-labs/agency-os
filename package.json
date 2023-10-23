@@ -13,6 +13,7 @@
 	},
 	"devDependencies": {
 		"@directus/sdk": "12.1.0",
+		"@directus/types": "11.0.0",
 		"@formkit/auto-animate": "1.0.0-beta.6",
 		"@headlessui/vue": "1.7.16",
 		"@iconify/json": "2.2.118",

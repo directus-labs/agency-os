@@ -4,7 +4,6 @@ export default defineAppConfig({
 	theme,
 	ui: {
 		strategy: 'override',
-		icons: 'all',
 		primary: theme.primary,
 		gray: theme.gray,
 		notifications: {
@@ -72,11 +71,11 @@ export default defineAppConfig({
 		},
 		table: {
 			default: {
-				sortAscIcon: 'i-octicon-sort-asc-24',
-				sortDescIcon: 'i-octicon-sort-desc-24',
-				sortButton: {
-					icon: 'material-symbols:swap-horiz-rounded',
-				},
+				sortAscIcon: 'octicon:sort-asc-24',
+				sortDescIcon: 'octicon:sort-desc-24',
+				// sortButton: {
+				// 	icon: 'octicon-arrow-switch-24',
+				// },
 				loadingState: {
 					icon: 'material-symbols:sync-rounded',
 				},
@@ -86,6 +85,7 @@ export default defineAppConfig({
 			},
 		},
 		pagination: {
+			rounded: 'first:rounded-l-button last:rounded-r-button',
 			default: {
 				prevButton: {
 					icon: 'material-symbols:arrow-back-rounded',
