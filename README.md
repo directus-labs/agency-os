@@ -169,7 +169,10 @@ You need the static token to seed the project.
 
 Open your terminal, run the following command, and simply follow the prompts.
 
-`npx directus-template-cli apply`
+`npx directus-template-cli@latest apply`
+
+Using the @latest tag ensures you download the most up to date version of our templates - in case you've ran the command
+previously.
 
 1. Choose the `Agency OS` template.
 2. Paste the URL to your Directus instance
@@ -261,7 +264,7 @@ build process on Netlify.
 ## **Deploying Directus - Backend**
 
 If you don't want to mess with DevOps or spinning up servers, you
-can [spin up a new project on Directus Cloud](https://railway.app/template/2fy758) in about 90 seconds.
+can [spin up a new project on Directus Cloud](https://directus.cloud/) in about 90 seconds.
 
 If you prefer self-hosting, Docker is the recommended way to deploy Directus. Please check the
 official [Directus Docker Guide](https://docs.directus.io/self-hosted/docker-guide.html)
