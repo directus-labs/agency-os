@@ -1,126 +1,141 @@
-import { getQuery } from 'h3'
-import { createDirectus } from '~~/server/utils/directus-server'
+import type { GlobalSearchResult } from '~/types/api/global-search';
 
 function mapEntity({
-  entity,
-  type,
-  urlPattern,
-  description = '',
-  image = '',
+	title,
+	entity,
+	type,
+	urlPattern,
+	description = '',
+	image = '',
 }: {
-  entity: any
-  type: string
-  urlPattern: string
-  description?: string
-  image?: string
-}) {
-  return {
-    type,
-    title: entity.title,
-    description,
-    image,
-    url: urlPattern.replace(':slug', entity.slug),
-  }
+	title?: string;
+	entity: any;
+	type: string;
+	urlPattern: string;
+	description?: string;
+	image?: string;
+}): GlobalSearchResult {
+	if (urlPattern.includes(':slug')) {
+		urlPattern = urlPattern.replace(':slug', entity.slug);
+	}
+
+	if (urlPattern.includes(':id')) {
+		urlPattern = urlPattern.replace(':id', entity.id);
+	}
+
+	return {
+		title,
+		type,
+		description,
+		image,
+		url: urlPattern,
+	};
 }
 
-function mapResults(collection: string, results: any[]) {
-  const mapping = {
-    posts: (post: any) =>
-      mapEntity({
-        entity: post,
-        type: 'post',
-        urlPattern: '/posts/:slug',
-        description: post.summary,
-        image: post.image,
-      }),
-    projects: (project: any) =>
-      mapEntity({
-        entity: project,
-        type: 'project',
-        urlPattern: '/projects/:slug',
-        description: project.summary,
-        image: project.image,
-      }),
-    pages: (page: any) =>
-      mapEntity({
-        entity: page,
-        type: 'page',
-        urlPattern: '/:slug',
-      }),
-    categories: (category: any) =>
-      mapEntity({
-        entity: category,
-        type: 'category',
-        urlPattern: '/posts/categories/:slug',
-      }),
-    help_articles: (article: any) =>
-      mapEntity({
-        entity: article,
-        type: 'article',
-        urlPattern: '/help/articles/:slug',
-        description: '',
-        image: '',
-      }),
-  }
+function mapResults(collection: string, results: GlobalSearchResult[]) {
+	const mapping = {
+		posts: (post: any) =>
+			mapEntity({
+				entity: post,
+				title: post.title,
+				type: 'post',
+				urlPattern: '/posts/:slug',
+				description: post.summary,
+				image: post.image,
+			}),
+		projects: (project: any) =>
+			mapEntity({
+				entity: project,
+				title: project.title,
+				type: 'project',
+				urlPattern: '/projects/:slug',
+				description: project.summary,
+				image: project.image,
+			}),
+		pages: (page: any) =>
+			mapEntity({
+				entity: page,
+				title: page.title,
+				type: 'page',
+				urlPattern: '/:slug',
+			}),
+		categories: (category: any) =>
+			mapEntity({
+				entity: category,
+				title: category.title,
+				type: 'category',
+				urlPattern: '/posts/categories/:slug',
+			}),
+		help_articles: (article: any) =>
+			mapEntity({
+				entity: article,
+				title: article.title,
+				type: 'article',
+				urlPattern: '/help/articles/:slug',
+				description: '',
+				image: '',
+			}),
+	};
 
-  return results.map(mapping[collection])
+	return results.map((result: GlobalSearchResult) => {
+		const mapFunction = mapping[collection as keyof typeof mapping];
+
+		if (typeof mapFunction === 'function') {
+			return mapFunction(result);
+		} else {
+			throw new Error(`Invalid collection: ${collection}`);
+		}
+	});
 }
 
 export default cachedEventHandler(
-  async (event) => {
-    try {
-      const config = useRuntimeConfig()
-      const $directus = createDirectus(config)
+	async (event) => {
+		try {
+			const query = getQuery(event);
 
-      const query = getQuery(event)
+			let { collections } = query;
+			const { search, raw } = query;
 
-      let { collections, search, raw } = query
+			if (typeof collections === 'string') {
+				collections = [collections];
+			}
 
-      if (typeof collections === 'string') {
-        collections = [collections]
-      }
+			if (
+				!collections ||
+				!Array.isArray(collections) ||
+				collections.every(
+					(collection: string) => !['posts', 'projects', 'pages', 'categories', 'help_articles'].includes(collection),
+				)
+			) {
+				throw new Error('Invalid or missing collections param');
+			}
 
-      if (
-        !collections ||
-        collections.every(
-          (collection: string) =>
-            ![
-              'posts',
-              'projects',
-              'pages',
-              'categories',
-              'help_articles',
-            ].includes(collection)
-        )
-      ) {
-        throw new Error('Invalid or missing collections param')
-      }
+			const data = await Promise.all(
+				collections.map(async (collection) => {
+					const searchQuery = search ?? '';
+					const searchParam = typeof searchQuery === 'string' ? searchQuery : String(searchQuery);
+					const data = await directusServer.request(readItems(collection, { search: searchParam }));
 
-      const data = await Promise.all(
-        collections.map(async (collection) => {
-          const { data } = await $directus
-            .items(collection)
-            .readByQuery({ search: search ?? '' })
+					if (raw) {
+						return data;
+					} else {
+						return mapResults(collection, data);
+					}
+				}),
+			);
 
-          if (raw) {
-            return data
-          } else {
-            return mapResults(collection, data)
-          }
-        })
-      )
-
-      return {
-        statusCode: 200,
-        data: data.flat(),
-      }
-    } catch (error) {
-      console.error(error)
-      return error
-    }
-  },
-  {
-    swr: true,
-    maxAge: 0, // 60 * 5, // Cache the results for 5 minutes
-  }
-)
+			return {
+				statusCode: 200,
+				data: data.flat(),
+			};
+		} catch (err: any) {
+			throw createError({
+				statusCode: 500,
+				statusMessage: err.message,
+			});
+		}
+	},
+	{
+		maxAge: 60 * 5, // Cache the results for 5 minutes
+	},
+);

@@ -1,42 +1,62 @@
 <script setup lang="ts">
-interface ProseProps {
-  content: string
+export interface ProseProps {
+	content: string;
+	size?: 'sm' | 'md' | 'lg'; // @TODO: Rework the sizes
 }
 
-defineProps<ProseProps>()
+withDefaults(defineProps<ProseProps>(), {
+	size: 'md',
+});
 
-const config = useRuntimeConfig()
-const contentEl = ref<HTMLElement | null>(null)
+const config = useRuntimeConfig();
+const contentEl = ref<HTMLElement | null>(null);
 
 onMounted(() => {
-  if (!contentEl.value) return
+	if (!contentEl.value) return;
 
-  // Intercept all the local links
-  const anchors = contentEl.value.getElementsByTagName('a')
+	const anchors = Array.from(contentEl.value.getElementsByTagName('a'));
+	if (!anchors) return;
 
-  Array.from(anchors).forEach((anchor) => {
-    const url = anchor.getAttribute('href')
-    if (!url) return
+	for (const anchor of anchors) {
+		const href = anchor.getAttribute('href');
 
-    // Skip external links
-    if (!url.startsWith(config.public.siteUrl) && !url.startsWith('/')) return
-    const path = url.replace(config.public.siteUrl, '')
+		if (!href) return;
 
-    // Add on click event to anchor
-    anchor.addEventListener('click', (e) => {
-      e.preventDefault()
-      navigateTo(url)
-    })
-  })
-})
+		const url = new URL(href, window.location.origin);
+
+		const isLocal = url.hostname === config.public.siteUrl;
+
+		if (isLocal) {
+			anchor.addEventListener('click', (e) => {
+				const { pathname, searchParams, hash } = new URL(anchor.href);
+
+				navigateTo({
+					path: pathname,
+					hash: hash,
+					query: Object.fromEntries(searchParams.entries()),
+				});
+
+				e.preventDefault();
+			});
+		} else {
+			anchor.setAttribute('target', '_blank');
+			anchor.setAttribute('rel', 'noopener noreferrer');
+		}
+	}
+});
 </script>
 
 <template>
-  <div
-    ref="contentEl"
-    :class="[
-      'prose prose-sm md:prose-base lg:prose-lg dark:prose-invert prose-img:rounded-br-3xl prose-img:rounded-tl-3xl prose-img:border-2 prose-img:border-gray-500 prose-headings:font-serif prose-p:font-mono',
-    ]"
-    v-html="content"
-  />
+	<div
+		ref="contentEl"
+		:class="[
+			{
+				'prose-sm': size === 'sm',
+				'md:prose-base lg:prose-lg': size === 'md',
+				'prose-lg lg:prose-xl': size === 'lg',
+			},
+			'prose dark:prose-invert prose-img:rounded-lg prose-img:rounded-lg prose-img:border-2 prose-img:border-gray-500 prose-headings:font-display prose-headings:font-semibold',
+		]"
+		v-html="content"
+	/>
 </template>

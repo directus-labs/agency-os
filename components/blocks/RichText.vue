@@ -1,25 +1,39 @@
 <script setup lang="ts">
-export interface RichTextBlockProps {
-  id: string
-  title: string
-  headline: string
-  content: string
-}
+import type { BlockRichtext } from '~/types';
 
-defineProps<{
-  data: RichTextBlockProps
-}>()
+withDefaults(
+	defineProps<{
+		data: BlockRichtext;
+	}>(),
+	{
+		data: () => ({
+			alignment: 'center',
+		}),
+	},
+);
 </script>
+
 <template>
-  <BlockContainer>
-    <div class="text-center">
-      <TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
-      <TypographyHeadline
-        v-if="data.headline"
-        :content="data.headline"
-        size="xl"
-      />
-    </div>
-    <TypographyProse :content="data.content" class="mx-auto mt-8 font-mono" />
-  </BlockContainer>
+	<BlockContainer>
+		<div
+			:class="[
+				{
+					'text-left': data.alignment === 'left',
+					'text-center': data.alignment === 'center',
+				},
+			]"
+		>
+			<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
+			<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
+		</div>
+		<TypographyProse
+			:content="data.content"
+			:class="[
+				{
+					'mx-auto': data.alignment === 'center',
+				},
+				'mt-8 ',
+			]"
+		/>
+	</BlockContainer>
 </template>

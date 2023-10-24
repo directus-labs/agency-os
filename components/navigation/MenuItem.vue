@@ -1,102 +1,87 @@
 <script setup lang="ts">
-import {
-  Popover,
-  PopoverGroup,
-  PopoverButton,
-  PopoverPanel,
-} from '@headlessui/vue'
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
+import type { NavigationItem } from '~~/types';
 
-import { NavigationItem } from '~~/types'
+const route = useRoute();
 
-const props = defineProps({
-  item: {
-    type: Object as PropType<NavigationItem>,
-    required: true,
-  },
-})
+const props = defineProps<{
+	item: NavigationItem;
+}>();
 
-function getUrl(item: object) {
-  if (item.type === 'page') {
-    return `/${item.page.slug}`
-  } else {
-    return item.url
-  }
-}
+const popover: Ref<any> = ref(null);
+
+// If route changes close the menu
+watch(
+	() => route.path,
+	() => {
+		return popover.value?.();
+	},
+);
 </script>
 <template>
-  <NuxtLink
-    v-if="!item.has_children"
-    :href="getUrl(item)"
-    :class="[
-      'text-gray-300 hover:bg-gray-700 transition duration-150 uppercase hover:text-white',
-      'rounded-br-xl rounded-tl-xl py-2 px-3 inline-flex items-center font-bold',
-    ]"
-    exact-active-class="font-bold text-white bg-gray-700"
-    :target="item.open_in_new_tab ? '_blank' : '_self'"
-  >
-    {{ item.title }}
-  </NuxtLink>
-  <PopoverGroup v-else class="">
-    <Popover class="relative">
-      <PopoverButton
-        :class="[
-          'text-gray-300 hover:bg-gray-700 hover:text-white',
-          'rounded-br-xl rounded-tl-xl py-2 px-3 inline-flex items-center font-bold uppercase ring-accent ring-offset-2 ring-offset-gray-800  focus:ring-1 outline-none',
-        ]"
-      >
-        {{ item.title }}
-        <Icon
-          name="heroicons:chevron-down"
-          class="flex-none w-5 ml-1 text-gray-400"
-          aria-hidden="true"
-        />
-      </PopoverButton>
+	<NuxtLink
+		v-if="!item.has_children"
+		:href="getNavItemUrl(item)"
+		class="menu-link"
+		exact-active-class="bg-gray-700"
+		:target="item.open_in_new_tab ? '_blank' : '_self'"
+	>
+		{{ item.title }}
+	</NuxtLink>
 
-      <transition
-        enter-active-class="transition duration-200 ease-out"
-        enter-from-class="translate-y-1 opacity-0"
-        enter-to-class="translate-y-0 opacity-100"
-        leave-active-class="transition duration-150 ease-in"
-        leave-from-class="translate-y-0 opacity-100"
-        leave-to-class="translate-y-1 opacity-0"
-      >
-        <PopoverPanel
-          class="absolute z-10 w-screen max-w-md mt-8 overflow-hidden bg-gray-800 shadow-lg top-full rounded-tr-3xl rounded-bl-3xl ring-1 ring-gray-700"
-        >
-          <div class="p-4">
-            <div
-              v-for="childItem in item.children"
-              :key="item.id"
-              class="relative flex p-4 text-sm leading-6 transition duration-150 rounded-tr-xl rounded-bl-xl group gap-x-6 hover:bg-gray-900"
-            >
-              <div
-                class="flex items-center justify-center flex-none p-2 mt-1 border rounded-tr-lg rounded-bl-lg h-11 w-11 border-accent"
-              >
-                <Icon
-                  v-if="childItem.icon"
-                  :name="convertIconName(childItem.icon)"
-                  class="w-10 h-10 text-accent"
-                />
-              </div>
-              <div class="flex-auto">
-                <NuxtLink
-                  :href="getUrl(childItem)"
-                  class="block font-bold text-white uppercase"
-                >
-                  {{ childItem.title }}
-                  <span class="absolute inset-0" />
-                </NuxtLink>
-                <p
-                  v-if="childItem.label"
-                  class="mt-1 text-sm leading-tight text-gray-400"
-                >
-                  {{ childItem.label }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </PopoverPanel>
-      </transition>
-    </Popover>
-  </PopoverGroup>
+	<Popover v-else v-slot="{ close }" class="relative" as="div">
+		<PopoverButton
+			:ref="
+				() => {
+					popover = close;
+				}
+			"
+			class="menu-link"
+		>
+			{{ item.title }}
+			<Icon name="heroicons:chevron-down" class="flex-none w-5 ml-1 text-gray-400" aria-hidden="true" />
+		</PopoverButton>
+
+		<transition
+			enter-active-class="transition duration-200 ease-out"
+			enter-from-class="translate-y-1 opacity-0"
+			enter-to-class="translate-y-0 opacity-100"
+			leave-active-class="transition duration-150 ease-in"
+			leave-from-class="translate-y-0 opacity-100"
+			leave-to-class="translate-y-1 opacity-0"
+		>
+			<PopoverPanel
+				class="absolute z-10 w-screen max-w-md mt-4 overflow-hidden bg-gray-800 shadow-lg rounded-panel top-full"
+			>
+				<div class="p-4">
+					<NuxtLink
+						v-for="childItem in item.children as NavigationItem[]"
+						:key="childItem.id"
+						:href="getNavItemUrl(childItem)"
+						class="relative flex p-4 leading-6 transition duration-150 rounded-panel group gap-x-6 hover:bg-gray-900"
+					>
+						<div
+							class="flex items-center justify-center flex-none p-2 mt-1 border rounded-button h-11 w-11 border-primary"
+						>
+							<Icon v-if="childItem.icon" :name="convertIconName(childItem.icon)" class="w-10 h-10 text-primary" />
+						</div>
+						<div class="">
+							<p class="block font-medium text-white font-display">
+								{{ childItem.title }}
+							</p>
+							<p v-if="childItem.label" class="mt-1 text-sm leading-tight text-gray-400">
+								{{ childItem.label }}
+							</p>
+						</div>
+					</NuxtLink>
+				</div>
+			</PopoverPanel>
+		</transition>
+	</Popover>
 </template>
+
+<style lang="postcss">
+.menu-link {
+	@apply text-white hover:bg-gray-700 transition duration-150 font-medium hover:text-white py-2 px-3 inline-flex items-center font-display outline-none rounded-button;
+}
+</style>
