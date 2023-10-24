@@ -13,9 +13,9 @@
   <a href="#features"><strong>⭐ Features</strong></a> ·
   <a href="#installation-and-development"><strong>🚧 Installation and Development</strong></a> ·
   <a href="#deployment"><strong>🚢 Deployment</strong></a> ·
-  <a href="#stack"><strong>🧰 Tech Stack</strong></a> ·
-  <a href="#other-resources"><strong>💼 Other Resources</strong></a> ·
-  <a href="#contributors"><strong>👥 Contributors</strong></a>
+  <a href="#-tech-stack"><strong>🧰 Tech Stack</strong></a> ·
+  <a href="#community-help"><strong>🛟 Community Help</strong></a> ·
+  <a href="#%EF%B8%8F-contributing"><strong>❤️ Contributing</strong></a>
 </p>
 <br/>
 <br />
