@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PostType } from '~/types';
+import type { PostType, SEO, Team, Category } from '~/types';
 
 const { fileUrl } = useFiles();
 const { params, path } = useRoute();
@@ -15,7 +15,8 @@ const { data: page } = await useAsyncData(
 	() => {
 		return useDirectus(
 			readItems('posts', {
-				filter: { slug: { _eq: params.slug } },
+				// @ts-ignore
+				filter: { slug: { _eq: params.slug as string } },
 				limit: 1,
 				fields: [
 					'title',
@@ -33,7 +34,7 @@ const { data: page } = await useAsyncData(
 						gallery: [{ directus_files_id: ['id', 'title', 'description'] }],
 						author: ['name', 'job_title', 'image'],
 						category: ['title', 'slug', 'color'],
-						seo: ['meta_description', 'og_title', 'og_image'],
+						seo: ['title', 'meta_description'],
 					},
 				],
 			}),
@@ -47,12 +48,15 @@ const { data: page } = await useAsyncData(
 // Compute metadata here to make it easier to populate all the different SEO tags
 const metadata = computed(() => {
 	const pageData = unref(page);
+	const seo = pageData?.seo as SEO;
+	const author = pageData?.author as Team;
 	return {
-		title: pageData?.seo?.title ?? pageData?.title ?? undefined,
-		description: pageData?.seo?.meta_description ?? pageData?.summary ?? undefined,
-		image: pageData?.image ? fileUrl(pageData?.image) : undefined,
-		authorImage: pageData?.author?.image ? fileUrl(pageData?.author?.image) : undefined,
-		authorName: pageData?.author?.name ?? undefined,
+		title: seo?.title ?? pageData?.title ?? undefined,
+		description: seo?.meta_description ?? pageData?.summary ?? undefined,
+		image: pageData?.image ? fileUrl(pageData?.image as any) : undefined,
+		authorImage: author?.image ? fileUrl(author.image as any) : undefined,
+		authorName: author?.name ?? undefined,
+		category: (pageData?.category as Category) ?? undefined,
 	};
 });
 
@@ -63,8 +67,8 @@ defineOgImage({
 	imageUrl: unref(metadata)?.image,
 	authorName: unref(metadata)?.authorName,
 	authorImage: unref(metadata)?.authorImage,
-	badgeColor: unref(page)?.category?.color ?? undefined,
-	badgeLabel: unref(page)?.category?.title ?? undefined,
+	badgeColor: unref(metadata)?.category?.color ?? undefined,
+	badgeLabel: unref(metadata)?.category?.title ?? undefined,
 });
 
 // JSON-LD
@@ -77,7 +81,6 @@ useSchemaOrg([
 		author: [
 			{
 				name: unref(metadata)?.authorName,
-				url: unref(page)?.author?.slug ? `https://directus.io/team/${unref(page)?.author?.slug}` : undefined,
 				image: unref(metadata)?.authorImage,
 			},
 		],
@@ -86,15 +89,15 @@ useSchemaOrg([
 
 // Page Title
 useHead({
-	title: () => unref(metadata)?.title,
+	title: unref(metadata)?.title,
 });
 
 // SEO Meta
 useServerSeoMeta({
-	title: () => unref(metadata)?.title,
-	description: () => unref(metadata)?.description,
-	ogTitle: () => unref(metadata)?.title,
-	ogDescription: () => unref(metadata)?.description,
+	title: unref(metadata)?.title,
+	description: unref(metadata)?.description,
+	ogTitle: unref(metadata)?.title,
+	ogDescription: unref(metadata)?.description,
 });
 </script>
 

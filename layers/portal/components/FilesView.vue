@@ -11,6 +11,7 @@ async function fetchData(props: FilesViewProps = {}) {
 		const folderReq = useDirectus(
 			readFolders({
 				fields: ['*'],
+				// @ts-ignore
 				filter: {
 					_and: [],
 				},
@@ -20,13 +21,12 @@ async function fetchData(props: FilesViewProps = {}) {
 		const fileReq = useDirectus(
 			readFiles({
 				fields: ['*'],
-				...(props.folderId && {
-					filter: {
-						folder: {
-							_eq: props.folderId,
-						},
+				// @ts-ignore
+				filter: {
+					folder: {
+						_eq: props.folderId,
 					},
-				}),
+				},
 			}),
 		);
 
@@ -37,7 +37,6 @@ async function fetchData(props: FilesViewProps = {}) {
 			files,
 		};
 	} catch (error) {
-		console.log(error);
 		return null;
 	}
 }

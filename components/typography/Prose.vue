@@ -24,7 +24,7 @@ onMounted(() => {
 
 		const url = new URL(href, window.location.origin);
 
-		const isLocal = url.hostname === config.public.hostName;
+		const isLocal = url.hostname === config.public.siteUrl;
 
 		if (isLocal) {
 			anchor.addEventListener('click', (e) => {

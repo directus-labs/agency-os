@@ -1,4 +1,5 @@
 import { createDirectus, rest, authentication } from '@directus/sdk';
+import type { AuthenticationClient, RestClient, AuthenticationStorage, AuthenticationData } from '@directus/sdk';
 import type { Schema } from '~/types/schema';
 
 import {
@@ -18,20 +19,33 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 	const { isTokenExpired } = useDirectusAuth();
 
-	// We're creating a custom storage class to use the Nuxt so we can use auth on the server and client
-	class CookieStorage {
-		get() {
+	// We're creating a custom storage class to use the Nuxt so we can use auth on the server and clien
+	class CookieStorage implements AuthenticationStorage {
+		get(): Promise<AuthenticationData | null> | null {
 			const cookie = useCookie('directus-auth');
-			return cookie.value;
+			const value = cookie.value;
+
+			if (value) {
+				return Promise.resolve(JSON.parse(value));
+			} else {
+				return null;
+			}
 		}
 
-		set(data: any) {
+		set(value: AuthenticationData | null): Promise<void> {
 			const cookie = useCookie('directus-auth');
-			cookie.value = data;
+
+			if (value) {
+				cookie.value = JSON.stringify(value);
+			} else {
+				cookie.value = null;
+			}
+
+			return Promise.resolve();
 		}
 	}
 
-	const directus = createDirectus<Schema>(directusUrl, {
+	const directus: RestClient<Schema> & AuthenticationClient<Schema> = createDirectus<Schema>(directusUrl, {
 		globals: {
 			fetch: $fetch, // We're using the built-in Nuxt $fetch from ofetch
 		},

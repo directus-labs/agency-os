@@ -1,9 +1,9 @@
 import type { User, File } from '../system';
 import type { SEO } from '../meta';
-import type { Category } from '../content';
+import type { Category, Team } from '../content';
 
 export interface Post {
-	author?: (string | User) | null;
+	author?: (string | Team) | null;
 	category?: (string | Category) | null;
 	content?: string | null;
 	date_created?: string | null;
@@ -14,7 +14,7 @@ export interface Post {
 	seo?: (string | SEO) | null;
 	slug?: string | null;
 	sort?: number | null;
-	status?: string;
+	status?: 'draft' | 'published' | 'scheduled' | 'in_review' | 'archived';
 	summary?: string | null;
 	title?: string | null;
 	user_created?: string | null;
@@ -26,6 +26,7 @@ export interface Post {
 	built_with?: { [key: string]: any } | null;
 	client?: string | null;
 	cost?: string | null;
+	video_url?: string | null;
 }
 
 export type PostType = 'blog' | 'video' | 'project';

@@ -1,4 +1,3 @@
-import type { BlockCardgroup } from './block-cardgroup';
 import type { BlockColumn } from './block-column';
 import type { BlockCta } from './block-cta';
 import type { BlockFaq } from './block-faq';

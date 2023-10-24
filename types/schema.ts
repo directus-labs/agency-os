@@ -1,5 +1,4 @@
 import type {
-	BlockCardgroup,
 	BlockColumn,
 	BlockCta,
 	BlockFaq,
@@ -79,7 +78,6 @@ export interface Schema {
 	pages_blog: PagesBlog;
 
 	// Blocks
-	block_cardgroup: BlockCardgroup[];
 	block_column: BlockColumn[];
 	block_cta: BlockCta[];
 	block_faq: BlockFaq[];

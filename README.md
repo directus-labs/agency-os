@@ -210,11 +210,11 @@ Navigate to the project
 
 Your `.env` file should look similar to this.
 
-```
+```env
 # Directus Setup
 DIRECTUS_URL="https://your-instance.directus.app"
-DIRECTUS_ADMIN_TOKEN="your_directus_admin_token"
-HOSTNAME="http://localhost:3000"
+DIRECTUS_SERVER_TOKEN="your_directus_server_token_for_server_only_routes"
+SITE_URL="http://localhost:3000"
 
 # Stripe Setup (If you want to allow payments within the portal)
 STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxxxx
@@ -247,13 +247,16 @@ supported providers. Here’s a few of the more popular hosts that work well wit
 
 ### One Click Options
 
-**Netlify**
-
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/directus-community/agency-os#DIRECTUS_URL=https://youruniqueid.directus.app"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
+Note: Vercel is the recommended deployment target for AgencyOS at the moment because of a few memory issues with the
+build process on Netlify.
 
 **Vercel**
 
-<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdirectus-community%2Fagency-os&env=DIRECTUS_URL,DIRECTUS_ADMIN_TOKEN,NUXT_PUBLIC_SITE_URL,NUXT_PUBLIC_HOST_NAME,STRIPE_SECRET_KEY,STRIPE_PUBLISHABLE_KEY,STRIPE_WEBHOOK_SECRET&project-name=agency-os&demo-title=AgencyOS&demo-description=AgencyOS%20is%20everything%20you%20need%20to%20get%20your%20agency%20off%20the%20ground%2C%20or%20improve%20tooling%20for%20your%20existing%20company.%20Nuxt%203%20Website%20%2F%20Application%20%2B%20Directus%20Backend.&demo-url=https%3A%2F%2Fagencyos.dev&demo-image=https%3A%2F%2Fgithub.com%2Fdirectus-community%2Fagency-os%2Fraw%2Fdev%2Fpublic%2Flogos%2Fagencyos.png&skippable-integrations=1"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
+<a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdirectus-community%2Fagency-os&env=DIRECTUS_URL,DIRECTUS_SERVER_TOKEN,NUXT_PUBLIC_SITE_URL,STRIPE_SECRET_KEY,STRIPE_PUBLISHABLE_KEY,STRIPE_WEBHOOK_SECRET&project-name=agency-os&demo-title=AgencyOS&demo-description=AgencyOS%20is%20everything%20you%20need%20to%20get%20your%20agency%20off%20the%20ground%2C%20or%20improve%20tooling%20for%20your%20existing%20company.%20Nuxt%203%20Website%20%2F%20Application%20%2B%20Directus%20Backend.&demo-url=https%3A%2F%2Fagencyos.dev&demo-image=https%3A%2F%2Fgithub.com%2Fdirectus-community%2Fagency-os%2Fraw%2Fdev%2Fpublic%2Flogos%2Fagencyos.png&skippable-integrations=1"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
+
+**Netlify**
+
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/directus-community/agency-os#DIRECTUS_URL=https://youruniqueid.directus.app"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
 
 ## **Deploying Directus - Backend**
 

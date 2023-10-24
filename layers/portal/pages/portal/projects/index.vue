@@ -17,8 +17,9 @@ const { data: projects, error } = await useAsyncData(
 					},
 				],
 				deep: {
+					// @ts-ignore
 					tasks: {
-						_sort: 'due_date',
+						_sort: ['due_date'],
 						_filter: {
 							type: {
 								_eq: 'milestone',
@@ -35,6 +36,8 @@ const { data: projects, error } = await useAsyncData(
 if (error) {
 	// console.log(error);
 }
+
+type TaskStatus = 'pending' | 'active' | 'in_progress' | 'in_review' | 'completed';
 
 const taskStatuses = {
 	pending: {
@@ -100,7 +103,7 @@ const projectsShown = computed(() => {
 					isCurrent: task.status === 'active' || task.status === 'in_progress' || task.status === 'in_review',
 					icon: 'i-heroicons-calendar',
 					name: task.name,
-					status: taskStatuses[task.status].label,
+					status: taskStatuses[(task.status as TaskStatus) ?? 'pending'].label,
 				};
 			}),
 		};

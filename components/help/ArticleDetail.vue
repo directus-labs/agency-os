@@ -18,9 +18,10 @@ const {
 	() => {
 		return useDirectus(
 			readItems('help_articles', {
+				// @ts-ignore
 				filter: {
 					slug: {
-						_eq: params.slug,
+						_eq: params.slug as string,
 					},
 				},
 				fields: [

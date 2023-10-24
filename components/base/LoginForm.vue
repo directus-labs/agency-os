@@ -67,7 +67,6 @@ async function attemptLogin() {
 		// Be careful when using the login function because you have to pass the email and password as arguments.
 		await login(email, password);
 	} catch (err) {
-		console.log(err);
 		error.value = err.message;
 	}
 

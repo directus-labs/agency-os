@@ -1,13 +1,13 @@
 import jwtDecode from 'jwt-decode';
 import { readMe, passwordRequest, passwordReset } from '@directus/sdk';
-import type { RestClient } from '@directus/sdk';
+import type { RestClient, AuthenticationClient } from '@directus/sdk';
 import type { Schema } from '~/types/schema';
 
 import { useState, useRuntimeConfig, useRoute, navigateTo, clearNuxtData, useNuxtApp } from '#imports';
 
 export default function useDirectusAuth<DirectusSchema extends object>() {
 	const nuxtApp = useNuxtApp();
-	const $directus = nuxtApp.$directus as RestClient<Schema>;
+	const $directus = nuxtApp.$directus as RestClient<Schema> & AuthenticationClient<Schema>;
 
 	const user = useState('user');
 
@@ -21,7 +21,7 @@ export default function useDirectusAuth<DirectusSchema extends object>() {
 	async function login(email: string, password: string, otp?: string) {
 		const route = useRoute();
 
-		const response = await $directus.login(email, password, otp);
+		const response = await $directus.login(email, password);
 
 		const returnPath = route.query.redirect?.toString();
 		const redirect = returnPath ? returnPath : '/portal';
@@ -37,7 +37,7 @@ export default function useDirectusAuth<DirectusSchema extends object>() {
 	async function logout() {
 		const token = await $directus.getToken();
 
-		await $directus.logout(token);
+		await $directus.logout();
 
 		user.value = null;
 
@@ -50,6 +50,7 @@ export default function useDirectusAuth<DirectusSchema extends object>() {
 
 		const response = await $directus.request(
 			readMe({
+				// @ts-ignore
 				fields,
 				...params,
 			}),
@@ -70,5 +71,6 @@ export default function useDirectusAuth<DirectusSchema extends object>() {
 		logout,
 		fetchUser,
 		isTokenExpired,
+		_loggedIn,
 	};
 }

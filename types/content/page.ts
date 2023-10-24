@@ -2,7 +2,6 @@ import type { SEO } from '../meta';
 import type { User } from '../system';
 import type { Post } from '../content';
 import type {
-	BlockCardgroup,
 	BlockColumn,
 	BlockCta,
 	BlockFaq,
@@ -40,7 +39,6 @@ export interface PageBlock {
 	item?:
 		| (
 				| string
-				| BlockCardgroup
 				| BlockColumn
 				| BlockCta
 				| BlockFaq

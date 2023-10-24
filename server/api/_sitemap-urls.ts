@@ -1,3 +1,5 @@
+import type { Post, Page, HelpCollection, HelpArticle, PagesBlog, PagesProjects, SEO } from '~/types';
+
 async function getPosts() {
 	const posts = await directusServer.request(
 		readItems('posts', {
@@ -9,6 +11,7 @@ async function getPosts() {
 					seo: ['canonical_url', 'sitemap_change_frequency', 'sitemap_priority'],
 				},
 			],
+			// @ts-ignore
 			filter: {
 				status: {
 					_eq: 'published',
@@ -19,11 +22,13 @@ async function getPosts() {
 	);
 
 	const entries = posts.map((post) => {
+		const seo = post.seo as SEO;
+
 		return {
 			loc: `/posts/${post.slug}`,
 			lastmod: post.date_updated,
-			changefreq: post.seo?.sitemap_change_frequency || 'monthly',
-			priority: post.seo?.sitemap_priority || 0.5,
+			changefreq: seo?.sitemap_change_frequency || 'monthly',
+			priority: seo?.sitemap_priority || 0.5,
 		};
 	});
 
@@ -41,6 +46,7 @@ async function getPages() {
 					seo: ['canonical_url', 'sitemap_change_frequency', 'sitemap_priority'],
 				},
 			],
+			// @ts-ignore
 			filter: {
 				status: {
 					_eq: 'published',
@@ -51,11 +57,13 @@ async function getPages() {
 	);
 
 	const entries = pages.map((page) => {
+		const seo = page.seo as SEO;
+
 		return {
 			loc: `${page.permalink}`,
 			lastmod: page.date_updated,
-			changefreq: page.seo?.sitemap_change_frequency || 'monthly',
-			priority: page.seo?.sitemap_priority || 0.5,
+			changefreq: seo?.sitemap_change_frequency || 'monthly',
+			priority: seo?.sitemap_priority || 0.5,
 		};
 	});
 
@@ -92,6 +100,7 @@ async function getHelpArticles() {
 	const articles = await directusServer.request(
 		readItems('help_articles', {
 			fields: ['id', 'slug', 'date_updated'],
+			// @ts-ignore
 			filter: {
 				status: {
 					_eq: 'published',
@@ -117,6 +126,7 @@ async function getHelpCollections() {
 	const collections = await directusServer.request(
 		readItems('help_collections', {
 			fields: ['id', 'slug'],
+			// @ts-ignore
 			filter: {
 				articles: {
 					_nnull: true,
