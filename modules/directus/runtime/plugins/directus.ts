@@ -20,28 +20,15 @@ export default defineNuxtPlugin((nuxtApp) => {
 	const { isTokenExpired } = useDirectusAuth();
 
 	// We're creating a custom storage class to use the Nuxt so we can use auth on the server and clien
-	class CookieStorage implements AuthenticationStorage {
-		get(): Promise<AuthenticationData | null> | null {
+	class CookieStorage {
+		get() {
 			const cookie = useCookie('directus-auth');
-			const value = cookie.value;
-
-			if (value) {
-				return Promise.resolve(JSON.parse(value));
-			} else {
-				return null;
-			}
+			return cookie.value;
 		}
 
-		set(value: AuthenticationData | null): Promise<void> {
+		set(value: AuthenticationData) {
 			const cookie = useCookie('directus-auth');
-
-			if (value) {
-				cookie.value = JSON.stringify(value);
-			} else {
-				cookie.value = null;
-			}
-
-			return Promise.resolve();
+			cookie.value = value as any;
 		}
 	}
 
@@ -50,7 +37,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 			fetch: $fetch, // We're using the built-in Nuxt $fetch from ofetch
 		},
 	})
-		.with(authentication('json', { storage: new CookieStorage(), credentials: 'include' }))
+		.with(authentication('json', { storage: new CookieStorage() as AuthenticationStorage, credentials: 'include' }))
 		.with(
 			rest({
 				onRequest: async (request) => {
