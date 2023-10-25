@@ -133,12 +133,17 @@ OR
 
 If you're prefer to self-host Directus, we highly recommend you do so with Docker.
 
+**Important Note**: This is a free and open source community release. Therefore, we cannot provide support for
+self-hosted instances WITHOUT an Enterprise Self-Hosted license or formal support agreement.
+[Learn more and contact our team for details on Enterprise Self-Hosted](https://directus.io/pricing/self-hosted).
+
 You’ll find a `docker-compose.yaml` inside the repo that you can use to quickly spin up a local instance of Directus to
 test with. You should have Docker installed and running on your machine first. You
 can **[download it here](https://docs.docker.com/get-docker/)**.
 
-[PostgreSQL](https://www.postgresql.org/) is the tested and preferred database vendor for this project, but Directus
-supports many different SQL databases.
+[PostgreSQL](https://www.postgresql.org/) is the **tested and preferred** database vendor for this project. The project
+has been tested and verified to work against the docker-compose.yaml file included in the repo. Directus does support
+many different SQL database vendors, but we ONLY test this project against PostgreSQL.
 
 ```bash
 # Navigate to the .directus directory
