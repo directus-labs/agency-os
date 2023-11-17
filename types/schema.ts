@@ -78,7 +78,7 @@ export interface Schema {
 	pages_blog: PagesBlog;
 
 	// Blocks
-	block_column: BlockColumn[];
+	block_columns: BlockColumn[];
 	block_cta: BlockCta[];
 	block_faq: BlockFaq[];
 	block_form: BlockForm[];
