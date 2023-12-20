@@ -33,7 +33,7 @@ defineProps<{
 					<div
 						v-motion
 						:initial="{ opacity: 0, scale: 0.8, y: 50 }"
-						:visible-once="{ opacity: 1, scale: 1, y: 0 }"
+						:visibleOnce="{ opacity: 1, scale: 1, y: 0 }"
 						:duration="1000"
 						:delay="250"
 					>
