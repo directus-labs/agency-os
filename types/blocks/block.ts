@@ -15,7 +15,7 @@ import type { BlockVideo } from './block-video';
 import type { BlockDivider } from './block-divider';
 
 export type BlockType =
-	| 'block_column'
+	| 'block_columns'
 	| 'block_cta'
 	| 'block_faqs'
 	| 'block_form'
