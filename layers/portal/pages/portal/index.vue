@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { User } from '~~/types';
+
 function useGreetings() {
 	type Message = string;
 
@@ -33,11 +35,12 @@ function useGreetings() {
 }
 
 const { getTodaysMessage } = useGreetings();
+const { user } = useDirectusAuth() as { user: Partial<User> };
 </script>
 <template>
 	<PageContainer>
 		<img class="w-48 ml-auto mr-0" src="~/assets/illustrations/tokyo-luminous-table-lamp-on-boxes.svg" />
-		<TypographyTitle class="normal-case">{{ greetUser() }} Bryant,</TypographyTitle>
+		<TypographyTitle class="normal-case">{{ greetUser() }} {{ userName(user) }},</TypographyTitle>
 		<TypographyHeadline :content="getTodaysMessage()" size="xl" />
 		<VDivider class="my-8" />
 		<div class="grid w-full grid-cols-1 gap-6 md:grid-cols-2">

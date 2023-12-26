@@ -6,7 +6,7 @@ definePageMeta({
 	middleware: ['auth'],
 });
 
-const { logout } = useDirectusAuth();
+const { logout, user } = useDirectusAuth();
 
 const NuxtLink = resolveComponent('NuxtLink');
 
@@ -113,9 +113,15 @@ const mobileMenuOpen = ref(false);
 								>
 									<span class="sr-only">Open user menu</span>
 									<img
+										v-if="user.avatar"
 										class="w-12 h-12 mx-auto rounded-card"
-										src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
-										alt=""
+										:src="fileUrl(user.avatar.ToString())"
+										alt="User avatar"
+									/>
+									<UIcon
+										v-else
+										class="w-12 h-12 mx-auto rounded-card bg-gray-900 text-gray-100 ring-gray-500 hover:bg-gray-800 py-3 px-2 text-xs"
+										name="material-symbols:account-circle-outline"
 									/>
 								</button>
 							</UDropdown>
