@@ -1,14 +1,16 @@
-<script setup>
+<script setup lang="ts">
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue';
+import type { User } from '~~/types';
 
 definePageMeta({
 	layout: 'blank',
 	middleware: ['auth'],
 });
 
-const { logout, user } = useDirectusAuth();
+const { logout, user } = useDirectusAuth() as { logout: () => Promise<void>, user: Partial<User> };
 
 const NuxtLink = resolveComponent('NuxtLink');
+const { fileUrl } = useFiles();
 
 function useCommandPalette() {
 	const showCommandPalette = ref(false);
@@ -29,14 +31,14 @@ function useCommandPalette() {
 
 const sidebarNavigation = {
 	top: [
-		{ name: 'Search', click: () => (showCommandPalette.value = true), icon: 'material-symbols:search-rounded' },
-		{ name: 'Dashboard', href: '/portal', icon: 'material-symbols:home-outline-rounded' },
-		{ name: 'Projects', href: '/portal/projects', icon: 'material-symbols:tab-group-outline-rounded' },
-		{ name: 'Files', href: '/portal/files', icon: 'material-symbols:folder-outline-rounded' },
-		{ name: 'Billing', href: '/portal/billing', icon: 'material-symbols:attach-money-rounded' },
-		{ name: 'Account', href: '/portal/account', icon: 'material-symbols:account-circle-outline' },
+		{ name: 'Search', click: () => (showCommandPalette.value = true), icon: 'material-symbols:search-rounded', current: undefined },
+		{ name: 'Dashboard', href: '/portal', icon: 'material-symbols:home-outline-rounded' , current: undefined},
+		{ name: 'Projects', href: '/portal/projects', icon: 'material-symbols:tab-group-outline-rounded' , current: undefined},
+		{ name: 'Files', href: '/portal/files', icon: 'material-symbols:folder-outline-rounded' , current: undefined},
+		{ name: 'Billing', href: '/portal/billing', icon: 'material-symbols:attach-money-rounded', current: undefined },
+		{ name: 'Account', href: '/portal/account', icon: 'material-symbols:account-circle-outline', current: undefined },
 	],
-	bottom: [{ name: 'Help', href: '/portal/help', icon: 'material-symbols:help-outline-rounded' }],
+	bottom: [{ name: 'Help', href: '/portal/help', icon: 'material-symbols:help-outline-rounded', current: undefined}],
 };
 
 const userNavigation = [
@@ -115,7 +117,7 @@ const mobileMenuOpen = ref(false);
 									<img
 										v-if="user.avatar"
 										class="w-12 h-12 mx-auto rounded-card"
-										:src="fileUrl(user.avatar.ToString())"
+										:src="fileUrl(user.avatar as string)"
 										alt="User avatar"
 									/>
 									<UIcon
