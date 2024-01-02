@@ -67,7 +67,21 @@ const { data: page } = await useAsyncData(
 										},
 									],
 									block_quote: ['id', 'title', 'subtitle', 'content'],
-									block_cta: ['id', 'title', 'headline', 'content', 'buttons'],
+									block_cta: [
+										'id', 
+										'title', 
+										'headline', 
+										'content', 
+										'buttons', 
+										{
+											button_group: [
+												'*', 
+												{ 
+													buttons: ['*', { page: ['permalink'], post: ['slug'] }] 
+												}
+											]
+										},
+									],
 									block_form: ['id', 'title', 'headline', { form: ['*'] }],
 									block_logocloud: [
 										'id',
