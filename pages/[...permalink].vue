@@ -142,6 +142,14 @@ const { data: page } = await useAsyncData(
 												'content',
 												'image_position',
 												{ image: ['id', 'title', 'description'] },
+												{
+													button_group: [
+														'*', 
+														{ 
+															buttons: ['*', { page: ['permalink'], post: ['slug'] }] 
+														}
+													]
+												},
 											],
 										},
 									],

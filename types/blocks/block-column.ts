@@ -1,4 +1,5 @@
 import type { File } from '../system';
+import type { BlockButtonGroup } from '../blocks';
 
 export interface BlockColumn {
 	headline?: string | null;
@@ -15,4 +16,5 @@ export interface BlockColumnRow {
 	image?: (string | File) | null;
 	image_position?: string | null;
 	title?: string | null;
+	button_group?: (string | BlockButtonGroup) | null;
 }
