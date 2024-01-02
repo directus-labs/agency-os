@@ -56,6 +56,7 @@ const steps = computed(() => {
 						<TypographyTitle v-if="data.show_step_numbers">Step {{ stepIdx + 1 }}</TypographyTitle>
 						<TypographyHeadline :content="step.title" size="sm" />
 						<TypographyProse :content="step.content" class="mt-4" />
+						<BlocksButtonGroup v-if="step.button_group" :data="step.button_group" class="mt-4" />
 					</div>
 				</div>
 				<svg

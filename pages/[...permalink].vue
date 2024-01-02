@@ -115,7 +115,20 @@ const { data: page } = await useAsyncData(
 										'show_step_numbers',
 										'alternate_image_position',
 										{
-											steps: ['id', 'title', 'content', 'image'],
+											steps: [
+												'id', 
+												'title', 
+												'content', 
+												'image', 
+												{
+													button_group: [
+														'*', 
+														{ 
+															buttons: ['*', { page: ['permalink'], post: ['slug'] }] 
+														}
+													]
+												},
+											],
 										},
 									],
 									block_columns: [
