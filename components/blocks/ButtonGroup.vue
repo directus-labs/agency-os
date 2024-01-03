@@ -19,7 +19,7 @@ function getUrl(button: BlockButton): string | undefined {
 }
 </script>
 <template>
-	<div class="flex flex-col space-y-4 md:space-x-4 md:flex-row md:space-y-0">
+	<div :class="`flex flex-col justify-${data.alignment} space-y-4 md:space-x-4 md:flex-row md:space-y-0`">
 		<UButton
 			v-for="button in data.buttons as BlockButton[]"
 			:key="button.id"
