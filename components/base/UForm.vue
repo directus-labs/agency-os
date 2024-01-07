@@ -64,7 +64,6 @@ watch(
 				{{ form.success_message ?? 'Success! Your form has been submitted.' }}
 			</VAlert>
 		</div>
-		<!-- <FormKit v-if="!success" type="form" v-model="formData" @submit="submitForm" :submit-label="form.submit_label"> -->
 		<div>
 			<FormCustom
 				v-if="!success"
@@ -74,8 +73,6 @@ watch(
 				class="grid gap-6 md:grid-cols-6"
 				:on-submit="submitForm"
 			/>
-			<!-- <FormKitSchema :schema="schema" /> -->
 		</div>
-		<!-- </FormKit> -->
 	</div>
 </template>
