@@ -84,6 +84,11 @@ export default defineAppConfig({
 				},
 			},
 		},
+        avatar: {
+            default: {
+            },
+            rounded: 'rounded-button'
+        },
 		pagination: {
 			rounded: 'first:rounded-l-button last:rounded-r-button',
 			default: {
