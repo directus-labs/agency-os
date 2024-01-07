@@ -1,6 +1,6 @@
 <script setup lang="ts">
-export interface ProjectStepsProps {
-	steps: [
+export interface ProjectMilestonesProps {
+	steps: Array<
 		{
 			name: string;
 			icon: string;
@@ -8,11 +8,11 @@ export interface ProjectStepsProps {
 			isCurrent: boolean;
 			status: string;
 			date: string;
-		},
-	];
+		}
+	>;
 }
 
-withDefaults(defineProps<ProjectStepsProps>(), {});
+withDefaults(defineProps<ProjectMilestonesProps>(), {});
 </script>
 
 <template>

@@ -107,7 +107,7 @@ async function openTask(id: string) {
 				width: 'max-w-xl',
 			}"
 		>
-			<PortalTask :task-id="selectedTaskId" class="overflow-y-auto" @close="showTask = false" />
+			<PortalTask :task-id="selectedTaskId ?? ''" class="overflow-y-auto" @close="showTask = false" />
 		</USlideover>
 	</div>
 </template>

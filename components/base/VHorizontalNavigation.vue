@@ -1,11 +1,13 @@
 <script setup lang="ts">
 export interface HorizontalNavigationProps {
-	items: [
+	items: Array<
 		{
+
 			name: string;
 			href: string;
-		},
-	];
+
+		}
+	>;
 }
 
 const props = defineProps<HorizontalNavigationProps>();
