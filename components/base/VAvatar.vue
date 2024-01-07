@@ -15,7 +15,7 @@ const { fileUrl } = useFiles();
 <template>
 	<div class="flex items-center flex-none group dark:text-gray-100">
 		<div class="mr-3">
-			<img
+			<NuxtImg
 				v-if="author.avatar"
 				:class="[
 					{
@@ -25,7 +25,7 @@ const { fileUrl } = useFiles();
 					},
 					'object-cover rounded-full dark:brightness-90',
 				]"
-				:src="fileUrl(author.avatar as string)"
+				:src="author.avatar as string"
 			/>
 		</div>
 
