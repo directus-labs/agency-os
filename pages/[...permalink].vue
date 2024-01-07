@@ -67,7 +67,21 @@ const { data: page } = await useAsyncData(
 										},
 									],
 									block_quote: ['id', 'title', 'subtitle', 'content'],
-									block_cta: ['id', 'title', 'headline', 'content', 'buttons'],
+									block_cta: [
+										'id', 
+										'title', 
+										'headline', 
+										'content', 
+										'buttons', 
+										{
+											button_group: [
+												'*', 
+												{ 
+													buttons: ['*', { page: ['permalink'], post: ['slug'] }] 
+												}
+											]
+										},
+									],
 									block_form: ['id', 'title', 'headline', { form: ['*'] }],
 									block_logocloud: [
 										'id',
@@ -101,7 +115,20 @@ const { data: page } = await useAsyncData(
 										'show_step_numbers',
 										'alternate_image_position',
 										{
-											steps: ['id', 'title', 'content', 'image'],
+											steps: [
+												'id', 
+												'title', 
+												'content', 
+												'image', 
+												{
+													button_group: [
+														'*', 
+														{ 
+															buttons: ['*', { page: ['permalink'], post: ['slug'] }] 
+														}
+													]
+												},
+											],
 										},
 									],
 									block_columns: [
@@ -115,6 +142,14 @@ const { data: page } = await useAsyncData(
 												'content',
 												'image_position',
 												{ image: ['id', 'title', 'description'] },
+												{
+													button_group: [
+														'*', 
+														{ 
+															buttons: ['*', { page: ['permalink'], post: ['slug'] }] 
+														}
+													]
+												},
 											],
 										},
 									],

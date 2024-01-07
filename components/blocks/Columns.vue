@@ -20,6 +20,7 @@ defineProps<{
 					<TypographyTitle v-if="row?.title">{{ row?.title }}</TypographyTitle>
 					<TypographyHeadline v-if="row?.headline" :content="row?.headline" />
 					<TypographyProse v-if="row?.content" :content="row?.content" class="mt-4" />
+					<BlocksButtonGroup v-if="row?.button_group" :data="row?.button_group" class="mt-4" />
 				</div>
 				<div
 					class="order-first block w-full overflow-hidden border aspect-square dark:border-gray-700 rounded-card"

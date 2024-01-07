@@ -1,4 +1,5 @@
 import type { File } from '../system';
+import type { BlockButtonGroup } from '../blocks';
 
 export interface BlockStep {
 	id?: string;
@@ -17,4 +18,5 @@ export interface BlockStepItem {
 	image?: (string | File) | null;
 	sort?: number | null;
 	block_steps?: (string | BlockStep) | null;
+	button_group?: (string | BlockButtonGroup) | null;
 }
