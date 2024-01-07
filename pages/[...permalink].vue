@@ -8,10 +8,13 @@ const pageFilter = computed(() => {
 	let finalPath;
 
 	if (path === '/') {
+		// Match the homepage
 		finalPath = '/';
 	} else if (path.endsWith('/')) {
+		// Remove any other trailing slash
 		finalPath = path.slice(0, -1);
 	} else {
+		// Match any other page
 		finalPath = path;
 	}
 
