@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { Form } from '~/types';
 import type { FormError } from '@nuxt/ui/dist/runtime/types';
-import { transformSchema } from '~/utils/formkit';
 
 const props = defineProps<{
 	form: Form;
@@ -15,8 +14,6 @@ const formData = reactive({ ...query });
 const loading = ref(false);
 const error: any = ref(null);
 const success = ref(false);
-
-// const schema = transformSchema(props.form.schema);
 
 const validate = (state: any): FormError[] => {
 	const errors = [];

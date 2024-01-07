@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Page } from '~/types';
+
 const { path } = useRoute();
 const url = useRequestURL();
 const { fileUrl } = useFiles();
@@ -230,7 +232,7 @@ useServerSeoMeta({
 <template>
 	<NuxtErrorBoundary>
 		<!-- Render the page using the PageBuilder component -->
-		<PageBuilder v-if="page" :page="page" />
+		<PageBuilder v-if="page" :page="page as Page" />
 
 		<!-- If there is an error, display it using the VAlert component -->
 		<template #error="{ error }">

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 export interface ProjectMilestonesProps {
 	steps: Array<{
-		name: string;
-		icon: string;
-		isComplete: boolean;
-		isCurrent: boolean;
-		status: string;
-		date: string;
+		name?: string;
+		icon?: string;
+		isComplete?: boolean;
+		isCurrent?: boolean;
+		status?: string;
+		date?: string;
 	}>;
 }
 

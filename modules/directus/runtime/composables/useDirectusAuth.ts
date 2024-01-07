@@ -10,7 +10,7 @@ export default function useDirectusAuth<DirectusSchema extends object>() {
 	const nuxtApp = useNuxtApp();
 	const $directus = nuxtApp.$directus as RestClient<Schema> & AuthenticationClient<Schema>;
 
-	const user: Ref<User> = useState('user');
+	const user: Ref<User | null | undefined> = useState('user');
 
 	const config = useRuntimeConfig();
 
@@ -57,7 +57,7 @@ export default function useDirectusAuth<DirectusSchema extends object>() {
 			}),
 		);
 
-		user.value = response;
+		user.value = response as User;
 	}
 
 	async function isTokenExpired(token: string) {

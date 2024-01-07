@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BlockHero } from '~/types';
+import type { BlockHero, BlockButtonGroup } from '~/types';
 
 defineProps<{
 	data: BlockHero;
@@ -12,9 +12,9 @@ defineProps<{
 			<TypographyTitle v-if="data.title">
 				{{ data.title }}
 			</TypographyTitle>
-			<TypographyHeadline :content="data.headline" size="title" as="h1" />
-			<TypographyProse :content="data.content" size="lg" class="py-6 font-display" />
-			<BlocksButtonGroup v-if="data.button_group" :data="data.button_group" />
+			<TypographyHeadline v-if="data.headline" :content="data.headline" size="title" as="h1" />
+			<TypographyProse v-if="data.content" :content="data.content" size="lg" class="py-6 font-display" />
+			<BlocksButtonGroup v-if="data.button_group" :data="data.button_group as BlockButtonGroup" />
 		</div>
 		<!-- Image -->
 		<div
@@ -23,8 +23,9 @@ defineProps<{
 			:class="data.image_position === 'left' ? 'order-first lg:-ml-48 md:-ml-16' : 'lg:-mr-48 md:-mr-16 '"
 		>
 			<NuxtImg
+				v-if="data.image"
 				class="w-full overflow-hidden dark:brightness-90 max-h-[700px] h-full object-cover rounded-card"
-				:src="data.image"
+				:src="data.image as string"
 				alt=""
 			/>
 		</div>

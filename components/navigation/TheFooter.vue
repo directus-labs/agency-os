@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { RouteLocationRaw } from '#vue-router';
 import type { NavigationItem } from '~~/types';
 
 const { globals } = useAppConfig();
@@ -83,7 +84,7 @@ const { data: form } = await useAsyncData(
 					<ul role="list" class="grid gap-2 mt-2 md:grid-cols-2">
 						<li v-for="item in navigation?.items as NavigationItem[]" :key="item.id">
 							<NuxtLink
-								:to="getNavItemUrl(item)"
+								:to="getNavItemUrl(item) as RouteLocationRaw"
 								class="font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-primary"
 							>
 								{{ item.title }}
@@ -92,7 +93,7 @@ const { data: form } = await useAsyncData(
 					</ul>
 				</div>
 
-				<div class="relative">
+				<div v-if="form" class="relative">
 					<TypographyHeadline :content="`<p>Subscribe to our <em>newsletter</em></p>`" size="sm">
 						Subscribe to our newsletter
 					</TypographyHeadline>

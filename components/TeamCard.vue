@@ -12,9 +12,10 @@ const flipped = ref(false);
 		<div class="relative w-full h-full overflow-hidden group rounded-card">
 			<!-- Front of Team Card -->
 			<NuxtImg
+				v-if="person.image"
 				class="object-cover w-full h-full transition duration-300 grayscale group-hover:grayscale-0"
-				:src="person.image"
-				:alt="person.name"
+				:src="person.image as string"
+				:alt="person.name ?? ''"
 			/>
 			<!-- Back of Team Card -->
 			<Motionable

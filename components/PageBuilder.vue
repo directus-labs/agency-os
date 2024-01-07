@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Page, PageBlock, BlockType } from '~/types';
+import type { Page, OsProposal, PageBlock, BlockType } from '~/types';
 
 const componentMap: Record<BlockType, any> = {
 	block_hero: resolveComponent('BlocksHero'),
@@ -20,7 +20,7 @@ const componentMap: Record<BlockType, any> = {
 };
 
 const props = defineProps<{
-	page: Page;
+	page: Page | OsProposal;
 }>();
 
 const blocks = computed(() => {

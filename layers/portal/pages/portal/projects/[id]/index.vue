@@ -72,7 +72,7 @@ const milestones = computed(() => {
 		<UCard class="mt-6 space-y-4 lg:col-span-2">
 			<!-- Milestones -->
 			<TypographyHeadline content="Milestones" size="xs" />
-			<PortalProjectMilestones :steps="milestones" />
+			<PortalProjectMilestones :steps="milestones as any" />
 		</UCard>
 		<section class="px-4 py-3 mt-8 space-y-4">
 			<TypographyHeadline content="Description" size="xs" />

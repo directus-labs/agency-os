@@ -68,6 +68,6 @@ const {
 			<UButton to="/contact-us" color="primary" size="xl">Let's Talk</UButton>
 			<UButton to="/portal" color="primary" variant="ghost" size="xl">Login</UButton>
 		</div>
-		<NavigationMobileMenu :navigation="navigation" />
+		<NavigationMobileMenu v-if="navigation" :navigation="navigation" />
 	</header>
 </template>

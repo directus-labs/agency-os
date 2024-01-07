@@ -122,11 +122,11 @@ const selectedStatus = ref<string | null>('open');
 		<div class="w-full">
 			<!-- Filters -->
 			<div class="flex items-center justify-between gap-3 py-3 border-b dark:border-gray-700">
-				<UInput v-model="searchQuery" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search..." />
+				<!-- <UInput v-model="searchQuery" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search..." /> -->
 				<!-- <USelectMenu v-model="selectedStatus" :options="todoStatus" multiple placeholder="Status" class="w-40" /> -->
 			</div>
 
-			<UTable :columns="columns" :rows="conversations" column-attribute="label">
+			<UTable :columns="columns" :rows="conversations as any" column-attribute="label">
 				<template #name-data="{ row }">
 					<div
 						:class="{
