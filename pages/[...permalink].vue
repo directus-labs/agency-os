@@ -151,7 +151,7 @@ const metadata = computed(() => {
 		title: pageData?.seo?.title ?? pageData?.title ?? undefined,
 		description: pageData?.seo?.meta_description ?? pageData?.summary ?? undefined,
 		image: globals.og_image ? fileUrl(globals.og_image) : undefined,
-		canonical: pageData?.seo?.canonical ?? url,
+		canonical: pageData?.seo?.canonical_url ?? url,
 	};
 });
 
