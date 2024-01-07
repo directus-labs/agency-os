@@ -68,18 +68,18 @@ const { data: page } = await useAsyncData(
 									],
 									block_quote: ['id', 'title', 'subtitle', 'content'],
 									block_cta: [
-										'id', 
-										'title', 
-										'headline', 
-										'content', 
-										'buttons', 
+										'id',
+										'title',
+										'headline',
+										'content',
+										'buttons',
 										{
 											button_group: [
-												'*', 
-												{ 
-													buttons: ['*', { page: ['permalink'], post: ['slug'] }] 
-												}
-											]
+												'*',
+												{
+													buttons: ['*', { page: ['permalink'], post: ['slug'] }],
+												},
+											],
 										},
 									],
 									block_form: ['id', 'title', 'headline', { form: ['*'] }],
@@ -116,17 +116,17 @@ const { data: page } = await useAsyncData(
 										'alternate_image_position',
 										{
 											steps: [
-												'id', 
-												'title', 
-												'content', 
-												'image', 
+												'id',
+												'title',
+												'content',
+												'image',
 												{
 													button_group: [
-														'*', 
-														{ 
-															buttons: ['*', { page: ['permalink'], post: ['slug'] }] 
-														}
-													]
+														'*',
+														{
+															buttons: ['*', { page: ['permalink'], post: ['slug'] }],
+														},
+													],
 												},
 											],
 										},
@@ -144,11 +144,11 @@ const { data: page } = await useAsyncData(
 												{ image: ['id', 'title', 'description'] },
 												{
 													button_group: [
-														'*', 
-														{ 
-															buttons: ['*', { page: ['permalink'], post: ['slug'] }] 
-														}
-													]
+														'*',
+														{
+															buttons: ['*', { page: ['permalink'], post: ['slug'] }],
+														},
+													],
 												},
 											],
 										},
@@ -191,7 +191,7 @@ const metadata = computed(() => {
 });
 
 // Dynamic OG Images
-defineOgImage({
+defineOgImageComponent('OgImageTemplate', {
 	title: unref(metadata)?.title,
 	summary: unref(metadata)?.description,
 	imageUrl: unref(metadata)?.image,
