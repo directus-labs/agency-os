@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { Form } from '~/types';
 import type { FormError } from '@nuxt/ui/dist/runtime/types';
-import { transformSchema } from '~/utils/formkit';
 
 const props = defineProps<{
 	form: Form;
@@ -15,8 +14,6 @@ const formData = reactive({ ...query });
 const loading = ref(false);
 const error: any = ref(null);
 const success = ref(false);
-
-// const schema = transformSchema(props.form.schema);
 
 const validate = (state: any): FormError[] => {
 	const errors = [];
@@ -64,7 +61,6 @@ watch(
 				{{ form.success_message ?? 'Success! Your form has been submitted.' }}
 			</VAlert>
 		</div>
-		<!-- <FormKit v-if="!success" type="form" v-model="formData" @submit="submitForm" :submit-label="form.submit_label"> -->
 		<div>
 			<FormCustom
 				v-if="!success"
@@ -74,8 +70,6 @@ watch(
 				class="grid gap-6 md:grid-cols-6"
 				:on-submit="submitForm"
 			/>
-			<!-- <FormKitSchema :schema="schema" /> -->
 		</div>
-		<!-- </FormKit> -->
 	</div>
 </template>

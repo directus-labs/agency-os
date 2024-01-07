@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// @ts-expect-error - VPerfectSignature is not typed
 import { VPerfectSignature } from 'v-perfect-signature';
 
 const colorMode = useColorMode();

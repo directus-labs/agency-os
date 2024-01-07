@@ -10,6 +10,6 @@ const { params } = useRoute();
 				content="Teamwork makes the dreamwork. These are the open tasks you'll need to complete for a successful project."
 			/>
 		</template>
-		<PortalTaskList :project-id="params.id" />
+		<PortalTaskList :project-id="params.id as string" />
 	</UCard>
 </template>

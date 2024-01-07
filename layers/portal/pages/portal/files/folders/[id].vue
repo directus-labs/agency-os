@@ -30,6 +30,6 @@ const {
 				</div>
 			</template>
 		</PortalPageHeader>
-		<PortalFilesView :folder-id="params.id" class="mt-6" />
+		<PortalFilesView :folder-id="params.id as string" class="mt-6" />
 	</div>
 </template>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Page } from '~/types';
+
 const { path } = useRoute();
 const url = useRequestURL();
 const { fileUrl } = useFiles();
@@ -8,10 +10,13 @@ const pageFilter = computed(() => {
 	let finalPath;
 
 	if (path === '/') {
+		// Match the homepage
 		finalPath = '/';
 	} else if (path.endsWith('/')) {
+		// Remove any other trailing slash
 		finalPath = path.slice(0, -1);
 	} else {
+		// Match any other page
 		finalPath = path;
 	}
 
@@ -68,18 +73,18 @@ const { data: page } = await useAsyncData(
 									],
 									block_quote: ['id', 'title', 'subtitle', 'content'],
 									block_cta: [
-										'id', 
-										'title', 
-										'headline', 
-										'content', 
-										'buttons', 
+										'id',
+										'title',
+										'headline',
+										'content',
+										'buttons',
 										{
 											button_group: [
-												'*', 
-												{ 
-													buttons: ['*', { page: ['permalink'], post: ['slug'] }] 
-												}
-											]
+												'*',
+												{
+													buttons: ['*', { page: ['permalink'], post: ['slug'] }],
+												},
+											],
 										},
 									],
 									block_form: ['id', 'title', 'headline', { form: ['*'] }],
@@ -116,17 +121,17 @@ const { data: page } = await useAsyncData(
 										'alternate_image_position',
 										{
 											steps: [
-												'id', 
-												'title', 
-												'content', 
-												'image', 
+												'id',
+												'title',
+												'content',
+												'image',
 												{
 													button_group: [
-														'*', 
-														{ 
-															buttons: ['*', { page: ['permalink'], post: ['slug'] }] 
-														}
-													]
+														'*',
+														{
+															buttons: ['*', { page: ['permalink'], post: ['slug'] }],
+														},
+													],
 												},
 											],
 										},
@@ -144,11 +149,11 @@ const { data: page } = await useAsyncData(
 												{ image: ['id', 'title', 'description'] },
 												{
 													button_group: [
-														'*', 
-														{ 
-															buttons: ['*', { page: ['permalink'], post: ['slug'] }] 
-														}
-													]
+														'*',
+														{
+															buttons: ['*', { page: ['permalink'], post: ['slug'] }],
+														},
+													],
 												},
 											],
 										},
@@ -191,7 +196,7 @@ const metadata = computed(() => {
 });
 
 // Dynamic OG Images
-defineOgImage({
+defineOgImageComponent('OgImageTemplate', {
 	title: unref(metadata)?.title,
 	summary: unref(metadata)?.description,
 	imageUrl: unref(metadata)?.image,
@@ -227,7 +232,7 @@ useServerSeoMeta({
 <template>
 	<NuxtErrorBoundary>
 		<!-- Render the page using the PageBuilder component -->
-		<PageBuilder v-if="page" :page="page" />
+		<PageBuilder v-if="page" :page="page as Page" />
 
 		<!-- If there is an error, display it using the VAlert component -->
 		<template #error="{ error }">

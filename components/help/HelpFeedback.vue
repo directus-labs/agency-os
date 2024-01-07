@@ -98,7 +98,7 @@ async function handleSubmission(rating?: number) {
 				</div>
 			</div>
 			<!-- Ask For Comments -->
-			<div v-else-if="feedback.rating && !success" class="space-y-4">
+			<div v-else-if="feedback?.rating && !success" class="space-y-4">
 				<p class="dark:text-gray-200">You chose:</p>
 				<div class="space-x-4">
 					<span class="text-xl font-bold dark:text-white">
@@ -107,7 +107,12 @@ async function handleSubmission(rating?: number) {
 					<UButton variant="outline" size="xs" icon="heroicons:x-mark" @click="feedback.rating = undefined" />
 				</div>
 
-				<TypographyHeadline :content="getRatingOption(feedback.rating)?.message" size="sm" />
+				<TypographyHeadline
+					v-if="feedback?.rating"
+					:content="getRatingOption(feedback.rating)?.message as string"
+					size="sm"
+				/>
+				<!-- @vue-ignore - UTextArea component from NuxtUI is missing proper types -->
 				<UTextarea v-model="feedback.comments" autofocus class="max-w-lg" autoresize />
 				<UButton :disabled="!feedback.comments" size="lg" @click="handleSubmission()">Send Us Your Feedback</UButton>
 			</div>

@@ -28,7 +28,7 @@ defineProps<PostBlogProps>();
 					>
 						<Category size="lg" :color="page?.category.color">{{ page?.category.title }}</Category>
 					</NuxtLink>
-					<Author v-if="page?.author" v-bind="page?.author" />
+					<Author v-if="page?.author" :author="page.author" />
 					<div class="space-y-2">
 						<p class="flex text-gray-500 dark:text-gray-300">
 							<UIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
@@ -57,7 +57,7 @@ defineProps<PostBlogProps>();
 			</div>
 
 			<div class="block px-6 mt-6 md:hidden">
-				<Author v-if="page?.author" v-bind="page?.author" />
+				<Author v-if="page?.author" :author="page.author" />
 				<div class="flex justify-between pb-4 mt-4 border-b dark:border-gray-700">
 					<div class="space-y-2">
 						<p class="flex text-gray-500 dark:text-gray-300">

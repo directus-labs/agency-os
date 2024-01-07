@@ -169,7 +169,7 @@ const billingAddress = computed(() => {
 						</p>
 					</div>
 					<div>
-						<UserBadge :user="invoice?.contact" size="xs" />
+						<UserBadge :user="invoice?.contact" size="sm" />
 						<p>{{ invoice?.contact.email }}</p>
 						<p>{{ invoice?.contact.phone }}</p>
 					</div>

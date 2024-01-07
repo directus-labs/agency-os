@@ -84,6 +84,15 @@ export default defineAppConfig({
 				},
 			},
 		},
+		avatar: {
+			default: {},
+			rounded: 'rounded-button',
+		},
+		breadcrumb: {
+			default: {
+				divider: 'material-symbols:chevron-right',
+			},
+		},
 		pagination: {
 			rounded: 'first:rounded-l-button last:rounded-r-button',
 			default: {

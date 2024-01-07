@@ -23,7 +23,7 @@ const props = defineProps<PostVideoProps>();
 				<div
 					class="pb-4 space-y-4 border-b md:space-y-0 md:flex md:justify-between md:items-center dark:border-gray-700"
 				>
-					<Author v-if="page?.author" v-bind="page?.author" />
+					<Author v-if="page?.author" :author="page?.author" />
 					<NuxtLink
 						v-if="page?.category"
 						:href="`/posts/categories/${page?.category.slug}`"

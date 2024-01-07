@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BlockGallery, BlockGalleryFile } from '~/types';
+import type { BlockGallery, BlockGalleryFile, File } from '~/types';
 
 const props = defineProps<{
 	data: BlockGallery;
@@ -7,7 +7,7 @@ const props = defineProps<{
 
 const galleryItems = computed(() => {
 	return props.data.gallery_items?.map((item: BlockGalleryFile) => {
-		return item.directus_files_id;
+		return item.directus_files_id as File;
 	});
 });
 </script>

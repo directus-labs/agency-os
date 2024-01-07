@@ -27,7 +27,7 @@ function getUrl(button: BlockButton): string | undefined {
 			:color="button?.color"
 			:variant="button?.variant"
 			:target="button?.external_url ? '_blank' : '_self'"
-			:label="button?.label"
+			:label="button?.label ?? undefined"
 			size="xl"
 			trailing-icon="material-symbols:arrow-forward-rounded"
 		/>

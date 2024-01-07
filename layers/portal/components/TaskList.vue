@@ -82,7 +82,7 @@ async function openTask(id: string) {
 	showTask.value = true;
 }
 
-const searchQuery: Ref<string | null> = ref(null);
+const searchQuery = ref();
 
 const tasksShown = computed(() => {
 	// Filter out tasks with a type of "milestone" and use search query to filter tasks
@@ -100,7 +100,7 @@ const tasksShown = computed(() => {
 <template>
 	<!-- Filters -->
 	<div class="flex items-center justify-between gap-3 pb-3 border-b dark:border-gray-700">
-		<UInput v-model="searchQuery" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search..." />
+		<UInput v-model="searchQuery" type="text" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search..." />
 	</div>
 	<!-- Table -->
 	<UTable :columns="columns" :rows="tasksShown" column-attribute="label">
@@ -134,6 +134,6 @@ const tasksShown = computed(() => {
 			width: 'max-w-xl',
 		}"
 	>
-		<PortalTask :task-id="selectedTaskId" class="overflow-y-auto" @close="showTask = false" />
+		<PortalTask v-if="selectedTaskId" :task-id="selectedTaskId" class="overflow-y-auto" @close="showTask = false" />
 	</USlideover>
 </template>

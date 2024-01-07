@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { OsProposal } from '~/types';
+
 definePageMeta({
 	layout: 'proposal',
 });
@@ -113,9 +115,7 @@ if (!proposal.value) {
 				:organization="proposal?.organization?.name"
 			/>
 			<!-- Render the page using the PageBuilder component -->
-
-			<PageBuilder id="content" :page="proposal" />
-
+			<PageBuilder v-if="proposal" id="content" :page="proposal as OsProposal" />
 			<ProposalsBlocksAcceptance id="accept" class="max-w-3xl mx-auto" />
 		</div>
 	</div>

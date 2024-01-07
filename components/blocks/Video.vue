@@ -27,7 +27,7 @@ const url = computed(() => {
 			v-if="url"
 			class="relative mt-6 overflow-hidden border dark:border-gray-700 rounded-card"
 			:url="url"
-			:title="data.title"
+			:title="data.title ?? undefined"
 		/>
 	</BlockContainer>
 </template>

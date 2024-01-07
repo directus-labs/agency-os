@@ -27,6 +27,7 @@ withDefaults(
 			<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
 		</div>
 		<TypographyProse
+			v-if="data.content"
 			:content="data.content"
 			:class="[
 				{

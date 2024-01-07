@@ -71,7 +71,7 @@ const metadata = computed(() => {
 });
 
 // Dynamic OG Images
-defineOgImage({
+defineOgImageComponent('OgImageTemplate', {
 	title: unref(metadata)?.title,
 	summary: unref(metadata)?.description,
 	imageUrl: unref(metadata)?.image,

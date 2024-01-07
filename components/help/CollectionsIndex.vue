@@ -39,7 +39,11 @@ const {
 		>
 			<div class="flex flex-col p-5 sm:p-6">
 				<div class="flex items-center">
-					<UIcon v-if="collection.icon" :name="convertIconName(collection.icon)" class="w-10 h-10 text-primary" />
+					<UIcon
+						v-if="collection.icon"
+						:name="convertIconName(collection.icon) as string"
+						class="w-10 h-10 text-primary"
+					/>
 				</div>
 				<div>
 					<TypographyHeadline :content="collection.title" size="sm" />
