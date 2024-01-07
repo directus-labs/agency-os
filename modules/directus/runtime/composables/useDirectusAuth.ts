@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode';
 import { readMe, passwordRequest, passwordReset } from '@directus/sdk';
 import type { RestClient, AuthenticationClient } from '@directus/sdk';
 import type { Schema } from '~/types/schema';
-import type { User } from '~/types'
+import type { User } from '~/types';
 
 import { useState, useRuntimeConfig, useRoute, navigateTo, clearNuxtData, useNuxtApp } from '#imports';
 

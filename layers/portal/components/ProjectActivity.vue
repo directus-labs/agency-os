@@ -138,8 +138,8 @@ const groupedActivity = computed<GroupedActivity[]>(() => {
 												item.type === 'milestone'
 													? 'heroicons:flag'
 													: item.type === 'update'
-													? 'heroicons:document-text'
-													: 'heroicons:document'
+														? 'heroicons:document-text'
+														: 'heroicons:document'
 											"
 											class="w-5 h-5 text-white"
 											aria-hidden="true"

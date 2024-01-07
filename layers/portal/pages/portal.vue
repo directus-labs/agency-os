@@ -108,15 +108,9 @@ const mobileMenuOpen = ref(false);
 							<DarkModeToggle bg="dark" class="" />
 							<!-- Profile dropdown -->
 							<UDropdown class="relative" :items="userNavigation">
-								<button
-
-								>
+								<button>
 									<span class="sr-only">Open user menu</span>
-									<UAvatar
-										class="w-12 h-12 mx-auto"
-										:src="user.avatar"
-										:alt="userName(user)"
-									/>
+									<UAvatar class="w-12 h-12 mx-auto" :src="user.avatar" :alt="userName(user)" />
 								</button>
 							</UDropdown>
 						</div>

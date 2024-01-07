@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
 	components: [{ path: './components/', prefix: 'Proposals' }],
 
-    routeRules: {
+	routeRules: {
 		'/proposals/**': { ssr: true },
 	},
 
