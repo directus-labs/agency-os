@@ -5,9 +5,9 @@ export default defineNuxtConfig({
 	// https://nuxt.com/docs/api/configuration/nuxt-config
 
 	routeRules: {
-		'/**': {
-			prerender: true,
-		},
+		// '/**': {
+		// 	prerender: true,
+		// },
 	},
 
 	extends: [
