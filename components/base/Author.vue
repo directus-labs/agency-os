@@ -24,7 +24,7 @@ const { fileUrl } = useFiles();
 					},
 					'object-cover rounded-full dark:brightness-90',
 				]"
-				:src="author.image"
+				:src="author.image as string"
 			/>
 		</div>
 
