@@ -151,7 +151,7 @@ const groupedActivity = computed<GroupedActivity[]>(() => {
 										<!-- Activity Detail -->
 										<template v-if="item.type === 'update'">
 											<div class="font-bold">User posted a project update</div>
-											<TypographyProse v-if="item.item && item.item.message"  :content="item.item.message" size="sm" />
+											<TypographyProse v-if="item.item && item.item.message" :content="item.item.message" size="sm" />
 										</template>
 										<template v-else-if="item.type === 'milestone'">
 											Milestone - {{ item.item.name }} - {{ item.action }}

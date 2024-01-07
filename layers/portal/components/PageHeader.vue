@@ -1,10 +1,9 @@
 <script setup lang="ts">
 export interface PageHeaderProps {
-	breadcrumbs?:
-		Array<{
-			title: string;
-			href?: string | null | undefined;
-		}>;
+	breadcrumbs?: Array<{
+		title: string;
+		href?: string | null | undefined;
+	}>;
 	title?: string;
 }
 

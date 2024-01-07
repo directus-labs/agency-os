@@ -11,27 +11,22 @@ const {
 
 const tabs = [
 	{
-
 		name: 'Overview',
 		href: `/portal/projects/${params.id}`,
 	},
 	{
-
 		name: 'Tasks',
 		href: `/portal/projects/${params.id}/tasks`,
 	},
 	{
-
 		name: 'Conversations',
 		href: `/portal/projects/${params.id}/conversations`,
 	},
 	{
-
 		name: 'Files',
 		href: `/portal/projects/${params.id}/files`,
 	},
 	{
-
 		name: 'Billing',
 		href: `/portal/projects/${params.id}/billing`,
 	},
