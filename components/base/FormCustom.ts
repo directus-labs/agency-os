@@ -1,5 +1,5 @@
-import type { Form } from '~/types';
-import * as UForm from '#ui/components/forms/Form.vue';
+import type { Form as FormType } from '~/types';
+import Form from '#ui/components/forms/Form.vue';
 import FormGroup from '#ui/components/forms/FormGroup.vue';
 import Input from '#ui/components/forms/Input.vue';
 import Textarea from '#ui/components/forms/Textarea.vue';
@@ -38,8 +38,8 @@ function renderInput(item: { [key: string]: any }, name: string, state: any) {
 export default defineComponent({
 	props: {
 		schema: {
-			type: Array as PropType<Form['schema']>,
-			required: true,
+			type: Array as PropType<FormType['schema']>,
+			default: () => [],
 		},
 		state: {
 			type: Object,
@@ -53,7 +53,7 @@ export default defineComponent({
 		},
 	},
 	setup(props) {
-		const groups = props.schema?.map((item) => {
+		const groups = props?.schema?.map((item) => {
 			const { name, label, placeholder, width, description } = item as { [key: string]: any };
 
 			// @ts-ignore
@@ -66,7 +66,7 @@ export default defineComponent({
 		});
 
 		if (!groups) {
-			return () => null;
+			return;
 		}
 
 		// Add the submit button to the groups array
@@ -88,6 +88,6 @@ export default defineComponent({
 		);
 
 		// @ts-ignore
-		return () => h(UForm, { state: props.state, validate: props.validate }, () => groups);
+		return () => h(Form, { state: props.state, validate: props.validate }, () => groups);
 	},
 });
