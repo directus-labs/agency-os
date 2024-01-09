@@ -29,7 +29,7 @@
 					type="password"
 					:disabled="loading"
 					size="lg"
-					name="email"
+					name="password"
 					label="Password"
 					placeholder="Your Password"
 				/>
