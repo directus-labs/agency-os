@@ -3,9 +3,9 @@ const { path, query } = useRoute();
 const router = useRouter();
 
 // Filters
-const search: Ref<string | null | undefined> = ref(query?.search?.toString() ?? undefined);
+const search: Ref<any> = ref(query?.search?.toString() ?? undefined);
 const debouncedSearch = refDebounced(search as any, 500);
-const status: Ref<string | null | undefined> = ref(query.status?.toString() ?? undefined);
+const status: Ref<any> = ref(query.status?.toString() ?? undefined);
 const page = ref(1);
 const rowsPerPage = ref(25);
 
@@ -176,7 +176,7 @@ function clearFilters() {
 			<template #header>
 				<!-- Filters -->
 				<div class="flex items-center justify-between gap-3">
-					<UInput v-model="search" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search..." />
+					<UInput v-model="search" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search..." type="text" />
 					<div class="flex gap-3">
 						<USelect v-model="status" :options="statusOptions" placeholder="Invoice Status" />
 						<UButton
@@ -223,7 +223,7 @@ function clearFilters() {
 					{{ formatCurrency(row.total) }}
 				</template>
 				<template #contact-data="{ row }">
-					<UserBadge :user="row.contact" size="xs" />
+					<UserBadge :user="row.contact" size="sm" />
 				</template>
 				<template #status-data="{ row }">
 					<UBadge

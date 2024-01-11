@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { OsTask, OsTaskFile } from '~/types';
+import type { OsTask, OsTaskFile, User, Form } from '~/types';
 export interface TaskProps {
 	taskId: string;
 	isModal?: boolean;
@@ -133,7 +133,7 @@ const availableStatuses = computed(() => {
 	});
 });
 
-const selected = ref(null);
+const selected = ref();
 
 const emit = defineEmits(['close']);
 </script>
@@ -144,7 +144,7 @@ const emit = defineEmits(['close']);
 		>
 			<div class="flex items-center justify-between pb-4 border-b dark:border-gray-700">
 				<div class="w-full">
-					<USelectMenu v-slot="{ open }" v-model="selected" :options="availableStatuses">
+					<USelectMenu v-slot="{ open }" v-model="selected" :options="availableStatuses as any">
 						<UButton :leading-icon="taskStatus?.icon" :color="taskStatus?.color">
 							{{ taskStatus?.label }}
 							<UIcon
@@ -167,19 +167,19 @@ const emit = defineEmits(['close']);
 					</UButton>
 				</div>
 			</div>
-			<TypographyHeadline :content="task?.name" size="xs" />
+			<TypographyHeadline v-if="task?.name" :content="task.name" size="xs" />
 		</UContainer>
 
 		<UContainer class="pb-12 mt-8 space-y-8">
 			<div class="grid gap-8 md:grid-cols-2">
 				<div>
 					<VLabel label="Assigned To" />
-					<VAvatar v-if="task?.assigned_to" :author="task?.assigned_to" />
+					<VAvatar v-if="task?.assigned_to" :author="task?.assigned_to as User" />
 				</div>
 				<div class="">
 					<VLabel label="Due Date" />
 					<div class="flex space-x-1.5">
-						<DateDisplay :date="task?.due_date" size="sm" />
+						<DateDisplay :date="task?.due_date as string" size="sm" />
 					</div>
 				</div>
 			</div>
@@ -200,7 +200,7 @@ const emit = defineEmits(['close']);
 			</div>
 			<div v-if="task?.form">
 				<VLabel label="Form" />
-				<UForm :form="task.form" />
+				<UForm :form="task.form as Form" />
 			</div>
 			<div v-if="task?.embed_url">
 				<VLabel label="Embed" />

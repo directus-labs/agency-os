@@ -19,7 +19,7 @@ export function safeRelation(
 export function safeRelationId(
 	idOrObject: string | { [key: string]: any } | null | undefined,
 ): string | null | undefined {
-	if (!idOrObject) return undefined;
+	if (!idOrObject) return null;
 
 	if (typeof idOrObject === 'string') {
 		return idOrObject;

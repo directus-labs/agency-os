@@ -91,7 +91,7 @@ async function openTask(id: string) {
 
 		<UTable :columns="columns" :rows="tasks">
 			<template #name-data="{ row }">
-				<UButton variant="link" class="max-w-[250px]" @click="openTask(row.id)" :padded="false">
+				<UButton variant="link" class="max-w-[250px]" :padded="false" @click="openTask(row.id)">
 					<span class="truncate">{{ row.name ?? 'Task with no name' }}</span>
 				</UButton>
 			</template>
@@ -107,7 +107,7 @@ async function openTask(id: string) {
 				width: 'max-w-xl',
 			}"
 		>
-			<PortalTask :task-id="selectedTaskId" class="overflow-y-auto" @close="showTask = false" />
+			<PortalTask :task-id="selectedTaskId ?? ''" class="overflow-y-auto" @close="showTask = false" />
 		</USlideover>
 	</div>
 </template>

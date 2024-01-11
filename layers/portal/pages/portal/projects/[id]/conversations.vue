@@ -10,6 +10,6 @@ const { params } = useRoute();
 				size="sm"
 			/>
 		</template>
-		<PortalMessageList :project-id="params.id" />
+		<PortalMessageList :project-id="params.id as string" />
 	</UCard>
 </template>

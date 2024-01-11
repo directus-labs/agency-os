@@ -11,32 +11,22 @@ const {
 
 const tabs = [
 	{
-		slot: 'overview',
-		label: 'Overview',
 		name: 'Overview',
 		href: `/portal/projects/${params.id}`,
 	},
 	{
-		slot: 'tasks',
-		label: 'Tasks',
 		name: 'Tasks',
 		href: `/portal/projects/${params.id}/tasks`,
 	},
 	{
-		label: 'Messages',
-		slot: 'messages',
 		name: 'Conversations',
 		href: `/portal/projects/${params.id}/conversations`,
 	},
 	{
-		label: 'Files',
-		content: 'Files',
 		name: 'Files',
 		href: `/portal/projects/${params.id}/files`,
 	},
 	{
-		label: 'Billing',
-		content: 'Billing',
 		name: 'Billing',
 		href: `/portal/projects/${params.id}/billing`,
 	},

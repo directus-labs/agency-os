@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BlockStep, BlockStepItem } from '~/types/';
+import type { BlockStep, BlockStepItem, BlockButtonGroup } from '~/types/';
 
 const props = defineProps<{
 	data: BlockStep;
@@ -46,16 +46,18 @@ const steps = computed(() => {
 				>
 					<div v-if="step.image" class="flex-shrink-0 dark:bg-white dark:brightness-90 rounded-panel">
 						<NuxtImg
+							v-if="step.image"
 							class="object-cover w-full h-32 rounded-card md:w-48 md:h-full"
-							:src="safeRelationId(step.image)"
+							:src="safeRelationId(step.image) as string"
 							:alt="safeRelation(step.image)?.description ?? ''"
 						/>
 					</div>
 
 					<div class="w-full mt-4 text-left md:mt-0">
 						<TypographyTitle v-if="data.show_step_numbers">Step {{ stepIdx + 1 }}</TypographyTitle>
-						<TypographyHeadline :content="step.title" size="sm" />
-						<TypographyProse :content="step.content" class="mt-4" />
+						<TypographyHeadline v-if="step.title" :content="step.title" size="sm" />
+						<TypographyProse v-if="step.content" :content="step.content" class="mt-4" />
+						<BlocksButtonGroup v-if="step.button_group" :data="step.button_group as BlockButtonGroup" class="mt-4" />
 					</div>
 				</div>
 				<svg

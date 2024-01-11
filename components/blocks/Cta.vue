@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BlockCta } from '~/types';
+import type { BlockButtonGroup, BlockCta } from '~/types';
 
 defineProps<{
 	data: BlockCta;
@@ -19,18 +19,7 @@ defineProps<{
 					<TypographyProse v-if="data.content" :content="data.content" class="mt-2" />
 				</div>
 				<div class="flex-shrink-0 mt-4 md:mt-0">
-					<UButton
-						v-for="button in data.buttons"
-						:key="button.id"
-						:href="button.href"
-						:target="button.open_in_new_window ? '_blank' : '_self'"
-						size="xl"
-						color="black"
-						:label="button.label"
-						trailing-icon="material-symbols:arrow-forward-rounded"
-					>
-						{{ button.label }}
-					</UButton>
+					<BlocksButtonGroup v-if="data.button_group" :data="data.button_group as BlockButtonGroup" />
 				</div>
 			</div>
 		</div>

@@ -100,7 +100,7 @@ export default cachedEventHandler(
 
 			const cookies = parseCookies(event);
 
-			const directusData = JSON.parse(cookies['directus-data']);
+			const directusData = JSON.parse(cookies['directus-auth']);
 			const access_token = directusData?.access_token;
 
 			// console.log(access_token);

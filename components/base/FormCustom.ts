@@ -1,3 +1,4 @@
+import type { Form as FormType } from '~/types';
 import Form from '#ui/components/forms/Form.vue';
 import FormGroup from '#ui/components/forms/FormGroup.vue';
 import Input from '#ui/components/forms/Input.vue';
@@ -37,7 +38,7 @@ function renderInput(item: { [key: string]: any }, name: string, state: any) {
 export default defineComponent({
 	props: {
 		schema: {
-			type: Array,
+			type: Array as PropType<FormType['schema']>,
 			default: () => [],
 		},
 		state: {
@@ -52,7 +53,7 @@ export default defineComponent({
 		},
 	},
 	setup(props) {
-		const groups = props.schema.map((item) => {
+		const groups = props?.schema?.map((item) => {
 			const { name, label, placeholder, width, description } = item as { [key: string]: any };
 
 			// @ts-ignore
@@ -63,6 +64,10 @@ export default defineComponent({
 				renderInput(item, name, props.state),
 			]);
 		});
+
+		if (!groups) {
+			return;
+		}
 
 		// Add the submit button to the groups array
 		groups.push(

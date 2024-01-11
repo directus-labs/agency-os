@@ -3,7 +3,7 @@ import { generateVideoEmbed } from '~~/utils/embed';
 
 interface VideoProps {
 	url: string;
-	title?: string;
+	title?: string | null | undefined;
 	name?: string;
 }
 
@@ -19,7 +19,7 @@ defineProps<VideoProps>();
 		frameborder="0"
 		allow="autoplay; fullscreen; picture-in-picture"
 		allowfullscreen
-		:title="title"
+		:title="title as string"
 	></iframe>
 </template>
 

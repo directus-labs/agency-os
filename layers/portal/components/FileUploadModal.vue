@@ -1,6 +1,6 @@
 <script setup lang="ts">
 export interface FileUploadModalProps {
-	folderId: string;
+	folderId: string | null | undefined;
 }
 
 const props = defineProps<FileUploadModalProps>();

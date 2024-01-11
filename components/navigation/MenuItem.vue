@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
+import type { RouteLocationRaw } from '#vue-router';
 import type { NavigationItem } from '~~/types';
 
 const route = useRoute();
@@ -21,7 +22,7 @@ watch(
 <template>
 	<NuxtLink
 		v-if="!item.has_children"
-		:href="getNavItemUrl(item)"
+		:href="getNavItemUrl(item) as RouteLocationRaw"
 		class="menu-link"
 		exact-active-class="bg-gray-700"
 		:target="item.open_in_new_tab ? '_blank' : '_self'"
@@ -57,13 +58,17 @@ watch(
 					<NuxtLink
 						v-for="childItem in item.children as NavigationItem[]"
 						:key="childItem.id"
-						:href="getNavItemUrl(childItem)"
+						:href="getNavItemUrl(childItem) as RouteLocationRaw"
 						class="relative flex p-4 leading-6 transition duration-150 rounded-panel group gap-x-6 hover:bg-gray-900"
 					>
 						<div
 							class="flex items-center justify-center flex-none p-2 mt-1 border rounded-button h-11 w-11 border-primary"
 						>
-							<Icon v-if="childItem.icon" :name="convertIconName(childItem.icon)" class="w-10 h-10 text-primary" />
+							<Icon
+								v-if="childItem.icon"
+								:name="convertIconName(childItem.icon) as string"
+								class="w-10 h-10 text-primary"
+							/>
 						</div>
 						<div class="">
 							<p class="block font-medium text-white font-display">

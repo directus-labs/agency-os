@@ -37,7 +37,7 @@ const {
 				<div class="mb-5">
 					<Icon
 						v-if="collection?.icon"
-						:name="convertIconName(collection?.icon)"
+						:name="convertIconName(collection?.icon) as string"
 						class="h-9 w-9 sm:h-10 sm:w-10 text-primary"
 					></Icon>
 				</div>

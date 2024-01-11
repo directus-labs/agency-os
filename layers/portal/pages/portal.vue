@@ -6,7 +6,7 @@ definePageMeta({
 	middleware: ['auth'],
 });
 
-const { logout } = useDirectusAuth();
+const { logout, user } = useDirectusAuth();
 
 const NuxtLink = resolveComponent('NuxtLink');
 
@@ -108,15 +108,9 @@ const mobileMenuOpen = ref(false);
 							<DarkModeToggle bg="dark" class="" />
 							<!-- Profile dropdown -->
 							<UDropdown class="relative" :items="userNavigation">
-								<button
-									class="inline-flex text-sm bg-white rounded-card focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-								>
+								<button>
 									<span class="sr-only">Open user menu</span>
-									<img
-										class="w-12 h-12 mx-auto rounded-card"
-										src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
-										alt=""
-									/>
+									<UAvatar class="w-12 h-12 mx-auto" :src="user.avatar" :alt="userName(user)" />
 								</button>
 							</UDropdown>
 						</div>

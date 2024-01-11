@@ -1,11 +1,9 @@
 <script setup lang="ts">
 export interface PageHeaderProps {
-	breadcrumbs?: [
-		{
-			title: string;
-			href?: string;
-		},
-	];
+	breadcrumbs?: Array<{
+		title: string;
+		href?: string | null | undefined;
+	}>;
 	title?: string;
 }
 
@@ -15,7 +13,7 @@ defineProps<PageHeaderProps>();
 	<header class="px-4 py-3 border-b md:flex md:items-center md:justify-between dark:border-gray-700">
 		<div class="flex-shrink-0 min-w-0">
 			<VBreadcrumbs v-if="breadcrumbs" :items="breadcrumbs" />
-			<TypographyHeadline :content="title" />
+			<TypographyHeadline v-if="title" :content="title" />
 			<slot />
 		</div>
 		<slot name="center" />

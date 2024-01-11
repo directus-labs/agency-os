@@ -81,8 +81,8 @@ function handleNavButton(direction: 'left' | 'right') {
 		<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
 
 		<div class="relative text-center">
-			<TypographyTitle>{{ data.title }}</TypographyTitle>
-			<TypographyHeadline :content="data.headline" size="lg" />
+			<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
+			<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
 		</div>
 
 		<div v-if="testimonials.length > 0" class="relative mt-4">

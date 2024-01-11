@@ -54,7 +54,7 @@ const columns = [
 			</dd>
 		</div>
 
-		<UTable :columns="columns" :rows="invoices">
+		<UTable :columns="columns" :rows="invoices as any">
 			<template #invoice_number-data="{ row }">
 				<UButton variant="outline" :to="`/portal/billing/invoices/${row.id}`">{{ row.invoice_number }}</UButton>
 			</template>

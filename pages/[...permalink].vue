@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Page } from '~/types';
+
 const { path } = useRoute();
 const url = useRequestURL();
 const { fileUrl } = useFiles();
@@ -8,10 +10,13 @@ const pageFilter = computed(() => {
 	let finalPath;
 
 	if (path === '/') {
+		// Match the homepage
 		finalPath = '/';
 	} else if (path.endsWith('/')) {
+		// Remove any other trailing slash
 		finalPath = path.slice(0, -1);
 	} else {
+		// Match any other page
 		finalPath = path;
 	}
 
@@ -67,7 +72,21 @@ const { data: page } = await useAsyncData(
 										},
 									],
 									block_quote: ['id', 'title', 'subtitle', 'content'],
-									block_cta: ['id', 'title', 'headline', 'content', 'buttons'],
+									block_cta: [
+										'id',
+										'title',
+										'headline',
+										'content',
+										'buttons',
+										{
+											button_group: [
+												'*',
+												{
+													buttons: ['*', { page: ['permalink'], post: ['slug'] }],
+												},
+											],
+										},
+									],
 									block_form: ['id', 'title', 'headline', { form: ['*'] }],
 									block_logocloud: [
 										'id',
@@ -101,7 +120,20 @@ const { data: page } = await useAsyncData(
 										'show_step_numbers',
 										'alternate_image_position',
 										{
-											steps: ['id', 'title', 'content', 'image'],
+											steps: [
+												'id',
+												'title',
+												'content',
+												'image',
+												{
+													button_group: [
+														'*',
+														{
+															buttons: ['*', { page: ['permalink'], post: ['slug'] }],
+														},
+													],
+												},
+											],
 										},
 									],
 									block_columns: [
@@ -115,6 +147,14 @@ const { data: page } = await useAsyncData(
 												'content',
 												'image_position',
 												{ image: ['id', 'title', 'description'] },
+												{
+													button_group: [
+														'*',
+														{
+															buttons: ['*', { page: ['permalink'], post: ['slug'] }],
+														},
+													],
+												},
 											],
 										},
 									],
@@ -151,12 +191,12 @@ const metadata = computed(() => {
 		title: pageData?.seo?.title ?? pageData?.title ?? undefined,
 		description: pageData?.seo?.meta_description ?? pageData?.summary ?? undefined,
 		image: globals.og_image ? fileUrl(globals.og_image) : undefined,
-		canonical: pageData?.seo?.canonical ?? url,
+		canonical: pageData?.seo?.canonical_url ?? url,
 	};
 });
 
 // Dynamic OG Images
-defineOgImage({
+defineOgImageComponent('OgImageTemplate', {
 	title: unref(metadata)?.title,
 	summary: unref(metadata)?.description,
 	imageUrl: unref(metadata)?.image,
@@ -192,7 +232,7 @@ useServerSeoMeta({
 <template>
 	<NuxtErrorBoundary>
 		<!-- Render the page using the PageBuilder component -->
-		<PageBuilder v-if="page" :page="page" />
+		<PageBuilder v-if="page" :page="page as Page" />
 
 		<!-- If there is an error, display it using the VAlert component -->
 		<template #error="{ error }">

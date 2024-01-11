@@ -1,14 +1,9 @@
 <script setup lang="ts">
+import type { File } from '~/types';
 import { TransitionRoot } from '@headlessui/vue';
 
 export interface GalleryProps {
-	items: [
-		{
-			id?: string;
-			title?: string;
-			description?: string;
-		},
-	];
+	items: File[];
 }
 
 const props = defineProps<GalleryProps>();

@@ -4,9 +4,15 @@ import { theme } from './theme';
 export default defineNuxtConfig({
 	// https://nuxt.com/docs/api/configuration/nuxt-config
 
+	routeRules: {
+		// '/**': {
+		// 	prerender: true,
+		// },
+	},
+
 	extends: [
-		'./layers/portal', // Client portal module
 		'./layers/proposals', // Proposals module
+		'./layers/portal', // Client portal module
 	],
 
 	components: [
@@ -19,7 +25,6 @@ export default defineNuxtConfig({
 	css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
 
 	modules: [
-		// '@formkit/nuxt', // https://formkit.com/getting-started/installation#with-nuxt
 		'@nuxt/devtools', // https://devtools.nuxtjs.org/
 		'@nuxt/image',
 		'@nuxt/ui',
@@ -31,13 +36,11 @@ export default defineNuxtConfig({
 		'nuxt-og-image',
 		'nuxt-schema-org', // https://nuxtseo.com/schema-org/guides/quick-setup
 		'nuxt-simple-sitemap', // https://nuxtseo.com/sitemap/getting-started/how-it-works
-		// '@nuxtjs/tailwindcss', // https://tailwindcss.nuxtjs.org/ Removed because of Nuxt UI already includes this
 	],
 
 	experimental: {
 		componentIslands: true,
 		asyncContext: true, // https://nuxt.com/docs/guide/going-further/experimental-features#asynccontext
-		appManifest: true,
 	},
 
 	runtimeConfig: {

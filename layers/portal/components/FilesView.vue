@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Folder, File } from '~/types';
 export interface FilesViewProps {
 	folderId?: string | undefined | null;
 }
@@ -13,7 +14,9 @@ async function fetchData(props: FilesViewProps = {}) {
 				fields: ['*'],
 				// @ts-ignore
 				filter: {
-					_and: [],
+					// parent: {
+					// 	_eq: props.folderId ?? null,
+					// },
 				},
 			}),
 		);
@@ -35,7 +38,7 @@ async function fetchData(props: FilesViewProps = {}) {
 		return {
 			folders,
 			files,
-		};
+		} as { folders: Folder[]; files: File[] };
 	} catch (error) {
 		return null;
 	}

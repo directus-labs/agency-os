@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { AccordionItem } from '@nuxt/ui/dist/runtime/types';
 import type { BlockFaq, BlockFaqQuestion } from '~/types';
 
 const props = defineProps<{
@@ -35,7 +36,7 @@ function loadMore() {
 			<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
 			<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
 			<div class="pt-6 mt-6">
-				<UAccordion v-if="faqs" v-auto-animate :items="faqs" :ui="{ wrapper: 'space-y-2' }">
+				<UAccordion v-if="faqs" v-auto-animate :items="faqs as Partial<AccordionItem>[]" :ui="{ wrapper: 'space-y-2' }">
 					<template #default="{ item, index, open }">
 						<button
 							:key="index"
