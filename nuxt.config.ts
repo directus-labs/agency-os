@@ -30,12 +30,12 @@ export default defineNuxtConfig({
 		'@nuxt/ui',
 		'@nuxtjs/color-mode',
 		'@nuxtjs/google-fonts',
+		'@nuxtjs/sitemap', // https://nuxtseo.com/sitemap/getting-started/how-it-works
 		'@vueuse/motion/nuxt', // https://motion.vueuse.org/nuxt.html
 		'@vueuse/nuxt', // https://vueuse.org/
 		'nuxt-icon', // https://github.com/nuxt-modules/icon
 		'nuxt-og-image',
 		'nuxt-schema-org', // https://nuxtseo.com/schema-org/guides/quick-setup
-		'nuxt-simple-sitemap', // https://nuxtseo.com/sitemap/getting-started/how-it-works
 	],
 
 	experimental: {
