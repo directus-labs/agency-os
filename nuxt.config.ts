@@ -38,16 +38,10 @@ export default defineNuxtConfig({
 		'nuxt-simple-sitemap', // https://nuxtseo.com/sitemap/getting-started/how-it-works
 	],
 
-	experimental: {
-		componentIslands: true,
-		asyncContext: true, // https://nuxt.com/docs/guide/going-further/experimental-features#asynccontext
-	},
-
-	runtimeConfig: {
-		public: {
-			siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-		},
-	},
+      baseUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
+      i18n: {
+        baseUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
+      },
 
 	// Directus Configuration
 	directus: {
