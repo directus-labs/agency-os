@@ -2,7 +2,7 @@
 	"private": true,
 	"scripts": {
 		"build": "nuxt build",
-		"dev": "nuxt dev",
+		"dev": "nuxt dev --dotenv .env.local",
 		"start": "nuxt start",
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
