@@ -1,118 +1,154 @@
 // import { formatFonts } from './utils/fonts';
-import { theme } from './theme';
+import { theme } from "./theme";
+import { i18n } from "./locales/i18n.config";
 
 export default defineNuxtConfig({
-	// https://nuxt.com/docs/api/configuration/nuxt-config
+  // https://nuxt.com/docs/api/configuration/nuxt-config
 
-	routeRules: {
-		// '/**': {
-		// 	prerender: true,
-		// },
-	},
+  routeRules: {
+    // '/**': {
+    // 	prerender: true,
+    // },
+  },
 
-	extends: [
-		'./layers/proposals', // Proposals module
-		'./layers/portal', // Client portal module
-	],
+  extends: [
+    "./layers/proposals", // Proposals module
+    "./layers/portal", // Client portal module
+  ],
 
-	components: [
-		// Disable prefixing base components with `Base`
-		{ path: '~/components/base', pathPrefix: false },
-		// Auto import components from `~/components`
-		'~/components',
-	],
+  components: [
+    // Disable prefixing base components with `Base`
+    { path: "~/components/base", pathPrefix: false },
+    // Auto import components from `~/components`
+    "~/components",
+  ],
 
-	css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
+  css: ["~/assets/css/tailwind.css", "~/assets/css/main.css"],
 
-	modules: [
-		'@nuxt/devtools', // https://devtools.nuxtjs.org/
-		'@nuxt/image',
-		'@nuxt/ui',
-		'@nuxtjs/color-mode',
-		'@nuxtjs/google-fonts',
-		'@vueuse/motion/nuxt', // https://motion.vueuse.org/nuxt.html
-		'@vueuse/nuxt', // https://vueuse.org/
-		'nuxt-icon', // https://github.com/nuxt-modules/icon
-		'nuxt-og-image',
-		'nuxt-schema-org', // https://nuxtseo.com/schema-org/guides/quick-setup
-		'nuxt-simple-sitemap', // https://nuxtseo.com/sitemap/getting-started/how-it-works
-	],
+  modules: [
+    // https://devtools.nuxtjs.org/
+    "@nuxt/devtools",
+    "@nuxt/image",
+    "@nuxt/ui",
+    "@nuxtjs/color-mode",
+    "@nuxtjs/google-fonts", // https://motion.vueuse.org/nuxt.html
+    "@vueuse/motion/nuxt", // https://vueuse.org/
+    "@vueuse/nuxt", // https://github.com/nuxt-modules/icon
+    "nuxt-icon",
+    "nuxt-og-image", // https://nuxtseo.com/schema-org/guides/quick-setup
+    "nuxt-schema-org", // https://nuxtseo.com/sitemap/getting-started/how-it-works
+    "nuxt-simple-sitemap",
+    ["@nuxtjs/i18n", i18n],
+  ],
 
+  experimental: {
+    componentIslands: true,
+    asyncContext: true, // https://nuxt.com/docs/guide/going-further/experimental-features#asynccontext
+  },
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
       baseUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
       i18n: {
         baseUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
       },
+    },
+  },
 
+  // Directus Configuration
+  directus: {
+    rest: {
+      baseUrl: process.env.DIRECTUS_URL,
+      nuxtBaseUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
       token: process.env.DIRECTUS_SERVER_TOKEN || "",
+    },
+    auth: {
+      enabled: true,
+      enableGlobalAuthMiddleware: false, // Enable auth middleware on every page
+      userFields: ["*", { contacts: ["*"] }], // Select user fields
+      redirect: {
+        login: "/auth/signin", // Path to redirect when login is required
+        logout: "/", // Path to redirect after logout
+        home: "/portal", // Path to redirect after successful login
+        resetPassword: "/auth/reset-password", // Path to redirect for password reset
+        callback: "/auth/callback", // Path to redirect after login with provider
+      },
+    },
+  },
 
-	// Nuxt DevTools - https://devtools.nuxtjs.org/
-	devtools: { enabled: true },
+  // Nuxt DevTools - https://devtools.nuxtjs.org/
+  devtools: {
+    enabled: true,
+    timeline: {
+      enabled: true,
+    },
+  },
 
-	ui: {
-		icons: 'all',
-	},
+  ui: {
+    icons: "all",
+  },
 
-	// Color Mode Configuration - https://color-mode.nuxtjs.org/
-	colorMode: {
-		classSuffix: '', // This is so we play nice with TailwindCSS
-	},
+  // Color Mode Configuration - https://color-mode.nuxtjs.org/
+  colorMode: {
+    classSuffix: "", // This is so we play nice with TailwindCSS
+  },
 
-	// Image Configuration - https://image.nuxt.com/providers/directus
-	image: {
-		provider: 'directus',
-		directus: {
-			baseURL: `${process.env.DIRECTUS_URL}/assets/`,
-		},
-	},
+  // Image Configuration - https://image.nuxt.com/providers/directus
+  image: {
+    provider: "directus",
+    directus: {
+      baseURL: `${process.env.DIRECTUS_URL}/assets/`,
+    },
+  },
 
-	// Google Fonts Configuration - https://google-fonts.nuxtjs.org/
-	googleFonts: {
-		families: theme.googleFonts,
-		display: 'swap',
-		download: true,
-	},
+  // Google Fonts Configuration - https://google-fonts.nuxtjs.org/
+  googleFonts: {
+    families: theme.googleFonts,
+    display: "swap",
+    download: true,
+  },
 
-	site: {
-		url: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-		name: 'AgencyOS',
-	},
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3000",
+    name: "AgencyOS",
+  },
 
-	// OG Image Configuration - https://nuxtseo.com/og-image/getting-started/installation
-	ogImage: {
-		defaults: {
-			component: 'OgImageTemplate',
-			width: 1200,
-			height: 630,
-		},
-		// @TODO: Fix font families for OG Image
-		// fonts: formatFonts(fontFamilies),
-	},
+  // OG Image Configuration - https://nuxtseo.com/og-image/getting-started/installation
+  ogImage: {
+    defaults: {
+      component: "OgImageTemplate",
+      width: 1200,
+      height: 630,
+    },
+    // @TODO: Fix font families for OG Image
+    // fonts: formatFonts(fontFamilies),
+  },
 
-	// Sitemap Configuration - https://nuxtseo.com/sitemap/getting-started/how-it-works
-	sitemap: {
-		sitemaps: {
-			pages: {
-				exclude: ['/posts/**', '/help/**'],
-			},
-			posts: {
-				include: ['/posts/**'],
-			},
-			help: {
-				include: ['/help/**'],
-			},
-		},
-	},
+  // Sitemap Configuration - https://nuxtseo.com/sitemap/getting-started/how-it-works
+  sitemap: {
+    sitemaps: {
+      pages: {
+        exclude: ["/posts/**", "/help/**"],
+      },
+      posts: {
+        include: ["/posts/**"],
+      },
+      help: {
+        include: ["/help/**"],
+      },
+    },
+  },
 
-	postcss: {
-		plugins: {
-			'postcss-import': {},
-			'tailwindcss/nesting': {},
-			tailwindcss: {},
-			autoprefixer: {},
-		},
-	},
+  postcss: {
+    plugins: {
+      "postcss-import": {},
+      "tailwindcss/nesting": {},
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 
-	build: {
-		transpile: ['v-perfect-signature'],
-	},
+  build: {
+    transpile: ["v-perfect-signature"],
+  },
 });
