@@ -160,38 +160,52 @@ export default defineNuxtModule({
 		const directus = createDirectus<Schema>(moduleOptions.rest.baseUrl).with(rest());
 
 		// Handle Redirects
-		const redirects = await directus.request(readItems('redirects'));
+		try {
+			const redirects = await directus.request(readItems('redirects'));
 
-		for (const redirect of redirects) {
-			let responseCode = redirect.response_code ? parseInt(redirect.response_code as any) : 301;
+			for (const redirect of redirects) {
+				let responseCode = redirect.response_code ? parseInt(redirect.response_code as any) : 301;
 
-			if (responseCode !== 301 && responseCode !== 302) {
-				responseCode = 301;
+				if (responseCode !== 301 && responseCode !== 302) {
+					responseCode = 301;
+				}
+
+				// Add the redirect to the route rules
+				// https://nuxt.com/docs/guide/concepts/rendering#route-rules
+				extendRouteRules(redirect.url_old as string, {
+					redirect: {
+						to: redirect.url_new,
+						statusCode: responseCode as 301 | 302,
+					},
+				});
 			}
 
-			// Add the redirect to the route rules
-			// https://nuxt.com/docs/guide/concepts/rendering#route-rules
-			extendRouteRules(redirect.url_old as string, {
-				redirect: {
-					to: redirect.url_new,
-					statusCode: responseCode as 301 | 302,
-				},
-			});
+			log.success(`${redirects.length} Redirects loaded`);
+
+			for (const redirect of redirects) {
+				log.info(`  • ${redirect.response_code}`, `From: ${redirect.url_old}`, `To: ${redirect.url_new}`);
+			}
+		} catch (error) {
+			log.warn('Unable to load redirects due to the following error');
+			log.error(error);
+			log.warn(`Please ensure the directus instance is reachable at ${moduleOptions.rest.baseUrl}.`);
 		}
 
-		log.success(`${redirects.length} Redirects loaded`);
+		try {
+			// Add Globals
+			const globals = await directus.request<Omit<Globals, 'id' | 'url'>>(readSingleton('globals'));
+			nuxt.options.appConfig.globals = defu(nuxt.options.appConfig.globals, globals);
+			log.success('Globals loaded into appConfig');
 
-		for (const redirect of redirects) {
-			log.info(`  • ${redirect.response_code}`, `From: ${redirect.url_old}`, `To: ${redirect.url_new}`);
+			// Add title template to the app head for use with useHead composable
+			nuxt.options.app.head.titleTemplate = `%s - ${globals?.title ?? 'Agency OS'}`;
+		} catch (error) {
+			nuxt.options.app.head.titleTemplate = '%s - Agency OS';
+
+			log.warn('Unable to load redirects due to the following error');
+			log.error(error);
+			log.warn(`Please ensure the directus instance is reachable at ${moduleOptions.rest.baseUrl}.`);
 		}
-
-		// Add Globals
-		const globals = await directus.request<Omit<Globals, 'id' | 'url'>>(readSingleton('globals'));
-		nuxt.options.appConfig.globals = defu(nuxt.options.appConfig.globals, globals);
-		log.success('Globals loaded into appConfig');
-
-		// Add title template to the app head for use with useHead composable
-		nuxt.options.app.head.titleTemplate = `%s - ${globals?.title ?? 'Agency OS'}`;
 
 		log.success(`Directus Module Loaded`);
 	},
