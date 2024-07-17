@@ -52,7 +52,7 @@ export default defineNuxtConfig({
 	// Directus Configuration
 	directus: {
 		rest: {
-			baseUrl: process.env.DIRECTUS_URL || 'http://localhost:8055',
+			baseUrl: process.env.DIRECTUS_URL || 'http://0.0.0.0:8055',
 			nuxtBaseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
 		},
 		auth: {
