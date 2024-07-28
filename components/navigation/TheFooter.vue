@@ -106,7 +106,7 @@ const { data: form } = await useAsyncData(
 		<div class="pt-6 mx-auto border-t dark:border-t-gray-700 max-w-7xl md:flex md:items-center md:justify-between">
 			<div class="flex items-center justify-center space-x-6 md:order-last md:mb-0">
 				<NuxtLink
-					v-for="link in globals.social_links"
+					v-for="link in globals?.social_links"
 					:key="link.url"
 					:href="link.url"
 					class="w-6 h-6 text-white"
@@ -119,7 +119,9 @@ const { data: form } = await useAsyncData(
 			<div class="mt-8 md:mt-0 md:order-1">
 				<span class="mt-2 text-gray-600 dark:text-gray-400">
 					Copyright © 1988 - {{ new Date().getFullYear() }}
-					<NuxtLink href="/" class="mx-2 hover:text-primary" rel="noopener noreferrer">{{ globals.title }}.</NuxtLink>
+					<NuxtLink v-if="globals?.title" href="/" class="mx-2 hover:text-primary" rel="noopener noreferrer">
+						{{ globals.title }}.
+					</NuxtLink>
 					All rights reserved.
 				</span>
 				<!-- You're free to remove this footer if you want. But we'd appreciate it if you keep the credits. -->
