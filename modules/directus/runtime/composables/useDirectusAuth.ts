@@ -1,4 +1,3 @@
-import jwtDecode from 'jwt-decode';
 import { readMe, passwordRequest, passwordReset } from '@directus/sdk';
 import type { RestClient, AuthenticationClient } from '@directus/sdk';
 import type { Schema } from '~/types/schema';
@@ -60,18 +59,11 @@ export default function useDirectusAuth<DirectusSchema extends object>() {
 		user.value = response as User;
 	}
 
-	async function isTokenExpired(token: string) {
-		const decodedToken = jwtDecode(token) as { exp: number };
-		const expirationDate = new Date(decodedToken.exp * 1000);
-		return expirationDate < new Date();
-	}
-
 	return {
 		user,
 		login,
 		logout,
 		fetchUser,
-		isTokenExpired,
 		_loggedIn,
 	};
 }
