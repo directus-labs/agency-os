@@ -68,7 +68,7 @@ const { data: form } = await useAsyncData(
 					<NuxtLink href="/">
 						<Logo class="h-8 dark:text-white" />
 					</NuxtLink>
-					<VText v-if="globals.tagline" text-color="light" class="mt-2">
+					<VText v-if="globals?.tagline" text-color="light" class="mt-2">
 						{{ globals.tagline }}
 					</VText>
 				</div>
