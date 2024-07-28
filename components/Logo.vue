@@ -2,7 +2,7 @@
 const appConfig = useAppConfig();
 
 const logo = computed(() => {
-	return appConfig.globals.logo_on_dark_bg;
+	return appConfig.globals?.logo_on_dark_bg;
 });
 
 const props = defineProps({
