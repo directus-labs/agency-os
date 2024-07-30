@@ -1,8 +1,5 @@
 <script setup lang="ts">
-const {
-	theme,
-	globals: { title },
-} = useAppConfig();
+const { theme, globals } = useAppConfig();
 
 const {
 	data: navigation,
@@ -54,7 +51,7 @@ const {
 		<div class="flex items-center bg-gray-900 justify-between py-2 px-6 md:flex-1 rounded-card">
 			<NuxtLink href="/" class="py-2">
 				<Logo class="h-6 text-white" />
-				<span class="sr-only">{{ title }}</span>
+				<span v-if="globals?.title" class="sr-only">{{ globals.title }}</span>
 			</NuxtLink>
 			<nav class="hidden md:flex md:space-x-4 lg:space-x-6" aria-label="Global">
 				<NavigationMenuItem v-for="item in navigation?.items" :key="item.id" :item="item" />
