@@ -17,8 +17,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 	const config = useRuntimeConfig();
 	const directusUrl = config.public.directus.rest.baseUrl as string;
 
-	const { isTokenExpired } = useDirectusAuth();
-
 	// We're creating a custom storage class to use the Nuxt so we can use auth on the server and clien
 	class CookieStorage {
 		get() {
