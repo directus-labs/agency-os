@@ -23,7 +23,13 @@ defineProps<{
 					<BlocksButtonGroup v-if="row?.button_group" :data="row?.button_group as BlockButtonGroup" class="mt-4" />
 				</div>
 				<div
-					class="order-first block w-full overflow-hidden border aspect-square dark:border-gray-700 rounded-card"
+					v-if="row.image"
+					v-motion
+					class="order-first block w-full h-full overflow-hidden border dark:border-gray-700 rounded-card"
+					:initial="{ opacity: 0, scale: 0.5, y: 0 }"
+					:visibleOnce="{ opacity: 1, scale: 1, y: 0 }"
+					:duration="1000"
+					:delay="250"
 					:class="[
 						{
 							'lg:order-last': row?.image_position === 'right',
@@ -31,20 +37,13 @@ defineProps<{
 						},
 					]"
 				>
-					<div
-						v-motion
-						:initial="{ opacity: 0, scale: 0.8, y: 50 }"
-						:visibleOnce="{ opacity: 1, scale: 1, y: 0 }"
-						:duration="1000"
-						:delay="250"
-					>
-						<NuxtImg
-							v-if="row.image"
-							:alt="safeRelation(row.image)?.description ?? ''"
-							:src="safeRelationId(row.image) ?? ''"
-							class="object-cover object-center w-full h-full bg-gray-100 rounded-card dark:brightness-90"
-						/>
-					</div>
+					<NuxtImg
+						:alt="safeRelation(row.image)?.description ?? ''"
+						:src="safeRelationId(row.image) ?? ''"
+						height="600"
+						width="600"
+						class="object-cover object-center w-full h-full bg-gray-100 rounded-card dark:brightness-90"
+					/>
 				</div>
 			</div>
 		</div>
