@@ -9,7 +9,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 	const directusURL = config.public.directus.rest.baseUrl as string;
 
 	const directus = createDirectus<Schema>(directusURL, { globals: { fetch: $fetch } })
-		.with(authentication('session', { credentials: 'include' }))
+		.with(authentication('cookie', { credentials: 'include' }))
 		.with(rest({ credentials: 'include' }));
 
 	// ** Live Preview Bits **
