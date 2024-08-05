@@ -58,7 +58,8 @@ watch(
 		<div class="mb-4">
 			<VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
 			<VAlert v-if="form.on_success === 'message' && success" type="success">
-				{{ form.success_message ?? 'Success! Your form has been submitted.' }}
+				<div v-if="form.success_message" v-dompurify-html="form.success_message"></div>
+				<p v-else>Success! Your form has been submitted.</p>
 			</VAlert>
 		</div>
 		<div>
