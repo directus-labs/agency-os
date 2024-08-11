@@ -25,17 +25,15 @@ export default defineNuxtConfig({
 	css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
 
 	modules: [
-		'@nuxt/devtools', // https://devtools.nuxtjs.org/
 		'@nuxt/image',
-		'@nuxt/ui',
-		'@nuxtjs/color-mode',
-		'@nuxtjs/google-fonts',
-		'@nuxtjs/sitemap', // https://nuxtseo.com/sitemap/getting-started/how-it-works
+		'@nuxt/ui', // https://ui.nuxt.com
+		'@nuxtjs/color-mode', // https://color-mode.nuxtjs.org
+		'@nuxtjs/google-fonts', // https://google-fonts.nuxtjs.org
+		'@nuxtjs/seo', // https://nuxtseo.com
+		'@formkit/auto-animate/nuxt',
 		'@vueuse/motion/nuxt', // https://motion.vueuse.org/nuxt.html
 		'@vueuse/nuxt', // https://vueuse.org/
-		'nuxt-icon', // https://github.com/nuxt-modules/icon
-		'nuxt-og-image',
-		'nuxt-schema-org', // https://nuxtseo.com/schema-org/guides/quick-setup
+		'@nuxt/icon', // https://github.com/nuxt-modules/icon
 	],
 
 	experimental: {
@@ -71,10 +69,6 @@ export default defineNuxtConfig({
 
 	// Nuxt DevTools - https://devtools.nuxtjs.org/
 	devtools: { enabled: true },
-
-	ui: {
-		icons: 'all',
-	},
 
 	// Color Mode Configuration - https://color-mode.nuxtjs.org/
 	colorMode: {
@@ -139,4 +133,6 @@ export default defineNuxtConfig({
 	build: {
 		transpile: ['v-perfect-signature'],
 	},
+
+	compatibilityDate: '2024-07-28',
 });

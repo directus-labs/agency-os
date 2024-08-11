@@ -69,7 +69,7 @@ watch(
 					<NuxtLink href="/">
 						<Logo class="h-6 dark:text-white" />
 					</NuxtLink>
-					<VText v-if="globals.tagline" class="pb-4 mt-2">
+					<VText v-if="globals?.tagline" class="pb-4 mt-2">
 						{{ globals.tagline }}
 					</VText>
 				</div>

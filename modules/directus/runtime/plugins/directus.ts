@@ -1,52 +1,16 @@
 import { createDirectus, rest, authentication } from '@directus/sdk';
-import type { AuthenticationClient, RestClient, AuthenticationStorage, AuthenticationData } from '@directus/sdk';
 import type { Schema } from '~/types/schema';
 
-import {
-	defineNuxtPlugin,
-	addRouteMiddleware,
-	useRuntimeConfig,
-	useState,
-	useDirectusAuth,
-	useRoute,
-	useNuxtApp,
-} from '#imports';
+import { defineNuxtPlugin, useRuntimeConfig, useRoute } from '#imports';
 
 export default defineNuxtPlugin((nuxtApp) => {
 	const route = useRoute();
 	const config = useRuntimeConfig();
-	const directusUrl = config.public.directus.rest.baseUrl as string;
+	const directusURL = config.public.directus.rest.baseUrl as string;
 
-	const { isTokenExpired } = useDirectusAuth();
-
-	// We're creating a custom storage class to use the Nuxt so we can use auth on the server and clien
-	class CookieStorage {
-		get() {
-			const cookie = useCookie('directus-auth');
-			return cookie.value;
-		}
-
-		set(value: AuthenticationData) {
-			const cookie = useCookie('directus-auth');
-			cookie.value = value as any;
-		}
-	}
-
-	const directus: RestClient<Schema> & AuthenticationClient<Schema> = createDirectus<Schema>(directusUrl, {
-		globals: {
-			fetch: $fetch, // We're using the built-in Nuxt $fetch from ofetch
-		},
-	})
-		.with(authentication('json', { storage: new CookieStorage() as AuthenticationStorage, credentials: 'include' }))
-		.with(
-			rest({
-				onRequest: async (request) => {
-					const userToken = await directus.getToken();
-
-					return request;
-				},
-			}),
-		);
+	const directus = createDirectus<Schema>(directusURL, { globals: { fetch: $fetch } })
+		.with(authentication('cookie', { credentials: 'include' }))
+		.with(rest({ credentials: 'include' }));
 
 	// ** Live Preview Bits **
 	// Check if we are in preview mode

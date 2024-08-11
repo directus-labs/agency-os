@@ -9,10 +9,12 @@ const flipped = ref(false);
 </script>
 <template>
 	<div class="opacity-0 cursor-pointer select-none animate-fade-in" @click="flipped = !flipped">
-		<div class="relative w-full h-full overflow-hidden group rounded-card">
+		<div class="relative w-full aspect-square overflow-hidden group rounded-card">
 			<!-- Front of Team Card -->
 			<NuxtImg
 				v-if="person.image"
+				width="400"
+				height="400"
 				class="object-cover w-full h-full transition duration-300 grayscale group-hover:grayscale-0"
 				:src="person.image as string"
 				:alt="person.name ?? ''"
@@ -25,8 +27,8 @@ const flipped = ref(false);
 				class="absolute inset-0 p-2 -m-2 overflow-hidden bg-primary/80 backdrop-blur-sm"
 				:initial="{
 					opacity: 0,
-					y: 100,
-					x: 100,
+					y: 25,
+					x: 200,
 					scale: 0.9,
 				}"
 				:enter="{
@@ -34,14 +36,12 @@ const flipped = ref(false);
 					scale: 1,
 					x: 0,
 					y: 0,
-					transformOrigin: 'bottom right',
 				}"
 				:leave="{
 					opacity: 0,
 					scale: 0.9,
-					x: 100,
-					y: 100,
-					transformOrigin: 'bottom right',
+					x: 200,
+					y: 25,
 				}"
 			>
 				<div class="relative p-4 space-y-2">
@@ -69,7 +69,7 @@ const flipped = ref(false);
 				<TypographyHeadline v-if="person.name" :content="person.name" size="sm" class="text-white drop-shadow">
 					{{ person?.name }}
 				</TypographyHeadline>
-				<TypographyTitle v-if="person.job_title">
+				<TypographyTitle v-if="person.job_title" class="text-white/50">
 					{{ person?.job_title }}
 				</TypographyTitle>
 			</div>
