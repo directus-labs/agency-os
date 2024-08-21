@@ -270,7 +270,6 @@ build process on Netlify.
 
 [![Deploy on Elestio](https://elest.io/images/logos/deploy-to-elestio-btn.png)](https://elest.io/open-source/agencyos)
 
-
 ## **Deploying Directus - Backend**
 
 If you don't want to mess with DevOps or spinning up servers, you
