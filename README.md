@@ -266,6 +266,11 @@ build process on Netlify.
 
 <a href="https://app.netlify.com/start/deploy?repository=https://github.com/directus-community/agency-os#DIRECTUS_URL=https://youruniqueid.directus.app"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
 
+**Elestio**
+
+[![Deploy on Elestio](https://elest.io/images/logos/deploy-to-elestio-btn.png)](https://elest.io/open-source/agencyos)
+
+
 ## **Deploying Directus - Backend**
 
 If you don't want to mess with DevOps or spinning up servers, you
