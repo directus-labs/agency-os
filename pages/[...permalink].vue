@@ -11,7 +11,7 @@ const pageFilter = computed(() => {
 
 	if (path === '/') {
 		// Match the homepage
-		finalPath = '/';
+		finalPath = '/home';
 	} else if (path.endsWith('/')) {
 		// Remove any other trailing slash
 		finalPath = path.slice(0, -1);
