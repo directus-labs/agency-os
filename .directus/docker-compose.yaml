@@ -17,7 +17,7 @@ services:
     image: redis:6
 
   directus:
-    image: directus/directus:10.13.1
+    image: directus/directus:11.1.0
     ports:
       - 8055:8055
     volumes:
