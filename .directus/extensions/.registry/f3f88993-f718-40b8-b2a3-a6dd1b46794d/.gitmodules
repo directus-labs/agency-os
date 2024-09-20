@@ -1,0 +1,4 @@
+[submodule "directus"]
+	path = directus
+	url = git@github.com:codihaus/directus.git
+    branch = ver10.6.1

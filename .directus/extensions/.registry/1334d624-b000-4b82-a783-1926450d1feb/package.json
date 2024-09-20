@@ -1,0 +1,46 @@
+{
+    "name": "directus-extension-classified-group",
+    "version": "1.0.5",
+    "description": "A group to which a class can be assigned for custom styling",
+    "license": "GPL-3.0",
+    "author": {
+        "email": "dev@formfcw.com",
+        "name": "formfcw"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/formfcw/directus-extension-classified-group"
+    },
+    "icon": "brush",
+    "keywords": [
+        "directus",
+        "directus-extension",
+        "directus-custom-interface",
+        "directus-group-interface",
+        "custom-styling",
+        "custom-style",
+        "classified",
+        "class"
+    ],
+    "type": "module",
+    "directus:extension": {
+        "type": "interface",
+        "path": "dist/index.js",
+        "source": "src/index.ts",
+        "host": "^10.1.11"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build-publish": "directus-extension build && npm publish",
+        "build": "directus-extension build",
+        "dev": "directus-extension build -w --no-minify",
+        "link": "directus-extension link"
+    },
+    "devDependencies": {
+        "@directus/extensions-sdk": "10.1.11",
+        "typescript": "^5.2.2",
+        "vue": "^3.3.5"
+    }
+}

@@ -1,0 +1,52 @@
+{
+	"name": "@directus-labs/ai-translator-operation",
+	"description": "Use DeepL's Translation API to translate text into over 30 languages.",
+	"icon": "extension",
+	"version": "1.0.2",
+	"license": "MIT",
+	"keywords": [
+		"directus",
+		"directus-extension",
+		"directus-extension-operation"
+	],
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"directus:extension": {
+		"type": "operation",
+		"path": {
+			"app": "dist/app.js",
+			"api": "dist/api.js"
+		},
+		"source": {
+			"app": "src/app.js",
+			"api": "src/api.js"
+		},
+		"host": "^10.10.0",
+		"sandbox": {
+			"enabled": true,
+			"requestedScopes": {
+				"log": {},
+				"request": {
+					"methods": [
+						"POST"
+					],
+					"urls": [
+						"https://api-free.deepl.com/v2/**",
+						"https://api.deepl.com/v2/**"
+					]
+				}
+			}
+		}
+	},
+	"scripts": {
+		"build": "directus-extension build",
+		"dev": "directus-extension build -w --no-minify",
+		"link": "directus-extension link"
+	},
+	"devDependencies": {
+		"@directus/extensions-sdk": "11.0.1",
+		"vue": "^3.4.21"
+	}
+}

@@ -1,0 +1,121 @@
+{
+  "name": "directus-extension-seo",
+  "author": "CodiHaus",
+  "version": "1.5.11",
+  "type": "module",
+  "directus:extension": {
+    "host": "^10.1.9",
+    "type": "bundle",
+    "path": {
+      "app": "dist/app.js",
+      "api": "dist/api.js"
+    },
+    "entries": [
+      {
+        "type": "module",
+        "name": "module-seo-settings",
+        "source": "src/module-seo-settings/index.ts"
+      },
+      {
+        "type": "interface",
+        "name": "interface-seo-analyzer",
+        "source": "src/interface-seo-analyzer/index.ts"
+      },
+      {
+        "type": "interface",
+        "name": "interface-group-section",
+        "source": "src/interface-group-section/index.ts"
+      },
+      {
+        "type": "interface",
+        "name": "interface-group-column",
+        "source": "src/interface-group-column/index.ts"
+      },
+      {
+        "type": "interface",
+        "name": "interface-social-table",
+        "source": "src/interface-social-table/index.ts"
+      },
+      {
+        "type": "interface",
+        "name": "interface-info",
+        "source": "src/interface-info/index.ts"
+      },
+      {
+        "type": "interface",
+        "name": "interface-radio-button",
+        "source": "src/interface-radio-button/index.ts"
+      },
+      {
+        "type": "interface",
+        "name": "interface-image-upload",
+        "source": "src/interface-image-upload/index.ts"
+      },
+      {
+        "type": "interface",
+        "name": "interface-social-preview",
+        "source": "src/interface-social-preview/index.ts"
+      },
+      {
+        "type": "interface",
+        "name": "interface-meta-template",
+        "source": "src/interface-meta-template/index.ts"
+      }
+    ]
+  },
+  "description": "Directus SEO Extension enhance Directus with powerful SEO scoring and validator and AI SEO from ChatGPT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codihaus/directus-extension-seo"
+  },
+  "icon": "extension",
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-custom-bundle"
+  ],
+  "scripts": {
+    "build": "NODE_ENV=production vite build",
+    "dev": "pnpm --filter cdh dev",
+    "link": "directus-extension link",
+    "setup-directus": "git submodule update --init directus && pnpm --filter cdh install",
+    "link-extension-directus": "tsx scripts/link.ts",
+    "setup-dev": "pnpm setup-directus && pnpm link-extension-directus",
+    "release": "changelogen --bump && pnpm build && npm publish --tag=latest",
+    "add": "directus-extension add"
+  },
+  "devDependencies": {
+    "@directus/composables": "^10.1.0",
+    "@directus/constants": "^10.2.3",
+    "@directus/exceptions": "^10.0.3",
+    "@directus/extensions-sdk": "10.1.9",
+    "@directus/format-title": "^10.1.0",
+    "@directus/system-data": "^1.1.0",
+    "@directus/types": "^10.1.4",
+    "@directus/utils": "^10.0.8",
+    "@types/lodash": "^4.14.198",
+    "@vitejs/plugin-vue": "^4.3.1",
+    "@vueuse/core": "^10.4.1",
+    "@wordpress/i18n": "^4.42.0",
+    "changelogen": "^0.5.5",
+    "destr": "^2.0.3",
+    "dotenv": "^16.3.1",
+    "esno": "^0.17.0",
+    "fs-extra": "^11.1.1",
+    "lodash": "^4.17.21",
+    "pinia": "^2.1.6",
+    "sass": "^1.67.0",
+    "tsx": "^3.12.10",
+    "typescript": "^5.2.2",
+    "unocss": "^0.55.7",
+    "vite": "^5.4.2",
+    "vite-plugin-css-injected-by-js": "^3.3.0",
+    "vite-plugin-replace": "^0.1.1",
+    "vue": "^3.3.4",
+    "vue-i18n": "^9.4.1",
+    "vue-tsc": "^1.8.11"
+  },
+  "dependencies": {
+    "semver": "^7.6.3"
+  }
+}

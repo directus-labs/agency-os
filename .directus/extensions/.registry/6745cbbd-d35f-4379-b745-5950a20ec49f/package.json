@@ -1,0 +1,39 @@
+{
+  "name": "@webartisanbros/directus-extension-o2m-tree-view",
+  "description": "A Directus extension that provides a tree view (Interface) for one-to-many relationships like the one used by Notion.",
+  "icon": "extension",
+  "version": "1.0.5",
+  "private": false,
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-extension-interface",
+    "o2m",
+    "treee-view",
+    "one to many"
+  ],
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/Web-Artisan-Bros/directus-extension-o2m-tree-view",
+  "repository": "https://github.com/Web-Artisan-Bros/directus-extension-o2m-tree-view.git",
+  "git": "https://github.com/Web-Artisan-Bros/directus-extension-o2m-tree-view.git",
+  "author": {
+    "name": "Web Artisan Bros",
+    "email": "info@webartisanbros.com",
+    "url": "https://webartisanbros.com"
+  },
+  "directus:extension": {
+    "type": "interface",
+    "path": "dist/index.js",
+    "source": "src/index.js",
+    "host": "^10.10.0"
+  },
+  "scripts": {
+    "build": "directus-extension build",
+    "dev": "directus-extension build -w --no-minify",
+    "link": "directus-extension link"
+  },
+  "license": "MIT"
+}

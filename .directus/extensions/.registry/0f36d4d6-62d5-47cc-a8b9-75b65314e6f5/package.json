@@ -1,0 +1,42 @@
+{
+	"name": "@jamtastic/directus-extension-permalink",
+	"version": "0.5.1",
+	"description": "Permalink interface to enter URL slugs for Directus",
+	"license": "ISC",
+	"author": "Jamtastic! (https://jamtastic.dev/)",
+	"contributors": [
+		"Benny Michaels <foss@bnry.be> (https://bnry.be/)"
+	],
+	"keywords": [
+		"directus",
+		"directus-extension",
+		"directus-custom-interface",
+		"slug",
+		"permalink"
+	],
+	"homepage": "https://github.com/jamtastic/directus/source/interfaces/permalink#readme",
+	"bugs": {
+		"url": "https://github.com/jamtastic/directus/issues"
+	},
+	"files": [
+		"dist"
+	],
+	"directus:extension": {
+		"type": "interface",
+		"path": "dist/permalink.js",
+		"source": "source/permalink.ts",
+		"host": "^9.20.4"
+	},
+	"scripts": {
+		"build": "directus-extension build",
+		"dev": "directus-extension build -w --no-minify"
+	},
+	"devDependencies": {
+		"@directus/extensions-sdk": "9.21.0",
+		"typescript": "^4.9.3",
+		"vue": "^3.2.45"
+	},
+	"dependencies": {
+		"directus-extension-display-link": "^1.6.1"
+	}
+}

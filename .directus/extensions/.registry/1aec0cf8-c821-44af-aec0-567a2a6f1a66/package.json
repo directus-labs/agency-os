@@ -1,0 +1,55 @@
+{
+  "name": "directus-extension-tags-m2m-interface",
+  "version": "0.8.0",
+  "author": {
+    "email": "dimitrovadrian+gh@gmail.com",
+    "name": "Adrian Dimitrov"
+  },
+  "license": "gpl-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dimitrov-adrian/directus-extension-tags-m2m-interface.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dimitrov-adrian/directus-extension-tags-m2m-interface/issues"
+  },
+  "homepage": "https://github.com/dimitrov-adrian/directus-extension-tags-m2m-interface",
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-custom-interface",
+    "m2m",
+    "tags",
+    "entity-reference"
+  ],
+  "directus:extension": {
+    "type": "interface",
+    "path": "dist/index.js",
+    "source": "src/index.ts",
+    "host": "^v9.9.0",
+    "hidden": false
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "directus-extension build",
+    "dev": "directus-extension build -w --no-minify --sourcemap"
+  },
+  "devDependencies": {
+    "@directus/extensions-sdk": "^9.11.0",
+    "directus-codestyle": "https://github.com/dimitrov-adrian/directus-codestyle.git",
+    "lodash": "^4.17.21",
+    "typescript": "^4.7.2"
+  },
+  "prettier": "directus-codestyle/prettier",
+  "stylelint": {
+    "extends": "directus-codestyle/stylelint"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/directus-codestyle/.eslintrc.js",
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  }
+}

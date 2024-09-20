@@ -1,0 +1,25 @@
+:deep() {
+    .v-form.seo-setting-form {
+        @apply grid-cols-1 block;
+        @apply xl:max-w-5xl;
+        .group-section .v-form{
+            grid-template-columns: [start] minmax(0, 1fr) [half] minmax(0, 1fr) [full] 1fr [fill] !important;
+            .group-column {
+                --form-vertical-gap: 32px;
+                &:last-child {
+                    --at-apply: "!col-span-2";
+                }
+                .v-form:has(.v-text-overflow:empty){
+                    grid-gap: 16px !important;
+                    gap: 16px !important;
+                }
+            }
+        }
+        .type-note {
+            @apply max-w-initial mt-2;
+        }
+        .field-label .field-name:has(.v-text-overflow:empty) {
+            display: none;
+        }
+    }
+}
