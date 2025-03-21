@@ -1,22 +1,9 @@
-import type { AuthenticationClient, RestClient } from '@directus/sdk';
-import type { Schema } from '~/types/schema';
-
 import auth from '../middleware/auth';
 import common from '../middleware/common';
 import guest from '../middleware/guest';
 
-import {
-	addRouteMiddleware,
-	defineNuxtPlugin,
-	useDirectusAuth,
-	useNuxtApp,
-	useRuntimeConfig,
-	useState,
-} from '#imports';
-
 export default defineNuxtPlugin(async () => {
-	const nuxtApp = useNuxtApp();
-	const $directus = nuxtApp.$directus as RestClient<Schema> & AuthenticationClient<Schema>;
+	const { $directus } = useNuxtApp();
 
 	try {
 		const config = useRuntimeConfig().public.directus;

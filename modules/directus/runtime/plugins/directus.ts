@@ -2,8 +2,6 @@ import { authentication, createDirectus, rest } from '@directus/sdk';
 import { joinURL } from 'ufo';
 import type { Schema } from '~/types/schema';
 
-import { defineNuxtPlugin, useRoute, useRuntimeConfig } from '#imports';
-
 export default defineNuxtPlugin((nuxtApp) => {
 	const route = useRoute();
 	const config = useRuntimeConfig();
