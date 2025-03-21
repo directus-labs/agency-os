@@ -67,6 +67,10 @@ export default defineNuxtConfig({
 		},
 	},
 
+	devServer: {
+		host: '127.0.0.1',
+	},
+
 	// Nuxt DevTools - https://devtools.nuxtjs.org/
 	devtools: { enabled: true },
 
