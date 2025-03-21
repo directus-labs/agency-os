@@ -9,6 +9,7 @@ import {
 	useLogger,
 } from '@nuxt/kit';
 import { defu } from 'defu';
+import { joinURL } from 'ufo';
 import { fileURLToPath } from 'url';
 
 import type { Globals, Schema } from '../../types';
@@ -157,7 +158,7 @@ export default defineNuxtModule({
 		addImportsDir(composables);
 
 		// ** Build Logic **
-		const directus = createDirectus<Schema>(moduleOptions.rest.baseUrl).with(rest());
+		const directus = createDirectus<Schema>(joinURL(moduleOptions.rest.baseUrl, '/api/proxy')).with(rest());
 
 		// Handle Redirects
 		try {
