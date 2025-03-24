@@ -1,17 +1,18 @@
-import type { AuthenticationClient, RestClient } from '@directus/sdk';
+import type { RestClient, AuthenticationClient } from '@directus/sdk';
 import type { Schema } from '~/types/schema';
 
 import auth from '../middleware/auth';
-import common from '../middleware/common';
 import guest from '../middleware/guest';
+import common from '../middleware/common';
 
 import {
-	addRouteMiddleware,
 	defineNuxtPlugin,
-	useDirectusAuth,
-	useNuxtApp,
+	addRouteMiddleware,
 	useRuntimeConfig,
 	useState,
+	useDirectusAuth,
+	useRoute,
+	useNuxtApp,
 } from '#imports';
 
 export default defineNuxtPlugin(async () => {
@@ -31,12 +32,26 @@ export default defineNuxtPlugin(async () => {
 
 		const initialized = useState('directus-auth-initialized', () => false);
 
-		const { _loggedIn, fetchUser } = useDirectusAuth();
+		const { _loggedIn } = useDirectusAuth();
 
 		if (initialized.value === false) {
-			await $directus.refresh();
+			const { path } = useRoute();
 
-			await fetchUser({});
+			const { fetchUser, _loggedIn } = useDirectusAuth();
+			const token = await $directus.getToken();
+
+			if (token) {
+				await fetchUser({});
+			} else {
+				const isCallback = path === '/auth/callback';
+				const isLoggedIn = _loggedIn.get() === 'true';
+
+				if (isCallback || isLoggedIn) {
+					if (token) {
+						await fetchUser({});
+					}
+				}
+			}
 		}
 
 		initialized.value = true;

@@ -47,6 +47,7 @@ services:
 
       # These is helpful for local developement but should probably be removed in production
       CORS_ENABLED: 'true'
+      REFRESH_TOKEN_COOKIE_DOMAIN: 'localhost'
       EXTENSIONS_AUTO_RELOAD: 'true'
 
       WEBSOCKETS_ENABLED: 'true'
