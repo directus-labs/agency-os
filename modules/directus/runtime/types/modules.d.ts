@@ -2,7 +2,9 @@ import type { RestClient } from "@directus/sdk";
 
 declare module "#app" {
   interface NuxtApp {
-    $directus: DirectusClient<DirectusSchema> & AuthenticationClient<DirectusSchema> & RestClient<DirectusSchema>;
+    $directus: {
+      rest: RestClient<DirectusSchema>;
+    };
   }
   interface RuntimeNuxtHooks {
     "directus:loggedIn": (state: boolean) => void;
@@ -11,7 +13,9 @@ declare module "#app" {
 
 declare module "vue" {
   interface ComponentCustomProperties {
-    $directus:  DirectusClient<DirectusSchema> & AuthenticationClient<DirectusSchema> & RestClient<DirectusSchema>
+    $directus: {
+      rest: RestClient<DirectusSchema>;
+    };
   }
 }
 
@@ -19,5 +23,4 @@ declare global {
   interface DirectusSchema {}
 }
 
-export { };
-
+export {};

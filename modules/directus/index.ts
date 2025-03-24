@@ -1,17 +1,17 @@
-import { createDirectus, readItems, readSingleton, rest } from '@directus/sdk';
+import { fileURLToPath } from 'url';
 import {
-	addImports,
-	addImportsDir,
+	defineNuxtModule,
 	addPlugin,
 	createResolver,
-	defineNuxtModule,
+	addImportsDir,
+	addImports,
 	extendRouteRules,
 	useLogger,
 } from '@nuxt/kit';
 import { defu } from 'defu';
-import { fileURLToPath } from 'url';
+import { createDirectus, rest, readItems, readSingleton } from '@directus/sdk';
 
-import type { Globals, Schema } from '../../types';
+import type { Schema, Globals } from '../../types';
 
 const log = useLogger();
 

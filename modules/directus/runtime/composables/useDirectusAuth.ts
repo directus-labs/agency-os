@@ -1,8 +1,13 @@
-import { readMe } from '@directus/sdk';
+import { readMe, passwordRequest, passwordReset } from '@directus/sdk';
+import type { RestClient, AuthenticationClient } from '@directus/sdk';
+import type { Schema } from '~/types/schema';
 import type { User } from '~/types';
 
-export default function useDirectusAuth() {
-	const { $directus } = useNuxtApp();
+import { useState, useRuntimeConfig, useRoute, navigateTo, clearNuxtData, useNuxtApp } from '#imports';
+
+export default function useDirectusAuth<DirectusSchema extends object>() {
+	const nuxtApp = useNuxtApp();
+	const $directus = nuxtApp.$directus as RestClient<Schema> & AuthenticationClient<Schema>;
 
 	const user: Ref<User | null | undefined> = useState('user');
 
@@ -13,10 +18,10 @@ export default function useDirectusAuth() {
 		set: (value: boolean) => process.client && localStorage.setItem('authenticated', value.toString()),
 	};
 
-	async function login(email: string, password: string) {
+	async function login(email: string, password: string, otp?: string) {
 		const route = useRoute();
 
-		await $directus.login(email, password);
+		const response = await $directus.login(email, password);
 
 		const returnPath = route.query.redirect?.toString();
 		const redirect = returnPath ? returnPath : '/portal';
@@ -30,6 +35,8 @@ export default function useDirectusAuth() {
 	}
 
 	async function logout() {
+		const token = await $directus.getToken();
+
 		await $directus.logout();
 
 		user.value = null;
