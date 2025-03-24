@@ -1,17 +1,18 @@
-import { fileURLToPath } from 'url';
+import { createDirectus, readItems, readSingleton, rest } from '@directus/sdk';
 import {
-	defineNuxtModule,
+	addImports,
+	addImportsDir,
 	addPlugin,
 	createResolver,
-	addImportsDir,
-	addImports,
+	defineNuxtModule,
 	extendRouteRules,
 	useLogger,
 } from '@nuxt/kit';
 import { defu } from 'defu';
-import { createDirectus, rest, readItems, readSingleton } from '@directus/sdk';
+import { joinURL } from 'ufo';
+import { fileURLToPath } from 'url';
 
-import type { Schema, Globals } from '../../types';
+import type { Globals, Schema } from '../../types';
 
 const log = useLogger();
 
@@ -48,6 +49,8 @@ export default defineNuxtModule({
 		if (!moduleOptions.rest.baseUrl) {
 			log.warn(`Please make sure to set Directus baseUrl`);
 		}
+
+		const config = useRuntimeConfig();
 
 		// ** Runtime Logic **
 		const { resolve } = createResolver(import.meta.url);
@@ -157,7 +160,7 @@ export default defineNuxtModule({
 		addImportsDir(composables);
 
 		// ** Build Logic **
-		const directus = createDirectus<Schema>(moduleOptions.rest.baseUrl).with(rest());
+		const directus = createDirectus<Schema>(joinURL(config.public.siteUrl, '/api/proxy')).with(rest());
 
 		// Handle Redirects
 		try {
