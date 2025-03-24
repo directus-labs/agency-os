@@ -50,8 +50,6 @@ export default defineNuxtModule({
 			log.warn(`Please make sure to set Directus baseUrl`);
 		}
 
-		const config = useRuntimeConfig();
-
 		// ** Runtime Logic **
 		const { resolve } = createResolver(import.meta.url);
 		const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url));
@@ -160,7 +158,9 @@ export default defineNuxtModule({
 		addImportsDir(composables);
 
 		// ** Build Logic **
-		const directus = createDirectus<Schema>(joinURL(config.public.siteUrl, '/api/proxy')).with(rest());
+		const directus = createDirectus<Schema>(joinURL(nuxt.options.runtimeConfig.public.siteUrl, '/api/proxy')).with(
+			rest(),
+		);
 
 		// Handle Redirects
 		try {
