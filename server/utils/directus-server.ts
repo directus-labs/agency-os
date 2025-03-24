@@ -1,21 +1,20 @@
 import {
 	createDirectus,
-	createItem,
 	readItem,
 	readItems,
 	readSingleton,
 	rest,
-	staticToken,
+	createItem,
 	updateItem,
+	staticToken,
 	withToken,
 } from '@directus/sdk';
-import { joinURL } from 'ufo';
 import type { Schema } from '~/types/schema';
 
-const directusUrl = process.env.NUXT_PUBLIC_SITE_URL as string;
+const directusUrl = process.env.DIRECTUS_URL as string;
 
-const directusServer = createDirectus<Schema>(joinURL(directusUrl, '/api/proxy'))
+const directusServer = createDirectus<Schema>(directusUrl)
 	.with(rest())
 	.with(staticToken(process.env.DIRECTUS_SERVER_TOKEN as string));
 
-export { createItem, directusServer, readItem, readItems, readSingleton, updateItem, withToken };
+export { directusServer, readItem, readItems, readSingleton, createItem, updateItem, withToken };
