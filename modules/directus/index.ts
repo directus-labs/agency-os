@@ -26,7 +26,7 @@ export default defineNuxtModule({
 
 		defaults: {
 			rest: {
-				baseUrl: 'http://localhost:8055',
+				baseUrl: '',
 				nuxtBaseUrl: 'http://localhost:3000',
 			},
 			auth: {
@@ -47,7 +47,7 @@ export default defineNuxtModule({
 		log.start('Loading Directus Module');
 
 		if (!moduleOptions.rest.baseUrl) {
-			log.warn(`Please make sure to set Directus baseUrl`);
+			log.warn('Please make sure to set Directus baseUrl');
 		}
 
 		// ** Runtime Logic **
@@ -133,13 +133,13 @@ export default defineNuxtModule({
 			// Utils
 		];
 
-		commands.forEach((name) => {
+		for (const name of commands) {
 			addImports({
 				name,
 				as: name,
 				from: '@directus/sdk',
 			});
-		});
+		}
 
 		// Transpile the runtime directory
 		nuxt.options.build.transpile.push(runtimeDir);
@@ -158,35 +158,37 @@ export default defineNuxtModule({
 		addImportsDir(composables);
 
 		// ** Build Logic **
-		const directus = createDirectus<Schema>(joinURL(nuxt.options.runtimeConfig.public.siteUrl, '/api/proxy')).with(
-			rest(),
-		);
+		const directus = createDirectus<Schema>(
+			joinURL(nuxt.options.runtimeConfig.public.directus.rest.baseUrl, '/api/proxy'),
+		).with(rest());
 
 		// Handle Redirects
 		try {
 			const redirects = await directus.request(readItems('redirects'));
 
-			for (const redirect of redirects) {
-				let responseCode = redirect.response_code ? parseInt(redirect.response_code as any) : 301;
+			if (redirects.length > 0) {
+				for (const redirect of redirects) {
+					let responseCode = redirect.response_code ? parseInt(redirect.response_code as any) : 301;
 
-				if (responseCode !== 301 && responseCode !== 302) {
-					responseCode = 301;
+					if (responseCode !== 301 && responseCode !== 302) {
+						responseCode = 301;
+					}
+
+					// Add the redirect to the route rules
+					// https://nuxt.com/docs/guide/concepts/rendering#route-rules
+					extendRouteRules(redirect.url_old as string, {
+						redirect: {
+							to: redirect.url_new,
+							statusCode: responseCode as 301 | 302,
+						},
+					});
 				}
 
-				// Add the redirect to the route rules
-				// https://nuxt.com/docs/guide/concepts/rendering#route-rules
-				extendRouteRules(redirect.url_old as string, {
-					redirect: {
-						to: redirect.url_new,
-						statusCode: responseCode as 301 | 302,
-					},
-				});
-			}
+				log.success(`${redirects.length} Redirects loaded`);
 
-			log.success(`${redirects.length} Redirects loaded`);
-
-			for (const redirect of redirects) {
-				log.info(`  • ${redirect.response_code}`, `From: ${redirect.url_old}`, `To: ${redirect.url_new}`);
+				for (const redirect of redirects) {
+					log.info(`  • ${redirect.response_code}`, `From: ${redirect.url_old}`, `To: ${redirect.url_new}`);
+				}
 			}
 		} catch (error) {
 			log.warn('Unable to load redirects due to the following error');

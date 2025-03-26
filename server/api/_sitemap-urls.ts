@@ -170,12 +170,12 @@ async function getBlogAndProjctPages() {
 
 	const entries = [
 		{
-			loc: `/posts`,
+			loc: '/posts',
 			changefreq: blogPage.seo?.sitemap_change_frequency || 'monthly',
 			priority: blogPage.seo?.sitemap_priority || 0.5,
 		},
 		{
-			loc: `/projects`,
+			loc: '/projects',
 			changefreq: projectPage.seo?.sitemap_change_frequency || 'monthly',
 			priority: projectPage.seo?.sitemap_priority || 0.5,
 		},
