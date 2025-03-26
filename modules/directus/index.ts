@@ -158,9 +158,9 @@ export default defineNuxtModule({
 		addImportsDir(composables);
 
 		// ** Build Logic **
-		const directus = createDirectus<Schema>(
-			joinURL(nuxt.options.runtimeConfig.public.directus.rest.baseUrl, '/api/proxy'),
-		).with(rest());
+		const directus = createDirectus<Schema>(joinURL(nuxt.options.runtimeConfig.public.directus.rest.baseUrl)).with(
+			rest(),
+		);
 
 		// Handle Redirects
 		try {
