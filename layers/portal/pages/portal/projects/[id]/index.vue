@@ -15,7 +15,7 @@ const {
 				{
 					organization: ['id', 'name', 'logo'],
 					owner: ['id', 'first_name', 'last_name', 'email', 'avatar'],
-					contacts: ['*'],
+					contacts: ['*', { contacts_id: ['id', 'first_name', 'last_name' ] }],
 					tasks: ['id', 'name', 'type', 'status', 'due_date', 'date_completed'],
 					updates: ['id', 'message', 'user_created', 'date_created', 'date_updated', 'user_updated'],
 				},
