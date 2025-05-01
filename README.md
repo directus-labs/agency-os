@@ -222,7 +222,7 @@ Your `.env` file should look similar to this.
 # Directus Setup
 DIRECTUS_URL="https://your-instance.directus.app"
 DIRECTUS_SERVER_TOKEN="your_directus_server_token_for_server_only_routes"
-SITE_URL="http://localhost:3000"
+NUXT_PUBLIC_SITE_URL="http://localhost:3000"
 
 # Stripe Setup (If you want to allow payments within the portal)
 STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxxxx
