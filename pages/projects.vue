@@ -47,7 +47,7 @@ const metadata = computed(() => {
 	const seo = pageData?.seo as SEO;
 	return {
 		title: seo?.title ?? pageData?.title ?? undefined,
-		description: seo?.meta_description ?? pageData.headline ? stripHTML(pageData?.headline as string) : undefined,
+		description: (seo?.meta_description ?? pageData.headline) ? stripHTML(pageData?.headline as string) : undefined,
 		image: globals?.og_image ? fileUrl(globals?.og_image) : undefined,
 	};
 });

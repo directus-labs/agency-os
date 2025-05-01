@@ -1,16 +1,16 @@
-import { createDirectus, rest, authentication } from '@directus/sdk';
+import { authentication, createDirectus, rest } from '@directus/sdk';
+import { joinURL } from 'ufo';
 import type { Schema } from '~/types/schema';
 
-import { defineNuxtPlugin, useRuntimeConfig, useRoute } from '#imports';
+import { defineNuxtPlugin, useRoute, useRuntimeConfig } from '#imports';
 
 export default defineNuxtPlugin((nuxtApp) => {
 	const route = useRoute();
 	const config = useRuntimeConfig();
-	const directusURL = config.public.directus.rest.baseUrl as string;
 
-	const directus = createDirectus<Schema>(directusURL, { globals: { fetch: $fetch } })
-		.with(authentication('cookie', { credentials: 'include' }))
-		.with(rest({ credentials: 'include' }));
+	const directus = createDirectus<Schema>(joinURL(config.public.siteUrl, '/api/proxy'), { globals: { fetch: $fetch } })
+		.with(authentication('session'))
+		.with(rest());
 
 	// ** Live Preview Bits **
 	// Check if we are in preview mode

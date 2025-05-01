@@ -90,11 +90,6 @@ export default defineNuxtConfig({
 		download: true,
 	},
 
-	site: {
-		url: process.env.SITE_URL || 'http://localhost:3000',
-		name: 'AgencyOS',
-	},
-
 	// OG Image Configuration - https://nuxtseo.com/og-image/getting-started/installation
 	ogImage: {
 		defaults: {
@@ -108,17 +103,7 @@ export default defineNuxtConfig({
 
 	// Sitemap Configuration - https://nuxtseo.com/sitemap/getting-started/how-it-works
 	sitemap: {
-		sitemaps: {
-			pages: {
-				exclude: ['/posts/**', '/help/**'],
-			},
-			posts: {
-				include: ['/posts/**'],
-			},
-			help: {
-				include: ['/help/**'],
-			},
-		},
+		sources: ['/api/_sitemap-urls'],
 	},
 
 	postcss: {
