@@ -1,0 +1,156 @@
+{
+  "public_favicon": null,
+  "storage_default_folder": null,
+  "public_foreground": null,
+  "public_registration_role": null,
+  "public_background": null,
+  "project_logo": "690c2042-e3ad-46f4-9cd8-095a7b3a1df7",
+  "project_name": "Agency OS",
+  "report_feature_url": null,
+  "report_bug_url": null,
+  "report_error_url": null,
+  "default_theme_dark": null,
+  "default_theme_light": "Directus Default",
+  "default_appearance": "auto",
+  "default_language": "en-US",
+  "project_descriptor": null,
+  "mapbox_key": null,
+  "storage_asset_transform": "all",
+  "auth_password_policy": "/^.{8,}$/",
+  "project_color": "#18222F",
+  "project_url": "https://agencyos.dev",
+  "storage_asset_presets": [
+    {
+      "key": "800w",
+      "fit": "inside",
+      "width": 800,
+      "quality": 90,
+      "withoutEnlargement": true,
+      "format": "webp",
+      "transforms": [],
+      "height": null
+    },
+    {
+      "key": "1200w",
+      "fit": "inside",
+      "width": 1200,
+      "quality": 90,
+      "withoutEnlargement": true,
+      "format": "webp",
+      "transforms": []
+    }
+  ],
+  "basemaps": null,
+  "module_bar": [
+    {
+      "type": "module",
+      "id": "content",
+      "enabled": true
+    },
+    {
+      "type": "module",
+      "id": "users",
+      "enabled": true
+    },
+    {
+      "type": "module",
+      "id": "files",
+      "enabled": true
+    },
+    {
+      "type": "module",
+      "id": "insights",
+      "enabled": true
+    },
+    {
+      "type": "link",
+      "id": "docs",
+      "name": "Directus Docs",
+      "url": "https://docs.directus.io",
+      "icon": "help_outline",
+      "enabled": true
+    },
+    {
+      "type": "module",
+      "id": "settings",
+      "enabled": true,
+      "locked": true
+    }
+  ],
+  "custom_aspect_ratios": null,
+  "theme_light_overrides": {
+    "form": {
+      "rowGap": "24px",
+      "field": {
+        "input": {
+          "height": "52px",
+          "background": "#ffffff"
+        }
+      }
+    },
+    "borderWidth": "1px",
+    "navigation": {
+      "modules": {
+        "background": "color-mix(in srgb, #000000, var(--theme--primary) 80%)",
+        "button": {
+          "foreground": "color-mix(in srgb, #FFFFFF, var(--theme--primary) 20%)",
+          "foregroundActive": "var(--theme--primary)",
+          "backgroundActive": "#FFFFFF"
+        }
+      },
+      "background": "#fff",
+      "project": {
+        "background": "transparent"
+      },
+      "borderColor": "color-mix(in srgb, #000000, var(--theme--background) 95%)",
+      "borderWidth": "1px",
+      "list": {
+        "divider": {
+          "borderColor": "var(--theme--border-color-subdued)"
+        },
+        "backgroundHover": "color-mix(in srgb, #FFFFFF, var(--theme--primary) 10%)",
+        "backgroundActive": "color-mix(in srgb, #FFFFFF, var(--theme--primary) 15%)"
+      }
+    },
+    "fonts": {
+      "display": {
+        "fontFamily": "\"Space Grotesk\", system-ui",
+        "fontWeight": "600"
+      },
+      "sans": {
+        "fontFamily": "\"DM Sans\", system-ui"
+      }
+    },
+    "borderRadius": "6px",
+    "sidebar": {
+      "background": "#FFFFFF",
+      "borderWidth": "1px",
+      "borderColor": "var(--theme--border-color-subdued)",
+      "section": {
+        "toggle": {
+          "borderColor": "var(--theme--border-color-subdued)",
+          "borderWidth": "1px",
+          "background": "#FFFFFF",
+          "foreground": "var(--theme--foreground)",
+          "foregroundHover": "var(--theme--foreground)",
+          "icon": {
+            "foreground": "var(--theme--foreground)",
+            "foregroundHover": "var(--theme--foreground)",
+            "foregroundActive": "var(--theme--foreground-accent)"
+          }
+        }
+      }
+    },
+    "backgroundAccent": "color-mix(in srgb, #FFFFFF, var(--theme--primary) 10%)"
+  },
+  "theme_dark_overrides": {
+    "primary": "#ff99dd"
+  },
+  "public_registration_email_filter": null,
+  "custom_css": "",
+  "public_note": "Short Public Message",
+  "auth_login_attempts": 25,
+  "id": 1,
+  "public_registration": false,
+  "public_registration_verify_email": true
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "user": "46cbbc2d-f3e1-468a-9925-c6df6493c496",
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "447868fd-194c-41a4-bb7b-0aa85d5a44e8",
+    "date_updated": "2023-10-19T13:19:48.182Z",
+    "date_created": "2023-09-09T03:10:01.439Z",
+    "job_title": "Speech Pathologist",
+    "phone": "+1555-555-5555",
+    "email": "ashley@example.com",
+    "last_name": "Simmons",
+    "first_name": "Ashley",
+    "status": "draft",
+    "contact_notes": null,
+    "organizations": [
+      "3afc4678-1441-401b-8106-871b31f292c4"
+    ],
+    "deals": [
+      "b583fb2e-e813-498a-8f8a-1c9418e28e60"
+    ],
+    "activities": [
+      "1de14a0c-23db-4946-8069-70f669cd6bdc"
+    ]
+  },
+  {
+    "user": null,
+    "user_updated": null,
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "79d06c95-2030-41b1-b455-9a87f0777788",
+    "date_updated": null,
+    "date_created": "2023-10-19T13:18:25.026Z",
+    "job_title": "CEO",
+    "phone": null,
+    "email": "elon@tezla.com",
+    "last_name": "Dusk",
+    "first_name": "Elon",
+    "status": "active",
+    "contact_notes": null,
+    "organizations": [
+      "6f4c96a4-0081-498e-bbf3-7d9bce9f4fd4"
+    ],
+    "deals": [],
+    "activities": []
+  }
+]

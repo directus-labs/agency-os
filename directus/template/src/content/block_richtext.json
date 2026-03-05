@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1619b2fe-ce09-4a78-8c47-1428995c7c1c",
+    "alignment": "center",
+    "title": "Why Us",
+    "headline": "We're different than all the rest.",
+    "content": "<p>At our digital agency, we believe that standing out in the crowded digital landscape requires a unique approach. <a href=\"/team\" target=\"_self\">That's why we take a holistic approach</a> to digital marketing, focusing on building a strong brand identity and developing strategies that are tailored to our clients' specific needs.</p>\n<p><a class=\"btn btn-primary btn-md\" href=\"/contact-us\" target=\"_self\">Test Button</a></p>\n<h1>H1</h1>\n<blockquote>\n<p>Our team of experts brings a diverse range of skills and experiences to the table, including web design, content creation, SEO, social media marketing, and more. We're not just interested in getting quick results; we're invested in helping our clients build sustainable, long-term success.</p>\n</blockquote>\n<ol>\n<li>Number 1</li>\n<li>Number 2 (Who does number 2 work for)</li>\n<li>Number 3</li>\n</ol>\n<ul>\n<li>Item 1</li>\n<li>Item 2</li>\n<li>Item 3</li>\n</ul>\n<h2>H2</h2>\n<p>Some text</p>\n<hr>\n<h3>H3</h3>\n<p>Some text</p>\n<p>From the initial consultation to ongoing support, we're dedicated to providing personalized attention and exceptional service. At our digital agency, we're not just different from the rest - we're better.</p>"
+  },
+  {
+    "id": "1a273da2-8d00-4ccc-9109-0da0d0d88dcb",
+    "alignment": "center",
+    "title": null,
+    "headline": "Let's work together",
+    "content": "<p>Hi {{ contact.first_name }},</p>\n<p>Thanks for meeting with me the other day. It was nice to have the time to dig in and have a more focused conversation. I have outlined three options of increasing complexity for the project. The options are incremental, meaning that each includes and builds upon the previous options. This will allow you to pick a level that suits the urgency and budget.</p>\n<p>Please note that this is not an estimate, it is a quote. The price you agree to is exactly how much you&rsquo;ll pay. If I have underestimated how long it will take me to do the work, that&rsquo;s my problem, not yours.</p>\n<p>Because of this, I&rsquo;m strict about what&rsquo;s included and what&rsquo;s not. Please do not assume anything. If there is anything you want included that you don&rsquo;t see explicitly listed, we&rsquo;ll need to talk about it and I&rsquo;ll send a revised quote. When you get a chance, please review and let me know if you have any questions or comments. I&rsquo;ll touch base with you on DATE THAT IS THREE TO FOUR BUSINESS DAYS IN THE FUTURE if I haven&rsquo;t heard back by then.</p>\n<p>- Bryant Gillespie</p>"
+  },
+  {
+    "id": "2387edcd-e6ab-451c-befa-30ab247b2290",
+    "alignment": "center",
+    "title": null,
+    "headline": "Rich Text Block",
+    "content": "<p><strong>Here's a few sentences.</strong></p>"
+  },
+  {
+    "id": "62517520-a3e0-4655-bd92-2d45293eb0c6",
+    "alignment": "left",
+    "title": null,
+    "headline": "How We Can Do This",
+    "content": "<p>Given your current setup, we propose an innovative solution leveraging Directus, an open-source headless content management system, to streamline your web development process. This approach involves integrating Directus with your existing system, offering a more efficient and flexible way to manage your web content and applications.</p>\n<p>Benefits:</p>\n<ol>\n<li><strong>Enhanced Flexibility:</strong> Directus provides a more adaptable and customizable content management framework compared to traditional systems.</li>\n<li><strong>Improved Content Control:</strong> With Directus, you gain more control over how your content is structured and delivered across different platforms.</li>\n<li><strong>Cost-Effective Solution:</strong> Utilizing Directus significantly reduces the need for extensive custom development, thereby lowering overall project costs.</li>\n</ol>\n<p>Drawbacks:</p>\n<ol>\n<li><strong>Dependency on Directus Framework:</strong> Your system will rely on the Directus framework, which might require additional learning for your team.</li>\n<li><strong>Limited Third-Party Integrations:</strong> While Directus is versatile, it may not have as many out-of-the-box integrations as some other platforms.</li>\n</ol>\n<p>Timeline and Deliverables:</p>\n<ol>\n<li><strong>Planning and System Assessment (2 days):</strong> Evaluating your current system and planning the Directus integration.</li>\n<li><strong>Directus Setup and Configuration (3 days):</strong> Installing and configuring Directus to fit your specific needs.</li>\n<li><strong>Data Migration and Integration (4 days):</strong> Migrating existing data and ensuring seamless integration with your systems.</li>\n<li><strong>Custom Development (if required) (3 days):</strong> Additional customization to meet specific requirements.</li>\n<li><strong>Testing and Quality Assurance (3 days):</strong> Ensuring the integration works flawlessly across all platforms.</li>\n<li><strong>Training and Documentation (2 days):</strong> Providing training sessions for your team and comprehensive documentation.</li>\n<li><strong>Launch and Post-Launch Support (2 days):</strong> Going live and providing immediate support to address any issues.</li>\n</ol>\n<p>Cost:</p>\n<ul>\n<li><strong>Initial Setup and Integration:</strong> $6,500 one time.</li>\n<li><strong>Annual Maintenance and Support:</strong> $1,200, covering updates and ongoing support.</li>\n</ul>\n<p>This solution offers a robust, flexible approach to managing your web content and applications, aligning with modern web development practices while ensuring cost-effectiveness and scalability.</p>"
+  },
+  {
+    "id": "6c5df396-be52-4b1c-a144-d55b229e5a34",
+    "alignment": "center",
+    "title": null,
+    "headline": "The Benefits of Rabbits",
+    "content": "<p>Rabbits are a great source of environmental benefit. They help to keep grasslands and other ecosystems in check. Rabbits are herbivores, meaning they eat only plants, which helps to keep vegetation in balance. Additionally, rabbits are crucial to the food chain, providing sustenance for predators in their environment.</p>\n<p>Rabbits also help to improve the quality of soil by digging burrows and depositing their waste in them. This helps to aerate the soil, improving its quality and allowing for better plant growth. Additionally, the waste from rabbits is a rich source of nutrients for plants and other animals in the area. This helps to keep the soil healthy and support the overall ecosystem.</p>"
+  },
+  {
+    "id": "8f714990-cb45-4c6c-afa6-a49615768a4f",
+    "alignment": "center",
+    "title": null,
+    "headline": "About Us",
+    "content": "<p>Our website, \"Bunny Lovers,\" is dedicated to all things rabbit! Our goal is to provide comprehensive information and resources for rabbit owners and enthusiasts alike. We believe that rabbits make wonderful pets and we want to help people give their furry friends the best life possible.</p>\n<p>The team behind Bunny Lovers is made up of rabbit owners and experts who have years of experience caring for these cute and cuddly creatures. We share a passion for rabbits and their well-being, and we have combined our knowledge to create a one-stop shop for everything rabbit-related. From breed information to health advice, we aim to provide you with the most up-to-date and accurate information available.</p>\n<p>In addition to our informative articles, we also offer a lively and supportive community where rabbit owners can connect and share their experiences. Whether you are a seasoned rabbit owner or just starting out, you are sure to find the information and support you need on our site. So, come join us and let's celebrate these amazing animals together!</p>"
+  },
+  {
+    "id": "9d65df9c-307f-4049-bc21-0c3a77178d91",
+    "alignment": "center",
+    "title": "Privacy Policy",
+    "headline": "We <em>protect our clients</em> like our own families",
+    "content": "<p>Thank you for considering our privacy policy at XYZ Development Agency. We take your privacy very seriously and want you to know exactly how we collect, use, share, and protect your information when you visit our website or use our services.</p>\n<h2>Information We Collect</h2>\n<p>We collect personal information such as your name, email address, phone number, and company name when you fill out a contact form or sign up for our newsletter. We also collect non-personal information such as your IP address, browser type, and operating system when you visit our website.</p>\n<h2>How We Use Your Information</h2>\n<p>We use your personal information to respond to your inquiries, send you newsletters, and provide you with our services. We use non-personal information to analyze website traffic and improve our website's performance.</p>\n<h2>Information Sharing</h2>\n<p>We do not sell or rent your personal information to third parties. However, we may share your personal information with trusted third-party service providers who assist us in providing our services to you. We may also share your information when required by law or to protect our rights and property.</p>\n<h2>Security</h2>\n<p>We take appropriate measures to protect your personal information from unauthorized access, disclosure, or misuse. We use secure servers and encryption technologies to ensure the confidentiality and integrity of your information.</p>\n<h2>Cookies and Tracking Technologies</h2>\n<p>We use cookies and other tracking technologies to collect non-personal information about your website usage. You can disable cookies through your browser settings, but this may limit your access to certain features of our website.</p>\n<h2>Links to Third-Party Websites</h2>\n<p>Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of those websites. We encourage you to review the privacy policies of those websites before providing any personal information.</p>\n<h2>Changes to Our Privacy Policy</h2>\n<p>We may update our privacy policy from time to time. We will notify you of any changes by posting the new policy on our website. Your continued use of our website or services after any changes to our privacy policy means that you agree to the updated policy.</p>\n<h2>Contact Us</h2>\n<p>If you have any questions or concerns about our privacy policy, please contact us at privacy@xyzdevelopment.com.</p>\n<p>Thank you for trusting XYZ Development Agency with your personal information.</p>"
+  },
+  {
+    "id": "b0c8cec2-acc5-46ad-9044-8a6602000c3e",
+    "alignment": "center",
+    "title": null,
+    "headline": "Next Steps",
+    "content": "<p class=\"project-block__block-element\">Upon agreement on the proposal details, we'll commence with the project kick-off. This phase will involve an in-depth discussion of your specific needs, followed by the development of a detailed project plan. We believe in maintaining transparency and open communication throughout the project to ensure all your expectations are met.</p>\n<p class=\"project-block__block-element\">We look forward to an opportunity to work together and deliver a software solution that aligns with your vision and drives your business growth. Thank you for considering our proposal.</p>"
+  }
+]

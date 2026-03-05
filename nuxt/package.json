@@ -1,0 +1,58 @@
+{
+	"private": true,
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"start": "nuxt start",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare",
+		"typecheck": "nuxt typecheck",
+		"lint": "eslint --cache .",
+		"format": "prettier --write \"**/*.{md,y?(a)ml,json,vue}\""
+	},
+	"devDependencies": {
+		"@iconify-json/material-symbols": "^1.2.17",
+		"@iconify-json/mdi": "^1.2.3",
+		"@nuxtjs/eslint-config-typescript": "^12.1.0",
+		"@nuxtjs/eslint-module": "^4.1.0",
+		"@nuxtjs/tailwindcss": "^6.13.2",
+		"@tailwindcss/forms": "^0.5.10",
+		"@tailwindcss/typography": "^0.5.16",
+		"@types/uuid": "^10.0.0",
+		"@vueuse/core": "^13.0.0",
+		"@vueuse/nuxt": "^13.0.0",
+		"eslint": "9.23.0",
+		"eslint-config-prettier": "^10.1.1",
+		"eslint-plugin-prettier": "^5.2.5",
+		"eslint-plugin-vue": "^10.0.0",
+		"prettier": "^3.5.3",
+		"typescript": "^5.8.2",
+		"vue-tsc": "^2.2.8"
+	},
+	"dependencies": {
+		"@directus/sdk": "^19.1.0",
+		"@formkit/auto-animate": "^0.8.2",
+		"@headlessui/vue": "^1.7.23",
+		"@nuxt/icon": "^1.11.0",
+		"@nuxt/image": "^1.10.0",
+		"@nuxt/ui": "^2.18.2",
+		"@nuxtjs/color-mode": "^3.5.2",
+		"@nuxtjs/google-fonts": "^3.2.0",
+		"@nuxtjs/seo": "^3.0.1",
+		"@stripe/stripe-js": "^6.1.0",
+		"@vueuse/motion": "^3.0.3",
+		"micromark": "^4.0.2",
+		"micromark-extension-gfm": "^3.0.0",
+		"nuxt": "^3.16.1",
+		"stripe": "^17.7.0",
+		"uuid": "^11.1.0",
+		"v-perfect-signature": "^1.4.0",
+		"vue-dompurify-html": "^5.2.0"
+	},
+	"packageManager": "pnpm@9.6.0",
+	"engines": {
+		"node": ">=18.0.0",
+		"pnpm": ">=8.6.0"
+	}
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "4a030aa9-61b5-468e-830e-c0f5df7e9598",
+    "title": "Our Clients",
+    "headline": "<p>We've built applications for national and international clients.</p>",
+    "logos": [
+      "8924ec34-40dd-4d46-8e8a-6801c5acba22",
+      "8258e0d7-d341-4c68-a42a-7b2eca8ae862",
+      "2e6e99fb-caa9-4f8c-a1c2-c224cc6e78ab",
+      "e9932b38-1c2b-4919-bb0a-2a7fd7b97121"
+    ]
+  },
+  {
+    "id": "f22bcb92-6793-4518-b9e7-3d789ed894df",
+    "title": "Tech Stack",
+    "headline": "<p>As solid as you'll find</p>",
+    "logos": [
+      "8ec8db1d-1918-4329-aa25-1f983329e09d",
+      "fa2f38e0-8b85-4f6a-8524-dc23497aa30a",
+      "6e30cf98-e952-496b-a01a-cb9c1fc98322",
+      "3d1825e9-1568-407d-b234-8a4273e51b08"
+    ]
+  }
+]

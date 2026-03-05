@@ -1,0 +1,20 @@
+[
+  {
+    "id": "8d7cb6e3-bae7-48f6-9af3-4b510167289c",
+    "title": "Getting Started",
+    "slug": "getting-started",
+    "icon": "not_started",
+    "description": "How to get started with Agency OS",
+    "sort": 1,
+    "articles": []
+  },
+  {
+    "id": "5bb9ab97-a99b-4582-9c7c-58c9e00ccb1e",
+    "title": "Client Portal",
+    "slug": "client-portal",
+    "icon": "captive_portal",
+    "description": "How to use your client portal.",
+    "sort": 2,
+    "articles": []
+  }
+]

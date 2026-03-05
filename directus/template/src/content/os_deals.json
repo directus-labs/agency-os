@@ -1,0 +1,27 @@
+[
+  {
+    "deal_stage": "5019caab-ceaf-41da-804b-4c477a712129",
+    "organization": "f20f7a74-34e3-4a84-baea-d7f0f380df9e",
+    "owner": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "21e05753-b453-4446-b35e-d0d93956d917",
+    "date_updated": "2023-10-23T12:48:10.816Z",
+    "date_created": "2023-09-09T03:14:51.260Z",
+    "next_contact_date": "2023-09-09T12:00:00",
+    "close_date": "2023-09-22",
+    "name": "Directus Website Deal",
+    "deal_notes": null,
+    "sort": null,
+    "deal_value": 5000,
+    "proposals": [
+      "b3724c97-c795-49a1-a921-f6ed4034eebb"
+    ],
+    "activities": [
+      "19acbb62-7040-4821-9113-5037bd869ad4"
+    ],
+    "contacts": [
+      "b583fb2e-e813-498a-8f8a-1c9418e28e60"
+    ]
+  }
+]

@@ -1,0 +1,128 @@
+[
+  {
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "image": "643faffb-d41d-48ad-9050-881cf495cbb6",
+    "id": "74705463-e6df-469f-85b5-d9e4b63989af",
+    "date_updated": "2023-09-09T02:14:11.746Z",
+    "date_created": "2023-02-26T23:10:37.466Z",
+    "status": "published",
+    "name": "Rabbat Minor",
+    "job_title": "Director of Demand Gen",
+    "social_media": [
+      {
+        "service": "linkedin",
+        "url": "https://www.linkedin.com/in/mattbminor/"
+      },
+      {
+        "service": "twitter",
+        "url": "https://twitter.com/mattm1nor"
+      }
+    ],
+    "bio": "<p>When I was 19, I realized my dreams of being a rock star weren't going to pan out. So, I decided to sellout 😂. I fell into marketing by chance, but it quickly became a labor of love. At my core, I enjoy learning more about people and their stories. That being said &ndash; let's chat! I'd love to hear your story.</p>",
+    "sort": null,
+    "posts": [
+      "f7845a69-edcb-4163-a2a9-fb82b64475c5"
+    ]
+  },
+  {
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "image": "e15ca910-1567-4f15-b5a0-b802da67f228",
+    "id": "78773c92-7e57-4e58-8198-c840958cedb6",
+    "date_updated": "2023-09-09T02:14:11.847Z",
+    "date_created": "2023-02-27T04:16:40.763Z",
+    "status": "published",
+    "name": "Carrot Gillespie",
+    "job_title": "Developer Advocate",
+    "social_media": [
+      {
+        "service": "linkedin",
+        "url": "https://www.linkedin.com/in/mattbminor/"
+      },
+      {
+        "service": "twitter",
+        "url": "https://twitter.com/mattm1nor"
+      }
+    ],
+    "bio": "<p>When I was 19, I realized my dreams of being a rock star weren't going to pan out. So, I decided to sellout 😂. I fell into marketing by chance, but it quickly became a labor of love. At my core, I enjoy learning more about people and their stories. That being said &ndash; let's chat! I'd love to hear your story.</p>",
+    "sort": null,
+    "posts": [
+      "00e918d9-0022-4c4d-bb3b-c71622d28149",
+      "ba559a1e-5b0c-4932-ab97-b1ab4ca69955",
+      "ddf1003f-6b9a-460c-83fd-d985d6defbd6"
+    ]
+  },
+  {
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "image": "f1693c44-52e4-4fae-a7d2-b3153a34eb72",
+    "id": "78ea9b95-41ca-49a4-9990-ba9e4d44a057",
+    "date_updated": "2023-09-09T02:14:11.946Z",
+    "date_created": "2023-02-27T04:00:19.846Z",
+    "status": "published",
+    "name": "Bunny Daniels",
+    "job_title": "Account Executive",
+    "social_media": [
+      {
+        "service": "twitter",
+        "url": "https://twitter.com/mattm1nor"
+      }
+    ],
+    "bio": "<p>When I was 19, I realized my dreams of being a rock star weren't going to pan out. So, I decided to sellout 😂. I fell into marketing by chance, but it quickly became a labor of love. At my core, I enjoy learning more about people and their stories. That being said &ndash; let's chat! I'd love to hear your story.</p>",
+    "sort": null,
+    "posts": [
+      "b823edc9-606e-4782-baad-18abf807c3a1",
+      "c96b64b4-9567-46f6-8eb5-ac2f37c4918d"
+    ]
+  },
+  {
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "image": "d598a4c0-4e9a-44a3-a72e-49564e34a432",
+    "id": "fbe0f198-c456-4da3-ba31-52952c93825e",
+    "date_updated": "2023-09-09T02:14:12.049Z",
+    "date_created": "2023-02-27T04:16:48.198Z",
+    "status": "published",
+    "name": "Pawdro Pizzaro",
+    "job_title": "Account Executive",
+    "social_media": [
+      {
+        "service": "linkedin",
+        "url": "https://www.linkedin.com/in/mattbminor/"
+      }
+    ],
+    "bio": "<p>When I was 19, I realized my dreams of being a rock star weren't going to pan out. So, I decided to sellout 😂. I fell into marketing by chance, but it quickly became a labor of love. At my core, I enjoy learning more about people and their stories. That being said &ndash; let's chat! I'd love to hear your story.</p>",
+    "sort": null,
+    "posts": [
+      "73e34ae0-4421-424e-9a94-a3550cd3810d",
+      "f61a06b5-8913-4152-89b8-04b6cac6c0b9"
+    ]
+  },
+  {
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "image": "08177527-b867-47e9-b5d5-eab146b3cdba",
+    "id": "113893f5-1768-4ab0-92eb-bd6ee8236437",
+    "date_updated": "2023-09-09T02:14:12.148Z",
+    "date_created": "2023-02-27T04:00:05.744Z",
+    "status": "published",
+    "name": "Bun Haynes",
+    "job_title": "CEO",
+    "social_media": [
+      {
+        "service": "linkedin",
+        "url": "https://www.linkedin.com/in/mattbminor/"
+      },
+      {
+        "service": "twitter",
+        "url": "https://twitter.com/mattm1nor"
+      }
+    ],
+    "bio": "<p>When I was 19, I realized my dreams of being a rock star weren't going to pan out. So, I decided to sellout 😂. I fell into marketing by chance, but it quickly became a labor of love. At my core, I enjoy learning more about people and their stories. That being said &ndash; let's chat! I'd love to hear your story.</p>",
+    "sort": null,
+    "posts": [
+      "08ffcf49-8d76-4f48-a531-fb16327dffa5"
+    ]
+  }
+]

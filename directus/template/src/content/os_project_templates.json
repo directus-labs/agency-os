@@ -1,0 +1,467 @@
+[
+  {
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "7acfc20c-4980-4120-9c96-3649b3a518b2",
+    "date_updated": "2023-09-11T14:37:57.133Z",
+    "date_created": "2023-09-09T14:42:44.095Z",
+    "name": "Roadmapping",
+    "status": "draft",
+    "tasks": [
+      {
+        "type": "meeting",
+        "name": "Kickoff Call",
+        "assigned_to": "client",
+        "description": "🚀 <strong>Purpose:</strong><br>The kickoff call marks the exciting beginning of our collaboration...",
+        "is_visible_to_client": true
+      },
+      {
+        "type": "deliverable",
+        "name": "Provide current strategy and business documentation",
+        "assigned_to": "client",
+        "description": null
+      },
+      {
+        "type": "milestone",
+        "name": "Current State Analysis",
+        "description": null,
+        "assigned_to": "both"
+      },
+      {
+        "type": "task",
+        "name": "Review current business strategy and operations",
+        "assigned_to": "team"
+      },
+      {
+        "type": "task",
+        "name": "Identify existing challenges and opportunities",
+        "assigned_to": "team"
+      },
+      {
+        "type": "milestone",
+        "name": "Future State Visioning",
+        "assigned_to": "both"
+      },
+      {
+        "type": "task",
+        "name": "Define future business goals and objectives",
+        "assigned_to": "team"
+      },
+      {
+        "type": "task",
+        "name": "Visualize potential roadblocks and enablers",
+        "assigned_to": "team"
+      },
+      {
+        "type": "milestone",
+        "name": "Roadmap Creation",
+        "assigned_to": "both"
+      },
+      {
+        "type": "task",
+        "name": "Prioritize projects and initiatives",
+        "assigned_to": "team"
+      },
+      {
+        "type": "task",
+        "name": "Define key milestones and timelines",
+        "assigned_to": "team"
+      },
+      {
+        "type": "task",
+        "name": "Allocate resources and responsibilities",
+        "assigned_to": "team"
+      },
+      {
+        "type": "milestone",
+        "name": "Review and Feedback",
+        "assigned_to": "both"
+      },
+      {
+        "type": "task",
+        "name": "Gather client feedback on the draft roadmap",
+        "assigned_to": "team"
+      },
+      {
+        "type": "task",
+        "name": "Make necessary revisions and finalize the roadmap",
+        "assigned_to": "team"
+      },
+      {
+        "type": "deliverable",
+        "name": "Finalized Strategic Roadmap",
+        "assigned_to": "client",
+        "description": null
+      }
+    ],
+    "description": "<p>This roadmap project template lays out a clear path from understanding an organization's current state to detailing the steps required to reach its envisioned future. It's all about setting strategic directions, goals, and plotting the journey to achieve them.</p>",
+    "sort": 1
+  },
+  {
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "5711608d-c421-48b6-87c5-d69fa7d2b4db",
+    "date_updated": "2023-09-11T14:37:50.043Z",
+    "date_created": "2023-09-09T13:58:43.807Z",
+    "name": "Brand Identity",
+    "status": "draft",
+    "tasks": [
+      {
+        "type": "meeting",
+        "name": "Kickoff Call",
+        "assigned_to": "client",
+        "description": "🚀 <strong>Purpose:</strong><br>The kickoff call marks the exciting beginning of our collaboration...",
+        "is_visible_to_client": true
+      },
+      {
+        "type": "deliverable",
+        "name": "Complete branding questionnaire",
+        "assigned_to": "client",
+        "description": null
+      },
+      {
+        "type": "milestone",
+        "name": "Research and Discovery",
+        "description": null,
+        "assigned_to": "both"
+      },
+      {
+        "type": "task",
+        "name": "Gather client's existing brand materials",
+        "assigned_to": "team"
+      },
+      {
+        "type": "task",
+        "name": "Identify target audience personas",
+        "assigned_to": "team"
+      },
+      {
+        "type": "milestone",
+        "name": "Design Phase",
+        "assigned_to": "both"
+      },
+      {
+        "type": "task",
+        "name": "Develop logo concepts",
+        "assigned_to": "team"
+      },
+      {
+        "type": "task",
+        "name": "Design business cards, letterheads, and other collaterals",
+        "assigned_to": "team"
+      },
+      {
+        "type": "milestone",
+        "name": "Feedback and Revisions",
+        "assigned_to": "both"
+      },
+      {
+        "type": "task",
+        "name": "Incorporate client feedback on logo and collateral designs",
+        "assigned_to": "team"
+      },
+      {
+        "type": "milestone",
+        "name": "Final Presentation and Handover",
+        "assigned_to": "both"
+      },
+      {
+        "type": "deliverable",
+        "name": "Brand guidelines document",
+        "assigned_to": "client",
+        "description": null
+      }
+    ],
+    "description": "<p>This project template encompasses the creation and development of a visual and conceptual identity for a brand. It covers everything from understanding the company&rsquo;s mission and values, to designing logos, selecting color palettes, and crafting brand guidelines.</p>",
+    "sort": 2
+  },
+  {
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "91e6a821-776b-4aeb-88c0-86e4724bca1c",
+    "date_updated": "2023-10-22T06:18:24.030Z",
+    "date_created": "2023-09-09T13:57:48.636Z",
+    "name": "Website Design and Development",
+    "status": "draft",
+    "tasks": [
+      {
+        "type": "meeting",
+        "name": "Kickoff Call",
+        "assigned_to": "client",
+        "description": "🚀 <strong>Purpose:</strong><br>The kickoff call marks the exciting beginning of our collaboration...",
+        "is_visible_to_client": true,
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 0,
+        "due_days": 0
+      },
+      {
+        "type": "deliverable",
+        "name": "Submit website content and assets",
+        "assigned_to": "client",
+        "description": null,
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 1,
+        "due_days": 5
+      },
+      {
+        "type": "milestone",
+        "name": "Planning and Strategy",
+        "description": null,
+        "assigned_to": "both",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 6,
+        "due_days": 10
+      },
+      {
+        "type": "task",
+        "name": "Define site architecture and sitemap",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 11,
+        "due_days": 15
+      },
+      {
+        "type": "task",
+        "name": "Determine platform and tech stack",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 16,
+        "due_days": 20
+      },
+      {
+        "type": "milestone",
+        "name": "Design Phase",
+        "assigned_to": "both",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 21,
+        "due_days": 30
+      },
+      {
+        "type": "task",
+        "name": "Create website mockups and wireframes",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 31,
+        "due_days": 35
+      },
+      {
+        "type": "task",
+        "name": "Develop visual design concepts",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 36,
+        "due_days": 40
+      },
+      {
+        "type": "task",
+        "name": "Setup development environment",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 41,
+        "due_days": 42
+      },
+      {
+        "type": "task",
+        "name": "Develop core features and site structure",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 43,
+        "due_days": 47
+      },
+      {
+        "type": "task",
+        "name": "Integrate third-party services and APIs",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 48,
+        "due_days": 50
+      },
+      {
+        "type": "task",
+        "name": "Implement responsive design for mobile devices",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 51,
+        "due_days": 53
+      },
+      {
+        "type": "task",
+        "name": "Develop interactive elements and user interface components",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 54,
+        "due_days": 56
+      },
+      {
+        "type": "task",
+        "name": "Implement site security measures",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 57,
+        "due_days": 58
+      },
+      {
+        "type": "task",
+        "name": "Optimize website for performance",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 59,
+        "due_days": 60
+      },
+      {
+        "type": "task",
+        "name": "Setup SEO-friendly URL structures and meta tags",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 61,
+        "due_days": 63
+      },
+      {
+        "type": "milestone",
+        "name": "Testing and QA",
+        "assigned_to": "both",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 64,
+        "due_days": 70
+      },
+      {
+        "type": "task",
+        "name": "Conduct website quality assurance",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 71,
+        "due_days": 75
+      },
+      {
+        "type": "task",
+        "name": "Collect client feedback and make necessary revisions",
+        "assigned_to": "team",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 76,
+        "due_days": 80
+      },
+      {
+        "type": "milestone",
+        "name": "Launch and Handover",
+        "assigned_to": "both",
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 81,
+        "due_days": 90
+      },
+      {
+        "type": "deliverable",
+        "name": "Website documentation and guidelines",
+        "assigned_to": "client",
+        "description": null,
+        "set_dates_relative_to": "project_start_date",
+        "start_days": 91,
+        "due_days": 95
+      }
+    ],
+    "description": "<p>This template is a comprehensive guide to designing and developing a website. It includes stages from initial conceptualization and wireframing, to designing the user interface, and then developing, testing, and deploying the site.</p>",
+    "sort": 3
+  },
+  {
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "c2ddc8f3-ac98-4ffc-a5be-e0329eafcf0e",
+    "date_updated": "2023-09-11T14:38:02.908Z",
+    "date_created": "2023-09-11T13:38:53.187Z",
+    "name": "SEO Audit",
+    "status": "draft",
+    "tasks": [
+      {
+        "type": "meeting",
+        "name": "Kickoff Call",
+        "assigned_to": "client",
+        "description": "🚀 <strong>Purpose:</strong><br>The kickoff call marks the exciting beginning of our collaboration...",
+        "is_visible_to_client": true
+      },
+      {
+        "type": "deliverable",
+        "name": "Provide website access and analytics credentials",
+        "assigned_to": "client",
+        "description": null
+      },
+      {
+        "type": "milestone",
+        "name": "Preliminary Analysis",
+        "description": null,
+        "assigned_to": "both"
+      },
+      {
+        "type": "task",
+        "name": "Website crawl and indexation check",
+        "assigned_to": "team"
+      },
+      {
+        "type": "task",
+        "name": "Analyze website's organic search traffic",
+        "assigned_to": "team"
+      },
+      {
+        "type": "milestone",
+        "name": "Technical SEO Assessment",
+        "assigned_to": "both"
+      },
+      {
+        "type": "task",
+        "name": "Evaluate site's mobile responsiveness and speed",
+        "assigned_to": "team"
+      },
+      {
+        "type": "task",
+        "name": "Check for broken links and 404 pages",
+        "assigned_to": "team"
+      },
+      {
+        "type": "task",
+        "name": "Assess website's HTTPS and security setup",
+        "assigned_to": "team"
+      },
+      {
+        "type": "milestone",
+        "name": "On-Page SEO Assessment",
+        "assigned_to": "both"
+      },
+      {
+        "type": "task",
+        "name": "Review meta titles, descriptions, and header tags",
+        "assigned_to": "team"
+      },
+      {
+        "type": "task",
+        "name": "Analyze keyword distribution and content relevance",
+        "assigned_to": "team"
+      },
+      {
+        "type": "milestone",
+        "name": "Off-Page SEO Assessment",
+        "assigned_to": "both"
+      },
+      {
+        "type": "task",
+        "name": "Audit backlink profile and assess link quality",
+        "assigned_to": "team"
+      },
+      {
+        "type": "task",
+        "name": "Identify potential link building opportunities",
+        "assigned_to": "team"
+      },
+      {
+        "type": "milestone",
+        "name": "Report and Recommendations",
+        "assigned_to": "both"
+      },
+      {
+        "type": "deliverable",
+        "name": "Comprehensive SEO Audit Report",
+        "assigned_to": "client",
+        "description": null
+      }
+    ],
+    "description": "<p>Designed for evaluating a website's search engine optimization, this template involves analyzing technical and on-page SEO elements, understanding organic traffic, and reviewing backlink profiles. The goal is to identify areas of improvement to boost the site's search visibility.</p>",
+    "sort": 4
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "folder": "323d8c22-239e-4134-962a-65a611dd908b",
+    "owner": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "payment_terms": "e11ee7ed-7802-461c-aedc-b2dfecbab9d7",
+    "logo": "eef7d7b1-3bf9-4647-90c1-a16c24161335",
+    "user_updated": null,
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "f1f4ac54-68ee-4fb6-aeb4-4da5304b351d",
+    "date_created": "2023-10-19T13:18:25.001Z",
+    "date_updated": "2023-10-20T03:16:48.489Z",
+    "stripe_customer_id": null,
+    "phone": null,
+    "email": "billing@tezla.com",
+    "brand_color": "#18222F",
+    "website": "https://example.com",
+    "name": "Tezla",
+    "status": "draft",
+    "organization_notes": null,
+    "contacts": [
+      "6f4c96a4-0081-498e-bbf3-7d9bce9f4fd4"
+    ],
+    "addresses": []
+  },
+  {
+    "folder": "27fe9681-9b11-4969-91c8-765e916894f6",
+    "owner": "9300d433-0f5c-425d-9cad-b085c9ffcfda",
+    "payment_terms": "e11ee7ed-7802-461c-aedc-b2dfecbab9d7",
+    "logo": "2b4a0ba0-52c7-4e10-b191-c803d8da6a36",
+    "user_updated": null,
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "f20f7a74-34e3-4a84-baea-d7f0f380df9e",
+    "date_created": "2023-09-09T03:10:01.473Z",
+    "date_updated": "2023-10-20T00:59:39.561Z",
+    "stripe_customer_id": "cus_OlTbJKVanSb1zN",
+    "phone": "+1800-555-5555",
+    "email": "billing@directus.io",
+    "brand_color": "#6644FF",
+    "website": "https://directus.io",
+    "name": "Directus",
+    "status": "draft",
+    "organization_notes": null,
+    "contacts": [
+      "3afc4678-1441-401b-8106-871b31f292c4"
+    ],
+    "addresses": [
+      "98761358-2f9a-43f5-bfe0-f05005e2b50b"
+    ]
+  }
+]

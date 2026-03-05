@@ -1,0 +1,96 @@
+[
+  {
+    "seo": "32f73e14-7391-44bc-8575-e3329ba23b62",
+    "id": "17de1257-ddd3-4aac-825a-dae57f1fabb1",
+    "date_created": "2023-09-20T03:14:05",
+    "date_updated": "2024-01-07T16:37:54",
+    "permalink": "/",
+    "user_updated": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "title": "Home",
+    "status": "published",
+    "sort": 2,
+    "blocks": [
+      "4454e46c-55c1-4b94-bf89-246806dedfe9",
+      "9d7bc6b3-3f19-4c47-b60b-73ba7c3690f8",
+      "03feadbd-11cc-4d67-b096-3f025881ccb0",
+      "283267c2-b3eb-4b08-ab0e-6ded2a57457e",
+      "c8a1c175-7c6e-49a9-9a6e-a6cfaa2de093",
+      "0b1ac09c-c14a-449e-be79-c4cc79eb5dc4",
+      "1d0efb3b-35c1-4afc-afd8-4c47e2f7b38f",
+      "f809ea2e-bbd8-4a18-a78a-36f62556b1ac",
+      "1f5ef341-d8b6-4e4a-bd21-fae42e3f3f90",
+      "1de068d8-b7b1-4c2c-a8ba-bca5e2f6cd67",
+      "15ed67e4-067e-41e6-8b47-9f645ae76540",
+      "59a904f2-96b0-47a1-b302-58930b4c25df",
+      "61a903d0-3154-4876-8f4b-f2eaf83cb572"
+    ]
+  },
+  {
+    "seo": null,
+    "id": "b344d10e-4cc8-4ce6-9f09-a5770bfb1ae6",
+    "date_created": "2023-09-21T03:02:02",
+    "date_updated": "2023-10-20T18:07:25",
+    "permalink": "/manifesto",
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "title": "Manifesto",
+    "status": "published",
+    "sort": 3,
+    "blocks": []
+  },
+  {
+    "seo": null,
+    "id": "7ecce4f4-8976-4b13-a85c-a93f1c105e4f",
+    "date_created": "2023-09-21T03:02:02",
+    "date_updated": "2023-10-20T06:29:36",
+    "permalink": "/team",
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "title": "Team",
+    "status": "published",
+    "sort": 4,
+    "blocks": []
+  },
+  {
+    "seo": null,
+    "id": "f2ceb853-f407-458e-aafa-1412ae2c50ae",
+    "date_created": "2023-09-21T03:02:02",
+    "date_updated": "2023-10-05T12:40:39",
+    "permalink": "/privacy-policy",
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "title": "Privacy Policy",
+    "status": "published",
+    "sort": 5,
+    "blocks": []
+  },
+  {
+    "seo": null,
+    "id": "0945b7d7-9643-4a90-948d-a5d6659014e0",
+    "date_created": "2023-09-21T03:02:02",
+    "date_updated": "2023-10-20T06:29:42",
+    "permalink": "/contact-us",
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "title": "Contact Us",
+    "status": "published",
+    "sort": 6,
+    "blocks": []
+  },
+  {
+    "seo": null,
+    "id": "ac35a4c6-ca73-48c4-9c02-37a50d4bc736",
+    "date_created": "2023-10-05T12:48:12",
+    "date_updated": "2023-10-20T18:05:52",
+    "permalink": "/services",
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "title": "Services",
+    "status": "published",
+    "sort": null,
+    "blocks": [
+      "b27fd70c-68f9-4b76-99b9-aecb66b53207"
+    ]
+  }
+]

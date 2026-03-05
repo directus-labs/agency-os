@@ -1,0 +1,38 @@
+[
+  {
+    "seo": null,
+    "id": "06da3e1e-9af6-4b27-a248-60a58dc229d2",
+    "title": "SEO",
+    "slug": "seo",
+    "color": "#2ECDA7",
+    "headline": "<p>Helpful resources on <em>search</em> engine optimization.</p>",
+    "sort": 1
+  },
+  {
+    "seo": null,
+    "id": "4a62ba82-c48a-465f-a180-a3a8256c93bb",
+    "title": "Case Study",
+    "slug": "case-studies",
+    "color": "#FFC23B",
+    "headline": "<p>Case studies of super <em>successful</em> bunnies.</p>",
+    "sort": 2
+  },
+  {
+    "seo": null,
+    "id": "da30c277-650f-421c-b976-c598f898e89e",
+    "title": "Web Development",
+    "slug": "web-development",
+    "color": "#A2B5CD",
+    "headline": "<p>Our best and brightest advice on web development.</p>",
+    "sort": 3
+  },
+  {
+    "seo": null,
+    "id": "9896a65e-a004-4481-87cf-a07e515a5d82",
+    "title": "Analytics",
+    "slug": "analytics",
+    "color": "#3399FF",
+    "headline": "<p>Tips and advice on how to make sense of your analytics data.</p>",
+    "sort": null
+  }
+]

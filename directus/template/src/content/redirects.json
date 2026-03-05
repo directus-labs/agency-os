@@ -1,0 +1,12 @@
+[
+  {
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "812dff34-76f7-41c4-a827-a7d32fb4570b",
+    "date_updated": "2023-09-09T02:14:07.152Z",
+    "date_created": "2023-03-14T19:37:43.660Z",
+    "url_old": "/redirect",
+    "url_new": "/",
+    "response_code": 301
+  }
+]

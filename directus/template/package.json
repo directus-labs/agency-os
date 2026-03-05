@@ -1,0 +1,11 @@
+{
+  "author": "",
+  "description": "",
+  "directusTemplate": true,
+  "files": [
+    "src"
+  ],
+  "name": "directus-template-agencyos",
+  "templateName": "AgencyOS",
+  "version": "3.2.0"
+}

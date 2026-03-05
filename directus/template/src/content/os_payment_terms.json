@@ -1,0 +1,18 @@
+[
+  {
+    "id": "0bac9f5f-7b7a-420d-a046-f81e4bb61547",
+    "user_updated": null,
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "date_updated": null,
+    "date_created": "2023-10-10T22:59:25.688Z",
+    "name": "Net 10"
+  },
+  {
+    "id": "e11ee7ed-7802-461c-aedc-b2dfecbab9d7",
+    "user_updated": null,
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "date_updated": null,
+    "date_created": "2023-10-10T22:59:22.680Z",
+    "name": "Net 30"
+  }
+]

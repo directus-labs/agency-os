@@ -1,0 +1,24 @@
+[
+  {
+    "id": "007bed6b-147e-4931-a141-350e2617bd6b",
+    "title": "Steps",
+    "headline": "<p>A process designed to deliver the <em>best results</em></p>",
+    "alternate_image_position": true,
+    "show_step_numbers": true,
+    "steps": []
+  },
+  {
+    "id": "a163efd7-1037-4261-939d-28a08122c426",
+    "title": "Our Process",
+    "headline": "<p><em>Refined</em> over tons of projects</p>",
+    "alternate_image_position": true,
+    "show_step_numbers": true,
+    "steps": [
+      "6dc81e9f-c446-4005-a87f-a54163f48433",
+      "36ec55d8-1bc0-494c-8448-7afcce4bd5e1",
+      "6ace7412-79cc-4f03-9d1c-64343b3ebd87",
+      "8306f18f-0dd1-446d-b173-6f1a481049b9",
+      "75903f73-8964-46a8-a33a-c9d22ecb5daa"
+    ]
+  }
+]

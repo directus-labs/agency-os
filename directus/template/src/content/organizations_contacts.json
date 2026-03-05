@@ -1,0 +1,14 @@
+[
+  {
+    "organizations_id": "f20f7a74-34e3-4a84-baea-d7f0f380df9e",
+    "contacts_id": "447868fd-194c-41a4-bb7b-0aa85d5a44e8",
+    "id": "3afc4678-1441-401b-8106-871b31f292c4",
+    "sort": 3
+  },
+  {
+    "organizations_id": "f1f4ac54-68ee-4fb6-aeb4-4da5304b351d",
+    "contacts_id": "79d06c95-2030-41b1-b455-9a87f0777788",
+    "id": "6f4c96a4-0081-498e-bbf3-7d9bce9f4fd4",
+    "sort": null
+  }
+]

@@ -1,0 +1,2421 @@
+[
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "pages",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "title": 179.501708984375
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "title",
+          "slug",
+          "blocks"
+        ],
+        "sort": [
+          "sort"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "testimonials",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "image": 51.5,
+          "title": 106.58203125,
+          "company": 125.6171875,
+          "subtitle": 117.40625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "company",
+          "subtitle"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": "1. Workflow",
+    "collection": "posts",
+    "search": null,
+    "layout": "kanban",
+    "icon": "view_kanban",
+    "color": "#18222F",
+    "filter": null,
+    "layout_options": {
+      "kanban": {
+        "titleField": "title",
+        "showUngrouped": false,
+        "dateField": "date_published",
+        "textField": "summary",
+        "crop": true,
+        "groupField": "status",
+        "groupTitle": null
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "date_published"
+        ],
+        "sort": [
+          "-date_published"
+        ],
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": "2. Calendar",
+    "collection": "posts",
+    "search": null,
+    "layout": "calendar",
+    "icon": "calendar_today",
+    "color": "#18222F",
+    "filter": null,
+    "layout_options": {
+      "kanban": {
+        "titleField": "title",
+        "showUngrouped": false,
+        "dateField": null,
+        "textField": "content"
+      },
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "image": 63.16796875,
+          "title": 371.87109375,
+          "date_published": 179.76171875
+        },
+        "spacing": "comfortable"
+      },
+      "calendar": {
+        "viewInfo": {
+          "type": "dayGridMonth",
+          "startDateStr": "2023-02-01T00:00:00-05:00"
+        },
+        "startDateField": "date_published",
+        "template": "{{title}}"
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "date_published"
+        ],
+        "sort": [
+          "-date_published"
+        ],
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": "3. All Posts",
+    "collection": "posts",
+    "search": null,
+    "layout": "tabular",
+    "icon": "list",
+    "color": "#18222F",
+    "filter": null,
+    "layout_options": {
+      "kanban": {
+        "titleField": "title",
+        "showUngrouped": false,
+        "dateField": null,
+        "textField": "content"
+      },
+      "tabular": {
+        "widths": {
+          "status": 101.4609375,
+          "image": 63.16796875,
+          "title": 371.87109375,
+          "category": 135.03125,
+          "date_published": 145.5078125,
+          "author": 227.5546875
+        },
+        "spacing": "comfortable"
+      },
+      "calendar": {
+        "viewInfo": {
+          "type": "dayGridMonth",
+          "startDateStr": "2023-02-01T00:00:00-05:00"
+        },
+        "startDateField": "date_published",
+        "template": "{{title}}"
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "category",
+          "date_published",
+          "author"
+        ],
+        "sort": [
+          "-date_published"
+        ],
+        "page": 1,
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "forms",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "title",
+          "key",
+          "schema"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "inbox",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "data": 284.96807861328125
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "date_created",
+          "form",
+          "data"
+        ],
+        "sort": [
+          "-date_created"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "navigation",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 37.29296875,
+          "id": 115.59375
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "title",
+          "id",
+          "items"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "navigation_items",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "navigation": 131.640625,
+          "has_children": 107.65625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "navigation",
+          "title",
+          "has_children",
+          "label",
+          "type",
+          "parent"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "seo",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {}
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "title",
+          "meta_description",
+          "no_follow",
+          "no_index"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "redirects",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "response_code": 156.15625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "response_code",
+          "url_old",
+          "url_new"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": "1. My Activities",
+    "collection": "os_activities",
+    "search": null,
+    "layout": null,
+    "icon": "event_list",
+    "color": "#D064AC",
+    "filter": {
+      "_and": [
+        {
+          "_and": [
+            {
+              "status": {
+                "_eq": "open"
+              }
+            },
+            {
+              "assigned_to": {
+                "_eq": "$CURRENT_USER"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 45.8515625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "limit": 25,
+        "fields": [
+          "status",
+          "activity_type",
+          "deal",
+          "name"
+        ],
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": "1. My Deals",
+    "collection": "os_deals",
+    "search": null,
+    "layout": "kanban",
+    "icon": "person_search",
+    "color": "#D064AC",
+    "filter": {
+      "_and": [
+        {
+          "owner": {
+            "_eq": "$CURRENT_USER"
+          }
+        }
+      ]
+    },
+    "layout_options": {
+      "kanban": {
+        "groupField": "deal_stage",
+        "groupTitle": "name",
+        "showUngrouped": false,
+        "dateField": "next_contact_date",
+        "userField": "owner",
+        "titleField": "name",
+        "textField": null
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "limit": 25
+      },
+      "kanban": {
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": "1. My Tasks",
+    "collection": "os_tasks",
+    "search": null,
+    "layout": "tabular",
+    "icon": "playlist_add_check_circle",
+    "color": "#D064AC",
+    "filter": {
+      "_and": [
+        {
+          "_and": [
+            {
+              "assigned_to": {
+                "_eq": "$CURRENT_USER"
+              }
+            },
+            {
+              "status": {
+                "_neq": "completed"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 45.0062255859375,
+          "name": 265.52813720703125,
+          "type": 149.378173828125
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "limit": 25,
+        "page": 1,
+        "fields": [
+          "status",
+          "name",
+          "due_date",
+          "type",
+          "assigned_to"
+        ],
+        "sort": [
+          "due_date"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": "1. My Projects",
+    "collection": "os_projects",
+    "search": null,
+    "layout": "tabular",
+    "icon": "mindfulness",
+    "color": "#D064AC",
+    "filter": {
+      "_and": [
+        {
+          "_and": [
+            {
+              "owner": {
+                "_eq": "$CURRENT_USER"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 97.0703125,
+          "name": 257.5887451171875
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "limit": 25,
+        "page": 1,
+        "fields": [
+          "status",
+          "name",
+          "organization",
+          "owner",
+          "start_date",
+          "due_date",
+          "contacts"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "team",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "image": 61.731781005859375
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "name",
+          "job_title"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "categories",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "color": 39.171875
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "color",
+          "title",
+          "slug"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "posts",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 100.4296875,
+          "image": 55.890625,
+          "title": 375.66015625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "date_published"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "testimonials",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "image": 51.5,
+          "title": 106.58203125,
+          "company": 125.6171875,
+          "subtitle": 117.40625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "company",
+          "subtitle"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "team",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "image": 61.731781005859375
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "name",
+          "job_title"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "testimonials",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "image": 51.5,
+          "title": 106.58203125,
+          "company": 125.6171875,
+          "subtitle": 117.40625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "company",
+          "subtitle"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "block_faqs",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": null,
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "posts",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 100.4296875,
+          "image": 55.890625,
+          "title": 375.66015625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "date_published"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "pages",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "title": 179.501708984375
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "title",
+          "slug",
+          "blocks"
+        ],
+        "sort": [
+          "sort"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "team",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "image": 61.731781005859375
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "name",
+          "job_title"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "navigation_items",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "navigation": 131.640625,
+          "has_children": 107.65625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "navigation",
+          "title",
+          "has_children",
+          "label",
+          "type",
+          "parent"
+        ],
+        "sort": [
+          "-navigation"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "block_hero",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "navigation",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 37.29296875,
+          "id": 115.59375
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "title",
+          "id",
+          "items"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "directus_presets",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "inbox",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "data": 284.96807861328125
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "date_created",
+          "form",
+          "data"
+        ],
+        "sort": [
+          "-date_created"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "forms",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "title",
+          "key",
+          "schema"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "directus_files",
+    "search": null,
+    "layout": "cards",
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "cards": {
+        "icon": "insert_drive_file",
+        "title": "{{ title }}",
+        "subtitle": "{{ type }} • {{ filesize }}",
+        "size": 4,
+        "imageFit": "crop"
+      }
+    },
+    "layout_query": {
+      "cards": {
+        "sort": [
+          "-uploaded_on"
+        ],
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "block_form",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": null,
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "block_richtext",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "content": 328.578125,
+          "headline": 357.390625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "content",
+          "headline",
+          "title"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "pages",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": {
+      "_and": [
+        {
+          "status": {
+            "_eq": "published"
+          }
+        }
+      ]
+    },
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "title": 179.501708984375,
+          "date_created": 214.70703125
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "title",
+          "slug",
+          "blocks",
+          "date_created"
+        ],
+        "sort": [
+          "-title"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "directus_files",
+    "search": null,
+    "layout": "cards",
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "cards": {
+        "icon": "insert_drive_file",
+        "title": "{{ title }}",
+        "subtitle": "{{ type }} • {{ filesize }}",
+        "size": 4,
+        "imageFit": "crop"
+      }
+    },
+    "layout_query": {
+      "cards": {
+        "sort": [
+          "-uploaded_on"
+        ],
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "posts",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 100.4296875,
+          "image": 55.890625,
+          "title": 375.66015625,
+          "seo": 337.87109375
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "date_published",
+          "seo"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "block_hero",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "posts",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 100.4296875,
+          "image": 55.890625,
+          "title": 375.66015625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "date_published"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "block_testimonials",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "pages",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": {
+      "_and": [
+        {
+          "status": {
+            "_eq": "published"
+          }
+        }
+      ]
+    },
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "title": 179.501708984375,
+          "date_created": 214.70703125
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "title",
+          "slug",
+          "blocks",
+          "date_created"
+        ],
+        "sort": [
+          "sort"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "inbox",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "data": 284.96807861328125
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "date_created",
+          "form",
+          "data"
+        ],
+        "sort": [
+          "-date_created"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "directus_files",
+    "search": null,
+    "layout": "cards",
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "cards": {
+        "icon": "insert_drive_file",
+        "title": "{{ title }}",
+        "subtitle": "{{ type }} • {{ filesize }}",
+        "size": 4,
+        "imageFit": "crop"
+      }
+    },
+    "layout_query": {
+      "cards": {
+        "sort": [
+          "-uploaded_on"
+        ],
+        "page": 1,
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "messages",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "categories",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "color": 39.171875
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "color",
+          "title",
+          "slug"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "categories",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "color": 39.171875
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "color",
+          "title",
+          "slug"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "forms",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "title",
+          "key",
+          "schema"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "redirects",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "response_code": 156.15625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "response_code",
+          "url_old",
+          "url_new"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "posts",
+    "search": null,
+    "layout": "tabular",
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 100.4296875,
+          "image": 55.890625,
+          "title": 375.66015625
+        }
+      },
+      "cards": {
+        "title": "{{title}}",
+        "subtitle": "{{sort}}"
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "date_published"
+        ],
+        "limit": 25
+      },
+      "cards": {
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "posts",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 100.4296875,
+          "image": 55.890625,
+          "title": 375.66015625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "date_published"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "conversations",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "limit": 25,
+        "fields": [
+          "status",
+          "title",
+          "messages"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "block_form",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "navigation",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 37.29296875,
+          "id": 115.59375
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "title",
+          "id",
+          "items"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "navigation_items",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "navigation": 131.640625,
+          "has_children": 107.65625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "navigation",
+          "title",
+          "has_children",
+          "label",
+          "type",
+          "parent"
+        ],
+        "sort": [
+          "-navigation"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "seo",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {}
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "title",
+          "meta_description",
+          "no_follow",
+          "no_index"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "conversations",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "limit": 25,
+        "fields": [
+          "status",
+          "title",
+          "messages"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "help_articles",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "limit": 25,
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "help_articles",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "limit": 25,
+        "page": 1,
+        "fields": [
+          "status",
+          "title",
+          "help_collection"
+        ],
+        "sort": [
+          "sort"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "block_hero",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "inbox",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "data": 284.96807861328125
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "date_created",
+          "form",
+          "data"
+        ],
+        "sort": [
+          "-date_created"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "help_collections",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "icon": 49.12109375
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "limit": 25,
+        "fields": [
+          "icon",
+          "title",
+          "description"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "messages",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "help_feedback",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "team",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "image": 61.731781005859375,
+          "job_title": 265.55078125
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "name",
+          "job_title"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "testimonials",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "image": 51.5,
+          "title": 161.125,
+          "company": 125.6171875,
+          "subtitle": 117.40625
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "image",
+          "title",
+          "company",
+          "subtitle"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "pages",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": {
+      "_and": [
+        {
+          "status": {
+            "_eq": "published"
+          }
+        }
+      ]
+    },
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 32,
+          "title": 179.501708984375,
+          "date_created": 214.70703125
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "fields": [
+          "status",
+          "title",
+          "slug",
+          "blocks",
+          "date_created"
+        ],
+        "sort": [
+          "-title"
+        ],
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "block_video",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "directus_presets",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark_border",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "limit": 25
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": null,
+    "collection": "block_testimonials",
+    "search": null,
+    "layout": null,
+    "icon": "bookmark",
+    "color": null,
+    "filter": null,
+    "layout_options": null,
+    "layout_query": {
+      "tabular": {
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": "1. Open Invoices",
+    "collection": "os_invoices",
+    "search": null,
+    "layout": null,
+    "icon": "warning",
+    "color": "#D064AC",
+    "filter": {
+      "_and": [
+        {
+          "amount_due": {
+            "_gt": "0"
+          }
+        }
+      ]
+    },
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "invoice_number": 66.73175048828125,
+          "status": 87.59112548828125,
+          "organization": 156.05029296875,
+          "due_date": 179.90625,
+          "amount_due": 139.6353759765625,
+          "project": 311.9964599609375
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "page": 1,
+        "limit": 25,
+        "fields": [
+          "invoice_number",
+          "status",
+          "organization",
+          "due_date",
+          "amount_due",
+          "contact",
+          "project",
+          "issue_date"
+        ]
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": "2. Kanban",
+    "collection": "os_tasks",
+    "search": null,
+    "layout": "kanban",
+    "icon": "view_kanban",
+    "color": "#D064AC",
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 42.481231689453125,
+          "name": 299.28125,
+          "due_date": 144.1102294921875,
+          "project.name": 218.5718994140625
+        }
+      },
+      "calendar": {
+        "viewInfo": {
+          "type": "timeGridWeek",
+          "startDateStr": "2023-09-17T00:00:00-04:00"
+        },
+        "startDateField": "due_date",
+        "template": "{{name}} <{{project.name}}>"
+      },
+      "kanban": {
+        "groupField": "status",
+        "groupTitle": null,
+        "titleField": "name",
+        "userField": "assigned_to",
+        "textField": null,
+        "crop": true,
+        "showUngrouped": false
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "limit": 25,
+        "page": 1,
+        "fields": [
+          "status",
+          "name",
+          "due_date",
+          "assigned_to",
+          "type",
+          "project.name"
+        ]
+      },
+      "kanban": {
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": "3. Calendar",
+    "collection": "os_tasks",
+    "search": null,
+    "layout": "calendar",
+    "icon": "calendar_month",
+    "color": "#D064AC",
+    "filter": null,
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "status": 42.481231689453125,
+          "name": 299.28125,
+          "due_date": 144.1102294921875,
+          "project.name": 218.5718994140625
+        }
+      },
+      "calendar": {
+        "viewInfo": {
+          "type": "listWeek",
+          "startDateStr": "2023-09-17T00:00:00-04:00"
+        },
+        "startDateField": "due_date",
+        "template": "{{name}} <{{project.name}} for {{project.organization.name}}>"
+      },
+      "kanban": {
+        "groupField": "status",
+        "groupTitle": null,
+        "titleField": "name",
+        "userField": "assigned_to",
+        "textField": "description",
+        "crop": true,
+        "showUngrouped": false
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "limit": 25,
+        "page": 1,
+        "fields": [
+          "status",
+          "name",
+          "due_date",
+          "assigned_to",
+          "type",
+          "project.name"
+        ]
+      },
+      "kanban": {
+        "page": 1
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": "1. My Organizations",
+    "collection": "organizations",
+    "search": null,
+    "layout": "tabular",
+    "icon": "business_center",
+    "color": "#6644FF",
+    "filter": {
+      "_and": [
+        {
+          "owner": {
+            "_eq": "$CURRENT_USER"
+          }
+        }
+      ]
+    },
+    "layout_options": {
+      "map": {
+        "cameraOptions": {
+          "center": {
+            "lng": 0,
+            "lat": 2.842170943040401e-14
+          },
+          "zoom": 1.4093909156797106,
+          "bearing": 0,
+          "pitch": 0,
+          "bbox": [
+            -266.1617684801636,
+            -85.05112899999995,
+            266.16176848015976,
+            85.05112899999995
+          ]
+        }
+      },
+      "tabular": {
+        "widths": {
+          "logo.$thumbnail": 54.548614501953125,
+          "name": 181.76129150390625,
+          "addresses": 132.1065673828125,
+          "contacts": 113.73077392578125,
+          "owner": 187.34808349609375,
+          "organization_notes": 188.0078125
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "limit": 25,
+        "page": 1,
+        "fields": [
+          "logo.$thumbnail",
+          "name",
+          "addresses",
+          "contacts",
+          "owner",
+          "website",
+          "organization_notes"
+        ]
+      },
+      "map": {
+        "limit": 1000
+      }
+    },
+    "refresh_interval": null
+  },
+  {
+    "user": null,
+    "role": null,
+    "bookmark": "1. My Contacts",
+    "collection": "contacts",
+    "search": null,
+    "layout": "tabular",
+    "icon": "perm_contact_calendar",
+    "color": "#6644FF",
+    "filter": {
+      "_and": [
+        {
+          "organizations": {
+            "organizations_id": {
+              "owner": {
+                "_eq": "$CURRENT_USER"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "layout_options": {
+      "tabular": {
+        "widths": {
+          "first_name": 125.3125,
+          "email": 252.24786376953125
+        }
+      }
+    },
+    "layout_query": {
+      "tabular": {
+        "limit": 25,
+        "page": 1,
+        "fields": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone",
+          "organizations"
+        ]
+      }
+    },
+    "refresh_interval": null
+  }
+]

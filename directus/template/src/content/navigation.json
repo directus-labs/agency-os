@@ -1,0 +1,34 @@
+[
+  {
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "date_updated": "2023-10-20T18:10:04.699Z",
+    "date_created": "2023-02-26T22:52:32.034Z",
+    "title": "Footer Navigation",
+    "status": "published",
+    "id": "footer",
+    "items": [
+      "dc0870f8-e316-48b0-b34d-ca5c4394344c",
+      "e096f25c-a549-4fe5-a284-17b0a347037a",
+      "69a080ef-024e-4647-9873-d5876b32699a",
+      "44faaaaf-d10e-40ef-a890-57750e993733",
+      "c732b100-1f5a-4ce1-8fde-b0072d09623f",
+      "55a139ed-f4fa-4227-b5dd-7bf234451da8"
+    ]
+  },
+  {
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "date_updated": "2023-10-23T16:29:21.771Z",
+    "date_created": "2023-02-26T21:51:47.211Z",
+    "title": "Main Navigation",
+    "status": "published",
+    "id": "main",
+    "items": [
+      "98fecf94-471c-4439-8289-ff5692853729",
+      "edb1caf2-ae32-49a3-a3d1-2cf0096a5f07",
+      "b3e04cd1-c082-4811-8c93-323ab6fcde86",
+      "fea5cb3b-0a34-4150-90cd-9b41e27ccdb4"
+    ]
+  }
+]

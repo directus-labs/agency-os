@@ -1,0 +1,86 @@
+name: directus-agencyos-template
+services:
+  database:
+    image: postgis/postgis:16-master
+    platform: linux/amd64
+    volumes:
+      - ./data/database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', '${DB_USER}', '-d', '${DB_DATABASE}', '-h', 'localhost']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_interval: 5s
+      start_period: 30s
+
+  cache:
+    image: redis:6
+    healthcheck:
+      test: ['CMD-SHELL', "[ $$(redis-cli ping) = 'PONG' ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_interval: 5s
+      start_period: 30s
+
+  directus:
+    image: directus/directus:11.15.4
+    ports:
+      - ${DIRECTUS_PORT}:8055
+    volumes:
+      - ./uploads:/directus/uploads
+      - ./extensions:/directus/extensions
+    depends_on:
+      database:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+    environment:
+      SECRET: ${DIRECTUS_SECRET}
+
+      DB_CLIENT: 'pg'
+      DB_HOST: 'database'
+      DB_PORT: '5432'
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+      CACHE_ENABLED: ${CACHE_ENABLED}
+      CACHE_AUTO_PURGE: ${CACHE_AUTO_PURGE}
+      CACHE_STORE: 'redis'
+      REDIS: 'redis://cache:6379'
+
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+
+      WEBSOCKETS_ENABLED: ${WEBSOCKETS_ENABLED}
+
+      PUBLIC_URL: ${PUBLIC_URL}
+
+      CORS_ENABLED: ${CORS_ENABLED}
+      CORS_ORIGIN: ${CORS_ORIGIN}
+
+      REFRESH_TOKEN_COOKIE_SECURE: ${REFRESH_TOKEN_COOKIE_SECURE}
+      REFRESH_TOKEN_COOKIE_SAME_SITE: ${REFRESH_TOKEN_COOKIE_SAME_SITE}
+      REFRESH_TOKEN_DOMAIN: ${REFRESH_TOKEN_COOKIE_DOMAIN}
+
+      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE}
+      SESSION_COOKIE_SAME_SITE: ${SESSION_COOKIE_SAME_SITE}
+      SESSION_COOKIE_DOMAIN: ${SESSION_COOKIE_DOMAIN}
+
+      EXTENSIONS_PATH: ${EXTENSIONS_PATH}
+      EXTENSIONS_AUTO_RELOAD: ${EXTENSIONS_AUTO_RELOAD}
+      EXTENSIONS_ROLLDOWN: ${EXTENSIONS_ROLLDOWN}
+
+      CONTENT_SECURITY_POLICY_DIRECTIVES__FRAME_SRC: ${CONTENT_SECURITY_POLICY_DIRECTIVES__FRAME_SRC}
+
+      EMAIL_TRANSPORT: ${EMAIL_TRANSPORT}
+      EMAIL_FROM: ${EMAIL_FROM}
+      EMAIL_SMTP_HOST: ${EMAIL_SMTP_HOST}
+      EMAIL_SMTP_PORT: ${EMAIL_SMTP_PORT}
+      EMAIL_SMTP_USER: ${EMAIL_SMTP_USER}
+      EMAIL_SMTP_PASSWORD: ${EMAIL_SMTP_PASSWORD}

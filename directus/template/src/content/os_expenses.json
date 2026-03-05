@@ -1,0 +1,22 @@
+[
+  {
+    "user_submitted": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
+    "invoice_item": null,
+    "project": "985959f5-a5b3-4161-bebb-e50fd82892cb",
+    "file": null,
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "cf25219a-8601-4341-822f-78f12357532a",
+    "cost": "300.00",
+    "date": "2023-09-12T16:00:00.000Z",
+    "date_updated": "2023-10-23T12:48:59.158Z",
+    "date_created": "2023-09-12T14:53:33.608Z",
+    "status": "submitted",
+    "name": "Font File",
+    "category": "outsourced",
+    "description": "Client really wanted this font even though we mentioned that it would slow the site down. What to do eh?",
+    "sort": null,
+    "is_billable": true,
+    "is_reimbursable": false
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "project": "985959f5-a5b3-4161-bebb-e50fd82892cb",
+    "contact": "447868fd-194c-41a4-bb7b-0aa85d5a44e8",
+    "organization": "f20f7a74-34e3-4a84-baea-d7f0f380df9e",
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "40bb2d9b-a0b6-436d-9376-e7ae0425237d",
+    "subtotal": "300.00000",
+    "total_tax": "18.00000",
+    "total": "318.00000",
+    "amount_paid": "0.00000",
+    "amount_due": "318.00000",
+    "date_created": "2023-10-06T01:18:28.669Z",
+    "due_date": "2023-10-12T16:00:00.000Z",
+    "date_updated": "2023-10-06T13:32:29.949Z",
+    "issue_date": null,
+    "reference": "1234",
+    "invoice_number": "1000",
+    "status": "unpaid",
+    "sort": null,
+    "payments": [
+      "47912d1a-b418-4cb5-b5fd-0de5c3513735"
+    ],
+    "line_items": [
+      "423cf59a-ff8f-45e5-af65-5b29076cfdb9"
+    ]
+  }
+]

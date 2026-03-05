@@ -1,0 +1,104 @@
+[
+  {
+    "id": "1234de3f-f90b-46e1-8761-5825ec74900c",
+    "parent": "27fe9681-9b11-4969-91c8-765e916894f6",
+    "name": "Web Site Development",
+    "organizations": null
+  },
+  {
+    "id": "179227d0-058e-4087-929c-0f99b23e379b",
+    "parent": "ece7bab9-5433-4a63-b9f7-bde8b517d6d9",
+    "name": "posts",
+    "organizations": null
+  },
+  {
+    "id": "27fe9681-9b11-4969-91c8-765e916894f6",
+    "parent": "d8f676bc-6005-4e2a-83b2-df33d00879c4",
+    "name": "Directus",
+    "organizations": null
+  },
+  {
+    "id": "315fb3aa-1092-4317-ae23-ecba6d2a373e",
+    "parent": "ece7bab9-5433-4a63-b9f7-bde8b517d6d9",
+    "name": "illustrations",
+    "organizations": null
+  },
+  {
+    "id": "323d8c22-239e-4134-962a-65a611dd908b",
+    "parent": "d8f676bc-6005-4e2a-83b2-df33d00879c4",
+    "name": "Tezla",
+    "organizations": null
+  },
+  {
+    "id": "38637388-36d5-46df-b8a0-ca6ffd6525ef",
+    "parent": "ece7bab9-5433-4a63-b9f7-bde8b517d6d9",
+    "name": "social images",
+    "organizations": null
+  },
+  {
+    "id": "527a526e-5344-49b1-87c9-42c47ff8e775",
+    "parent": "ece7bab9-5433-4a63-b9f7-bde8b517d6d9",
+    "name": "projects",
+    "organizations": null
+  },
+  {
+    "id": "8cddc78f-7c57-4b11-bb8b-5ffa9130f04a",
+    "parent": "ece7bab9-5433-4a63-b9f7-bde8b517d6d9",
+    "name": "logos",
+    "organizations": null
+  },
+  {
+    "id": "a6b2ccad-383c-4ba4-9975-61ef2a4087ec",
+    "parent": "ece7bab9-5433-4a63-b9f7-bde8b517d6d9",
+    "name": "team",
+    "organizations": null
+  },
+  {
+    "id": "b172eef3-09b3-4dff-9046-ced2ed6679d2",
+    "parent": null,
+    "name": "4. Uploads",
+    "organizations": null
+  },
+  {
+    "id": "c8e4ed07-a9b7-4ed2-8a30-0022d4c54e8b",
+    "parent": "ece7bab9-5433-4a63-b9f7-bde8b517d6d9",
+    "name": "stock images",
+    "organizations": null
+  },
+  {
+    "id": "d0f67ad6-abbb-45d6-8d3e-b499a4c74d80",
+    "parent": null,
+    "name": "2. Private",
+    "organizations": null
+  },
+  {
+    "id": "d15ae303-4717-48f4-b8da-b9fa6d711f86",
+    "parent": "ece7bab9-5433-4a63-b9f7-bde8b517d6d9",
+    "name": "branding",
+    "organizations": null
+  },
+  {
+    "id": "d8f676bc-6005-4e2a-83b2-df33d00879c4",
+    "parent": null,
+    "name": "3. Organizations",
+    "organizations": null
+  },
+  {
+    "id": "ece7bab9-5433-4a63-b9f7-bde8b517d6d9",
+    "parent": null,
+    "name": "1. Public",
+    "organizations": null
+  },
+  {
+    "id": "ed033970-538d-4034-9a70-332e90104178",
+    "parent": "ece7bab9-5433-4a63-b9f7-bde8b517d6d9",
+    "name": "pages",
+    "organizations": null
+  },
+  {
+    "id": "f123c546-cde3-41f8-9375-1321a65d6564",
+    "parent": "ece7bab9-5433-4a63-b9f7-bde8b517d6d9",
+    "name": "testimonials",
+    "organizations": null
+  }
+]

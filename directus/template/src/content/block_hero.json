@@ -1,0 +1,20 @@
+[
+  {
+    "button_group": "aed01afb-490d-42d3-bbf4-cf64081494b9",
+    "image": "df0745c2-b6e3-4b37-b64d-55a4eb0033ab",
+    "id": "6aa654f5-b55f-4436-a35c-1f989f26268a",
+    "image_position": "right",
+    "title": null,
+    "content": "We are a team of experienced developers and designers who build beautiful, performant, and secure web and mobile applications.",
+    "headline": "<p>Get to <em>MVP</em> faster</p>"
+  },
+  {
+    "button_group": "0b1512d8-3bec-4dbc-919c-4514bbe37dc1",
+    "image": "df0745c2-b6e3-4b37-b64d-55a4eb0033ab",
+    "id": "8ece685c-e903-443b-b29d-b36491709743",
+    "image_position": "left",
+    "title": "Services",
+    "content": "We help you leverage the transformative power of superior software development!",
+    "headline": "<p>Custom <em>web development and design</em> services</p>"
+  }
+]

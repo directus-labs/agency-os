@@ -1,0 +1,18 @@
+[
+  {
+    "id": "945245a7-4bab-4560-8287-fd2f797a18a8",
+    "title": "Our Services",
+    "headline": "<p>We can <em>help you</em></p>",
+    "rows": [
+      "3df2d0b7-6041-4a11-9e97-2baec92feb87",
+      "abe68701-5815-489f-afdb-f267a489dfe0",
+      "093d4e39-4a34-47cd-954d-ef3cadcef45b"
+    ]
+  },
+  {
+    "id": "f79740a1-66ce-4ad9-83f3-a32721e5e44d",
+    "title": "Columns",
+    "headline": "<p>These are <em>several rows</em> of image and text columns.</p>",
+    "rows": []
+  }
+]

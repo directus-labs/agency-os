@@ -1,0 +1,33 @@
+[
+  {
+    "deal": "21e05753-b453-4446-b35e-d0d93956d917",
+    "organization": "f20f7a74-34e3-4a84-baea-d7f0f380df9e",
+    "user_updated": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "b3724c97-c795-49a1-a921-f6ed4034eebb",
+    "expiration_date": "2023-10-24T16:00:00.000Z",
+    "date_updated": "2024-01-08T00:27:24.048Z",
+    "date_created": "2023-09-11T15:04:14.295Z",
+    "status": "approved",
+    "name": "Software Proposal",
+    "sort": null,
+    "contacts": [
+      "ee246ca2-0bc6-411a-a602-1c0db0f33771"
+    ],
+    "approvals": [],
+    "blocks": [
+      "f534b559-e6fe-413d-adc1-97d53a1974ce",
+      "f01f7407-5f3c-4249-b46a-768aa9789449",
+      "895de66e-9f5c-4672-9fea-34fd711243a9",
+      "6a965a8e-4c93-475c-96b3-a79829023e78",
+      "c4cc3284-5f4d-4fa1-a60b-6fa3317b55e4",
+      "67f3c47f-bfa0-4b90-832e-11e13f2c8d21",
+      "8081716c-02f0-4b93-9e20-b72ea4ec92ca",
+      "5bfc0843-43c1-46dd-98d4-c8eb51309203",
+      "d372307c-9fbb-42a6-83cc-ef5cf5d0ec74",
+      "ac294c9e-a417-418d-b051-4e52b0dbd8d8",
+      "e3b530a4-00d3-416a-bfb9-e920811f80da",
+      "8f569423-0f5f-421e-99b5-d5d4d664ddab"
+    ]
+  }
+]
