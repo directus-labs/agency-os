@@ -1,0 +1,291 @@
+[
+  {
+    "invoice": "40bb2d9b-a0b6-436d-9376-e7ae0425237d",
+    "contact": "447868fd-194c-41a4-bb7b-0aa85d5a44e8",
+    "organization": "f20f7a74-34e3-4a84-baea-d7f0f380df9e",
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "47912d1a-b418-4cb5-b5fd-0de5c3513735",
+    "amount": "318.00",
+    "payment_date": "2023-10-06T01:34:05.000Z",
+    "date_updated": "2023-10-19T14:10:28.446Z",
+    "date_created": "2023-10-06T01:34:07.190Z",
+    "receipt_url": "https://pay.stripe.com/receipts/payment/CAcaFwoVYWNjdF8xTHAwYnlDWmVCYVdsTWY2KI_I_agGMgaF6YroSjc6LBZngXim2jdG5yBnfBoP9XQvVLeMDZ0DhjyqR9dS6HEpVOiWz6JBSMJQDRPH",
+    "payment_method_type": null,
+    "stripe_payment_id": "pi_3Ny2vYCZeBaWlMf61f1cb1fr",
+    "status": "paid",
+    "metadata": {
+      "checkoutSession": {
+        "id": "cs_test_a14GQlAIj1etxR3jRR19y3lQmKmhvNnLEbfITFYyuSMszsb88dKtjbP2by",
+        "object": "checkout.session",
+        "after_expiration": null,
+        "allow_promotion_codes": null,
+        "amount_subtotal": 31800,
+        "amount_total": 31800,
+        "automatic_tax": {
+          "enabled": false,
+          "status": null
+        },
+        "billing_address_collection": null,
+        "cancel_url": "http://localhost:3000/portal/billing/invoices/40bb2d9b-a0b6-436d-9376-e7ae0425237d?session_id=cancelled",
+        "client_reference_id": null,
+        "consent": null,
+        "consent_collection": null,
+        "created": 1696556020,
+        "currency": "usd",
+        "currency_conversion": null,
+        "custom_fields": [],
+        "custom_text": {
+          "shipping_address": null,
+          "submit": null,
+          "terms_of_service_acceptance": null
+        },
+        "customer": "cus_OlTbJKVanSb1zN",
+        "customer_creation": null,
+        "customer_details": {
+          "address": {
+            "city": null,
+            "country": "US",
+            "line1": null,
+            "line2": null,
+            "postal_code": "24701",
+            "state": null
+          },
+          "email": "aaliff@k12.wv.us",
+          "name": "Mercer County Board of Education",
+          "phone": null,
+          "tax_exempt": "none",
+          "tax_ids": []
+        },
+        "customer_email": null,
+        "expires_at": 1696642420,
+        "invoice": null,
+        "invoice_creation": {
+          "enabled": false,
+          "invoice_data": {
+            "account_tax_ids": null,
+            "custom_fields": null,
+            "description": null,
+            "footer": null,
+            "metadata": {},
+            "rendering_options": null
+          }
+        },
+        "livemode": false,
+        "locale": null,
+        "metadata": {
+          "contact_id": "447868fd-194c-41a4-bb7b-0aa85d5a44e8",
+          "organization_id": "f20f7a74-34e3-4a84-baea-d7f0f380df9e",
+          "invoice_id": "40bb2d9b-a0b6-436d-9376-e7ae0425237d"
+        },
+        "mode": "payment",
+        "payment_intent": "pi_3Ny2vYCZeBaWlMf61f1cb1fr",
+        "payment_link": null,
+        "payment_method_collection": "always",
+        "payment_method_configuration_details": {
+          "id": "pmc_1LputJCZeBaWlMf6Hrlm0Wmt",
+          "parent": null
+        },
+        "payment_method_options": {},
+        "payment_method_types": [
+          "card",
+          "us_bank_account"
+        ],
+        "payment_status": "paid",
+        "phone_number_collection": {
+          "enabled": false
+        },
+        "recovered_from": null,
+        "setup_intent": null,
+        "shipping_address_collection": null,
+        "shipping_cost": null,
+        "shipping_details": null,
+        "shipping_options": [],
+        "status": "complete",
+        "submit_type": null,
+        "subscription": null,
+        "success_url": "http://localhost:3000/portal/billing/invoices/40bb2d9b-a0b6-436d-9376-e7ae0425237d?session_id={CHECKOUT_SESSION_ID}",
+        "total_details": {
+          "amount_discount": 0,
+          "amount_shipping": 0,
+          "amount_tax": 0
+        },
+        "url": null
+      },
+      "paymentIntent": {
+        "id": "pi_3Ny2vYCZeBaWlMf61f1cb1fr",
+        "object": "payment_intent",
+        "amount": 31800,
+        "amount_capturable": 0,
+        "amount_details": {
+          "tip": {}
+        },
+        "amount_received": 31800,
+        "application": null,
+        "application_fee_amount": null,
+        "automatic_payment_methods": null,
+        "canceled_at": null,
+        "cancellation_reason": null,
+        "capture_method": "automatic",
+        "charges": {
+          "object": "list",
+          "data": [
+            {
+              "id": "ch_3Ny2vYCZeBaWlMf61lJ9bpoq",
+              "object": "charge",
+              "amount": 31800,
+              "amount_captured": 31800,
+              "amount_refunded": 0,
+              "application": null,
+              "application_fee": null,
+              "application_fee_amount": null,
+              "balance_transaction": "txn_3Ny2vYCZeBaWlMf61uWEmNo2",
+              "billing_details": {
+                "address": {
+                  "city": null,
+                  "country": "US",
+                  "line1": null,
+                  "line2": null,
+                  "postal_code": "24701",
+                  "state": null
+                },
+                "email": "aaliff@k12.wv.us",
+                "name": "Bryant Gillespie",
+                "phone": null
+              },
+              "calculated_statement_descriptor": "WWW.BETTERSIGNSHOP.COM",
+              "captured": true,
+              "created": 1696556045,
+              "currency": "usd",
+              "customer": "cus_OlTbJKVanSb1zN",
+              "description": null,
+              "destination": null,
+              "dispute": null,
+              "disputed": false,
+              "failure_balance_transaction": null,
+              "failure_code": null,
+              "failure_message": null,
+              "fraud_details": {},
+              "invoice": null,
+              "livemode": false,
+              "metadata": {},
+              "on_behalf_of": null,
+              "order": null,
+              "outcome": {
+                "network_status": "approved_by_network",
+                "reason": null,
+                "risk_level": "normal",
+                "risk_score": 4,
+                "seller_message": "Payment complete.",
+                "type": "authorized"
+              },
+              "paid": true,
+              "payment_intent": "pi_3Ny2vYCZeBaWlMf61f1cb1fr",
+              "payment_method": "pm_1Ny2vYCZeBaWlMf6qp1thdIx",
+              "payment_method_details": {
+                "card": {
+                  "amount_authorized": 31800,
+                  "brand": "visa",
+                  "checks": {
+                    "address_line1_check": null,
+                    "address_postal_code_check": "pass",
+                    "cvc_check": "pass"
+                  },
+                  "country": "US",
+                  "exp_month": 1,
+                  "exp_year": 2025,
+                  "extended_authorization": {
+                    "status": "disabled"
+                  },
+                  "fingerprint": "LBp1FRMEr87gJec4",
+                  "funding": "credit",
+                  "incremental_authorization": {
+                    "status": "unavailable"
+                  },
+                  "installments": null,
+                  "last4": "4242",
+                  "mandate": null,
+                  "multicapture": {
+                    "status": "unavailable"
+                  },
+                  "network": "visa",
+                  "network_token": {
+                    "used": false
+                  },
+                  "overcapture": {
+                    "maximum_amount_capturable": 31800,
+                    "status": "unavailable"
+                  },
+                  "three_d_secure": null,
+                  "wallet": null
+                },
+                "type": "card"
+              },
+              "receipt_email": "aaliff@k12.wv.us",
+              "receipt_number": null,
+              "receipt_url": "https://pay.stripe.com/receipts/payment/CAcaFwoVYWNjdF8xTHAwYnlDWmVCYVdsTWY2KI_I_agGMgaF6YroSjc6LBZngXim2jdG5yBnfBoP9XQvVLeMDZ0DhjyqR9dS6HEpVOiWz6JBSMJQDRPH",
+              "refunded": false,
+              "refunds": {
+                "object": "list",
+                "data": [],
+                "has_more": false,
+                "total_count": 0,
+                "url": "/v1/charges/ch_3Ny2vYCZeBaWlMf61lJ9bpoq/refunds"
+              },
+              "review": null,
+              "shipping": null,
+              "source": null,
+              "source_transfer": null,
+              "statement_descriptor": null,
+              "statement_descriptor_suffix": null,
+              "status": "succeeded",
+              "transfer_data": null,
+              "transfer_group": null
+            }
+          ],
+          "has_more": false,
+          "total_count": 1,
+          "url": "/v1/charges?payment_intent=pi_3Ny2vYCZeBaWlMf61f1cb1fr"
+        },
+        "client_secret": "pi_3Ny2vYCZeBaWlMf61f1cb1fr_secret_12n1ImAay0tGAVf6p79B6Rm8u",
+        "confirmation_method": "automatic",
+        "created": 1696556044,
+        "currency": "usd",
+        "customer": "cus_OlTbJKVanSb1zN",
+        "description": null,
+        "invoice": null,
+        "last_payment_error": null,
+        "latest_charge": "ch_3Ny2vYCZeBaWlMf61lJ9bpoq",
+        "livemode": false,
+        "metadata": {},
+        "next_action": null,
+        "on_behalf_of": null,
+        "payment_method": "pm_1Ny2vYCZeBaWlMf6qp1thdIx",
+        "payment_method_configuration_details": null,
+        "payment_method_options": {
+          "card": {
+            "installments": null,
+            "mandate_options": null,
+            "network": null,
+            "request_three_d_secure": "automatic"
+          }
+        },
+        "payment_method_types": [
+          "card"
+        ],
+        "processing": null,
+        "receipt_email": "aaliff@k12.wv.us",
+        "review": null,
+        "setup_future_usage": null,
+        "shipping": null,
+        "source": null,
+        "statement_descriptor": null,
+        "statement_descriptor_suffix": null,
+        "status": "succeeded",
+        "transfer_data": null,
+        "transfer_group": null
+      }
+    },
+    "sort": null
+  }
+]

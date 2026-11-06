@@ -1,0 +1,52 @@
+{
+  "logo_on_light_bg": null,
+  "logo_on_dark_bg": null,
+  "og_image": "c0253924-38cd-4ca0-9989-9c0a57ec076a",
+  "id": "ab89c489-faea-4310-8b59-7ddb3caf279a",
+  "url": "https://www.agencyos.dev",
+  "title": "Agency OS",
+  "tagline": "The hackable agency operating system",
+  "street_address": "123 Main St",
+  "postal_code": "55555",
+  "phone": "(555) 123-4567",
+  "email": "info@example.com",
+  "build_hook_url": "https://api.netlify.com/build_hooks/6410cc4f3210881c58bf4223",
+  "address_region": "NY",
+  "address_locality": "New York",
+  "address_country": "US",
+  "theme": {
+    "primary": "violet",
+    "gray": "slate",
+    "borderRadius": "xl",
+    "fonts": {
+      "families": {
+        "display": "Poppins",
+        "body": "Inter",
+        "code": "Fira Code"
+      }
+    }
+  },
+  "social_links": [
+    {
+      "service": "github",
+      "url": "https://github.com/directus-community/agency-os"
+    },
+    {
+      "service": "linkedin",
+      "url": "https://www.linkedin.com/company/directus-io"
+    },
+    {
+      "service": "youtube",
+      "url": "https://www.youtube.com/c/DirectusVideos"
+    },
+    {
+      "url": "https://directus.chat/",
+      "service": "discord"
+    },
+    {
+      "service": "twitter",
+      "url": "https://twitter.com/directus"
+    }
+  ],
+  "description": "A freaking awesome Nuxt + Directus app that will help you power up your agency."
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "2d490b3f-7528-4b85-a05f-44aac2f2e05d",
+    "icon": "verified",
+    "name": "Administrator",
+    "ip_access": null,
+    "description": "Administrative role with unrestricted App/API access.",
+    "enforce_tfa": false,
+    "admin_access": true,
+    "app_access": true
+  },
+  {
+    "id": "8ba4ed6f-d330-4675-ae46-119c533a0928",
+    "icon": "supervised_user_circle",
+    "name": "Team Member",
+    "ip_access": null,
+    "description": "Role for internal team members and employees",
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": true
+  },
+  {
+    "id": "9ecc2969-8b38-4088-9dc1-78334a206445",
+    "icon": "android",
+    "name": "Website API",
+    "ip_access": null,
+    "description": "Role for using static tokens for server to server communication. Do not use on client side.",
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false
+  },
+  {
+    "id": "abf8a154-5b1c-4a46-ac9c-7300570f4f17",
+    "icon": "public",
+    "name": "$t:public_label",
+    "ip_access": null,
+    "description": "$t:public_description",
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false
+  },
+  {
+    "id": "edc2e863-e2c4-4ee3-bcbd-d090df2911e1",
+    "icon": "person_pin",
+    "name": "Client",
+    "ip_access": null,
+    "description": "Role for clients accessing their projects via the frontend.",
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false
+  }
+]

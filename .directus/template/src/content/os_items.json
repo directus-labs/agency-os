@@ -1,0 +1,17 @@
+[
+  {
+    "default_tax_rate": "945501ef-f46e-4169-abe7-cba49f9faf7a",
+    "user_updated": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "66c77940-7475-4baf-8dc1-967484b091a5",
+    "unit_cost": null,
+    "unit_price": "150.00",
+    "date_updated": "2023-09-14T05:40:55.058Z",
+    "date_created": "2023-09-14T05:31:10.964Z",
+    "icon": "logo_dev",
+    "name": "Web Development",
+    "status": "draft",
+    "description": null,
+    "sort": null
+  }
+]

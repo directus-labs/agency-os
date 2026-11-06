@@ -1,0 +1,24 @@
+[
+  {
+    "user_updated": null,
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "945501ef-f46e-4169-abe7-cba49f9faf7a",
+    "rate": "0.00000",
+    "date_created": "2023-09-09T14:15:54.300Z",
+    "date_updated": null,
+    "name": "Tax Exempt (0%)",
+    "status": "draft",
+    "sort": null
+  },
+  {
+    "user_updated": null,
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "d635ef3e-3926-4866-8a1c-9556f0bbc9fd",
+    "rate": "6.00000",
+    "date_created": "2023-09-09T14:16:11.248Z",
+    "date_updated": null,
+    "name": "Tax on Sales (6%)",
+    "status": "draft",
+    "sort": null
+  }
+]

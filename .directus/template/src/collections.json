@@ -1,0 +1,2548 @@
+[
+  {
+    "collection": "billing",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#D064AC",
+      "group": null,
+      "collapse": "closed",
+      "preview_url": null,
+      "collection": "billing",
+      "icon": "attach_money",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 8,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": null
+  },
+  {
+    "collection": "block_button",
+    "meta": {
+      "archive_field": null,
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": null,
+      "group": "block_button_group",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_button",
+      "icon": null,
+      "display_template": "{{label}} - {{type}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Button",
+          "singular": "Button",
+          "plural": "Buttons"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_button",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_button_group",
+    "meta": {
+      "archive_field": null,
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#18222F",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_button_group",
+      "icon": "smart_button",
+      "display_template": null,
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Button Group",
+          "singular": "Button Group",
+          "plural": "Button Groups"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 17,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_button_group",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_columns",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_columns",
+      "icon": "vertical_split",
+      "display_template": "{{title}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Columns",
+          "singular": "Columns",
+          "plural": "Columns"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 4,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_columns",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_columns_rows",
+    "meta": {
+      "archive_field": null,
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": null,
+      "group": "block_columns",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_columns_rows",
+      "icon": null,
+      "display_template": "{{title}}",
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_columns_rows",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_cta",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_cta",
+      "icon": "skip_next",
+      "display_template": "{{title}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Call To Action",
+          "singular": "Call To Action",
+          "plural": "Call To Action"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 9,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_cta",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_divider",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_divider",
+      "icon": "horizontal_rule",
+      "display_template": "{{title}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Divider",
+          "singular": "Divider",
+          "plural": "Dividers"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 12,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_divider",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_faqs",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_faqs",
+      "icon": "question_mark",
+      "display_template": "{{title}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "FAQs",
+          "singular": "FAQ",
+          "plural": "FAQs"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 2,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_faqs",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_form",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_form",
+      "icon": "text_format",
+      "display_template": "{{title}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Form Section",
+          "singular": "Form Section",
+          "plural": "Forms Form Sections"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 5,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_form",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_gallery",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_gallery",
+      "icon": "grid_view",
+      "display_template": "{{title}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Gallery",
+          "singular": "Gallery",
+          "plural": "Gallery"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 13,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_gallery",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_gallery_files",
+    "meta": {
+      "archive_field": null,
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": null,
+      "group": "block_gallery",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_gallery_files",
+      "icon": null,
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_gallery_files",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_hero",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_hero",
+      "icon": "aspect_ratio",
+      "display_template": "{{headline}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Hero",
+          "singular": "Hero",
+          "plural": "Hero"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_hero",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_html",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_html",
+      "icon": "html",
+      "display_template": null,
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Raw HTML",
+          "singular": "Raw HTML",
+          "plural": "Raw HTML"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 18,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_html",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_logocloud",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_logocloud",
+      "icon": "broken_image",
+      "display_template": "{{title}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Logo Cloud",
+          "singular": "Logo Cloud",
+          "plural": "Logo Cloud"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 7,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_logocloud",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_logocloud_logos",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#18222F",
+      "group": "block_logocloud",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_logocloud_logos",
+      "icon": "home_app_logo",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_logocloud_logos",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_quote",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_quote",
+      "icon": "format_quote",
+      "display_template": "{{title}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Quote",
+          "singular": "Quote",
+          "plural": "Quotes"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 3,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_quote",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_richtext",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_richtext",
+      "icon": "format_color_text",
+      "display_template": "{{headline}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Rich Text",
+          "singular": "Rich Text",
+          "plural": "Rich Text"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 10,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_richtext",
+      "comment": null
+    }
+  },
+  {
+    "collection": "blocks",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": null,
+      "collapse": "closed",
+      "preview_url": null,
+      "collection": "blocks",
+      "icon": "content_copy",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 10,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": null
+  },
+  {
+    "collection": "block_step_items",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": null,
+      "group": "block_steps",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_step_items",
+      "icon": null,
+      "display_template": "{{title}}",
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_step_items",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_steps",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_steps",
+      "icon": "checklist",
+      "display_template": "{{title}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Steps",
+          "singular": "Steps",
+          "plural": "Steps"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 11,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_steps",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_team",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_team",
+      "icon": "face",
+      "display_template": "{{title}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Team Block",
+          "singular": "Team",
+          "plural": "Team"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 8,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_team",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_testimonials",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_testimonials",
+      "icon": "star",
+      "display_template": "{{title}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Testimonial Group",
+          "singular": "Testimonials",
+          "plural": "Testimonials"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 6,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_testimonials",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_testimonial_slider_items",
+    "meta": {
+      "archive_field": null,
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": null,
+      "group": "block_testimonials",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_testimonial_slider_items",
+      "icon": null,
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_testimonial_slider_items",
+      "comment": null
+    }
+  },
+  {
+    "collection": "block_video",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "blocks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "block_video",
+      "icon": "video_library",
+      "display_template": "{{title}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Video",
+          "singular": "Video",
+          "plural": "Videos"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 15,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "block_video",
+      "comment": null
+    }
+  },
+  {
+    "collection": "categories",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "website",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "categories",
+      "icon": "category",
+      "display_template": "{{color}} {{title}}",
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 3,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "categories",
+      "comment": null
+    }
+  },
+  {
+    "collection": "contacts",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#6644FF",
+      "group": null,
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "contacts",
+      "icon": "emoji_people",
+      "display_template": "{{first_name}} {{last_name}} <{{email}}>",
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": "Contacts are the people at the different organizations you work with.",
+      "sort": 4,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "contacts",
+      "comment": null
+    }
+  },
+  {
+    "collection": "conversations",
+    "meta": {
+      "archive_field": null,
+      "archive_value": "archived",
+      "unarchive_value": "open",
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#6644FF",
+      "group": null,
+      "collapse": "closed",
+      "preview_url": null,
+      "collection": "conversations",
+      "icon": "chat",
+      "display_template": "{{title}} - {{user_created}} - {{date_created}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Conversations",
+          "singular": "Conversation",
+          "plural": "Conversations"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": "Conversations are for all the threads between you and your clients. Conversations contain messages.",
+      "sort": 2,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": true
+    },
+    "schema": {
+      "schema": "public",
+      "name": "conversations",
+      "comment": null
+    }
+  },
+  {
+    "collection": "forms",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#18222F",
+      "group": "website",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "forms",
+      "icon": "text_format",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 9,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "forms",
+      "comment": null
+    }
+  },
+  {
+    "collection": "globals",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#18222F",
+      "group": "website",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "globals",
+      "icon": "south_america",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 6,
+      "archive_app_filter": true,
+      "singleton": true,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "globals",
+      "comment": null
+    }
+  },
+  {
+    "collection": "help",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#8196B0",
+      "group": null,
+      "collapse": "closed",
+      "preview_url": null,
+      "collection": "help",
+      "icon": "support",
+      "display_template": null,
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Help Center"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 11,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": null
+  },
+  {
+    "collection": "help_articles",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#8196B0",
+      "group": "help",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "help_articles",
+      "icon": "wifi_tethering",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 2,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "help_articles",
+      "comment": null
+    }
+  },
+  {
+    "collection": "help_collections",
+    "meta": {
+      "archive_field": null,
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#8196B0",
+      "group": "help",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "help_collections",
+      "icon": "collections_bookmark",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "help_collections",
+      "comment": null
+    }
+  },
+  {
+    "collection": "help_feedback",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#8196B0",
+      "group": "help",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "help_feedback",
+      "icon": "insert_chart",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 3,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "help_feedback",
+      "comment": null
+    }
+  },
+  {
+    "collection": "inbox",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "new",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#6644FF",
+      "group": null,
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "inbox",
+      "icon": "inbox",
+      "display_template": "{{status}} - {{date_created}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Inbox",
+          "singular": "Inbox",
+          "plural": "Inbox"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": "The Inbox is for all your incoming unqualified leads and form submissions",
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "inbox",
+      "comment": null
+    }
+  },
+  {
+    "collection": "messages",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#6644FF",
+      "group": "conversations",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "messages",
+      "icon": "chat_bubble",
+      "display_template": "{{user_created}} - {{text}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Messages",
+          "singular": "Message",
+          "plural": "Messages"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": "Messages are the individual parts of a conversation.",
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "messages",
+      "comment": null
+    }
+  },
+  {
+    "collection": "navigation",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#18222F",
+      "group": "website",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "navigation",
+      "icon": "menu_open",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 10,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "navigation",
+      "comment": null
+    }
+  },
+  {
+    "collection": "navigation_items",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#18222F",
+      "group": "navigation",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "navigation_items",
+      "icon": "navigate_next",
+      "display_template": "{{title}}",
+      "translations": null,
+      "item_duplication_fields": [
+        "children",
+        "has_children",
+        "image",
+        "label",
+        "navigation",
+        "open_in_new_tab",
+        "page",
+        "title",
+        "type",
+        "url"
+      ],
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "navigation_items",
+      "comment": null
+    }
+  },
+  {
+    "collection": "organization_addresses",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": null,
+      "group": "organizations",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "organization_addresses",
+      "icon": null,
+      "display_template": "{{name}} - {{street_address}}, {{address_locality}}, {{address_region}} {{postal_code}}",
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "organization_addresses",
+      "comment": null
+    }
+  },
+  {
+    "collection": "organizations",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "active",
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#6644FF",
+      "group": null,
+      "collapse": "closed",
+      "preview_url": null,
+      "collection": "organizations",
+      "icon": "add_business",
+      "display_template": "{{logo.$thumbnail}} {{name}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Organizations",
+          "singular": "Organziation",
+          "plural": "Organizations"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": "Organizations are your clients and customers.",
+      "sort": 3,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "organizations",
+      "comment": null
+    }
+  },
+  {
+    "collection": "organizations_contacts",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": null,
+      "group": "organizations",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "organizations_contacts",
+      "icon": null,
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 2,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "organizations_contacts",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_activities",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#D064AC",
+      "group": "sales",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_activities",
+      "icon": "perm_phone_msg",
+      "display_template": "{{name}} - {{due_date}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Activities",
+          "singular": "Activity",
+          "plural": "Activities"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": "Activities are the calls, meetings, and more that move your Deals forward in your pipeline.",
+      "sort": 2,
+      "archive_app_filter": false,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_activities",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_activity_contacts",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": null,
+      "group": "os_activities",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_activity_contacts",
+      "icon": null,
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_activity_contacts",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_deal_contacts",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": null,
+      "group": "os_deals",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_deal_contacts",
+      "icon": null,
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_deal_contacts",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_deals",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#D064AC",
+      "group": "sales",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_deals",
+      "icon": "attach_money",
+      "display_template": "{{name}} [{{organization.name}}] - {{close_date}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Deals",
+          "singular": "Deal",
+          "plural": "Deals"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": "Deals are your pipeline for new projects.",
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_deals",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_deal_stages",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#8196B0",
+      "group": "os_settings",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_deal_stages",
+      "icon": "view_kanban",
+      "display_template": "{{color}} {{name}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Deal Stages",
+          "singular": "Deal Stage",
+          "plural": "Deal Stages"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 2,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_deal_stages",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_email_templates",
+    "meta": {
+      "archive_field": null,
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#8196B0",
+      "group": "os_settings",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_email_templates",
+      "icon": "mark_email_unread",
+      "display_template": null,
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Email Templates",
+          "singular": "Email Template",
+          "plural": "Email Template"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 4,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_email_templates",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_expenses",
+    "meta": {
+      "archive_field": null,
+      "archive_value": "voided",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#D064AC",
+      "group": "billing",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_expenses",
+      "icon": "monetization_on",
+      "display_template": "{{name}} (${{cost}}) - {{date}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Expenses",
+          "singular": "Expenses",
+          "plural": "Expense"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 4,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_expenses",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_invoice_items",
+    "meta": {
+      "archive_field": null,
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": null,
+      "group": "os_invoices",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_invoice_items",
+      "icon": null,
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_invoice_items",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_invoices",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "voided",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#D064AC",
+      "group": "billing",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_invoices",
+      "icon": "receipt_long",
+      "display_template": "INV#{{invoice_number}} - {{status}} - {{total}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Invoices",
+          "singular": "Invoice",
+          "plural": "Invoices"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_invoices",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_items",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#8196B0",
+      "group": "os_settings",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_items",
+      "icon": "add_shopping_cart",
+      "display_template": "{{name}} (${{unit_price}})",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Items / Services",
+          "singular": "Item / Service",
+          "plural": "Items / Services"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_items",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_payments",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "void",
+      "unarchive_value": "pending",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#D064AC",
+      "group": "billing",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_payments",
+      "icon": "receipt",
+      "display_template": "{{amount}} - {{payment_date}} - {{organization.name}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Payments",
+          "singular": "Payment",
+          "plural": "Payments"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 3,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_payments",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_payment_terms",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#8196B0",
+      "group": "os_settings",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_payment_terms",
+      "icon": "payments",
+      "display_template": "{{name}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Payment Terms",
+          "singular": "Payment Term",
+          "plural": "Payment Terms"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 5,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_payment_terms",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_project_contacts",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": null,
+      "group": "os_projects",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_project_contacts",
+      "icon": null,
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_project_contacts",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_projects",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#D064AC",
+      "group": null,
+      "collapse": "closed",
+      "preview_url": null,
+      "collection": "os_projects",
+      "icon": "tab_group",
+      "display_template": "{{name}} - {{organization.name}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Projects",
+          "singular": "Project",
+          "plural": "Projects"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": "Projects are where you manage the deliverables, tasks, and milestones of producing what you sold to clients.",
+      "sort": 6,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_projects",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_project_templates",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "active",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#8196B0",
+      "group": "os_settings",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_project_templates",
+      "icon": "list_alt_add",
+      "display_template": "{{name}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Project Templates",
+          "singular": "Project Template",
+          "plural": "Project Templates"
+        }
+      ],
+      "item_duplication_fields": [
+        "status",
+        "description",
+        "tasks"
+      ],
+      "note": null,
+      "sort": 3,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_project_templates",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_project_updates",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": null,
+      "group": "os_projects",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_project_updates",
+      "icon": null,
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 2,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_project_updates",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_proposal_approvals",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": null,
+      "group": "os_proposals",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_proposal_approvals",
+      "icon": null,
+      "display_template": "{{date_created}} - {{contact.first_name}} {{last_name}}",
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 2,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_proposal_approvals",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_proposal_blocks",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": null,
+      "group": "os_proposals",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_proposal_blocks",
+      "icon": null,
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 3,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_proposal_blocks",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_proposal_contacts",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": null,
+      "group": "os_proposals",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_proposal_contacts",
+      "icon": null,
+      "display_template": "{{contacts_id.first_name}} {{contacts_id.last_name}} <{{contacts_id.email}}>",
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_proposal_contacts",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_proposals",
+    "meta": {
+      "archive_field": null,
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#D064AC",
+      "group": "sales",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_proposals",
+      "icon": "edit_document",
+      "display_template": "{{name}} - {{organization.name}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Proposals",
+          "singular": "Proposal",
+          "plural": "Proposals"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": "Use Proposals to craft amazing quotes or statements of work for clients.",
+      "sort": 3,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_proposals",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_settings",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#8196B0",
+      "group": null,
+      "collapse": "closed",
+      "preview_url": null,
+      "collection": "os_settings",
+      "icon": "settings_suggest",
+      "display_template": null,
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Settings",
+          "singular": "Settings",
+          "plural": "Settings"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 12,
+      "archive_app_filter": true,
+      "singleton": true,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_settings",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_task_files",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": null,
+      "group": "os_tasks",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_task_files",
+      "icon": null,
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_task_files",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_tasks",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#D064AC",
+      "group": null,
+      "collapse": "closed",
+      "preview_url": null,
+      "collection": "os_tasks",
+      "icon": "library_add_check",
+      "display_template": "{{status}} {{name}} {{type}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Tasks",
+          "singular": "Task",
+          "plural": "Tasks"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 7,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_tasks",
+      "comment": null
+    }
+  },
+  {
+    "collection": "os_tax_rates",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#8196B0",
+      "group": "os_settings",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "os_tax_rates",
+      "icon": "percent",
+      "display_template": "{{name}}",
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Tax Rates",
+          "singular": "Tax Rate",
+          "plural": "Tax Rates"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 6,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "os_tax_rates",
+      "comment": null
+    }
+  },
+  {
+    "collection": "page_blocks",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#18222F",
+      "group": "pages",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "page_blocks",
+      "icon": "code_blocks",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 3,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "page_blocks",
+      "comment": null
+    }
+  },
+  {
+    "collection": "pages",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "website",
+      "collapse": "open",
+      "preview_url": "http://localhost:3000{{permalink}}?preview=true",
+      "collection": "pages",
+      "icon": "web_asset",
+      "display_template": "{{title}}",
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": "Many-to-Any page builder example",
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": true
+    },
+    "schema": {
+      "schema": "public",
+      "name": "pages",
+      "comment": null
+    }
+  },
+  {
+    "collection": "pages_blog",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#18222F",
+      "group": "pages",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "pages_blog",
+      "icon": "signpost",
+      "display_template": null,
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Blog Page",
+          "singular": "Blog Page",
+          "plural": "Blog Page"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": true,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "pages_blog",
+      "comment": null
+    }
+  },
+  {
+    "collection": "pages_projects",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#18222F",
+      "group": "pages",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "pages_projects",
+      "icon": "settings_input_component",
+      "display_template": null,
+      "translations": [
+        {
+          "language": "en-US",
+          "translation": "Project Page",
+          "singular": "Project Page",
+          "plural": "Project Page"
+        }
+      ],
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 2,
+      "archive_app_filter": true,
+      "singleton": true,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "pages_projects",
+      "comment": null
+    }
+  },
+  {
+    "collection": "post_gallery_items",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": null,
+      "group": "posts",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "post_gallery_items",
+      "icon": null,
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 1,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "post_gallery_items",
+      "comment": null
+    }
+  },
+  {
+    "collection": "posts",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "website",
+      "collapse": "open",
+      "preview_url": "http://localhost:3000/posts/{{slug}}?preview=true",
+      "collection": "posts",
+      "icon": "article",
+      "display_template": "{{title}}",
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": "Simple blog posts example",
+      "sort": 2,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "posts",
+      "comment": null
+    }
+  },
+  {
+    "collection": "redirects",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#18222F",
+      "group": "website",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "redirects",
+      "icon": "redo",
+      "display_template": "{{url_old}}",
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 8,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "redirects",
+      "comment": null
+    }
+  },
+  {
+    "collection": "sales",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#D064AC",
+      "group": null,
+      "collapse": "closed",
+      "preview_url": null,
+      "collection": "sales",
+      "icon": "point_of_sale",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": "Folder to organize all the Sales department functions.",
+      "sort": 5,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": null
+  },
+  {
+    "collection": "seo",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#FF99DD",
+      "group": "website",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "seo",
+      "icon": "saved_search",
+      "display_template": "{{og_image}}",
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 7,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": true,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "seo",
+      "comment": null
+    }
+  },
+  {
+    "collection": "team",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "website",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "team",
+      "icon": "people_outline",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 4,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "team",
+      "comment": null
+    }
+  },
+  {
+    "collection": "testimonials",
+    "meta": {
+      "archive_field": "status",
+      "archive_value": "archived",
+      "unarchive_value": "draft",
+      "sort_field": "sort",
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": "website",
+      "collapse": "open",
+      "preview_url": null,
+      "collection": "testimonials",
+      "icon": "star",
+      "display_template": "{{title}}",
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 5,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": {
+      "schema": "public",
+      "name": "testimonials",
+      "comment": null
+    }
+  },
+  {
+    "collection": "website",
+    "meta": {
+      "archive_field": null,
+      "archive_value": null,
+      "unarchive_value": null,
+      "sort_field": null,
+      "accountability": "all",
+      "color": "#1A212C",
+      "group": null,
+      "collapse": "closed",
+      "preview_url": null,
+      "collection": "website",
+      "icon": "folder_special",
+      "display_template": null,
+      "translations": null,
+      "item_duplication_fields": null,
+      "note": null,
+      "sort": 9,
+      "archive_app_filter": true,
+      "singleton": false,
+      "hidden": false,
+      "versioning": false
+    },
+    "schema": null
+  }
+]
