@@ -1,0 +1,629 @@
+[
+  {
+    "role": null,
+    "collection": "pages",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {
+      "_and": [
+        {
+          "status": {
+            "_eq": "published"
+          }
+        }
+      ]
+    },
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "posts",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {
+      "_and": [
+        {
+          "status": {
+            "_eq": "published"
+          }
+        }
+      ]
+    },
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_logocloud_logos",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_divider",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_step_items",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_hero",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_richtext",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "globals",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "id",
+      "seo",
+      "url",
+      "title",
+      "tagline",
+      "description",
+      "social",
+      "og_image",
+      "twitter_image",
+      "social_links",
+      "contact",
+      "street_address",
+      "address_locality",
+      "address_region",
+      "postal_code",
+      "address_country",
+      "email",
+      "phone",
+      "routes",
+      "logo_on_dark_bg",
+      "logo_on_light_bg",
+      "theme"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "page_blocks",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {
+      "_and": [
+        {
+          "pages_id": {
+            "status": {
+              "_eq": "published"
+            }
+          }
+        }
+      ]
+    },
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_faqs",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_testimonials",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "testimonials",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {
+      "_and": [
+        {
+          "status": {
+            "_eq": "published"
+          }
+        }
+      ]
+    },
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "team",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {
+      "_and": [
+        {
+          "status": {
+            "_eq": "published"
+          }
+        }
+      ]
+    },
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_cta",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "forms",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "navigation",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {
+      "_and": [
+        {
+          "status": {
+            "_eq": "published"
+          }
+        }
+      ]
+    },
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "navigation_items",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {
+      "_and": [
+        {
+          "_or": [
+            {
+              "navigation": {
+                "status": {
+                  "_eq": "published"
+                }
+              }
+            },
+            {
+              "parent": {
+                "navigation": {
+                  "status": {
+                    "_eq": "published"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_form",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_logocloud",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_quote",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_team",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "seo",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_gallery",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_columns",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_html",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_steps",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_video",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "redirects",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "inbox",
+    "action": "create",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "blog_settings",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "chat_config",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "help_articles",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {
+      "_and": [
+        {
+          "status": {
+            "_eq": "published"
+          }
+        }
+      ]
+    },
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "help_collections",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_button_group",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_button",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_columns_rows",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_gallery_files",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "block_testimonial_slider_items",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "help_feedback",
+    "action": "create",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "pages_blog",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "pages_projects",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "directus_files",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {
+      "_and": [
+        {
+          "_or": [
+            {
+              "folder": {
+                "name": {
+                  "_contains": "1. Public"
+                }
+              }
+            },
+            {
+              "folder": {
+                "parent": {
+                  "name": {
+                    "_contains": "1. Public"
+                  }
+                }
+              }
+            },
+            {
+              "folder": {
+                "parent": {
+                  "parent": {
+                    "name": {
+                      "_contains": "1. Public"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "folder": {
+                "name": {
+                  "_contains": "4. Uploads"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "categories",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  },
+  {
+    "role": null,
+    "collection": "post_gallery_items",
+    "action": "read",
+    "presets": null,
+    "validation": {},
+    "permissions": {},
+    "fields": [
+      "*"
+    ]
+  }
+]

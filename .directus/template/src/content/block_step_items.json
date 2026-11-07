@@ -1,0 +1,47 @@
+[
+  {
+    "button_group": null,
+    "block_steps": "a163efd7-1037-4261-939d-28a08122c426",
+    "image": "5a6dfe1e-7e5b-4a5f-9f6c-983777a67c05",
+    "id": "36ec55d8-1bc0-494c-8448-7afcce4bd5e1",
+    "title": "Ideation & Design",
+    "content": "<p>With a solid understanding in place, our creative minds come together to ideate and sketch the initial concepts. Whether it's a brand identity or a website layout, this is where ideas are born and iteratively refined into tangible design blueprints.</p>",
+    "sort": 2
+  },
+  {
+    "button_group": null,
+    "block_steps": "a163efd7-1037-4261-939d-28a08122c426",
+    "image": "793e9bf7-c646-4588-8865-fe22556070ff",
+    "id": "6ace7412-79cc-4f03-9d1c-64343b3ebd87",
+    "title": "Development & Execution",
+    "content": "<p>Our developers and strategists take the lead in this phase. Leveraging the latest tools and technologies, we bring the conceptualized designs to life, ensuring optimal performance and responsiveness across all devices and platforms.</p>",
+    "sort": 3
+  },
+  {
+    "button_group": null,
+    "block_steps": "a163efd7-1037-4261-939d-28a08122c426",
+    "image": "df979753-946b-4d93-954e-e24367388d2c",
+    "id": "6dc81e9f-c446-4005-a87f-a54163f48433",
+    "title": "Discovery & Research",
+    "content": "<p>This is where our journey begins. We deep-dive into understanding your brand, its core values, target audience, and competitive landscape. This phase ensures that our subsequent actions are grounded in data and genuine insights.</p>",
+    "sort": 1
+  },
+  {
+    "button_group": null,
+    "block_steps": "a163efd7-1037-4261-939d-28a08122c426",
+    "image": "5419bf05-9ab2-484b-a69d-d09b18602cf1",
+    "id": "75903f73-8964-46a8-a33a-c9d22ecb5daa",
+    "title": "Launch & Feedback Loop",
+    "content": "<p>With everything set, we launch the project! But our relationship doesn't end there. We believe in continuous improvement and thus, regularly gather feedback, making necessary tweaks and ensuring you're always at the forefront of your industry.</p>",
+    "sort": 5
+  },
+  {
+    "button_group": null,
+    "block_steps": "a163efd7-1037-4261-939d-28a08122c426",
+    "image": "21e179ab-72c3-4350-b46a-fadd16f5652e",
+    "id": "8306f18f-0dd1-446d-b173-6f1a481049b9",
+    "title": "Testing & Quality Assurance",
+    "content": "<p>Before any launch, we rigorously test our creations. From functionality checks to usability tests, we ensure everything is in tip-top shape. Our goal is to ensure the final product is not just good, but exceptional.</p>",
+    "sort": 4
+  }
+]

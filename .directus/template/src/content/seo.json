@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1165d242-6359-479f-9104-ad1d9f669583",
+    "title": "Bettor Signals",
+    "sitemap_change_frequency": "hourly",
+    "canonical_url": null,
+    "sitemap_priority": 0.5,
+    "meta_description": "Innovative sports betting platform",
+    "no_index": false,
+    "no_follow": false
+  },
+  {
+    "id": "32f73e14-7391-44bc-8575-e3329ba23b62",
+    "title": "Agency OS",
+    "sitemap_change_frequency": "hourly",
+    "canonical_url": null,
+    "sitemap_priority": 0.5,
+    "meta_description": "The coolest app this side of the planet.",
+    "no_index": false,
+    "no_follow": false
+  },
+  {
+    "id": "4744eed5-ce1d-49a0-bc53-6fb3cfb91ce5",
+    "title": "Better Sign Shop",
+    "sitemap_change_frequency": "hourly",
+    "canonical_url": null,
+    "sitemap_priority": 0.5,
+    "meta_description": "Community platform and LMS for sign and print shop owners",
+    "no_index": false,
+    "no_follow": false
+  },
+  {
+    "id": "6fda4d61-a5e8-463b-b97a-505da1ac401d",
+    "title": "Services",
+    "sitemap_change_frequency": "hourly",
+    "canonical_url": null,
+    "sitemap_priority": 0.5,
+    "meta_description": "Here's the services we offer",
+    "no_index": false,
+    "no_follow": false
+  },
+  {
+    "id": "8c7e24a4-61fc-4725-8dbe-d74ca65c9950",
+    "title": "The Agency OS Team",
+    "sitemap_change_frequency": "hourly",
+    "canonical_url": null,
+    "sitemap_priority": 0.5,
+    "meta_description": "Learn more about our amazing team at Agency OS.",
+    "no_index": false,
+    "no_follow": false
+  }
+]

@@ -1,0 +1,581 @@
+[
+  {
+    "user_created": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
+    "id": "02b43e39-62c2-45cb-bc24-871075fba990",
+    "operation": null,
+    "date_created": "2024-02-15T16:35:44.485Z",
+    "accountability": "all",
+    "trigger": "schedule",
+    "status": "active",
+    "color": null,
+    "icon": "bolt",
+    "name": "Run Every 30 Min",
+    "options": {
+      "cron": "* 30 * * * * "
+    },
+    "description": null,
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "0f8ea882-219d-4823-bb80-bc725d280c3a",
+    "operation": "e2189b0d-54b6-46d7-b979-25021c1f7840",
+    "date_created": "2023-09-09T02:13:28.159Z",
+    "accountability": "all",
+    "trigger": "manual",
+    "status": "active",
+    "color": "#18222F",
+    "icon": "build",
+    "name": "[Website] Deploy Site",
+    "options": {
+      "collections": [
+        "globals"
+      ]
+    },
+    "description": "Start a new build for the website.",
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "12513e3d-9ecb-4d3b-9a1f-9137eb7e4376",
+    "operation": null,
+    "date_created": "2023-10-05T21:09:19.365Z",
+    "accountability": "all",
+    "trigger": "event",
+    "status": "active",
+    "color": "#D064AC",
+    "icon": "payments",
+    "name": "[Payments] New Payment Notification",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.create",
+        "items.update",
+        "items.delete"
+      ],
+      "collections": [
+        "os_payments"
+      ]
+    },
+    "description": "Sends email notifications whenever new payments are received.",
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "201e023d-6b67-4068-bc21-d60ef5b7668d",
+    "operation": "ac6ebd69-ec0e-4e11-8e94-0c22b635fe11",
+    "date_created": "2023-09-14T04:47:33.988Z",
+    "accountability": "all",
+    "trigger": "event",
+    "status": "active",
+    "color": "#D064AC",
+    "icon": "calculate",
+    "name": "[Invoices] Calculate Invoice",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.update",
+        "items.delete",
+        "items.create"
+      ],
+      "collections": [
+        "os_invoice_items",
+        "os_payments"
+      ]
+    },
+    "description": "Part of several flows that correctly calculates invoice line items and totals on update.",
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "69e87d0b-df14-4779-bdc8-abc05f2f1e97",
+    "operation": "bb1b1e3f-032e-48b7-b260-1cf3af4a116c",
+    "date_created": "2023-10-22T06:25:00.093Z",
+    "accountability": "all",
+    "trigger": "operation",
+    "status": "active",
+    "color": "#A2B5CD",
+    "icon": "globe_uk",
+    "name": "[Util] Get Globals",
+    "options": {
+      "return": "$last"
+    },
+    "description": "This is a utility flow to use in other flows when you need data from the Globals collection.",
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "6f4dcc83-5b25-4477-a898-3c1314cfe36f",
+    "operation": "86e25afa-0940-4970-a331-979b6efb2112",
+    "date_created": "2023-09-14T04:20:18.619Z",
+    "accountability": "all",
+    "trigger": "event",
+    "status": "active",
+    "color": "#D064AC",
+    "icon": "calculate",
+    "name": "[Invoices] Calculate Line Items",
+    "options": {
+      "type": "filter",
+      "scope": [
+        "items.update"
+      ],
+      "collections": [
+        "os_invoice_items"
+      ],
+      "return": "$last"
+    },
+    "description": "Part of several flows that correctly calculates invoice line items and totals on update.",
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "7de538a5-bc7b-4563-8be3-dc8d3879df6a",
+    "operation": "cd56fd51-c0f4-4744-8622-855dca695df9",
+    "date_created": "2023-09-09T13:19:53.407Z",
+    "accountability": "all",
+    "trigger": "event",
+    "status": "active",
+    "color": "#D064AC",
+    "icon": "receipt_long",
+    "name": "[Invoices] Generate Number",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.create"
+      ],
+      "collections": [
+        "os_invoices"
+      ]
+    },
+    "description": "Generates the invoice number for new invoices (unless you manually enter an invoice number).",
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "8106be67-aa96-4260-aac7-8ab129bb944b",
+    "operation": "0a95cdb6-8492-43e8-a2c9-0dfdc0ea2a9d",
+    "date_created": "2023-09-10T20:42:06.136Z",
+    "accountability": "all",
+    "trigger": "event",
+    "status": "active",
+    "color": "#6644FF",
+    "icon": "business_center",
+    "name": "[Organizations] Fetch Logo for Organizations",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.update",
+        "items.create"
+      ],
+      "collections": [
+        "organizations"
+      ]
+    },
+    "description": "Uses the Clearbit Logo API to import a logo for an organization whenever they are created or updated.",
+    "operations": null
+  },
+  {
+    "user_created": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
+    "id": "82054745-8c7e-459b-a8bd-35f44d506235",
+    "operation": null,
+    "date_created": "2024-02-29T17:00:27.924Z",
+    "accountability": "all",
+    "trigger": "manual",
+    "status": "active",
+    "color": null,
+    "icon": "bolt",
+    "name": "Test",
+    "options": {
+      "collections": [
+        "posts"
+      ],
+      "requireConfirmation": true,
+      "fields": [
+        {
+          "field": "comments",
+          "name": "Comments",
+          "type": "text",
+          "meta": {
+            "interface": "input-multiline"
+          }
+        }
+      ]
+    },
+    "description": null,
+    "operations": null
+  },
+  {
+    "user_created": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
+    "id": "86021346-a0e8-4207-83aa-d00d5e37b5fe",
+    "operation": null,
+    "date_created": "2024-02-15T16:44:39.168Z",
+    "accountability": "all",
+    "trigger": "event",
+    "status": "active",
+    "color": null,
+    "icon": "bolt",
+    "name": "New Feedback",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.create"
+      ],
+      "collections": [
+        "help_feedback"
+      ]
+    },
+    "description": null,
+    "operations": null
+  },
+  {
+    "user_created": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
+    "id": "934737be-c005-4ce9-b305-0d03a4c34f54",
+    "operation": "cd577186-e4e0-4452-ae76-6024956985dd",
+    "date_created": "2024-03-14T15:41:00.794Z",
+    "accountability": "all",
+    "trigger": "manual",
+    "status": "active",
+    "color": null,
+    "icon": "bolt",
+    "name": "Test Flow for Demo",
+    "options": {
+      "collections": [
+        "os_deals"
+      ],
+      "requireConfirmation": true,
+      "fields": [
+        {
+          "field": "proposal",
+          "name": "Proposal Name",
+          "type": "string",
+          "meta": {
+            "interface": "input",
+            "note": "What is the name of the proposal?"
+          }
+        }
+      ]
+    },
+    "description": null,
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "ac372072-30ff-4806-91cc-a6ade72e6636",
+    "operation": "a7a66ae8-47ad-4d7a-97d3-e27f8c52241b",
+    "date_created": "2023-09-09T02:13:28.359Z",
+    "accountability": "all",
+    "trigger": "event",
+    "status": "active",
+    "color": "#18222F",
+    "icon": "saved_search",
+    "name": "[Website] Create SEO Item",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.create"
+      ],
+      "collections": [
+        "pages",
+        "posts",
+        "categories"
+      ]
+    },
+    "description": "Creates a matching item in the `seo` collection whenever an item in a trigger collection is created.",
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "b94189fe-0d20-4611-88a1-dd7b5d419b35",
+    "operation": "1d167b20-13af-4f0b-afe1-a4c4d8971654",
+    "date_created": "2023-09-09T02:13:28.458Z",
+    "accountability": "all",
+    "trigger": "event",
+    "status": "active",
+    "color": "#18222F",
+    "icon": "link",
+    "name": "[Website] Slugify",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.create"
+      ],
+      "collections": [
+        "pages",
+        "posts",
+        "categories"
+      ]
+    },
+    "description": "Generate slugs for 'pages', 'posts', and other content collections. ",
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "c29208b0-4187-4af0-83a3-1bea7e30e12c",
+    "operation": "aa70c7bb-cb61-417f-9110-468d79b4849b",
+    "date_created": "2023-09-09T02:13:28.559Z",
+    "accountability": "all",
+    "trigger": "event",
+    "status": "active",
+    "color": "#18222F",
+    "icon": "mark_email_read",
+    "name": "[Website] Post Approval",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.update"
+      ],
+      "collections": [
+        "posts"
+      ]
+    },
+    "description": "Send email when posts are ready for review.",
+    "operations": null
+  },
+  {
+    "user_created": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
+    "id": "c6871e5c-7c48-4043-a77d-70ed57fd486c",
+    "operation": null,
+    "date_created": "2024-02-29T17:03:13.487Z",
+    "accountability": "all",
+    "trigger": "webhook",
+    "status": "active",
+    "color": null,
+    "icon": "bolt",
+    "name": "Test Webhook",
+    "options": {
+      "method": "POST"
+    },
+    "description": null,
+    "operations": null
+  },
+  {
+    "user_created": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
+    "id": "d77aa17b-86c9-4b3e-bb38-5af25b87f274",
+    "operation": null,
+    "date_created": "2024-02-15T16:39:05.972Z",
+    "accountability": "all",
+    "trigger": "manual",
+    "status": "active",
+    "color": null,
+    "icon": "bolt",
+    "name": "Manual Trigger on Page",
+    "options": {
+      "collections": [
+        "pages"
+      ],
+      "requireConfirmation": true,
+      "fields": [
+        {
+          "field": "name",
+          "name": "What is your name?",
+          "type": "string",
+          "meta": {
+            "interface": "input"
+          }
+        }
+      ]
+    },
+    "description": null,
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "e9a31eab-99aa-453e-8889-b7339ed31034",
+    "operation": "43e30267-a0bd-43e9-8f3c-56be4dcf565a",
+    "date_created": "2023-09-10T19:51:29.565Z",
+    "accountability": "all",
+    "trigger": "manual",
+    "status": "active",
+    "color": "#D064AC",
+    "icon": "playlist_add_check_circle",
+    "name": "[Projects] Create Project",
+    "options": {
+      "collections": [
+        "os_projects",
+        "organizations",
+        "os_deals",
+        "contacts"
+      ],
+      "requireConfirmation": true,
+      "fields": [
+        {
+          "field": "name",
+          "type": "string",
+          "name": "Project Name",
+          "meta": {
+            "interface": "input",
+            "note": "What would you like to name this project?",
+            "width": "full",
+            "required": true
+          }
+        },
+        {
+          "field": "organization",
+          "type": "json",
+          "name": "Organization",
+          "meta": {
+            "interface": "collection-item-dropdown",
+            "width": "half",
+            "required": true,
+            "options": {
+              "selectedCollection": "organizations"
+            }
+          }
+        },
+        {
+          "field": "contact",
+          "type": "json",
+          "name": "Primary Contact",
+          "meta": {
+            "interface": "collection-item-dropdown",
+            "width": "half",
+            "required": false,
+            "options": {
+              "selectedCollection": "contacts"
+            }
+          }
+        },
+        {
+          "field": "os_project_template",
+          "type": "json",
+          "name": "Project Template",
+          "meta": {
+            "interface": "collection-item-dropdown",
+            "note": "Would you like to load a template for this project?",
+            "width": "full",
+            "required": false,
+            "options": {
+              "selectedCollection": "os_project_templates"
+            }
+          }
+        },
+        {
+          "field": "project_start_date",
+          "type": "timestamp",
+          "name": "Start Date",
+          "meta": {
+            "interface": "datetime",
+            "note": "When will this project start, if not set - it will default to today's date.",
+            "width": "half",
+            "required": false,
+            "options": {
+              "use24": false
+            }
+          }
+        },
+        {
+          "field": "project_due_date",
+          "type": "timestamp",
+          "name": "Target Completion Date",
+          "meta": {
+            "interface": "datetime",
+            "note": "What the estimated target date to deliver this project?",
+            "width": "half",
+            "options": {
+              "use24": false
+            }
+          }
+        }
+      ],
+      "requireSelection": false,
+      "confirmationDescription": "Create a New Project 🚀"
+    },
+    "description": "Creates a new project using a template.",
+    "operations": null
+  },
+  {
+    "user_created": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
+    "id": "ed160d1b-a8b7-4a02-a7c0-038ca692a504",
+    "operation": null,
+    "date_created": "2024-02-21T16:49:20.770Z",
+    "accountability": "all",
+    "trigger": "manual",
+    "status": "active",
+    "color": null,
+    "icon": "bolt",
+    "name": "Trigger",
+    "options": {
+      "collections": [
+        "pages"
+      ],
+      "requireSelection": false,
+      "requireConfirmation": true,
+      "fields": [
+        {
+          "field": "name",
+          "name": "What is your name?",
+          "type": "string",
+          "meta": {
+            "interface": "input"
+          }
+        }
+      ]
+    },
+    "description": null,
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "f302764e-84d7-4208-8c6d-d4da76400544",
+    "operation": "58124944-d33c-4d7e-8fd3-dfe76309ff7b",
+    "date_created": "2023-10-04T17:37:50.215Z",
+    "accountability": "all",
+    "trigger": "event",
+    "status": "active",
+    "color": "#6644FF",
+    "icon": "folder_copy",
+    "name": "[Organizations] Manage Folders",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.create",
+        "items.update"
+      ],
+      "collections": [
+        "organizations"
+      ]
+    },
+    "description": "Creates and updates organization file folders whenever an organization is created or updated.",
+    "operations": null
+  },
+  {
+    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
+    "id": "f78d4723-8d74-4ffc-8a82-06a31c857584",
+    "operation": "870017e8-bc7d-459b-a087-04cc00f05a5c",
+    "date_created": "2023-09-12T19:54:11.279Z",
+    "accountability": "all",
+    "trigger": "manual",
+    "status": "active",
+    "color": "#D064AC",
+    "icon": "send",
+    "name": "[Proposals] Send Proposal",
+    "options": {
+      "collections": [
+        "os_proposals"
+      ],
+      "requireConfirmation": true,
+      "fields": [
+        {
+          "field": "message",
+          "type": "text",
+          "name": "Body",
+          "meta": {
+            "interface": "input-rich-text-html",
+            "width": "full",
+            "required": true
+          }
+        },
+        {
+          "field": "subject",
+          "name": "Subject",
+          "type": "string",
+          "meta": {
+            "interface": "input"
+          }
+        }
+      ]
+    },
+    "description": "Submits a proposal to the organization and contact.",
+    "operations": null
+  }
+]

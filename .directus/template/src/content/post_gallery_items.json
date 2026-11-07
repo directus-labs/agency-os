@@ -1,0 +1,32 @@
+[
+  {
+    "directus_files_id": "ac905071-0643-4337-8f53-48ed45b1ccf2",
+    "posts_id": "b823edc9-606e-4782-baad-18abf807c3a1",
+    "id": "1109777a-b63f-473e-aa1f-dfa643ed9a9c",
+    "sort": 1
+  },
+  {
+    "directus_files_id": "6ff389c5-3ecb-4219-8f72-f10326aab421",
+    "posts_id": "b823edc9-606e-4782-baad-18abf807c3a1",
+    "id": "4849638f-c40f-4fa1-8dba-d1501e65c193",
+    "sort": 5
+  },
+  {
+    "directus_files_id": "ce0b845f-f8d8-4856-b0af-1df4e3a838cc",
+    "posts_id": "b823edc9-606e-4782-baad-18abf807c3a1",
+    "id": "a5a104b3-60aa-4956-8bf9-fb47acdfb2ba",
+    "sort": 4
+  },
+  {
+    "directus_files_id": "88b95737-7ff4-4a09-8523-362d42caa9f9",
+    "posts_id": "b823edc9-606e-4782-baad-18abf807c3a1",
+    "id": "c6898826-81d8-4e01-a169-dfacee56e352",
+    "sort": 2
+  },
+  {
+    "directus_files_id": "b1a3fd77-8e62-4678-9d44-333a30eec13b",
+    "posts_id": "b823edc9-606e-4782-baad-18abf807c3a1",
+    "id": "eafbf929-3dd4-46fa-b953-621d12390793",
+    "sort": 3
+  }
+]

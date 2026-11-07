@@ -1,0 +1,90 @@
+[
+  {
+    "id": "8759da00-c0a7-447d-924c-e106c8e4703a",
+    "alignment": "center",
+    "title": "Frequently Asked Questions",
+    "faqs": [
+      {
+        "title": "How does this work?",
+        "answer": "Lorem ipsum dipsum"
+      }
+    ],
+    "headline": "<p>What can we <em>help </em>you with?</p>"
+  },
+  {
+    "id": "cf6a9e3d-87c4-4f18-abb3-78594b9c7ca4",
+    "alignment": "center",
+    "title": "Frequently Asked Questions",
+    "faqs": [
+      {
+        "title": "How much does the average project cost?",
+        "answer": "Lorem ipsum blah blah"
+      },
+      {
+        "title": "How long does it take?",
+        "answer": "Lorem ipsum blah blah"
+      }
+    ],
+    "headline": "<p>How can we&nbsp;<em>help</em> you?</p>"
+  },
+  {
+    "id": "ec44961c-fcda-4ce7-ad9a-ec63413bffd1",
+    "alignment": "left",
+    "title": "Frequently Asked Questions",
+    "faqs": [
+      {
+        "title": "What services does your digital agency provide?",
+        "answer": "Our agency specializes in a range of digital services including web design and development, mobile app development, digital marketing, SEO, content creation, branding, graphic design, and more."
+      },
+      {
+        "title": "How long have you been in the industry?",
+        "answer": "We have been proudly serving our clients for over [X years], delivering innovative and result-driven solutions."
+      },
+      {
+        "title": "Why should I choose your agency over others?",
+        "answer": "Our agency prides itself on [unique selling proposition, e.g., 'personalized service, cutting-edge technological solutions, and a history of successful projects']. Every client, big or small, is important to us, and we strive to ensure their success."
+      },
+      {
+        "title": "Do you have any case studies or examples of past work?",
+        "answer": "Absolutely! You can view a selection of our work in the [Portfolio] section of our website. Each case study provides an in-depth look at the project, our approach, and the results."
+      },
+      {
+        "title": "What is your project development process?",
+        "answer": "Our process typically starts with a consultation phase to understand your requirements. This is followed by planning, designing, development, testing, and finally, deployment. We emphasize clear communication and feedback at each stage."
+      },
+      {
+        "title": "How do you price your services?",
+        "answer": "Pricing is determined based on the scope and complexity of the project. We provide a detailed proposal after understanding your needs, ensuring transparency and no hidden costs."
+      },
+      {
+        "title": "How long will it take to complete my project?",
+        "answer": "The timeline varies depending on the project's complexity and requirements. Typically, a standard website takes [X weeks], while more intricate projects can take longer. We always aim to deliver quality work within the agreed-upon timeframe."
+      },
+      {
+        "title": "Do you offer post-launch support and maintenance?",
+        "answer": "Yes, we offer various post-launch support packages to ensure your digital product remains updated, secure, and efficient."
+      },
+      {
+        "title": "Can I meet the team working on my project?",
+        "answer": "Of course! We believe in fostering a strong relationship between our clients and our team. You can meet and collaborate with everyone involved in your project."
+      },
+      {
+        "title": "How do you ensure the quality of your work?",
+        "answer": "Quality is paramount to us. We follow best industry practices, conduct thorough testing, and have a rigorous quality assurance process in place. Moreover, our team continuously stays updated with the latest trends and technologies."
+      },
+      {
+        "title": "What industries have you worked with?",
+        "answer": "We've had the privilege to work with clients from diverse industries, including healthcare, e-commerce, finance, real estate, entertainment, and more."
+      },
+      {
+        "title": "Do you offer digital marketing services?",
+        "answer": "Yes, we have a dedicated team specializing in digital marketing. From SEO, PPC, social media marketing, to content strategy, we offer a comprehensive range of services to boost your online presence."
+      },
+      {
+        "title": "Will my website be mobile-friendly?",
+        "answer": "Absolutely. All our web designs are responsive, ensuring they look and function great on all devices, from desktops to smartphones."
+      }
+    ],
+    "headline": "<p>You've got questions?&nbsp; Good.</p>"
+  }
+]

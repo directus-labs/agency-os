@@ -1,0 +1,42 @@
+[
+  {
+    "id": "2d490b3f-7528-4b85-a05f-44aac2f2e05d",
+    "parent": null,
+    "name": "Administrator",
+    "icon": "verified",
+    "description": "Administrative role with unrestricted App/API access.",
+    "children": null,
+    "policies": null,
+    "users": null
+  },
+  {
+    "id": "8ba4ed6f-d330-4675-ae46-119c533a0928",
+    "parent": null,
+    "name": "Team Member",
+    "icon": "supervised_user_circle",
+    "description": "Role for internal team members and employees",
+    "children": null,
+    "policies": null,
+    "users": null
+  },
+  {
+    "id": "9ecc2969-8b38-4088-9dc1-78334a206445",
+    "parent": null,
+    "name": "Website API",
+    "icon": "android",
+    "description": "Role for using static tokens for server to server communication. Do not use on client side.",
+    "children": null,
+    "policies": null,
+    "users": null
+  },
+  {
+    "id": "edc2e863-e2c4-4ee3-bcbd-d090df2911e1",
+    "parent": null,
+    "name": "Client",
+    "icon": "person_pin",
+    "description": "Role for clients accessing their projects via the frontend.",
+    "children": null,
+    "policies": null,
+    "users": null
+  }
+]
