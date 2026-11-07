@@ -6,6 +6,7 @@
   "directus:template": {
     "name": "AgencyOS",
     "description": "A full-featured agency management OS template.",
+    "requiresLicense": true,
     "template": "./directus/template",
     "frontends": {
       "nuxt": {

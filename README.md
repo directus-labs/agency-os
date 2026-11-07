@@ -136,7 +136,11 @@ The fastest way to get started is with the Directus Template CLI:
 npx directus-template-cli@latest init --template=https://github.com/directus-labs/agency-os
 ```
 
-This sets up both the Directus backend and Nuxt frontend for you.
+This sets up both the Directus backend and Nuxt frontend for you. It asks for a Directus license key and adds it to
+`directus/.env` (or pass `--licenseKey`).
+
+AgencyOS needs a Directus license. It has more collections than the free core tier of Directus 12 allows, so applying
+the template without a key stops partway through. [Learn about licensing](https://directus.io/license).
 
 ## Manual Setup
 
