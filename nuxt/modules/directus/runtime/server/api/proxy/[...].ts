@@ -1,5 +1,5 @@
 import { joinURL } from 'ufo';
-import {  defineEventHandler, proxyRequest } from 'h3';
+import { defineEventHandler, proxyRequest } from 'h3';
 
 export default defineEventHandler(async (event) => {
 	const config = useRuntimeConfig();
