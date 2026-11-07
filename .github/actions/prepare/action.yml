@@ -11,7 +11,7 @@ runs:
     - name: Install Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 18
+        node-version: 22
         registry-url: ${{ inputs.registry }}
 
     - uses: pnpm/action-setup@v4
@@ -19,6 +19,7 @@ runs:
       id: pnpm-install
       with:
         run_install: false
+        package_json_file: nuxt/package.json
 
     - name: Get pnpm store directory
       id: pnpm-cache
