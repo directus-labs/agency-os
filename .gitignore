@@ -10,6 +10,7 @@ dist
 .vscode
 .eslintcache
 .netlify
-.directus/data
-.directus/uploads
-directus
+directus/data
+directus/uploads
+directus/extensions
+.directus-template-cli

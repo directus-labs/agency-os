@@ -20,9 +20,12 @@ jobs:
   typecheck:
     name: Typecheck
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nuxt
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Prepare
         uses: ./.github/actions/prepare
