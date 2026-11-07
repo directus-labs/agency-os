@@ -179,16 +179,30 @@ You need a static token to seed the project with the template data.
 
 ### 3 - Apply the AgencyOS Template
 
+The Directus template lives in this repo at [`directus/template`](./directus/template). Open your terminal, run the
+following command, and follow the prompts.
+
 ```bash
 npx directus-template-cli@latest apply
 ```
 
-1. Choose the `Agency OS` template
-2. Paste the URL to your Directus instance
-3. Paste your Admin user static token
-4. Wait for the script to finish
+1. Choose `From a public GitHub repository`.
+2. Paste `https://github.com/directus-labs/agency-os/tree/main/directus/template`
+3. Paste the URL to your Directus instance
+4. Paste your Admin user static token
+5. Wait for the script to finish
 
-Learn more about the [Directus Template CLI](https://github.com/directus-community/directus-template-cli).
+Or apply it in one command:
+
+```bash
+npx directus-template-cli@latest apply -p \
+  --directusUrl="http://localhost:8055" \
+  --directusToken="your-static-token" \
+  --templateType="github" \
+  --templateLocation="https://github.com/directus-labs/agency-os/tree/main/directus/template"
+```
+
+Learn more about the [Directus Template CLI](https://github.com/directus-labs/directus-template-cli).
 
 <br />
 

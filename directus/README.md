@@ -6,7 +6,7 @@ This directory contains the Directus backend configuration for AgencyOS.
 
 - `docker-compose.yaml` – Docker Compose file for running a local Directus instance with PostgreSQL and Redis
 - `.env.example` – Environment variables for the Docker setup
-- `template/` – Directus template data (schema, content, and files) used by the [Directus Template CLI](https://github.com/directus-community/directus-template-cli)
+- `template/` – Directus template data (schema, content, and files) used by the [Directus Template CLI](https://github.com/directus-labs/directus-template-cli)
 - `run-scripts/` – Scripts used by Directus Flows > Run Script operations
 
 ## Quick Start
