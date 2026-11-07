@@ -28,7 +28,7 @@ services:
       start_period: 30s
 
   directus:
-    image: directus/directus:12.6.1
+    image: directus/directus:11.17.4
     ports:
       - ${DIRECTUS_PORT}:8055
     volumes:
@@ -43,7 +43,6 @@ services:
       SECRET: ${DIRECTUS_SECRET}
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
-      LICENSE_KEY: ${LICENSE_KEY:-}
       NODE_ENV: ${NODE_ENV:-production}
 
       DB_CLIENT: 'pg'
