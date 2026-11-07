@@ -136,7 +136,9 @@ The fastest way to get started is with the Directus Template CLI:
 npx directus-template-cli@latest init --template=https://github.com/directus-labs/agency-os
 ```
 
-This sets up both the Directus backend and Nuxt frontend for you.
+This sets up both the Directus backend (Directus 11) and the Nuxt frontend for you. Before starting the frontend, create a
+static token for the admin user (see [step 2](#2---generate-a-static-token-for-the-admin-user)) and set it as
+`DIRECTUS_SERVER_TOKEN` in `nuxt/.env`.
 
 ## Manual Setup
 
