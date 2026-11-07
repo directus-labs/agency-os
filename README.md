@@ -1,3 +1,21 @@
+> [!IMPORTANT]
+> **This repository is archived and no longer maintained.** AgencyOS was built for Directus 10 and 11. The included
+> `docker-compose.yaml` runs Directus 10.13.1, and the setup below still works with it.
+>
+> On Directus 12, AgencyOS needs a license: it has more collections than the free core tier allows. Organizations under
+> $5M in annual revenue and 50 employees can get one for free through the
+> [Open Innovation Grant](https://directus.com/oig).
+>
+> For new projects on Directus 12, start from [directus-labs/starters](https://github.com/directus-labs/starters):
+>
+> | AgencyOS feature | Starter |
+> | --- | --- |
+> | Website, blog, page builder | [`cms`](https://github.com/directus-labs/starters/tree/main/cms) |
+> | CRM | [`simple-crm`](https://github.com/directus-labs/starters/tree/main/simple-crm) |
+> | Help center | [`help-center`](https://github.com/directus-labs/starters/tree/main/help-center) |
+>
+> The client portal, projects, and invoicing have no starter equivalent.
+
 <a href="https://directus.io" target="_blank">
   <img alt="Agency OS - Complete Nuxt3 + Directus project" src="./public/logos/agencyos.png">
   <h1 align="center">AgencyOS</h1>
