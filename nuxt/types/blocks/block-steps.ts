@@ -9,7 +9,7 @@ export interface BlockStep {
 	alternate_image_position?: boolean;
 	/** Show the step numbers on the website. For example: (Step 1, Step 2, etc) */
 	show_step_numbers?: boolean | null;
-	steps?: (number | BlockStepItem)[];
+	steps?: number[] | BlockStepItem[];
 }
 export interface BlockStepItem {
 	id?: string;

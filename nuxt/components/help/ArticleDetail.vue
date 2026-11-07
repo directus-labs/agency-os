@@ -49,7 +49,7 @@ const {
 			</p>
 		</div>
 
-		<UserBadge v-if="article?.owner" :user="article?.owner" />
+		<UserBadge v-if="article?.owner && typeof article.owner === 'object'" :user="article.owner" />
 
 		<div class="flex-col">
 			<article>

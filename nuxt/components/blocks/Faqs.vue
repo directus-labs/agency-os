@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { AccordionItem } from '@nuxt/ui/dist/runtime/types';
+import type { AccordionItem } from '#ui/types';
 import type { BlockFaq, BlockFaqQuestion } from '~/types';
 
 const props = defineProps<{

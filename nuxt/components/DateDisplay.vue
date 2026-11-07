@@ -3,7 +3,7 @@
 	Display a date in the ole desk-calendar looking format
 */
 export interface DateDisplayProps {
-	date: string | null;
+	date?: string | null;
 	size: 'xs' | 'sm' | 'md' | 'lg';
 	color?: 'primary' | 'gray' | 'amber';
 }

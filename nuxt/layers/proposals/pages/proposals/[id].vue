@@ -23,7 +23,7 @@ const {
 						'collection',
 						{
 							item: {
-								block_hero: ['id', 'title', 'headline', 'content', 'image', 'buttons', 'image_position'],
+								block_hero: ['id', 'title', 'headline', 'content', 'image', 'image_position'],
 								block_faqs: ['id', 'title', 'faqs', 'headline', 'alignment'],
 								block_richtext: ['id', 'title', 'headline', 'content', 'alignment'],
 								block_testimonials: [

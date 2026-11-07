@@ -54,18 +54,25 @@ const page = computed(() => {
 	return unref(data)?.page;
 });
 
+// '*' plus nested fields types relations as ids or objects; nested fields always return objects
+const featuredPost = computed(() => {
+	const featuredPost = unref(page)?.featured_post;
+	return typeof featuredPost === 'object' ? featuredPost : null;
+});
+
 const posts = computed(() => {
 	// If the featured post is in the posts array, remove it
-	const posts = unref(data)?.posts.filter((post) => post.id !== unref(page)?.featured_post?.id);
+	const posts = unref(data)?.posts.filter((post) => post.id !== unref(featuredPost)?.id);
 	return posts;
 });
 
 // Compute metadata here to make it easier to populate all the different SEO tags
 const metadata = computed(() => {
 	const pageData = unref(page);
+	const seo = typeof pageData?.seo === 'object' ? pageData.seo : null;
 	return {
-		title: pageData?.seo?.title ?? pageData?.title ?? undefined,
-		description: pageData?.seo?.meta_description ?? stripHTML(pageData?.headline) ?? undefined,
+		title: seo?.title ?? pageData?.title ?? undefined,
+		description: seo?.meta_description ?? stripHTML(pageData?.headline) ?? undefined,
 		image: globals?.og_image ? fileUrl(globals?.og_image) : undefined,
 	};
 });
@@ -117,7 +124,7 @@ useServerSeoMeta({
 				</div>
 				<div class="space-y-4 lg:col-span-3">
 					<TypographyTitle>Featured Article</TypographyTitle>
-					<PostCard :post="page?.featured_post" direction="horizontal" />
+					<PostCard v-if="featuredPost" :post="featuredPost" direction="horizontal" />
 				</div>
 			</div>
 			<div class="space-y-4">

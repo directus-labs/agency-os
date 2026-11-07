@@ -1,6 +1,6 @@
 import type { User } from '~~/types';
 
-export function userName(user: Partial<User>): string {
+export function userName(user: Partial<Pick<User, 'first_name' | 'last_name' | 'email'>>): string {
 	if (!user) {
 		return 'Unknown User' as string;
 	}

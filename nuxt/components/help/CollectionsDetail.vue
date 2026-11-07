@@ -18,10 +18,10 @@ const {
 			readItems('help_collections', {
 				filter: {
 					slug: {
-						_eq: params.slug,
+						_eq: params.slug as string,
 					},
 				},
-				fields: ['*', 'articles.slug', 'articles.title', 'articles.id', 'articles.summary'],
+				fields: ['*', { articles: ['slug', 'title', 'id', 'summary'] }],
 			}),
 		);
 	},
@@ -29,6 +29,9 @@ const {
 		transform: (data) => data[0],
 	},
 );
+
+// '*' plus nested fields types articles as ids or objects; nested fields always return objects
+const articles = computed(() => collection.value?.articles?.filter((article) => typeof article === 'object'));
 </script>
 <template>
 	<section class="max-w-full mt-8">
@@ -48,11 +51,11 @@ const {
 						<p>{{ collection?.description }}</p>
 					</div>
 				</div>
-				<div class="mt-5 text-gray-500">{{ collection?.articles.length }} articles</div>
+				<div class="mt-5 text-gray-500">{{ collection?.articles?.length }} articles</div>
 			</div>
 			<div class="flex flex-col gap-5 p-2 border-2 dark:border-gray-600 rounded-card">
 				<NuxtLink
-					v-for="article in collection?.articles"
+					v-for="article in articles"
 					:key="article.id"
 					:to="`${baseUrl}/help/articles/${article.slug}`"
 					class="flex flex-col p-3 transition duration-150 rounded-card hover:bg-primary/10 dark:hover:bg-gray-900"

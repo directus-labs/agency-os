@@ -28,7 +28,7 @@ async function fetchTask(id: string) {
 			}),
 		);
 
-		task.value = data;
+		task.value = data as OsTask;
 	} catch (err) {
 		throw createError({
 			statusCode: 404,
@@ -40,7 +40,7 @@ async function fetchTask(id: string) {
 async function updateTask(id: string, item: Partial<OsTask>) {
 	try {
 		const data = await useDirectus(updateItem('os_tasks', id, item));
-		task.value = data;
+		task.value = data as OsTask;
 	} catch (error) {
 		throw createError({
 			statusCode: 500,

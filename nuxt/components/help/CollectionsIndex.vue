@@ -51,7 +51,7 @@ const {
 						{{ collection.description }}
 					</p>
 				</div>
-				<div class="mt-4 text-sm text-gray-500 dark:text-gray-300">{{ collection.articles.length }} articles</div>
+				<div class="mt-4 text-sm text-gray-500 dark:text-gray-300">{{ collection.articles?.length }} articles</div>
 			</div>
 		</NuxtLink>
 	</div>

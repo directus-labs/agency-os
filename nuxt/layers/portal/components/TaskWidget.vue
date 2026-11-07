@@ -31,9 +31,9 @@ const { data, pending, error, refresh } = await useAsyncData(
 		);
 
 		const count = useDirectus(
-			readItems('os_tasks', {
-				filter,
-				aggregate: { count: ['*'] },
+			aggregate('os_tasks', {
+				aggregate: { count: '*' },
+				query: { filter },
 			}),
 		);
 
@@ -43,7 +43,7 @@ const { data, pending, error, refresh } = await useAsyncData(
 		transform: ([data, count]) => {
 			return {
 				tasks: data,
-				count: parseInt(count[0].count) ?? 0,
+				count: parseInt(count[0].count ?? '0') ?? 0,
 			};
 		},
 	},

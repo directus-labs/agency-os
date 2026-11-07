@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Form } from '~/types';
-import type { FormError } from '@nuxt/ui/dist/runtime/types';
+import type { FormError } from '#ui/types';
 
 const props = defineProps<{
 	form: Form;

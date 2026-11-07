@@ -15,11 +15,12 @@ export interface OsProject {
 	owner?: (string | User) | null;
 	start_date?: string | null;
 	due_date?: string | null;
-	expenses?: (string | OsExpense)[];
-	invoices?: (string | OsInvoice)[];
-	contacts?: (string | OsProjectContact)[];
+	expenses?: string[] | OsExpense[];
+	invoices?: string[] | OsInvoice[];
+	contacts?: string[] | OsProjectContact[];
 	billing?: string;
-	tasks?: (string | OsTask)[];
+	tasks?: string[] | OsTask[];
+	updates?: string[] | OsProjectUpdate[];
 }
 
 export interface OsProjectContact {
@@ -27,6 +28,16 @@ export interface OsProjectContact {
 	os_projects_id?: (string | OsProject) | null;
 	contacts_id?: (string | Contact) | null;
 	sort?: number | null;
+}
+
+export interface OsProjectUpdate {
+	id?: string;
+	user_created?: (string | User) | null;
+	date_created?: string | null;
+	user_updated?: (string | User) | null;
+	date_updated?: string | null;
+	project?: (string | OsProject) | null;
+	message?: string | null;
 }
 
 export interface OsProjectFile {

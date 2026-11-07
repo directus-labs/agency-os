@@ -15,7 +15,7 @@ const {
 				{
 					organization: ['id', 'name', 'logo'],
 					owner: ['id', 'first_name', 'last_name', 'email', 'avatar'],
-					contacts: ['*'],
+					contacts: ['*', { contacts_id: ['id', 'first_name', 'last_name', 'email'] }],
 					tasks: ['id', 'name', 'type', 'status', 'due_date', 'date_completed'],
 					updates: ['id', 'message', 'user_created', 'date_created', 'date_updated', 'user_updated'],
 				},
@@ -43,6 +43,25 @@ const {
 });
 
 const { fileUrl } = useFiles();
+
+// '*' plus nested fields types relations as ids or objects; nested fields always return objects
+const owner = computed(() => {
+	const owner = unref(project)?.owner;
+	return typeof owner === 'object' ? owner : null;
+});
+
+const organization = computed(() => {
+	const organization = unref(project)?.organization;
+	return typeof organization === 'object' ? organization : null;
+});
+
+const contacts = computed(() =>
+	(unref(project)?.contacts ?? []).flatMap((contact) =>
+		typeof contact === 'object' && contact.contacts_id && typeof contact.contacts_id === 'object'
+			? [contact.contacts_id]
+			: [],
+	),
+);
 
 const milestones = computed(() => {
 	const projectData = unref(project as OsProject);
@@ -87,19 +106,14 @@ const milestones = computed(() => {
 					<p class="text-sm font-bold">{{ /* @TODO */ 'Company Name' }}</p>
 
 					<VLabel label="Project Owner" />
-					<VAvatar :author="project?.owner" size="sm" />
+					<VAvatar v-if="owner" :author="owner" size="sm" />
 				</div>
 				<div class="p-4 space-y-4">
-					<img v-if="project?.organization?.logo" :src="fileUrl(project?.organization?.logo)" class="h-6" />
-					<p class="text-sm font-bold">{{ project?.organization?.name }}</p>
+					<img v-if="organization?.logo" :src="fileUrl(organization.logo)" class="h-6" />
+					<p class="text-sm font-bold">{{ organization?.name }}</p>
 
 					<VLabel label="Contacts" />
-					<UserBadge
-						v-for="contact in project?.contacts"
-						:key="contact.contacts_id?.id"
-						:user="contact.contacts_id"
-						size="sm"
-					/>
+					<UserBadge v-for="contact in contacts" :key="contact.id" :user="contact" size="sm" />
 				</div>
 			</div>
 		</UCard>

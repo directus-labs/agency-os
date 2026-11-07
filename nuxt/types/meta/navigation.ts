@@ -9,7 +9,7 @@ export interface Navigation {
 	title?: string | null;
 	user_created?: string | User | null;
 	user_updated?: string | User | null;
-	items?: (string | NavigationItem)[];
+	items?: string[] | NavigationItem[];
 }
 export interface NavigationItem {
 	has_children?: boolean | null;
@@ -26,7 +26,7 @@ export interface NavigationItem {
 	title?: string | null;
 	type?: string | null;
 	url?: string | null;
-	children?: (string | NavigationItem)[];
+	children?: string[] | NavigationItem[] | null;
 	/** Control the icon and label displayed on the website. */
 	display_details?: string;
 }

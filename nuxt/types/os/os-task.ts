@@ -1,4 +1,4 @@
-import type { User } from '../system';
+import type { File, User } from '../system';
 import type { Form } from '../content';
 import type { OsProject } from '../os';
 
@@ -29,6 +29,6 @@ export interface OsTask {
 	start_date?: string | null;
 	embed_url?: string | null;
 	form?: (string | Form) | null;
-	files?: (string | OsTaskFile)[];
+	files?: string[] | OsTaskFile[];
 	client_task_details?: string;
 }

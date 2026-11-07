@@ -23,11 +23,11 @@ export interface OsProposal {
 	deal?: (string | OsDeal) | null;
 	owner?: (string | User) | null;
 	status?: string;
-	contacts?: (string | OsProposalContact)[];
+	contacts?: string[] | OsProposalContact[];
 	activity?: string;
-	approvals?: (string | OsProposalApproval)[];
+	approvals?: string[] | OsProposalApproval[];
 	/** This is the content of your proposal */
-	blocks?: (string | OsProposalBlock)[];
+	blocks?: string[] | OsProposalBlock[];
 }
 
 export interface OsProposalApproval {

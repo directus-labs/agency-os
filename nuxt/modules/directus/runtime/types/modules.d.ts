@@ -1,26 +1,21 @@
-import type { RestClient } from "@directus/sdk";
+import type { Globals } from '~/types';
 
 declare module "#app" {
-  interface NuxtApp {
-    $directus: {
-      rest: RestClient<DirectusSchema>;
-    };
-  }
   interface RuntimeNuxtHooks {
     "directus:loggedIn": (state: boolean) => void;
   }
 }
 
-declare module "vue" {
-  interface ComponentCustomProperties {
-    $directus: {
-      rest: RestClient<DirectusSchema>;
-    };
+declare module "nuxt/schema" {
+  interface CustomAppConfig {
+    globals?: Globals;
   }
 }
 
-declare global {
-  interface DirectusSchema {}
+declare module "@nuxt/schema" {
+  interface CustomAppConfig {
+    globals?: Globals;
+  }
 }
 
 export {};

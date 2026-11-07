@@ -30,7 +30,7 @@ export interface Page {
 	title?: string | null;
 	user_created?: (string | User) | null;
 	user_updated?: (string | User) | null;
-	blocks?: (string | PageBlock)[];
+	blocks?: string[] | PageBlock[];
 }
 
 export interface PageBlock {

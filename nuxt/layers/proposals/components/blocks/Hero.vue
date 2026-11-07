@@ -2,9 +2,9 @@
 import type { User } from '~/types';
 
 export interface HeroProps {
-	name: string;
-	organization: string;
-	owner: User;
+	name?: string | null;
+	organization?: string | null;
+	owner?: Partial<User> | null;
 }
 
 defineProps<HeroProps>();

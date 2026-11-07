@@ -9,10 +9,7 @@ useSchemaOrg([
 	defineOrganization({
 		name: globals?.title ?? 'AgencyOS',
 		logo: globals?.logo_on_light_bg ? fileUrl(globals?.logo_on_light_bg) : '/logos/agencyos.png',
-		sameAs: () => {
-			const socialLinks = globals?.social_links ?? [];
-			return socialLinks.map((link) => link.url);
-		},
+		sameAs: (globals?.social_links ?? []).map((link) => link.url),
 	}),
 ]);
 

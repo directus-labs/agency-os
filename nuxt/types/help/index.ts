@@ -24,7 +24,7 @@ export interface HelpCollection {
 	slug?: string | null;
 	sort?: number | null;
 	title?: string | null;
-	articles?: (string | HelpArticle)[];
+	articles?: string[] | HelpArticle[];
 }
 
 export interface HelpFeedback {

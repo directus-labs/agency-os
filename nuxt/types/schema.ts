@@ -1,31 +1,50 @@
 import type {
+	BlockButton,
+	BlockButtonGroup,
 	BlockColumn,
+	BlockColumnRow,
 	BlockCta,
+	BlockDivider,
 	BlockFaq,
 	BlockForm,
 	BlockGallery,
+	BlockGalleryFile,
 	BlockHero,
 	BlockHtml,
 	BlockLogocloud,
+	BlockLogocloudFile,
 	BlockQuote,
 	BlockRichtext,
 	BlockStep,
+	BlockStepItem,
 	BlockTeam,
 	BlockTestimonial,
+	BlockTestimonialItem,
 	BlockVideo,
 } from './blocks';
 import type {
 	Globals,
 	Navigation,
+	NavigationItem,
 	Redirect,
 	SEO,
 	ProjectsSettings,
-	PageSettings,
 	ChatConfig,
 	Event,
 	Metric,
 } from './meta';
-import type { Page, PageBlock, Category, Form, Post, Team, Testimonial, PagesProjects, PagesBlog } from './content';
+import type {
+	Page,
+	PageBlock,
+	Category,
+	Form,
+	Post,
+	ProjectFile,
+	Team,
+	Testimonial,
+	PagesProjects,
+	PagesBlog,
+} from './content';
 import type { Inbox, HelpArticle, HelpCollection, HelpFeedback } from './help';
 import type { File, User } from './system';
 import type {
@@ -50,6 +69,7 @@ import type {
 	OsProjectContact,
 	OsProjectFile,
 	OsProject,
+	OsProjectUpdate,
 	OsProjectTemplate,
 	OsProposalApproval,
 	OsProposalBlock,
@@ -66,31 +86,40 @@ import type {
 export interface Schema {
 	// Routes
 	pages: Page[];
-	pages_blocks: PageBlock[];
+	page_blocks: PageBlock[];
 
 	// Content
 	categories: Category[];
 	forms: Form[];
 	posts: Post[];
+	post_gallery_items: ProjectFile[];
 	team: Team[];
 	testimonials: Testimonial[];
 	pages_projects: PagesProjects;
 	pages_blog: PagesBlog;
 
 	// Blocks
+	block_button: BlockButton[];
+	block_button_group: BlockButtonGroup[];
 	block_columns: BlockColumn[];
+	block_columns_rows: BlockColumnRow[];
 	block_cta: BlockCta[];
-	block_faq: BlockFaq[];
+	block_divider: BlockDivider[];
+	block_faqs: BlockFaq[];
 	block_form: BlockForm[];
 	block_gallery: BlockGallery[];
+	block_gallery_files: BlockGalleryFile[];
 	block_hero: BlockHero[];
 	block_html: BlockHtml[];
 	block_logocloud: BlockLogocloud[];
+	block_logocloud_logos: BlockLogocloudFile[];
 	block_quote: BlockQuote[];
 	block_richtext: BlockRichtext[];
 	block_steps: BlockStep[];
+	block_step_items: BlockStepItem[];
 	block_team: BlockTeam[];
-	block_testimonial: BlockTestimonial[];
+	block_testimonials: BlockTestimonial[];
+	block_testimonial_slider_items: BlockTestimonialItem[];
 	block_video: BlockVideo[];
 
 	// OS
@@ -113,6 +142,7 @@ export interface Schema {
 	os_project_contacts: OsProjectContact[];
 	os_project_files: OsProjectFile[];
 	os_projects: OsProject[];
+	os_project_updates: OsProjectUpdate[];
 	os_project_templates: OsProjectTemplate[];
 	os_proposal_approvals: OsProposalApproval[];
 	os_proposal_blocks: OsProposalBlock[];
@@ -135,10 +165,10 @@ export interface Schema {
 	// Meta
 	globals: Globals;
 	navigation: Navigation[];
+	navigation_items: NavigationItem[];
 	redirects: Redirect[];
 	seo: SEO[];
 	projects_settings: ProjectsSettings;
-	page_settings: PageSettings;
 	chat_config: ChatConfig;
 
 	// Data

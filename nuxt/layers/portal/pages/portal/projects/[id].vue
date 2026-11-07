@@ -35,7 +35,7 @@ const tabs = [
 <template>
 	<div class="space-y-6">
 		<PortalPageHeader
-			:title="project?.name"
+			:title="project?.name ?? undefined"
 			:breadcrumbs="[
 				{
 					title: 'Portal',

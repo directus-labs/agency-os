@@ -4,7 +4,7 @@ function generateId(): string {
 	return uuidv4();
 }
 
-function stripHTML(original: string | undefined): string | undefined {
+function stripHTML(original: string | null | undefined): string | undefined {
 	if (!original) return;
 	else return original.replace(/(<([^>]+)>)/gi, '');
 }

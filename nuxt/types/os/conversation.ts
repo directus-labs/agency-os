@@ -9,7 +9,7 @@ export interface Conversation {
 	visitor_id?: string | null;
 	item?: string | null;
 	collection?: string | null;
-	messages?: (string | Message)[];
+	messages?: string[] | Message[];
 }
 
 export interface Message {

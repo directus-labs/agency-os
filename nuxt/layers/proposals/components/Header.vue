@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface HeaderProps {
-	title: string;
-	organization: string;
+	title?: string | null;
+	organization?: string | null;
 }
 
 defineProps<HeaderProps>();

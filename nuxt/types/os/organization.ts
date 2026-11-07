@@ -21,8 +21,8 @@ export interface Organization {
 	/** Company phone number */
 	phone?: string | null;
 	branding?: string;
-	contacts?: (string | OrganizationContact)[];
-	addresses?: (string | OrganizationAddress)[];
+	contacts?: string[] | OrganizationContact[];
+	addresses?: string[] | OrganizationAddress[];
 	billing?: string;
 	stripe_customer_id?: string | null;
 }

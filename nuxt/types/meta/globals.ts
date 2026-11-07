@@ -10,10 +10,12 @@ export interface Globals {
 	email?: string | null;
 	id?: string;
 	og_image?: (string | File) | null;
+	logo_on_dark_bg?: (string | File) | null;
+	logo_on_light_bg?: (string | File) | null;
 	phone?: string | null;
 	postal_code?: string | null;
 	routes?: { [key: string]: any } | null;
-	social_links: { [key: string]: any } | null;
+	social_links: { service: string; url: string }[] | null;
 	street_address?: string | null;
 	/** What's the website title? */
 	tagline?: string | null;

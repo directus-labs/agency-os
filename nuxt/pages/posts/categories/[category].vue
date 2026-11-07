@@ -10,7 +10,7 @@ const { data } = await useAsyncData(
 			readItems('categories', {
 				filter: {
 					slug: {
-						_eq: params.category,
+						_eq: params.category as string,
 					},
 				},
 				fields: [
@@ -64,7 +64,7 @@ const { data } = await useAsyncData(
 	},
 );
 
-const category = computed(() => unref(data)?.category ?? {});
+const category = computed(() => unref(data)?.category);
 const posts = computed(() => unref(data)?.posts ?? []);
 
 // Compute metadata here to make it easier to populate all the different SEO tags
@@ -111,8 +111,8 @@ useServerSeoMeta({
 <template>
 	<BlockContainer>
 		<header class="pb-6 border-b-2 border-gray-300 dark:border-gray-700">
-			<TypographyTitle>{{ category.title }}</TypographyTitle>
-			<TypographyHeadline :content="category.headline" />
+			<TypographyTitle>{{ category?.title }}</TypographyTitle>
+			<TypographyHeadline :content="category?.headline" />
 			<div></div>
 		</header>
 		<section class="relative items-center w-full py-12 space-y-12">
@@ -130,7 +130,7 @@ useServerSeoMeta({
 					<div class="relative grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-4">
 						<PostCard
 							v-for="post in posts"
-							:key="post.id"
+							:key="post.slug ?? undefined"
 							:post="post"
 							class="col-span-2 pb-6 border-b border-gray-300 dark:border-gray-700"
 						/>

@@ -9,10 +9,6 @@ export interface ChatConfig {
 	require_email?: string | null;
 }
 
-export interface PageSettings {
-	[key: string]: any;
-}
-
 export interface ProjectsSettings {
 	headline?: string | null;
 	id?: string;

@@ -72,6 +72,19 @@ const isPaid = computed(() => {
 const billingAddress = computed(() => {
 	return getPrimaryBillingAddress(unref(invoice)?.organization);
 });
+
+// '*' plus nested fields types relations as ids or objects; nested fields always return objects
+const organization = computed(() => {
+	const organization = unref(invoice)?.organization;
+	return typeof organization === 'object' ? organization : null;
+});
+
+const contact = computed(() => {
+	const contact = unref(invoice)?.contact;
+	return typeof contact === 'object' ? contact : null;
+});
+
+const lineItems = computed(() => unref(invoice)?.line_items?.filter((item) => typeof item === 'object'));
 </script>
 <template>
 	<div>
@@ -100,7 +113,13 @@ const billingAddress = computed(() => {
 				</div>
 			</template>
 			<template #actions>
-				<UButton v-if="!isPaid" color="primary" size="xl" :loading="stripeLoading" @click="handleCheckout(invoice?.id)">
+				<UButton
+					v-if="!isPaid"
+					color="primary"
+					size="xl"
+					:loading="stripeLoading"
+					@click="handleCheckout(invoice?.id ?? '')"
+				>
 					Pay Invoice
 				</UButton>
 				<div v-if="isPaid" class="inline-flex items-center gap-2 px-4 py-2 border rounded-button border-primary">
@@ -123,8 +142,10 @@ const billingAddress = computed(() => {
 					</div>
 					<VText text-color="light">Reference: {{ invoice?.reference }}</VText>
 					<VDivider />
-					<VText text-color="light">Issued on {{ getFriendlyDate(invoice?.issue_date) }}</VText>
-					<VText class="font-bold">Due on {{ getFriendlyDate(invoice?.due_date) }}</VText>
+					<VText v-if="invoice?.issue_date" text-color="light">
+						Issued on {{ getFriendlyDate(invoice.issue_date) }}
+					</VText>
+					<VText v-if="invoice?.due_date" class="font-bold">Due on {{ getFriendlyDate(invoice.due_date) }}</VText>
 				</div>
 				<div id="company-branding" class="space-y-1.5">
 					<Logo class="w-32" />
@@ -161,7 +182,7 @@ const billingAddress = computed(() => {
 				<VDivider />
 				<div class="flex flex-col gap-8 mt-4 md:flex-row">
 					<div>
-						<p class="font-bold">{{ invoice?.organization?.name }}</p>
+						<p class="font-bold">{{ organization?.name }}</p>
 						<p v-if="billingAddress?.street_address">{{ billingAddress.street_address }}</p>
 						<p v-if="billingAddress?.address_locality || billingAddress?.address_region || billingAddress?.postal_code">
 							{{ billingAddress.address_locality }}, {{ billingAddress.address_region }}
@@ -169,9 +190,9 @@ const billingAddress = computed(() => {
 						</p>
 					</div>
 					<div>
-						<UserBadge :user="invoice?.contact" size="sm" />
-						<p>{{ invoice?.contact.email }}</p>
-						<p>{{ invoice?.contact.phone }}</p>
+						<UserBadge v-if="contact" :user="contact" size="sm" />
+						<p>{{ contact?.email }}</p>
+						<p>{{ contact?.phone }}</p>
 					</div>
 				</div>
 			</section>
@@ -179,7 +200,7 @@ const billingAddress = computed(() => {
 			<section id="line-items">
 				<TypographyHeadline content="Line Items" size="xs" />
 				<VDivider />
-				<UTable :columns="lineItemColumns" :rows="invoice?.line_items">
+				<UTable :columns="lineItemColumns" :rows="lineItems">
 					<template #unit_price-data="{ row }">
 						{{ formatCurrency(row.unit_price) }}
 					</template>
@@ -197,20 +218,20 @@ const billingAddress = computed(() => {
 				<div class="w-full px-3 py-3 mt-8 border rounded-panel dark:border-gray-700 lg:mt-0 md:max-w-[300px]">
 					<div class="flex items-baseline justify-between py-1">
 						<VText text-color="light">Subtotal</VText>
-						<VText>{{ formatCurrency(invoice?.subtotal) }}</VText>
+						<VText>{{ formatCurrency(invoice?.subtotal ?? 0) }}</VText>
 					</div>
 					<div class="flex items-baseline justify-between py-1">
 						<VText text-color="light">Taxes</VText>
-						<VText>{{ formatCurrency(invoice?.total_tax) }}</VText>
+						<VText>{{ formatCurrency(invoice?.total_tax ?? 0) }}</VText>
 					</div>
 					<VDivider />
 					<div class="flex items-baseline justify-between py-2">
 						<VText class="font-bold">Total</VText>
-						<VText class="text-xl font-bold text-primary-600">{{ formatCurrency(invoice?.total) }}</VText>
+						<VText class="text-xl font-bold text-primary-600">{{ formatCurrency(invoice?.total ?? 0) }}</VText>
 					</div>
 					<div class="flex items-baseline justify-between py-1">
 						<VText text-color="light">Amount Due</VText>
-						<VText class="font-medium text-center">{{ formatCurrency(invoice?.amount_due) }}</VText>
+						<VText class="font-medium text-center">{{ formatCurrency(invoice?.amount_due ?? 0) }}</VText>
 					</div>
 				</div>
 			</section>

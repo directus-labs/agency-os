@@ -1,7 +1,14 @@
 import type { Organization, OrganizationAddress } from '~/types';
 
-export function getPrimaryBillingAddress(organization: Organization): OrganizationAddress | null {
-	if (!organization || !organization.addresses || !Array.isArray(organization.addresses)) {
+export function getPrimaryBillingAddress(
+	organization: { addresses?: Organization['addresses'] | null } | string | null | undefined,
+): OrganizationAddress | null {
+	if (
+		!organization ||
+		typeof organization === 'string' ||
+		!organization.addresses ||
+		!Array.isArray(organization.addresses)
+	) {
 		return null;
 	}
 

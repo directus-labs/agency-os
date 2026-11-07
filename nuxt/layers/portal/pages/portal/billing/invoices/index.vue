@@ -45,16 +45,18 @@ const { data, pending, error, refresh } = await useAsyncData(
 
 		// Total count of invoices
 		const count = useDirectus(
-			readItems('os_invoices', {
+			aggregate('os_invoices', {
 				aggregate: {
-					count: ['*'],
+					count: '*',
 				},
-				filter: {
-					...(unref(status) && {
-						status: {
-							_eq: unref(status),
-						},
-					}),
+				query: {
+					filter: {
+						...(unref(status) && {
+							status: {
+								_eq: unref(status),
+							},
+						}),
+					},
 				},
 			}),
 		);
@@ -65,7 +67,7 @@ const { data, pending, error, refresh } = await useAsyncData(
 		transform: ([data, count]) => {
 			return {
 				invoices: data,
-				count: parseInt(count[0].count),
+				count: parseInt(count[0].count ?? '0'),
 			};
 		},
 	},

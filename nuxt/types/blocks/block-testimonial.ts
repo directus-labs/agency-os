@@ -4,7 +4,7 @@ export interface BlockTestimonial {
 	headline?: string | null;
 	id?: string;
 	title?: string | null;
-	testimonials?: (string | BlockTestimonialItem)[];
+	testimonials?: string[] | BlockTestimonialItem[];
 }
 export interface BlockTestimonialItem {
 	block_testimonials_slider_id?: (string | BlockTestimonial) | null;

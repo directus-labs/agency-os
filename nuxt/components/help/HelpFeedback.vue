@@ -5,7 +5,7 @@ import type { Session } from '~/middleware/session.global';
 
 const session: Ref<Session> = useCookie('session');
 
-const props = defineProps<{ title: string; url: string }>();
+const props = defineProps<{ title?: string | null; url: string }>();
 
 const loading = ref(false);
 const error = ref<any>(null);

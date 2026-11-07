@@ -1,3 +1,5 @@
+import type { File } from '../system';
+
 export interface SEO {
 	/** Where should the canonical URL for this entry point to. */
 	canonical_url?: string | null;

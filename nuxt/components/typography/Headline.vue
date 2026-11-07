@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface HeadlineProps {
-	content: string;
+	content?: string | null;
 	as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
 	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'title';
 }

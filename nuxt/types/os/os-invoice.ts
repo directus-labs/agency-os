@@ -21,8 +21,8 @@ export interface OsInvoice {
 	total?: number | null;
 	amount_paid?: number | null;
 	amount_due?: number | null;
-	payments?: (string | OsPayment)[];
-	line_items?: (string | OsInvoiceItem)[];
+	payments?: string[] | OsPayment[];
+	line_items?: string[] | OsInvoiceItem[];
 }
 
 export interface OsInvoiceItem {

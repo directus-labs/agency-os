@@ -5,7 +5,7 @@ export interface BlockColumn {
 	headline?: string | null;
 	id?: string;
 	title?: string | null;
-	rows?: (number | BlockColumnRow)[];
+	rows?: number[] | BlockColumnRow[];
 }
 
 export interface BlockColumnRow {

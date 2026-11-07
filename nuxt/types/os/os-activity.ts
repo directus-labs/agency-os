@@ -18,7 +18,7 @@ export interface OsActivity {
 	end_time?: string | null;
 	due_date?: string | null;
 	assigned_to?: (string | User) | null;
-	contacts?: (string | OsActivityContact)[];
+	contacts?: string[] | OsActivityContact[];
 }
 
 export interface OsActivityContact {

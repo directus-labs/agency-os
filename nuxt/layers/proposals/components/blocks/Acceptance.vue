@@ -11,9 +11,9 @@ if (query && query.approver) {
 		readItem('contacts', query.approver as string, { fields: ['first_name', 'last_name', 'email'] }),
 	);
 
-	query.first_name = approver.first_name;
-	query.last_name = approver.last_name;
-	query.email = approver.email;
+	query.first_name = approver.first_name ?? null;
+	query.last_name = approver.last_name ?? null;
+	query.email = approver.email ?? null;
 }
 
 export interface AcceptanceForm {

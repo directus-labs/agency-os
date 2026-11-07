@@ -4,7 +4,7 @@ export interface BlockLogocloud {
 	headline?: string | null;
 	id?: string;
 	title?: string | null;
-	logos?: (string | BlockLogocloudFile)[];
+	logos?: string[] | BlockLogocloudFile[];
 }
 export interface BlockLogocloudFile {
 	id?: string;

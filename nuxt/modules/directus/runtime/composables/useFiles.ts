@@ -4,7 +4,7 @@ import type { File } from '~/types';
 export default function useFiles() {
 	const config = useRuntimeConfig();
 
-	function fileUrl(fileId: string) {
+	function fileUrl(fileId: string | Pick<File, 'id'>) {
 		if (!fileId) return undefined;
 
 		if (typeof fileId === 'string') {

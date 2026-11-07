@@ -2,7 +2,9 @@
 const appConfig = useAppConfig();
 
 const logo = computed(() => {
-	return appConfig.globals?.logo_on_dark_bg;
+	const logo = appConfig.globals?.logo_on_dark_bg;
+	// Globals are read without nested fields, so the logo is always a file id
+	return typeof logo === 'string' ? logo : undefined;
 });
 
 const props = defineProps({

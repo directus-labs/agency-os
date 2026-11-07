@@ -25,7 +25,7 @@ export interface File {
 	/** Character set of the file. */
 	charset: string | null;
 	/** Size of the file in bytes. */
-	filesize: number;
+	filesize: string | null;
 	/** Width of the file in pixels. Only applies to images. */
 	width: number | null;
 	/** Height of the file in pixels. Only applies to images. */

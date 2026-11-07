@@ -18,10 +18,10 @@ export interface OsDeal {
 	deal_value?: number | null;
 	deal_notes?: string | null;
 	comments?: string;
-	proposals?: (string | OsProposal)[];
-	contacts?: (string | OsDealContact)[];
+	proposals?: string[] | OsProposal[];
+	contacts?: string[] | OsDealContact[];
 	activity?: string;
-	activities?: (string | OsActivity)[];
+	activities?: string[] | OsActivity[];
 }
 
 export interface OsDealContact {

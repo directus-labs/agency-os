@@ -16,8 +16,8 @@ export interface Contact {
 	phone?: string | null;
 	job_title?: string | null;
 	contact_notes?: string | null;
-	organizations?: (string | OrganizationContact)[];
-	os_deals?: (string | OsDealContact)[];
+	organizations?: string[] | OrganizationContact[];
+	os_deals?: string[] | OsDealContact[];
 	activity?: string;
-	activities?: (string | OsActivityContact)[];
+	activities?: string[] | OsActivityContact[];
 }

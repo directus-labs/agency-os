@@ -185,11 +185,13 @@ if (!unref(page)) {
 // Compute metadata here to make it easier to populate all the different SEO tags
 const metadata = computed(() => {
 	const pageData = unref(page);
+	// '*' plus nested fields types seo as an id or object; nested fields always return an object
+	const seo = typeof pageData?.seo === 'object' ? pageData.seo : null;
 	return {
-		title: pageData?.seo?.title ?? pageData?.title ?? undefined,
-		description: pageData?.seo?.meta_description ?? pageData?.summary ?? undefined,
+		title: seo?.title ?? pageData?.title ?? undefined,
+		description: seo?.meta_description ?? undefined,
 		image: globals?.og_image ? fileUrl(globals.og_image) : undefined,
-		canonical: pageData?.seo?.canonical_url ?? url,
+		canonical: seo?.canonical_url ?? url.href,
 	};
 });
 

@@ -1,14 +1,15 @@
+import type { File } from './file.js';
 import type { Role } from './role.js';
 
 export interface User {
 	/** Unique identifier for the user. */
 	id: string;
 	/** First name of the user. */
-	first_name: string;
+	first_name: string | null;
 	/** Last name of the user. */
-	last_name: string;
+	last_name: string | null;
 	/** Unique email address for the user. */
-	email: string;
+	email: string | null;
 	/** Password of the user. */
 	password: string;
 	/** The user's location. */

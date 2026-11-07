@@ -1,4 +1,4 @@
-import type { User } from '../system';
+import type { File, User } from '../system';
 
 export interface Testimonial {
 	company?: string | null;

@@ -91,7 +91,7 @@ const tasksShown = computed(() => {
 		?.filter((task) => task.type !== 'milestone')
 		.filter((task) => {
 			if (!searchQuery.value) return true;
-			return task.name.toLowerCase().includes(searchQuery?.value?.toLowerCase());
+			return task.name?.toLowerCase().includes(searchQuery?.value?.toLowerCase());
 		});
 
 	return items;

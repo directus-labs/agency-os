@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import type { User } from '~~/types';
+import type { File, User } from '~~/types';
 
 export interface AvatarProps {
-	user: Partial<User>;
+	user: Partial<Pick<User, 'first_name' | 'last_name' | 'email' | 'title'>> & {
+		avatar?: string | Pick<File, 'id'> | null;
+	};
 	size?: 'sm' | 'md' | 'lg';
 }
 

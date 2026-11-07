@@ -26,7 +26,7 @@ const {
 
 const totalAmountDue = computed(() => {
 	return invoices.value?.reduce((acc, invoice) => {
-		return acc + invoice.amount_due;
+		return acc + (invoice.amount_due ?? 0);
 	}, 0);
 });
 

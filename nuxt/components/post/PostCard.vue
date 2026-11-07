@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Post, PostType, Category, Team } from '~/types';
+import type { File, Post, PostType, Category, Team } from '~/types';
 
 const props = withDefaults(
 	defineProps<{
-		post: Post;
+		post: Omit<Post, 'image'> & { image?: string | Pick<File, 'id'> | null };
 		direction?: 'horizontal' | 'vertical';
 	}>(),
 	{

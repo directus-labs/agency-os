@@ -22,7 +22,7 @@ export interface Post {
 	links?: string;
 	type?: PostType;
 	details?: string;
-	gallery?: (number | ProjectFile)[];
+	gallery?: number[] | ProjectFile[];
 	built_with?: { [key: string]: any } | null;
 	client?: string | null;
 	cost?: string | null;
