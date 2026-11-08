@@ -11,6 +11,8 @@ dist
 .eslintcache
 .netlify
 directus/data
-directus/uploads
-directus/extensions
+directus/uploads/*
+!directus/uploads/.gitkeep
+directus/extensions/*
+!directus/extensions/.gitkeep
 .directus-template-cli
